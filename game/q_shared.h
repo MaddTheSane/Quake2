@@ -59,6 +59,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #undef false
 #endif /* __APPLE__ ||ÊMACOSX */
 
+#ifdef __cplusplus
+#define true qtrue
+#define false qfalse
+#endif
+
 typedef unsigned char 		byte;
 typedef enum {false, true}	qboolean;
 
@@ -302,8 +307,8 @@ void	Sys_FindClose (void);
 
 
 // this is only here so the functions in q_shared.c and q_shwin.c can link
-void Sys_Error (char *error, ...);
-void Com_Printf (char *msg, ...);
+void Sys_Error (const char *error, ...);
+void Com_Printf (const char *msg, ...);
 
 
 /*

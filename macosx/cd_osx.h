@@ -11,7 +11,11 @@
 
 #pragma mark TypeDefs
 
-typedef enum
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+typedef NS_ENUM(int, cderror_t)
 {
     CDERR_ALLOC_TRACK = 1,
     CDERR_MOVIE_DATA,
@@ -23,7 +27,7 @@ typedef enum
     CDERR_MEDIA_TRACK_CONTROLLER,
     CDERR_EJECT,
     CDERR_NO_FILES_FOUND
-} cderror_t;
+};
 
 #pragma mark -
 
@@ -33,5 +37,9 @@ typedef enum
 
 BOOL			CDAudio_GetTrackList (void);
 void			CDAudio_Enable (BOOL theState);
+
+#ifdef __cplusplus
+}
+#endif
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------

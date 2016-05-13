@@ -14,4 +14,12 @@
 extern UInt8		gInSpecialKey[];
 extern UInt8		gInNumPadKey[];
 
+#pragma mark Function Prototypes
+
+extern void			IN_SetKeyboardRepeatEnabled (BOOL theState);
+extern void			IN_SetF12EjectEnabled (BOOL theState);
+extern void			IN_ShowCursor (BOOL theState);
+extern void			IN_CenterCursor (void);
+extern void			IN_ReceiveMouseMove (int32_t theDeltaX, int32_t theDeltaY);
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------

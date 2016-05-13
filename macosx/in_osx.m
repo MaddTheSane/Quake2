@@ -118,12 +118,6 @@ UInt8					gInNumPadKey[] =	{
 
 #pragma mark Function Prototypes
 
-void			IN_SetKeyboardRepeatEnabled (BOOL theState);
-void			IN_SetF12EjectEnabled (qboolean theState);
-void			IN_ShowCursor (BOOL theState);
-void			IN_CenterCursor (void);
-void			IN_ReceiveMouseMove (int32_t theDeltaX, int32_t theDeltaY);
-
 static void		IN_SetMouseScalingEnabled (BOOL theState);
 static void 	IN_MLookDown_f (void);
 static void 	IN_MLookUp_f (void);
@@ -188,7 +182,7 @@ void	IN_SetKeyboardRepeatEnabled (BOOL theState)
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void	IN_SetF12EjectEnabled (qboolean theState)
+void	IN_SetF12EjectEnabled (BOOL theState)
 {
     static BOOL		myF12KeyIsEnabled = YES;
     static UInt32	myOldValue;

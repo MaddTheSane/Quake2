@@ -30,6 +30,7 @@
 #include <dlfcn.h>
 
 #include "client.h"
+#import "vid_osx.h"
 
 #pragma mark -
 
@@ -146,7 +147,6 @@ qboolean 	VID_GetModeInfo (int *theWidth, int *theHeight, int theMode);
 void		VID_Init (void);
 qboolean 	VID_LoadRefresh (char *theName);
 void		VID_FreeReflib (void);
-void		VID_SetPaused (BOOL theState);
 void		VID_CheckChanges (void);
 void		VID_Restart_f (void);
 

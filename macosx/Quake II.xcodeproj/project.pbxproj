@@ -268,6 +268,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
 		D2075FEA1529646A00F14280 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = "Resources/Quake II/English.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		D2075FED1529649700F14280 /* Swedish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Swedish; path = "Resources/Quake II/Swedish.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		D2075FEF152964A800F14280 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = "Resources/Quake II/German.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
@@ -284,46 +285,46 @@
 		D2076049152969C500F14280 /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = ../../../../../../../System/Library/Frameworks/ForceFeedback.framework; sourceTree = "<group>"; };
 		D207604F15296AF400F14280 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = "Resources/Quake II/English.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D2AD4EBF17EFFA4B00DA8777 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
-		D2AD4EC217EFFDBA00DA8777 /* FDAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDAudioBuffer.h; path = FDFramework/FDAudioBuffer.h; sourceTree = "<group>"; };
-		D2AD4EC317EFFDBA00DA8777 /* FDAudioBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDAudioBuffer.m; path = FDFramework/FDAudioBuffer.m; sourceTree = "<group>"; };
-		D2AD4EC417EFFDBA00DA8777 /* FDAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDAudioFile.h; path = FDFramework/FDAudioFile.h; sourceTree = "<group>"; };
-		D2AD4EC517EFFDBA00DA8777 /* FDAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDAudioFile.m; path = FDFramework/FDAudioFile.m; sourceTree = "<group>"; };
-		D2AD4EC617EFFDBA00DA8777 /* FDAudioInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDAudioInternal.h; path = FDFramework/FDAudioInternal.h; sourceTree = "<group>"; };
-		D2AD4EC717EFFDBA00DA8777 /* FDAudioMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDAudioMixer.h; path = FDFramework/FDAudioMixer.h; sourceTree = "<group>"; };
-		D2AD4EC817EFFDBA00DA8777 /* FDAudioMixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDAudioMixer.m; path = FDFramework/FDAudioMixer.m; sourceTree = "<group>"; };
-		D2AD4EC917EFFDBA00DA8777 /* FDDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDDebug.h; path = FDFramework/FDDebug.h; sourceTree = "<group>"; };
-		D2AD4ECA17EFFDBA00DA8777 /* FDDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDDebug.m; path = FDFramework/FDDebug.m; sourceTree = "<group>"; };
-		D2AD4ECB17EFFDBA00DA8777 /* FDDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDDefines.h; path = FDFramework/FDDefines.h; sourceTree = "<group>"; };
-		D2AD4ECC17EFFDBA00DA8777 /* FDDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDDisplay.h; path = FDFramework/FDDisplay.h; sourceTree = "<group>"; };
-		D2AD4ECD17EFFDBA00DA8777 /* FDDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDDisplay.m; path = FDFramework/FDDisplay.m; sourceTree = "<group>"; };
-		D2AD4ECE17EFFDBA00DA8777 /* FDDisplayMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDDisplayMode.h; path = FDFramework/FDDisplayMode.h; sourceTree = "<group>"; };
-		D2AD4ECF17EFFDBA00DA8777 /* FDDisplayMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDDisplayMode.m; path = FDFramework/FDDisplayMode.m; sourceTree = "<group>"; };
-		D2AD4ED017EFFDBA00DA8777 /* FDFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFramework.h; path = FDFramework/FDFramework.h; sourceTree = "<group>"; };
-		D2AD4ED117EFFDBA00DA8777 /* FDGLScreenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDGLScreenshot.h; path = FDFramework/FDGLScreenshot.h; sourceTree = "<group>"; };
-		D2AD4ED217EFFDBA00DA8777 /* FDGLScreenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDGLScreenshot.m; path = FDFramework/FDGLScreenshot.m; sourceTree = "<group>"; };
-		D2AD4ED317EFFDBA00DA8777 /* FDHIDActuator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDHIDActuator.h; path = FDFramework/FDHIDActuator.h; sourceTree = "<group>"; };
-		D2AD4ED417EFFDBA00DA8777 /* FDHIDActuator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDHIDActuator.m; path = FDFramework/FDHIDActuator.m; sourceTree = "<group>"; };
-		D2AD4ED517EFFDBA00DA8777 /* FDHIDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDHIDDevice.h; path = FDFramework/FDHIDDevice.h; sourceTree = "<group>"; };
-		D2AD4ED617EFFDBA00DA8777 /* FDHIDDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDHIDDevice.m; path = FDFramework/FDHIDDevice.m; sourceTree = "<group>"; };
-		D2AD4ED717EFFDBA00DA8777 /* FDHIDGamePad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDHIDGamePad.m; path = FDFramework/FDHIDGamePad.m; sourceTree = "<group>"; };
-		D2AD4ED817EFFDBA00DA8777 /* FDHIDInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDHIDInternal.h; path = FDFramework/FDHIDInternal.h; sourceTree = "<group>"; };
-		D2AD4ED917EFFDBA00DA8777 /* FDHIDKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDHIDKeyboard.m; path = FDFramework/FDHIDKeyboard.m; sourceTree = "<group>"; };
-		D2AD4EDA17EFFDBA00DA8777 /* FDHIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDHIDManager.h; path = FDFramework/FDHIDManager.h; sourceTree = "<group>"; };
-		D2AD4EDB17EFFDBA00DA8777 /* FDHIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDHIDManager.m; path = FDFramework/FDHIDManager.m; sourceTree = "<group>"; };
-		D2AD4EDC17EFFDBA00DA8777 /* FDHIDMouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDHIDMouse.m; path = FDFramework/FDHIDMouse.m; sourceTree = "<group>"; };
-		D2AD4EDD17EFFDBA00DA8777 /* FDLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDLinkView.h; path = FDFramework/FDLinkView.h; sourceTree = "<group>"; };
-		D2AD4EDE17EFFDBA00DA8777 /* FDLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDLinkView.m; path = FDFramework/FDLinkView.m; sourceTree = "<group>"; };
-		D2AD4EDF17EFFDBA00DA8777 /* FDModifierCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDModifierCheck.h; path = FDFramework/FDModifierCheck.h; sourceTree = "<group>"; };
-		D2AD4EE017EFFDBA00DA8777 /* FDModifierCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDModifierCheck.m; path = FDFramework/FDModifierCheck.m; sourceTree = "<group>"; };
-		D2AD4EE117EFFDBA00DA8777 /* FDPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDPreferences.h; path = FDFramework/FDPreferences.h; sourceTree = "<group>"; };
-		D2AD4EE217EFFDBA00DA8777 /* FDPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDPreferences.m; path = FDFramework/FDPreferences.m; sourceTree = "<group>"; };
-		D2AD4EE317EFFDBA00DA8777 /* FDScreenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDScreenshot.h; path = FDFramework/FDScreenshot.h; sourceTree = "<group>"; };
-		D2AD4EE417EFFDBA00DA8777 /* FDScreenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDScreenshot.m; path = FDFramework/FDScreenshot.m; sourceTree = "<group>"; };
-		D2AD4EE517EFFDBA00DA8777 /* FDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDView.h; path = FDFramework/FDView.h; sourceTree = "<group>"; };
-		D2AD4EE617EFFDBA00DA8777 /* FDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDView.m; path = FDFramework/FDView.m; sourceTree = "<group>"; };
-		D2AD4EE717EFFDBA00DA8777 /* FDViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDViewInternal.h; path = FDFramework/FDViewInternal.h; sourceTree = "<group>"; };
-		D2AD4EE817EFFDBA00DA8777 /* FDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDWindow.h; path = FDFramework/FDWindow.h; sourceTree = "<group>"; };
-		D2AD4EE917EFFDBA00DA8777 /* FDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDWindow.m; path = FDFramework/FDWindow.m; sourceTree = "<group>"; };
+		D2AD4EC217EFFDBA00DA8777 /* FDAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDAudioBuffer.h; sourceTree = "<group>"; };
+		D2AD4EC317EFFDBA00DA8777 /* FDAudioBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDAudioBuffer.m; sourceTree = "<group>"; };
+		D2AD4EC417EFFDBA00DA8777 /* FDAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDAudioFile.h; sourceTree = "<group>"; };
+		D2AD4EC517EFFDBA00DA8777 /* FDAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDAudioFile.m; sourceTree = "<group>"; };
+		D2AD4EC617EFFDBA00DA8777 /* FDAudioInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDAudioInternal.h; sourceTree = "<group>"; };
+		D2AD4EC717EFFDBA00DA8777 /* FDAudioMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDAudioMixer.h; sourceTree = "<group>"; };
+		D2AD4EC817EFFDBA00DA8777 /* FDAudioMixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDAudioMixer.m; sourceTree = "<group>"; };
+		D2AD4EC917EFFDBA00DA8777 /* FDDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDebug.h; sourceTree = "<group>"; };
+		D2AD4ECA17EFFDBA00DA8777 /* FDDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDebug.m; sourceTree = "<group>"; };
+		D2AD4ECB17EFFDBA00DA8777 /* FDDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDefines.h; sourceTree = "<group>"; };
+		D2AD4ECC17EFFDBA00DA8777 /* FDDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDisplay.h; sourceTree = "<group>"; };
+		D2AD4ECD17EFFDBA00DA8777 /* FDDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDisplay.m; sourceTree = "<group>"; };
+		D2AD4ECE17EFFDBA00DA8777 /* FDDisplayMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDisplayMode.h; sourceTree = "<group>"; };
+		D2AD4ECF17EFFDBA00DA8777 /* FDDisplayMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDisplayMode.m; sourceTree = "<group>"; };
+		D2AD4ED017EFFDBA00DA8777 /* FDFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFramework.h; sourceTree = "<group>"; };
+		D2AD4ED117EFFDBA00DA8777 /* FDGLScreenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDGLScreenshot.h; sourceTree = "<group>"; };
+		D2AD4ED217EFFDBA00DA8777 /* FDGLScreenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDGLScreenshot.m; sourceTree = "<group>"; };
+		D2AD4ED317EFFDBA00DA8777 /* FDHIDActuator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDHIDActuator.h; sourceTree = "<group>"; };
+		D2AD4ED417EFFDBA00DA8777 /* FDHIDActuator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDHIDActuator.m; sourceTree = "<group>"; };
+		D2AD4ED517EFFDBA00DA8777 /* FDHIDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDHIDDevice.h; sourceTree = "<group>"; };
+		D2AD4ED617EFFDBA00DA8777 /* FDHIDDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDHIDDevice.m; sourceTree = "<group>"; };
+		D2AD4ED717EFFDBA00DA8777 /* FDHIDGamePad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDHIDGamePad.m; sourceTree = "<group>"; };
+		D2AD4ED817EFFDBA00DA8777 /* FDHIDInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDHIDInternal.h; sourceTree = "<group>"; };
+		D2AD4ED917EFFDBA00DA8777 /* FDHIDKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDHIDKeyboard.m; sourceTree = "<group>"; };
+		D2AD4EDA17EFFDBA00DA8777 /* FDHIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDHIDManager.h; sourceTree = "<group>"; };
+		D2AD4EDB17EFFDBA00DA8777 /* FDHIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDHIDManager.m; sourceTree = "<group>"; };
+		D2AD4EDC17EFFDBA00DA8777 /* FDHIDMouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDHIDMouse.m; sourceTree = "<group>"; };
+		D2AD4EDD17EFFDBA00DA8777 /* FDLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDLinkView.h; sourceTree = "<group>"; };
+		D2AD4EDE17EFFDBA00DA8777 /* FDLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDLinkView.m; sourceTree = "<group>"; };
+		D2AD4EDF17EFFDBA00DA8777 /* FDModifierCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDModifierCheck.h; sourceTree = "<group>"; };
+		D2AD4EE017EFFDBA00DA8777 /* FDModifierCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDModifierCheck.m; sourceTree = "<group>"; };
+		D2AD4EE117EFFDBA00DA8777 /* FDPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDPreferences.h; sourceTree = "<group>"; };
+		D2AD4EE217EFFDBA00DA8777 /* FDPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDPreferences.m; sourceTree = "<group>"; };
+		D2AD4EE317EFFDBA00DA8777 /* FDScreenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDScreenshot.h; sourceTree = "<group>"; };
+		D2AD4EE417EFFDBA00DA8777 /* FDScreenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDScreenshot.m; sourceTree = "<group>"; };
+		D2AD4EE517EFFDBA00DA8777 /* FDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDView.h; sourceTree = "<group>"; };
+		D2AD4EE617EFFDBA00DA8777 /* FDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDView.m; sourceTree = "<group>"; };
+		D2AD4EE717EFFDBA00DA8777 /* FDViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDViewInternal.h; sourceTree = "<group>"; };
+		D2AD4EE817EFFDBA00DA8777 /* FDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDWindow.h; sourceTree = "<group>"; };
+		D2AD4EE917EFFDBA00DA8777 /* FDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDWindow.m; sourceTree = "<group>"; };
 		D2C36113152A049F00E73AC1 /* snddma_osx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = snddma_osx.m; sourceTree = "<group>"; };
 		D2C835991529122500867DFC /* Quake II.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quake II.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C8359D1529122500867DFC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -652,7 +653,7 @@
 				D2AD4EE717EFFDBA00DA8777 /* FDViewInternal.h */,
 				D2AD4EE817EFFDBA00DA8777 /* FDWindow.h */,
 			);
-			name = FDFramework;
+			path = FDFramework;
 			sourceTree = "<group>";
 			usesTabs = 0;
 		};
@@ -774,7 +775,7 @@
 			);
 			name = "MacOS X";
 			sourceTree = "<group>";
-			usesTabs = 1;
+			usesTabs = 0;
 		};
 		D2C835C81529162500867DFC /* Common */ = {
 			isa = PBXGroup;
@@ -863,6 +864,7 @@
 				D2C835DA152916DE00867DFC /* Quake2Application.h */,
 				D2C835DC152916DE00867DFC /* Quake2Toolbar.h */,
 				D2C835DF152916DE00867DFC /* sys_osx.h */,
+				555E12CB1CE672FE001C2DED /* vid_osx.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";

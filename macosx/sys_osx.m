@@ -87,7 +87,6 @@ static char	*			gSysCDPath[]		=	{
 extern	void	M_Menu_Quit_f (void);
 extern	void	Key_Event (int key, qboolean down, unsigned time);
 extern	void	IN_SetKeyboardRepeatEnabled (BOOL theState);
-extern	void	IN_SetF12EjectEnabled (qboolean theState);
 extern	void	IN_ShowCursor (BOOL theState);
 extern	void	IN_ReceiveMouseMove (int32_t theDeltaX, int32_t theDeltaY);
 extern  BOOL	CDAudio_GetTrackList (void);

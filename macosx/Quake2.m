@@ -14,6 +14,9 @@
 #import "Quake2.h"
 #import "sys_osx.h"
 #import "FDModifierCheck.h"
+#import "cd_osx.h"
+#import "in_osx.h"
+#import "vid_osx.h"
 
 #pragma mark -
 
@@ -87,7 +90,7 @@
                     
                     if (myPath != NULL)
                     {
-                        SInt32	myIndex = strlen (myPath) - 1;
+                        size_t	myIndex = strlen (myPath) - 1;
 
                         while (myIndex > 1)
                         {
@@ -183,8 +186,8 @@
     }
                         
     if ((vid_fullscreen != NULL && vid_fullscreen->value != 0.0f) ||
-        ((in_mouse == NULL || (in_mouse != NULL && in_mouse->value == 0.0f) &&
-         (_windowed_mouse != NULL && _windowed_mouse->value != 0.0f))))
+        ((in_mouse == NULL || ((in_mouse != NULL && in_mouse->value == 0.0f) &&
+                               (_windowed_mouse != NULL && _windowed_mouse->value != 0.0f)))))
     {
         IN_ShowCursor (NO);
     }
@@ -198,9 +201,16 @@
     CDAudio_Enable (YES);
     VID_SetPaused (NO);
     
-    CGPostKeyboardEvent ((CGCharCode) 0, (CGKeyCode) 55, NO);	// CMD
-    CGPostKeyboardEvent ((CGCharCode) 0, (CGKeyCode) 48, NO);	// TAB
-    CGPostKeyboardEvent ((CGCharCode) 0, (CGKeyCode) 4, NO);	// H
+    CGEventRef keyRef;
+    keyRef = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)55, false); // CMD
+    CGEventPost(kCGSessionEventTap, keyRef);
+    CFRelease(keyRef);
+    keyRef = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)48, false); // TAB
+    CGEventPost(kCGSessionEventTap, keyRef);
+    CFRelease(keyRef);
+    keyRef = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)4, false);  // H
+    CGEventPost(kCGSessionEventTap, keyRef);
+    CFRelease(keyRef);
 
 	[self installFrameTimer];
 }
@@ -263,6 +273,7 @@
 
 - (NSApplicationTerminateReply) applicationShouldTerminate: (NSApplication *) theSender
 {
+    extern void M_Menu_Quit_f (void);
     if ([self hostInitialized]  == YES)
     {
         extern cvar_t	*vid_fullscreen;
@@ -278,12 +289,9 @@
             
             if (myWindowList != NULL)
             {
-                int	myCount = [myWindowList count],
-                        myIndex;
-                
-                for (myIndex = 0; myIndex < myCount; myIndex++)
+                for (NSWindow *myWindow in myWindowList)
                 {
-                    NSWindow	*myWindow = [myWindowList objectAtIndex: myIndex];
+                    //NSWindow	*myWindow = [myWindowList objectAtIndex: myIndex];
                     
                     if (myWindow != NULL)
                     {
@@ -532,7 +540,7 @@
         {
             if ([myArgument characterAtIndex: 0] == '\"')
             {
-                myArgument = [NSString stringWithString: @""];
+                myArgument = @"";
                 for (; i < [mySeparatedArguments count]; i++)
                 {
                     myArgument = [myArgument stringByAppendingString: [mySeparatedArguments objectAtIndex: i]];
@@ -557,7 +565,7 @@
         }
     }
 
-    gSysArgCount = [myNewArguments count] + 1;
+    gSysArgCount = (int)[myNewArguments count] + 1;
     myNewArgValues = (char **) malloc (sizeof(char *) * gSysArgCount);
     SYS_CHECK_MALLOC (myNewArgValues);
 
@@ -567,7 +575,7 @@
     // insert the new parameters:
     for (i = 0; i < [myNewArguments count]; i++)
     {
-        char *	myCString = (char *) [[myNewArguments objectAtIndex: i] cString];
+        char *	myCString = (char *) [[myNewArguments objectAtIndex: i] cStringUsingEncoding:NSASCIIStringEncoding];
         
         gSysArgValues[i+1] = (char *) malloc (strlen (myCString) + 1);
         SYS_CHECK_MALLOC (gSysArgValues[i+1]);
@@ -786,17 +794,24 @@
     [myMP3Panel setCanChooseFiles: NO];
     [myMP3Panel setCanChooseDirectories: YES];
     [myMP3Panel setAccessoryView: mp3HelpView];
-    [myMP3Panel setDirectory: [mp3TextField stringValue]];
+	[myMP3Panel setDirectoryURL:[NSURL fileURLWithPath:[mp3TextField stringValue]]];
     [myMP3Panel setTitle: @"Select the folder that holds the MP3s:"];
     
     // show the sheet:
-    [myMP3Panel beginSheetForDirectory: @""
-                                  file: NULL
-                                 types: NULL
-                        modalForWindow: startupWindow
-                         modalDelegate: self
-                        didEndSelector: @selector (closeMP3Sheet:returnCode:contextInfo:)
-                           contextInfo: NULL];
+	[myMP3Panel beginSheetModalForWindow:startupWindow completionHandler:^(NSInteger theCode) {
+		// do nothing on cancel:
+		if (theCode != NSCancelButton)
+		{
+			NSArray *		myFolderArray;
+			
+			// get the path of the selected folder;
+			myFolderArray = [myMP3Panel URLs];
+			if ([myFolderArray count] > 0)
+			{
+				[mp3TextField setStringValue: [[myFolderArray objectAtIndex: 0] path]];
+			}
+		}
+	}];
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -811,10 +826,10 @@
         NSArray *		myFolderArray;
 
         // get the path of the selected folder;
-        myFolderArray = [theSheet filenames];
+        myFolderArray = [theSheet URLs];
         if ([myFolderArray count] > 0)
         {
-            [mp3TextField setStringValue: [myFolderArray objectAtIndex: 0]];
+            [mp3TextField setStringValue: [[myFolderArray objectAtIndex: 0] path]];
         }
     }
 }
@@ -863,7 +878,7 @@
         myRequestedServer = [thePasteboard stringForType: NSStringPboardType];
         if (myRequestedServer != NULL)
         {
-            Cbuf_ExecuteText (EXEC_APPEND, va("connect %s\n", [myRequestedServer cString]));
+            Cbuf_ExecuteText (EXEC_APPEND, va("connect %s\n", [myRequestedServer cStringUsingEncoding:NSASCIIStringEncoding]));
             return;
         }
     }

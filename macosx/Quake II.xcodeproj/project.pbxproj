@@ -10,6 +10,7 @@
 		555E12D41CE675E4001C2DED /* AudioFilePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */; };
 		555E12D51CE675E4001C2DED /* AudioFileReaderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12CF1CE675E4001C2DED /* AudioFileReaderThread.cpp */; };
 		555E12D71CE675E4001C2DED /* SDLOSXCAGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12D21CE675E4001C2DED /* SDLOSXCAGuard.cpp */; };
+		555E12D81CE6772D001C2DED /* CDPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12D01CE675E4001C2DED /* CDPlayer.cpp */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
 		D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF1152965F500F14280 /* Quake II.scriptSuite */; };
 		D2075FFC1529666300F14280 /* Arguments.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF41529666300F14280 /* Arguments.icns */; };
@@ -279,6 +280,7 @@
 		555E12D11CE675E4001C2DED /* CDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDPlayer.h; sourceTree = "<group>"; };
 		555E12D21CE675E4001C2DED /* SDLOSXCAGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDLOSXCAGuard.cpp; sourceTree = "<group>"; };
 		555E12D31CE675E4001C2DED /* SDLOSXCAGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLOSXCAGuard.h; sourceTree = "<group>"; };
+		555E12D91CE67771001C2DED /* SDL2_cdrom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDL2_cdrom.h; sourceTree = "<group>"; };
 		D2075FEA1529646A00F14280 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = "Resources/Quake II/English.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		D2075FED1529649700F14280 /* Swedish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Swedish; path = "Resources/Quake II/Swedish.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		D2075FEF152964A800F14280 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = "Resources/Quake II/German.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 		555E12CC1CE675E4001C2DED /* CDPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				555E12D91CE67771001C2DED /* SDL2_cdrom.h */,
 				555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */,
 				555E12CE1CE675E4001C2DED /* AudioFilePlayer.h */,
 				555E12CF1CE675E4001C2DED /* AudioFileReaderThread.cpp */,
@@ -1572,6 +1575,7 @@
 				D2AD4EF617EFFDBB00DA8777 /* FDHIDMouse.m in Sources */,
 				555E12D41CE675E4001C2DED /* AudioFilePlayer.cpp in Sources */,
 				D2C836621529201500867DFC /* q_shared.c in Sources */,
+				555E12D81CE6772D001C2DED /* CDPlayer.cpp in Sources */,
 				D2C8365F15291FD500867DFC /* q_shosx.c in Sources */,
 				D2AD4EFC17EFFDBB00DA8777 /* FDWindow.m in Sources */,
 				D2C836321529178F00867DFC /* qmenu.c in Sources */,
@@ -1908,7 +1912,6 @@
 					C_ONLY,
 				);
 				INFOPLIST_FILE = "Resources/Quake II/Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1928,7 +1931,6 @@
 					C_ONLY,
 				);
 				INFOPLIST_FILE = "Resources/Quake II/Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

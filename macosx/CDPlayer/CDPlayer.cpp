@@ -24,6 +24,8 @@
 #include "CDPlayer.h"
 #include "AudioFilePlayer.h"
 #include "SDLOSXCAGuard.h"
+#include <pthread.h>
+#include <semaphore.h>
 
 /* we're exporting these functions into C land for SDL_syscdrom.c */
 /*extern "C" {*/
@@ -57,8 +59,8 @@ static int						playBackWasInit = 0;
 static AudioUnit				theUnit;
 static AudioFilePlayer*			thePlayer = NULL;
 static CDPlayerCompletionProc	completionProc = NULL;
-static SDL_mutex				*apiMutex = NULL;
-static SDL_sem					*callbackSem;
+static pthread_mutex_t			apiMutex = PTHREAD_MUTEX_INITIALIZER;
+static sem_t					*callbackSem;
 static SDL2_CD*					theCDROM;
 
 /*///////////////////////////////////////////////////////////////////////////
@@ -75,15 +77,12 @@ static int		RunCallBackThread(void* inRefCon);
 
 void Lock()
 {
-    if (!apiMutex) {
-        apiMutex = SDL_CreateMutex();
-    }
-    SDL_mutexP(apiMutex);
+    pthread_mutex_lock(&apiMutex);
 }
 
 void Unlock()
 {
-    SDL_mutexV(apiMutex);
+    pthread_mutex_unlock(&apiMutex);
 }
 
 int DetectAudioCDVolumes(FSVolumeRefNum *volumes, int numVolumes)
@@ -299,7 +298,7 @@ int ReadTOCData(FSVolumeRefNum theVolume, SDL2_CD *theCD)
     theErr = 0;
     goto cleanup;
 bail:
-    SDL_SetError ("ReadTOCData: %s returned %d", error, theErr);
+    printf ("ReadTOCData: %s returned %d", error, theErr);
     theErr = -1;
 cleanup:
 
@@ -333,7 +332,7 @@ int ListTrackFiles (FSVolumeRefNum theVolume, FSRef *trackFiles, int numTracks)
 							 &rootDirectory);
     
     if (result != noErr) {
-        SDL_SetError ("ListTrackFiles: FSGetVolumeInfo returned %d", result);
+        printf ("ListTrackFiles: FSGetVolumeInfo returned %d", result);
         return result;
     }
 	
@@ -404,7 +403,7 @@ int LoadFile (const FSRef *ref, int startFrame, int stopFrame)
         
         thePlayer = new AudioFilePlayer(ref);
         if (thePlayer == NULL) {
-            SDL_SetError ("LoadFile: Could not create player");
+            printf ("LoadFile: Could not create player");
             return -3; /*throw (-3);*/
         }
         
@@ -528,6 +527,23 @@ int GetCurrentFrame()
 
 #pragma mark -- Private Functions --
 
+static void *pTh(void *func)
+{
+    int (*RunCallBackThread) (void *param) = (int(*)(void*))func;
+    RunCallBackThread(NULL);
+    return NULL;
+}
+
+static void SDL_CreateThread(int (*func)(void *), const char* threadName, void *data)
+{
+    pthread_attr_t type;
+    pthread_attr_init(&type);
+    pthread_attr_setdetachstate(&type, PTHREAD_CREATE_JOINABLE);
+    pthread_t ptv;
+
+    pthread_create(&ptv, &type, pTh, (void*)func);
+}
+
 static OSStatus CheckInit()
 {
     if (playBackWasInit)
@@ -536,7 +552,7 @@ static OSStatus CheckInit()
     OSStatus result = noErr;
     
     /* Create the callback semaphore */
-    callbackSem = SDL_CreateSemaphore(0);
+    callbackSem = sem_open("CD Player Semaphore", O_CREAT, 0644, 1);
     
     /* Start callback thread */
     SDL_CreateThread(RunCallBackThread, "CD Audio playback", NULL);
@@ -552,7 +568,7 @@ static OSStatus CheckInit()
         
         Component comp = FindNextComponent (NULL, &desc);
         if (comp == NULL) {
-            SDL_SetError ("CheckInit: FindNextComponent returned NULL");
+            printf ("CheckInit: FindNextComponent returned NULL");
             if (result) return -1; //throw(internalComponentErr);
         }
         
@@ -577,17 +593,17 @@ static void FilePlayNotificationHandler(void * inRefCon, OSStatus inStatus)
     if (inStatus == kAudioFilePlay_FileIsFinished) {
     
         /* notify non-CA thread to perform the callback */
-        SDL_SemPost(callbackSem);
+        sem_post(callbackSem);
         
     } else if (inStatus == kAudioFilePlayErr_FilePlayUnderrun) {
     
-        SDL_SetError ("CDPlayer Notification: buffer underrun");
+        printf ("CDPlayer Notification: buffer underrun");
     } else if (inStatus == kAudioFilePlay_PlayerIsUninitialized) {
     
-        SDL_SetError ("CDPlayer Notification: player is uninitialized");
+        printf ("CDPlayer Notification: player is uninitialized");
     } else {
         
-        SDL_SetError ("CDPlayer Notification: unknown error %d", (int)inStatus);
+        printf ("CDPlayer Notification: unknown error %d", (int)inStatus);
     }
 }
 
@@ -595,7 +611,7 @@ static int RunCallBackThread (void *param)
 {
     for (;;) {
         
-        SDL_SemWait(callbackSem);
+        sem_wait(callbackSem);
         
         if (completionProc && theCDROM) {
 #if DEBUG_CDROM

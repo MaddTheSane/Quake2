@@ -28,7 +28,7 @@
 #include <Carbon/Carbon.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <AudioUnit/AudioUnit.h>
-
+#include "SDL2_cdrom.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -66,7 +66,7 @@
 	<key>CFBundleIconFile</key>
 	<string>Quake II</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fruitz-of-dojo.quake2</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

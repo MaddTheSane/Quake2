@@ -28,8 +28,7 @@ typedef NSUInteger (*FDAudioBufferCallback) (void* pDst, NSUInteger numBytes, vo
             callback: (FDAudioBufferCallback) pCallback
              context: (void*) pContext;
 
-- (void) setVolume: (float) volume;
-- (float) volume;
+@property float volume;
 
 @end
 

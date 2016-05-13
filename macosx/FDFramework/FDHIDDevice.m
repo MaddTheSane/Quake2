@@ -39,6 +39,7 @@
 //----------------------------------------------------------------------------------------------------------------------------
 
 @implementation _FDHIDDevice
+@synthesize delegate = mDelegate;
 
 + (NSDictionary*) matchingDictionarForUsageMap: (const FDHIDUsageToDevice*) pUsageMap
 {
@@ -151,13 +152,6 @@
     [mProductName release];
     
     [super dealloc];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setDelegate: (FDHIDManager*) delegate;
-{
-    mDelegate = delegate;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------

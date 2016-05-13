@@ -155,7 +155,7 @@ static void	VID_GetDisplayModes (void);
 static BOOL	VID_FadeGammaInit (BOOL theFadeOnAllDisplays);
 static void	VID_FadeGammaOut (BOOL theFadeOnAllDisplays, float theDuration);
 static void	VID_FadeGammaIn (BOOL theFadeOnAllDisplays, float theDuration);
-static int	VID_SortDisplayModesCbk(id pMode1, id pMode2, void* pContext);
+static NSInteger	VID_SortDisplayModesCbk(id pMode1, id pMode2, void* pContext);
 
 #pragma mark -
 
@@ -358,8 +358,8 @@ qboolean VID_LoadRefresh (char *theName)
     GetRefAPI_t		myGetRefAPIProc;
     NSBundle *		myAppBundle = NULL;
     char *			myBundlePath = NULL;
-	char *			myCurrentPath[MAXPATHLEN];
-	char *			myFileName[MAXPATHLEN];
+	char 			myCurrentPath[MAXPATHLEN];
+	char 			myFileName[MAXPATHLEN];
 
     // get current game directory:
     getcwd (myCurrentPath, sizeof (myCurrentPath));
@@ -667,7 +667,7 @@ void	VID_AddModeToList (UInt16 theWidth, UInt16 theHeight, float theRefresh)
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-int	VID_SortDisplayModesCbk(id pMode1, id pMode2, void* pContext)
+NSInteger	VID_SortDisplayModesCbk(id pMode1, id pMode2, void* pContext)
 {
 	// used to sort display modes by pixels/refresh
 

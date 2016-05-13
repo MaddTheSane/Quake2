@@ -101,7 +101,7 @@ typedef struct		{
                         
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-@interface Quake2GLView : NSView
+@interface Quake2GLView : NSView <NSWindowDelegate>
 @end
 
 #pragma mark -

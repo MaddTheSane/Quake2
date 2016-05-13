@@ -53,7 +53,7 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDHIDManager : FDHIDManager
+@interface _FDHIDManager : FDHIDManager <NSFileManagerDelegate>
 {
 @private
     IOHIDManagerRef     mpIOHIDManager;

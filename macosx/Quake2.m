@@ -19,7 +19,7 @@
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-@implementation Quake2 : NSObject
+@implementation Quake2
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -632,7 +632,7 @@
 		{
 			NSString	*myCommand = [mRequestedCommands objectAtIndex: 0];
 
-			Cbuf_ExecuteText (EXEC_APPEND, va("%s\n", [myCommand cString]));
+			Cbuf_ExecuteText (EXEC_APPEND, va("%s\n", [myCommand cStringUsingEncoding:NSASCIIStringEncoding]));
 			[mRequestedCommands removeObjectAtIndex: 0];
 		}
 				    

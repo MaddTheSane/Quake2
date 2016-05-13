@@ -60,7 +60,7 @@
 
 static Boolean				gVidFullscreen		= NO;
 static Quake2View *			gVidView			= NULL;
-static CGDirectPaletteRef 	gVidPalette			= NULL;
+static CFTypeRef			gVidPalette			= NULL; //CGDirectPaletteRef
 static NSWindow *			gVidWindow			= NULL;
 static NSBitmapImageRep	*	gVidWindowBuffer	= NULL;
 static NSImage *			gVidGrowboxImage	= NULL;

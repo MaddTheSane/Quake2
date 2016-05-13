@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		555E12D41CE675E4001C2DED /* AudioFilePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */; };
+		555E12D51CE675E4001C2DED /* AudioFileReaderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12CF1CE675E4001C2DED /* AudioFileReaderThread.cpp */; };
+		555E12D71CE675E4001C2DED /* SDLOSXCAGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12D21CE675E4001C2DED /* SDLOSXCAGuard.cpp */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
 		D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF1152965F500F14280 /* Quake II.scriptSuite */; };
 		D2075FFC1529666300F14280 /* Arguments.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF41529666300F14280 /* Arguments.icns */; };
@@ -269,6 +272,13 @@
 
 /* Begin PBXFileReference section */
 		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
+		555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFilePlayer.cpp; sourceTree = "<group>"; };
+		555E12CE1CE675E4001C2DED /* AudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer.h; sourceTree = "<group>"; };
+		555E12CF1CE675E4001C2DED /* AudioFileReaderThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFileReaderThread.cpp; sourceTree = "<group>"; };
+		555E12D01CE675E4001C2DED /* CDPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CDPlayer.cpp; sourceTree = "<group>"; };
+		555E12D11CE675E4001C2DED /* CDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDPlayer.h; sourceTree = "<group>"; };
+		555E12D21CE675E4001C2DED /* SDLOSXCAGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDLOSXCAGuard.cpp; sourceTree = "<group>"; };
+		555E12D31CE675E4001C2DED /* SDLOSXCAGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLOSXCAGuard.h; sourceTree = "<group>"; };
 		D2075FEA1529646A00F14280 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = "Resources/Quake II/English.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		D2075FED1529649700F14280 /* Swedish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Swedish; path = "Resources/Quake II/Swedish.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		D2075FEF152964A800F14280 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = "Resources/Quake II/German.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
@@ -627,6 +637,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		555E12CC1CE675E4001C2DED /* CDPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */,
+				555E12CE1CE675E4001C2DED /* AudioFilePlayer.h */,
+				555E12CF1CE675E4001C2DED /* AudioFileReaderThread.cpp */,
+				555E12D01CE675E4001C2DED /* CDPlayer.cpp */,
+				555E12D11CE675E4001C2DED /* CDPlayer.h */,
+				555E12D21CE675E4001C2DED /* SDLOSXCAGuard.cpp */,
+				555E12D31CE675E4001C2DED /* SDLOSXCAGuard.h */,
+			);
+			path = CDPlayer;
+			sourceTree = "<group>";
+		};
 		D2AD4EC117EFFDA100DA8777 /* FDFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +784,7 @@
 		D2C835C71529161800867DFC /* MacOS X */ = {
 			isa = PBXGroup;
 			children = (
+				555E12CC1CE675E4001C2DED /* CDPlayer */,
 				D2AD4EC117EFFDA100DA8777 /* FDFramework */,
 				D2C835CD1529167100867DFC /* Headers */,
 				D2C835CF152916DE00867DFC /* cd_osx.m */,
@@ -1541,9 +1566,11 @@
 				D2C836021529171F00867DFC /* md4.c in Sources */,
 				D2C836311529178F00867DFC /* menu.c in Sources */,
 				D2C836031529171F00867DFC /* net_chan.c in Sources */,
+				555E12D51CE675E4001C2DED /* AudioFileReaderThread.cpp in Sources */,
 				D2C835E7152916DE00867DFC /* net_udp.c in Sources */,
 				D2C836041529171F00867DFC /* pmove.c in Sources */,
 				D2AD4EF617EFFDBB00DA8777 /* FDHIDMouse.m in Sources */,
+				555E12D41CE675E4001C2DED /* AudioFilePlayer.cpp in Sources */,
 				D2C836621529201500867DFC /* q_shared.c in Sources */,
 				D2C8365F15291FD500867DFC /* q_shosx.c in Sources */,
 				D2AD4EFC17EFFDBB00DA8777 /* FDWindow.m in Sources */,
@@ -1554,6 +1581,7 @@
 				D2C8363B152917CA00867DFC /* snd_mix.c in Sources */,
 				D2C83646152917F300867DFC /* sv_ccmds.c in Sources */,
 				D2AD4EEF17EFFDBB00DA8777 /* FDDisplayMode.m in Sources */,
+				555E12D71CE675E4001C2DED /* SDLOSXCAGuard.cpp in Sources */,
 				D2C83647152917F300867DFC /* sv_ents.c in Sources */,
 				D2C83648152917F300867DFC /* sv_game.c in Sources */,
 				D2C83649152917F300867DFC /* sv_init.c in Sources */,

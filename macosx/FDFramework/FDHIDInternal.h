@@ -58,7 +58,7 @@ typedef struct
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDHIDDevice : FDHIDDevice
+@interface FDHIDDevice()
 {
     IOHIDDeviceRef          mpIOHIDDevice;
     NSString*               mVendorName;
@@ -78,22 +78,22 @@ typedef struct
 @property (assign) FDHIDManager* delegate;
 - (void) pushEvent: (const FDHIDEvent*) pEvent;
 
-- (IOHIDDeviceRef) iohidDeviceRef;
+@property (readonly, assign) IOHIDDeviceRef iohidDeviceRef;
 - (void) handleInput: (IOHIDValueRef) pValue;
-- (FDHIDElementMap*) elementMap;
-- (NSUInteger) elementCount;
+@property (readonly) FDHIDElementMap* elementMap;
+@property (readonly) NSUInteger elementCount;
 - (void) flush;
 
 @end
 
-@interface _FDHIDDevice (SubclassMethods)
+@interface FDHIDDevice (subclassMethods)
++ (FDHIDDevice*) deviceWithDevice: (IOHIDDeviceRef) pDevice;
 + (NSArray<NSDictionary<NSString*,NSNumber*>*>*) matchingDictionaries;
-
 @end
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDHIDActuator : FDHIDActuator
+@interface FDHIDActuator()
 {
     io_service_t            mIoService;
     FFDeviceObjectReference mpDevice;
@@ -106,7 +106,7 @@ typedef struct
 
 }
 
-- (id) initWithDevice: (_FDHIDDevice*) device;
+- (instancetype) initWithDevice: (FDHIDDevice*) device;
 
 @end
 

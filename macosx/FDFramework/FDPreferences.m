@@ -21,8 +21,7 @@ static FDPreferences*   sFDPreferencesInstance  = nil;
 
 @interface FDPreferences ()
 
-- (id) init;
-- (id) initSharedPreferences;
+- (instancetype) initSharedPreferences NS_DESIGNATED_INITIALIZER;
 
 @end
 
@@ -43,7 +42,7 @@ static FDPreferences*   sFDPreferencesInstance  = nil;
 
 - (id) init
 {
-    self = [super init];
+    self = [self initSharedPreferences];
     
     if (self != nil)
     {

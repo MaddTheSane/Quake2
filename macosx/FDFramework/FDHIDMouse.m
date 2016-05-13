@@ -72,7 +72,7 @@ FDHIDUsageToDevice gFDHIDMouseUsageMap[] =
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDHIDDeviceMouse : _FDHIDDevice
+@interface _FDHIDDeviceMouse : FDHIDDevice
 {
 }
 

@@ -7,14 +7,13 @@
 //
 //----------------------------------------------------------------------------------------------------------------------------
 
-#import <Foundation/Foundation.h>
-#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
 
 //----------------------------------------------------------------------------------------------------------------------------
 
 @interface FDScreenshot : NSObject
-{
-}
+
+- (instancetype) init UNAVAILABLE_ATTRIBUTE;
 
 + (BOOL) writeToFile: (NSString*) path
               ofType: (NSBitmapImageFileType) fileType

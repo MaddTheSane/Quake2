@@ -11,15 +11,8 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDLinkView : FDLinkView
-{
-@private
-    NSString*       mDisplayString;
-    NSURL*          mURL;
-    NSDictionary* 	mFontAttributesBlue;
-    NSDictionary* 	mFontAttributesRed;
-    BOOL			mMouseIsDown;
-}
+@interface FDLinkView ()
+
 
 - (void) initFontAttributes;
 - (NSDictionary*) fontAttributesWithColor: (NSColor*) color;
@@ -28,7 +21,15 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@implementation _FDLinkView
+@implementation FDLinkView
+{
+@private
+    NSString*       mDisplayString;
+    NSURL*          mURL;
+    NSDictionary* 	mFontAttributesBlue;
+    NSDictionary* 	mFontAttributesRed;
+    BOOL			mMouseIsDown;
+}
 
 //----------------------------------------------------------------------------------------------------------------------------
 
@@ -164,31 +165,6 @@
         
         [self addCursorRect: [self bounds] cursor: cursor];
     }
-}
-
-@end
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-@implementation FDLinkView
-
-+ (id) allocWithZone: (NSZone*) zone
-{
-    return NSAllocateObject ([_FDLinkView class], 0, zone);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setURL: (NSURL*) url
-{
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setURL: (NSURL*) url displayString: (NSString*) displayString
-{
-    [self doesNotRecognizeSelector: _cmd];
 }
 
 @end

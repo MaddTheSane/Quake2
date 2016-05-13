@@ -34,7 +34,7 @@ static const DWORD  sFDHIDActuatorDuration = 2 * FF_SECONDS / 100;
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@implementation _FDHIDActuator
+@implementation FDHIDActuator
 
 - (id) init
 {
@@ -50,7 +50,7 @@ static const DWORD  sFDHIDActuatorDuration = 2 * FF_SECONDS / 100;
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-- (id) initWithDevice: (_FDHIDDevice*) device
+- (id) initWithDevice: (FDHIDDevice*) device
 {
     self = [super init];
     
@@ -298,76 +298,6 @@ static const DWORD  sFDHIDActuatorDuration = 2 * FF_SECONDS / 100;
 - (void) stop
 {
     FFEffectStop (mpEffect);
-}
-
-@end
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-@implementation FDHIDActuator
-
-+ (id) allocWithZone: (NSZone*) zone
-{
-    return NSAllocateObject ([_FDHIDActuator class], 0, zone);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setIntensity: (float) intensity;
-{
-    FD_UNUSED (intensity);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (float) intensity
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return 0.0f;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setDuration: (float) duration
-{
-    FD_UNUSED (duration);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (float) duration
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return 0.0f;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (BOOL) isActive
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return NO;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) start
-{
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) stop
-{
-    [self doesNotRecognizeSelector: _cmd];
 }
 
 @end

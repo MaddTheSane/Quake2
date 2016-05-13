@@ -33,16 +33,8 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDWindow : FDWindow
-{
-@private
-    NSImage*            mMiniImage;
-    NSCursor*           mInvisibleCursor;
-    FDView*             mView;
-    FDDisplay*          mDisplay;
-    BOOL                mForceCusorVisible;
-    BOOL                mIsCursorVisible;
-}
+@interface FDWindow ()
+
 
 - (void) initCursor;
 - (void) updateCursor;
@@ -59,7 +51,17 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@implementation _FDWindow
+@implementation FDWindow
+{
+@private
+    NSImage*            mMiniImage;
+    NSCursor*           mInvisibleCursor;
+    FDView*             mView;
+    FDDisplay*          mDisplay;
+    BOOL                mForceCusorVisible;
+    BOOL                mIsCursorVisible;
+}
+@synthesize cursorVisible = mIsCursorVisible;
 
 - (id) initForDisplay: (FDDisplay*) display samples: (NSUInteger) samples
 {
@@ -101,6 +103,13 @@
 - (id) initForDisplay: (FDDisplay*) display
 {
     return [self initForDisplay: display samples: 0];
+}
+
+//----------------------------------------------------------------------------------------------------------------------------
+
+- (id) initWithContentRect: (NSRect) rect
+{
+    return [self initWithContentRect: rect samples: 0];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
@@ -212,7 +221,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-- (NSCursor *) initCursorWithImage: (NSImage *) image
+- (NSCursor *) newCursorWithImage: (NSImage *) image
 {
     NSCursor*  cursor = [[NSCursor alloc] initWithImage: image hotSpot: NSMakePoint( 8.0, 8.0 ) ];
     
@@ -261,13 +270,6 @@
     mIsCursorVisible = state;
     
     [self updateCursor];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (BOOL) isCursorVisible
-{
-    return mIsCursorVisible;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
@@ -531,147 +533,6 @@
 - (void) keyDown: (NSEvent*) event
 {
     // Already handled by FDHIDInput, implementation avoids the NSBeep() caused by unhandled key events.
-}
-
-@end
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-@implementation FDWindow
-
-+ (id) allocWithZone: (NSZone*) zone
-{
-    return NSAllocateObject ([_FDWindow class], 0, zone);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (id) init
-{
-    self = [super init];
-    
-    if (self != nil)
-    {
-        [self doesNotRecognizeSelector: _cmd];
-        [self release];
-    }
-    
-    return nil;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (id) initForDisplay: (FDDisplay*) display samples: (NSUInteger) samples
-{
-    FD_UNUSED (display, samples);
-    
-    self = [super init];
-    
-    return self;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (id) initForDisplay: (FDDisplay*) display
-{
-    return [self initForDisplay: display samples: 0];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (id) initWithContentRect: (NSRect) rect samples: (NSUInteger) samples
-{
-    FD_UNUSED (rect, samples);
-    
-    self = [super init];
-    
-    return self;    
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (id) initWithContentRect: (NSRect) rect
-{
-    return [self initWithContentRect: rect samples: 0];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setResizeHandler: (FDResizeHandler) pResizeHandler forContext: (void*) pContext
-{
-    FD_UNUSED (pResizeHandler, pContext);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) centerForDisplay: (FDDisplay*) display
-{
-    FD_UNUSED (display);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setCursorVisible: (BOOL) state
-{
-    FD_UNUSED (state);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (BOOL) isCursorVisible
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return NO;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setVsync: (BOOL) enabled
-{
-    FD_UNUSED (enabled);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (BOOL) vsync
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return NO;[self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (NSOpenGLContext*) openGLContext
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return nil;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (BOOL) isFullscreen
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return NO;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) endFrame
-{
-    [self doesNotRecognizeSelector: _cmd];
 }
 
 @end

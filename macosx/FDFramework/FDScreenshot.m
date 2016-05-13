@@ -14,7 +14,6 @@
 @interface FDScreenshot ()
 
 + (NSBitmapImageRep *) imageFromRGB24: (void *) imageData withSize: (NSSize) imageSize rowbytes: (SInt32) rowBytes;
-- (id) init;
 
 @end
 

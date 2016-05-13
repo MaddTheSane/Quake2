@@ -19,18 +19,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDView : FDView
-{
-@private
-    NSCursor*           mCursor;
-    NSOpenGLContext*    mOpenGLContext;
-    NSBitmapImageRep*   mBitmapRep;
-    FDResizeHandler     mpResizeHandler;
-    void*               mpResizeContext;
-    GLuint              mBitmapTexture;
-    GLuint              mGrowBoxTexture;
-    BOOL                mGrowBoxIsInitialized;
-}
+@interface FDView()
 
 - (void) initGrowBoxTexture;
 - (void) drawGrowbox;
@@ -46,7 +35,18 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@implementation _FDView
+@implementation FDView
+{
+@private
+    NSCursor*           mCursor;
+    NSOpenGLContext*    mOpenGLContext;
+    NSBitmapImageRep*   mBitmapRep;
+    FDResizeHandler     mpResizeHandler;
+    void*               mpResizeContext;
+    GLuint              mBitmapTexture;
+    GLuint              mGrowBoxTexture;
+    BOOL                mGrowBoxIsInitialized;
+}
 
 - (id)initWithFrame:(NSRect) frameRect
 {
@@ -365,95 +365,6 @@
 
 - (void) drawRect: (NSRect) theRect
 {
-}
-
-@end
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-@implementation FDView
-
-+ (id) allocWithZone: (NSZone*) zone
-{
-    return NSAllocateObject ([_FDView class], 0, zone);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (id) init
-{
-    self = [super init];
-    
-    if (self != nil)
-    {
-        [self doesNotRecognizeSelector: _cmd];
-        [self release];
-    }
-    
-    return nil;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (id) initWithFrame: (NSRect) frameRect
-{
-    self = [super initWithFrame: frameRect];
-    
-    return self;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setCursor: (NSCursor*) cursor
-{
-    FD_UNUSED (cursor);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (NSCursor*) cursor
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return nil;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setVsync: (BOOL) enabled
-{
-    FD_UNUSED (enabled);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (BOOL) vsync
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return NO;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (void) setResizeHandler: (FDResizeHandler) pResizeHandler forContext: (void*) pContext
-{
-    FD_UNUSED (pResizeHandler, pContext);
-    
-    [self doesNotRecognizeSelector: _cmd];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
-- (NSOpenGLContext*) openGLContext
-{
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return nil;
 }
 
 @end

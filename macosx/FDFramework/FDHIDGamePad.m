@@ -219,7 +219,7 @@ FDHIDUsageToDevice gFDHIDGamePadUsageMap[] =
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDHIDDeviceGamePad : _FDHIDDevice
+@interface _FDHIDDeviceGamePad : FDHIDDevice
 {
 }
 

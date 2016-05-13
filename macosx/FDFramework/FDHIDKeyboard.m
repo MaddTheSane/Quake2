@@ -370,7 +370,7 @@ static const UInt8  sFDHIDInNumPadKey[] =
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface _FDHIDDeviceKeyboard : _FDHIDDevice
+@interface _FDHIDDeviceKeyboard : FDHIDDevice
 {
     BOOL    mFnKeyIsDown;
 }

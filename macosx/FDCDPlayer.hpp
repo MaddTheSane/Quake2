@@ -10,6 +10,14 @@
 #define FDCDPlayer_hpp
 
 #include <stdio.h>
+#include "cd_osx.h"
+extern "C" {
+#include "q_shared.h"
+#include "cdaudio.h"
+}
+
+void		CDAudio_Error (cderror_t theErrorNumber);
+
 
 class FDCDPlayer {
 public:
@@ -20,6 +28,22 @@ public:
     virtual void update() = 0;
     virtual bool loadPath(const char *directory) = 0;
     //virtual static bool scan() = 0;
+    
+    static FDCDPlayer* GetPlayer() {
+        return player;
+    }
+    
+    static float volumeValue() {
+        return cd_volume->value;
+    }
+    
+protected:
+    static cvar_t *cd_volume;
+
+    friend int ::CDAudio_Init (void);
+    
+private:
+    static FDCDPlayer *player;
 };
 
 class FDCDCDPlayer: public FDCDPlayer {

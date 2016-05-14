@@ -9,13 +9,16 @@
 //
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#include <stdbool.h>
+#include <CoreFoundation/CoreFoundation.h>
+
 #pragma mark TypeDefs
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef NS_ENUM(int, cderror_t)
+typedef CF_ENUM(int, cderror_t)
 {
     CDERR_ALLOC_TRACK = 1,
     CDERR_MOVIE_DATA,
@@ -35,8 +38,8 @@ typedef NS_ENUM(int, cderror_t)
 
 #pragma mark Function Prototypes
 
-BOOL			CDAudio_GetTrackList (void);
-void			CDAudio_Enable (BOOL theState);
+bool			CDAudio_GetTrackList (void);
+void			CDAudio_Enable (bool theState);
 
 #ifdef __cplusplus
 }

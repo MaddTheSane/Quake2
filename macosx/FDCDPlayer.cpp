@@ -8,3 +8,6 @@
 
 #include "CDPlayer.h"
 #include "FDCDPlayer.hpp"
+
+cvar_t *FDCDPlayer::cd_volume = NULL;
+FDCDPlayer *FDCDPlayer::player = NULL;

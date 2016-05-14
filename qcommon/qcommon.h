@@ -403,18 +403,18 @@ typedef void (*xcommand_t) (void);
 
 void	Cmd_Init (void);
 
-void	Cmd_AddCommand (char *cmd_name, xcommand_t function);
+void	Cmd_AddCommand (const char *cmd_name, xcommand_t function);
 // called by the init functions of other parts of the program to
 // register commands and functions to call for them.
 // The cmd_name is referenced later, so it should not be in temp memory
 // if function is NULL, the command will be forwarded to the server
 // as a clc_stringcmd instead of executed locally
-void	Cmd_RemoveCommand (char *cmd_name);
+void	Cmd_RemoveCommand (const char *cmd_name);
 
-qboolean Cmd_Exists (char *cmd_name);
+qboolean Cmd_Exists (const char *cmd_name);
 // used by the cvar code to check for cvar / command name overlap
 
-char 	*Cmd_CompleteCommand (char *partial);
+const char 	*Cmd_CompleteCommand (const char *partial);
 // attempts to match a partial command for automatic command line completion
 // returns NULL if nothing fits
 

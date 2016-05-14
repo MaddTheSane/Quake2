@@ -13,13 +13,13 @@
 #import <CoreAudio/AudioHardware.h>
 #include "FDCDPlayer.hpp"
 
-@class AVAsset;
+@class AVAudioPlayer;
 
 class FDCDDirectoryPlayer: public FDCDPlayer {
     UInt16				gCDTrackCount;
     UInt16				gCurCDTrack;
-    NSMutableArray<AVAsset*> *gCDTrackList;
-    NSMutableArray<AVAsset*> *gCDOriginalAssets;
+    NSMutableArray<AVAudioPlayer*> *gCDTrackList;
+    __unsafe_unretained AVAudioPlayer *gCDController;
     char					gCDDevice[PATH_MAX];
     BOOL					gCDLoop;
     BOOL					gCDNextTrack;

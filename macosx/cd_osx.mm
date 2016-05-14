@@ -39,8 +39,6 @@ extern "C" {
 
 #pragma mark Variables
 
-cvar_t *					cd_volume;
-
 #if 1
 
 static UInt16				gCDTrackCount;
@@ -62,7 +60,6 @@ static Movie				gCDController = NULL;
 
 #pragma mark Function Prototypes
 
-static	void		CDAudio_Error (cderror_t theErrorNumber);
 #if !defined(__LP64__)
 static	SInt32		CDAudio_StripVideoTracks (Movie theMovie);
 #endif // !__LP64__
@@ -235,7 +232,7 @@ void	CDAudio_SafePath (const char *thePath)
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-BOOL	CDAudio_GetTrackList (void)
+bool	CDAudio_GetTrackList (void)
 {
     // release previously allocated memory:
     CDAudio_Shutdown ();
@@ -467,7 +464,7 @@ void	CDAudio_Update (void)
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void	CDAudio_Enable (BOOL theState)
+void	CDAudio_Enable (bool theState)
 {
 #if !defined( __LP64__ )
     
@@ -509,7 +506,7 @@ void	CDAudio_Enable (BOOL theState)
 int	CDAudio_Init (void)
 {
     // register the volume var:
-    cd_volume = Cvar_Get ("cd_volume", "1", CVAR_ARCHIVE);
+    FDCDPlayer::cd_volume = Cvar_Get ("cd_volume", "1", CVAR_ARCHIVE);
 
 #if 1
     
@@ -588,8 +585,6 @@ void	CDAudio_Shutdown (void)
 
 void	CD_f (void)
 {
-#if !defined( __LP64__ )
-    
     char	*myCommandOption;
 
     // this command requires options!
@@ -608,7 +603,7 @@ void	CD_f (void)
         {
             CDAudio_GetTrackList();
         }
-        CDAudio_Play(1, 0);
+        CDAudio_Play(1, qfalse);
         
 		return;
     }
@@ -667,7 +662,7 @@ void	CD_f (void)
     // play the selected track:
     if (Q_strcasecmp (myCommandOption, "play") == 0)
     {
-        CDAudio_Play (atoi (Cmd_Argv (2)), 0);
+        CDAudio_Play (atoi (Cmd_Argv (2)), qfalse);
         
 		return;
     }
@@ -675,7 +670,7 @@ void	CD_f (void)
     // loop the selected track:
     if (Q_strcasecmp (myCommandOption, "loop") == 0)
     {
-        CDAudio_Play (atoi (Cmd_Argv (2)), 1);
+        CDAudio_Play (atoi (Cmd_Argv (2)), qtrue);
         
 		return;
     }
@@ -710,7 +705,7 @@ void	CD_f (void)
         // eject the CD:
         if (gCDDevice[0] != 0x00)
         {
-            NSString	*myDevicePath = [NSString stringWithCString: gCDDevice];
+            NSString	*myDevicePath = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:gCDDevice length:strlen(gCDDevice)];
             
             if (myDevicePath != NULL)
             {
@@ -743,7 +738,7 @@ void	CD_f (void)
         }
         else
         {
-            if (gCDController != NULL && GetMovieActive (gCDController) == YES)
+            if (/*gCDController != NULL && GetMovieActive (gCDController) == */ /* DISABLES CODE */ (YES))
             {
                 Com_Printf ("Playing track %d of %d (\"%s\").\n", gCurCDTrack, gCDTrackCount, gCDDevice);
             }
@@ -752,13 +747,11 @@ void	CD_f (void)
                 Com_Printf ("Not playing. Tracks: %d (\"%s\").\n", gCDTrackCount, gCDDevice);
             }
 			
-            Com_Printf ("Volume is: %.2f.\n", cd_volume->value);
+            Com_Printf ("Volume is: %.2f.\n", FDCDPlayer::volumeValue());
         }
         
 		return;
 	}
-
-#endif // !__LP64__
 }
 
 //______________________________________________________________________________________________________________eOF

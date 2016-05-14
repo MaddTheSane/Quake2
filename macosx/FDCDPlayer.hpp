@@ -27,13 +27,17 @@ public:
     virtual void resume() = 0;
     virtual void update() = 0;
     virtual bool loadPath(const char *directory) = 0;
+    virtual int currentTrackNumber() = 0;
+    virtual int totalTrackNumber() = 0;
+    virtual const char *devicePath() = 0;
+    virtual bool isPlaying() = 0;
     //virtual static bool scan() = 0;
     
-    static FDCDPlayer* GetPlayer() {
+    static FDCDPlayer* getPlayer() {
         return player;
     }
     
-    static float volumeValue() {
+    static float getVolume() {
         return cd_volume->value;
     }
     
@@ -57,6 +61,12 @@ private:
 
 class FDCDCDPlayer: public FDCDPlayer {
     struct SDL2_CD *theCD;
+    struct FSRef *tracks;
+    int currentTrack;
+    int nextTrackFrame;
+    int nextTrackFramesRemaining;
+    char gCDDevice[PATH_MAX];
+
 public:
     FDCDCDPlayer();
     
@@ -68,6 +78,18 @@ public:
     virtual bool loadPath(const char *directory);
     
     virtual ~FDCDCDPlayer();
+    
+#pragma mark getters
+    virtual int currentTrackNumber();
+    virtual int totalTrackNumber();
+    virtual const char *devicePath();
+    virtual bool isPlaying();
+
+private:
+    
+    struct FSRef* GetFileForOffset(int start, int length,  int &outStartFrame, int &outStopFrame);
+    void safePath (const char *thePath);
+
 };
 
 

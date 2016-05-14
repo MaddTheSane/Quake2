@@ -9,7 +9,8 @@
 #include "FDCDDirectoryPlayer.hpp"
 #import <AVFoundation/AVFoundation.h>
 
-FDCDDirectoryPlayer::FDCDDirectoryPlayer()
+FDCDDirectoryPlayer::FDCDDirectoryPlayer(): CDDevice(nil), gCDController(nil), gCDLoop(NO), gCDNextTrack(NO),
+gCDTrackCount(0), gCurCDTrack(0)
 {
     gCDTrackList = [[NSMutableArray alloc] init];
 }
@@ -34,7 +35,8 @@ void FDCDDirectoryPlayer::play(int theTrack, bool theLoop)
         gCurCDTrack = 0;
         
         if (gCDController != NULL && [gCDController currentTime] != [gCDController duration]) {
-            [gCDController stop];
+            [gCDController pause];
+            gCDController.currentTime = 0;
             gCDController = NULL;
         }
         
@@ -49,6 +51,11 @@ void FDCDDirectoryPlayer::play(int theTrack, bool theLoop)
                 
                 [gCDController setCurrentTime:0];
                 [gCDController play];
+                if (theLoop) {
+                    gCDController.numberOfLoops = -1;
+                } else {
+                    gCDController.numberOfLoops = 0;
+                }
                 
                 //if (GetMoviesError () != noErr)
                 //{
@@ -76,9 +83,60 @@ void FDCDDirectoryPlayer::resume()
     [gCDController play];
 }
 
+static BOOL IsMovieDone(AVAudioPlayer *player)
+{
+    return player.currentTime >= player.duration;
+}
+
 void FDCDDirectoryPlayer::update()
 {
-    
+    // update volume settings:
+    if (gCDController != NULL)
+    {
+        gCDController.volume = cd_volume->value;
+        
+        //if (GetMovieActive (gCDController) == YES)
+        {
+            if (IsMovieDone (gCDController) == NO)
+            {
+                //MoviesTask (gCDController, 0);
+            }
+            else
+            {
+                if (gCDLoop == YES)
+                {
+                    //GoToBeginningOfMovie (gCDController);
+                    //StartMovie (gCDController);
+                }
+                else
+                {
+                    gCurCDTrack++;
+                    play (gCurCDTrack, false);
+                }
+            }
+        }
+    }
+
+}
+
+int FDCDDirectoryPlayer::currentTrackNumber()
+{
+    return gCurCDTrack;
+}
+
+int FDCDDirectoryPlayer::totalTrackNumber()
+{
+    return gCDTrackCount;
+}
+
+const char *FDCDDirectoryPlayer::devicePath()
+{
+    return [CDDevice fileSystemRepresentation];
+}
+
+bool FDCDDirectoryPlayer::isPlaying()
+{
+    return gCDController.playing;
 }
 
 #import "Quake2.h"
@@ -89,12 +147,10 @@ bool FDCDDirectoryPlayer::loadPath(const char *directory)
     NSArray *theExtensions = @[ @"mp3", @"mp4", @"m4a"];
     NSString *theMountPath = [myFileManager stringWithFileSystemRepresentation:directory length:strlen(directory)];
     
-    if (myFileManager != NULL)
-    {
+    if (myFileManager != NULL) {
         NSDirectoryEnumerator *	myDirEnum = [myFileManager enumeratorAtPath: theMountPath];
         
-        if (myDirEnum != NULL)
-        {
+        if (myDirEnum != NULL) {
             NSString *	myFilePath;
             
             // get all audio tracks:
@@ -109,6 +165,7 @@ bool FDCDDirectoryPlayer::loadPath(const char *directory)
                             // add only movies with audiotacks and use only the audio track:
                             if ((1)/*CDAudio_StripVideoTracks (myQTMovie) > 0*/) {
                                 //myMovie
+                                [myMovie prepareToPlay];
                                 [gCDTrackList addObject: myMovie];
                             } else {
                                 CDAudio_Error (CDERR_AUDIO_DATA);
@@ -116,6 +173,7 @@ bool FDCDDirectoryPlayer::loadPath(const char *directory)
                         } else {
                             CDAudio_Error (CDERR_MOVIE_DATA);
                         }
+                        [myMovie release];
                     }
                 }
             }
@@ -125,4 +183,3 @@ bool FDCDDirectoryPlayer::loadPath(const char *directory)
     gCDTrackCount = [gCDTrackList count];
     return gCDTrackCount != 0;
 }
-

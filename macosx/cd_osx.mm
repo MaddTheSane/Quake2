@@ -39,32 +39,14 @@ extern "C" {
 
 #pragma mark Variables
 
-#if 1
-
-static UInt16				gCDTrackCount;
-static UInt16				gCurCDTrack;
-static NSMutableArray *		gCDTrackList;
-static char					gCDDevice[MAX_OSPATH];
-static BOOL					gCDLoop;
-static BOOL					gCDNextTrack;
-
-#endif // !defined(__LP64__)
-
-#if !defined(__LP64__)
-static Movie				gCDController = NULL;
-#endif // !__LP64__
-
 #pragma mark -
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #pragma mark Function Prototypes
 
-#if !defined(__LP64__)
-static	SInt32		CDAudio_StripVideoTracks (Movie theMovie);
-#endif // !__LP64__
-static	void		CDAudio_SafePath (const char *thePath);
-static	void		CDAudio_AddTracks2List (NSString *theMountPath, NSArray *theExtensions);
+static  void		CDAudio_Pause (void);
+static  void		CDAudio_Resume (void);
 static 	void 		CD_f (void);
 
 #pragma mark -
@@ -126,196 +108,83 @@ void	CDAudio_Error (cderror_t theErrorNumber)
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#if !defined(__LP64__)
-
-SInt32	CDAudio_StripVideoTracks (Movie theMovie)
-{
-	long	i = GetMovieTrackCount (theMovie);
-
-    for (; i >= 1; i--)
-    {
-        Track		myCurTrack = GetMovieIndTrack (theMovie, i);
-		 OSType 	myMediaType;
-		 
-        GetMediaHandlerDescription (GetTrackMedia (myCurTrack), &myMediaType, NULL, NULL);
-		
-        if (myMediaType != SoundMediaType && myMediaType != MusicMediaType)
-        {
-            DisposeMovieTrack (myCurTrack);
-        }
-    }
-
-    return (GetMovieTrackCount (theMovie));
-}
-
-#endif // !__LP64__
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-void	CDAudio_AddTracks2List (NSString *theMountPath, NSArray *theExtensions)
-{
-    NSFileManager *	myFileManager = [NSFileManager defaultManager];
-    
-    if (myFileManager != NULL)
-    {
-        NSDirectoryEnumerator *	myDirEnum = [myFileManager enumeratorAtPath: theMountPath];
-
-        if (myDirEnum != NULL)
-        {
-            NSString *	myFilePath;
-			NSInteger	myExtensionCount = [theExtensions count];
-            
-            // get all audio tracks:
-            while ((myFilePath = [myDirEnum nextObject]) && [[NSApp delegate] abortMediaScan] == NO)
-            {
-				SInt32		myIndex = 0;
-				
-                for (; myIndex < myExtensionCount; myIndex++)
-                {
-                    if ([[myFilePath pathExtension] isEqualToString: [theExtensions objectAtIndex: myIndex]])
-                    {
-                        NSString *	myFullPath	= [theMountPath stringByAppendingPathComponent: myFilePath];
-                        NSURL *		myMoviePath	= [NSURL fileURLWithPath: myFullPath];
-                        AVAsset	*	myMovie		= [AVAsset assetWithURL: myMoviePath ];
-						
-						if (myMovie != nil)
-						{
-							// add only movies with audiotacks and use only the audio track:
-							if ((1)/*CDAudio_StripVideoTracks (myQTMovie) > 0*/)
-							{
-                                //myMovie
-								[gCDTrackList addObject: myMovie];
-							}
-							else
-							{
-								CDAudio_Error (CDERR_AUDIO_DATA);
-							}
-						}
-						else
-						{
-							CDAudio_Error (CDERR_MOVIE_DATA);
-						}
-                    }
-                }
-            }
-        }
-    }
-	
-    gCDTrackCount = [gCDTrackList count];
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-void	CDAudio_SafePath (const char *thePath)
-{
-    size_t	myStrLength = 0;
-
-    if (thePath != nil)
-    {
-        size_t		i;
-        
-        myStrLength = strlen (thePath);
-        
-		if (myStrLength > MAX_OSPATH - 1)
-        {
-            myStrLength = MAX_OSPATH - 1;
-        }
-        
-		for (i = 0; i < myStrLength; i++)
-        {
-            gCDDevice[i] = thePath[i];
-        }
-    }
-	
-    gCDDevice[myStrLength] = 0x00;
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 bool	CDAudio_GetTrackList (void)
 {
-    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    FDCDPlayer *aPlay = FDCDPlayer::getPlayer();
     if (aPlay) {
         //aPlay->pause();
     }
     // release previously allocated memory:
     CDAudio_Shutdown ();
     
-    // get memory for the new tracklisting:
-    gCDTrackList	= [[NSMutableArray alloc] init];
     @autoreleasepool {
-    gCDTrackCount	= 0;
-    
-    // Get the current MP3 listing or retrieve the TOC of the AudioCD:
-    if ([[NSApp delegate] mediaFolder] != NULL)
-    {
-        NSString	*myMediaFolder = [[NSApp delegate] mediaFolder];
-
-        CDAudio_SafePath ([myMediaFolder fileSystemRepresentation]);
-        Com_Printf ("Scanning for audio tracks. Be patient!\n");
-        CDAudio_AddTracks2List (myMediaFolder, @[ @"mp3", @"mp4", @"m4a"]);
-    }
-    else
-    {
-        NSString *		myMountPath;
-        struct statfs *	myMountList;
-        UInt32			myMountCount;
-
-        // get number of mounted devices:
-        myMountCount = getmntinfo (&myMountList, MNT_NOWAIT);
-        
-        // zero devices? return.
-        if (myMountCount <= 0)
+        // Get the current MP3 listing or retrieve the TOC of the AudioCD:
+        if ([[NSApp delegate] mediaFolder] != NULL)
         {
-            [gCDTrackList release];
-            
-			gCDTrackList	= NULL;
-            gCDTrackCount	= 0;
-            
-			CDAudio_Error (CDERR_NO_MEDIA_FOUND);
-            return (0);
+            NSString	*myMediaFolder = [[NSApp delegate] mediaFolder];
+            FDCDDirectoryPlayer *dirPlayer = new FDCDDirectoryPlayer();
+            Com_Printf ("Scanning for audio tracks. Be patient!\n");
+            if (!dirPlayer->loadPath([myMediaFolder fileSystemRepresentation])) {
+                delete dirPlayer;
+            } else {
+                FDCDPlayer::player = dirPlayer;
+            }
         }
-        
-        while (myMountCount--)
+        else
         {
-            // is the device read only?
-            if ((myMountList[myMountCount].f_flags & MNT_RDONLY) != MNT_RDONLY) continue;
+            struct statfs *	myMountList;
+            UInt32			myMountCount;
             
-            // is the device local?
-            if ((myMountList[myMountCount].f_flags & MNT_LOCAL) != MNT_LOCAL) continue;
+            // get number of mounted devices:
+            myMountCount = getmntinfo (&myMountList, MNT_NOWAIT);
             
-            // is the device "cdda"?
-            if (strcmp (myMountList[myMountCount].f_fstypename, "cddafs")) continue;
+            // zero devices? return.
+            if (myMountCount <= 0)
+            {
+                CDAudio_Error (CDERR_NO_MEDIA_FOUND);
+                return (0);
+            }
             
-            // is the device a directory?
-            if (strrchr (myMountList[myMountCount].f_mntonname, '/') == NULL) continue;
-            
-            // we have found a Audio-CD!
-            Com_Printf ("Found Audio-CD at mount entry: \"%s\".\n", myMountList[myMountCount].f_mntonname);
-            
-            // preserve the device name:
-            CDAudio_SafePath (myMountList[myMountCount].f_mntonname);
-            myMountPath = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:myMountList[myMountCount].f_mntonname length:strlen(myMountList[myMountCount].f_mntonname)];
-    
-            Con_Print ("Scanning for audio tracks. Be patient!\n");
-            CDAudio_AddTracks2List (myMountPath, [NSArray arrayWithObjects: @"aiff", @"cdda", NULL]);
-            
-            break;
+            while (myMountCount--)
+            {
+                // is the device read only?
+                if ((myMountList[myMountCount].f_flags & MNT_RDONLY) != MNT_RDONLY) continue;
+                
+                // is the device local?
+                if ((myMountList[myMountCount].f_flags & MNT_LOCAL) != MNT_LOCAL) continue;
+                
+                // is the device "cdda"?
+                if (strcmp (myMountList[myMountCount].f_fstypename, "cddafs")) continue;
+                
+                // is the device a directory?
+                if (strrchr (myMountList[myMountCount].f_mntonname, '/') == NULL) continue;
+                
+                // we have found a Audio-CD!
+                Com_Printf ("Found Audio-CD at mount entry: \"%s\".\n", myMountList[myMountCount].f_mntonname);
+                
+                // preserve the device name:
+                FDCDCDPlayer *cdPlay = new FDCDCDPlayer();
+                //CDAudio_SafePath (myMountList[myMountCount].f_mntonname);
+                //myMountPath = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:myMountList[myMountCount].f_mntonname length:strlen(myMountList[myMountCount].f_mntonname)];
+                
+                Con_Print ("Scanning for audio tracks. Be patient!\n");
+                if (!cdPlay->loadPath(myMountList[myMountCount].f_mntonname)) {
+                    delete cdPlay;
+                } else {
+                    FDCDPlayer::player = cdPlay;
+                }
+                //CDAudio_AddTracks2List (myMountPath, [NSArray arrayWithObjects: @"aiff", @"cdda", NULL]);
+                
+                break;
+            }
+
         }
-    }
-    
-    // release the pool:
     }
     
     // just security:
-    if (![gCDTrackList count])
+    if (FDCDPlayer::player == NULL || FDCDPlayer::player->totalTrackNumber() == 0)
     {
-        [gCDTrackList release];
-        
-		gCDTrackList	= nil;
-        gCDTrackCount	= 0;
-        
-		CDAudio_Error (CDERR_NO_FILES_FOUND);
+        CDAudio_Error (CDERR_NO_FILES_FOUND);
         return (0);
     }
     
@@ -326,7 +195,7 @@ bool	CDAudio_GetTrackList (void)
 
 void	CDAudio_Play (int theTrack, qboolean theLoop)
 {
-    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    FDCDPlayer *aPlay = FDCDPlayer::getPlayer();
     if (aPlay) {
         aPlay->play(theTrack, theLoop);
     }
@@ -337,7 +206,7 @@ void	CDAudio_Play (int theTrack, qboolean theLoop)
 
 void	CDAudio_Stop (void)
 {
-    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    FDCDPlayer *aPlay = FDCDPlayer::getPlayer();
     if (aPlay) {
         aPlay->stop();
     }
@@ -347,7 +216,7 @@ void	CDAudio_Stop (void)
 
 void	CDAudio_Pause (void)
 {
-    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    FDCDPlayer *aPlay = FDCDPlayer::getPlayer();
     if (aPlay) {
         aPlay->pause();
     }
@@ -357,7 +226,7 @@ void	CDAudio_Pause (void)
 
 void	CDAudio_Resume (void)
 {
-    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    FDCDPlayer *aPlay = FDCDPlayer::getPlayer();
     if (aPlay) {
         aPlay->resume();
     }
@@ -376,49 +245,16 @@ void	CDAudio_Resume (void)
 
 void	CDAudio_Update (void)
 {
-    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    FDCDPlayer *aPlay = FDCDPlayer::getPlayer();
     if (aPlay) {
         aPlay->update();
     }
-
-#if !defined( __LP64__ )
-    
-    // update volume settings:
-    if (gCDController != NULL)
-    {
-        SetMovieVolume (gCDController, kFullVolume * cd_volume->value);
-
-        if (GetMovieActive (gCDController) == YES)
-        {
-            if (IsMovieDone (gCDController) == NO)
-            {
-                MoviesTask (gCDController, 0);
-            }
-            else
-            {
-                if (gCDLoop == YES)
-                {
-                    GoToBeginningOfMovie (gCDController);
-                    StartMovie (gCDController);
-                }
-                else
-                {
-                    gCurCDTrack++;
-                    CDAudio_Play (gCurCDTrack, NO);
-                }
-            }
-        }
-    }
-#else
-#endif // !__LP64__
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 void	CDAudio_Enable (bool theState)
 {
-#if !defined( __LP64__ )
-    
     static BOOL	myCDIsEnabled = YES;
     
     if (myCDIsEnabled != theState)
@@ -427,7 +263,7 @@ void	CDAudio_Enable (bool theState)
         
         if (theState == NO)
         {
-            if (gCDController != NULL && GetMovieActive (gCDController) == YES && IsMovieDone (gCDController) == NO)
+            if (FDCDCDPlayer::getPlayer() != NULL && FDCDCDPlayer::getPlayer()->isPlaying() == YES /*&& IsMovieDone (gCDController) == NO*/)
             {
                 CDAudio_Pause ();
                 myCDWasPlaying = YES;
@@ -447,9 +283,6 @@ void	CDAudio_Enable (bool theState)
 		
         myCDIsEnabled = theState;
     }
-#else
-
-#endif // !__LP64__
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -469,9 +302,9 @@ int	CDAudio_Init (void)
     }
     Cmd_AddCommand ("cd", CD_f);
     
-    gCurCDTrack = 0;
+    //gCurCDTrack = 0;
     
-    if (gCDTrackList != nil)
+    if (FDCDCDPlayer::getPlayer() != NULL)
     {
         if ([[NSApp delegate] mediaFolder] == nil)
         {
@@ -503,6 +336,7 @@ int	CDAudio_Init (void)
 
 void	CDAudio_Shutdown (void)
 {
+	CDAudio_Stop ();
     FDCDPlayer::closeCD();
 #if !defined( __LP64__ )
     
@@ -551,7 +385,7 @@ void	CD_f (void)
     // turn CD playback on:
     if (Q_strcasecmp (myCommandOption, "on") == 0)
     {
-        if (gCDTrackList == NULL)
+        if (FDCDPlayer::getPlayer() == NULL)
         {
             CDAudio_GetTrackList();
         }
@@ -589,7 +423,10 @@ void	CD_f (void)
             {
                 Con_Print ("MP3/MP4 files");
             }
-            Com_Printf (" found. %d tracks (\"%s\").\n", gCDTrackCount, gCDDevice);
+            FDCDPlayer *aPlay = FDCDPlayer::getPlayer();
+            if (aPlay) {
+                Com_Printf (" found. %d tracks (\"%s\").\n", aPlay->totalTrackNumber(), aPlay->devicePath());
+            }
 		}
         else
         {
@@ -600,10 +437,12 @@ void	CD_f (void)
     }
     
     // the following commands require a valid track array, so build it, if not present:
-    if (gCDTrackCount == 0)
+    FDCDPlayer *aPlay = FDCDPlayer::getPlayer();
+    if (aPlay == NULL || aPlay->totalTrackNumber() == 0)
     {
         CDAudio_GetTrackList ();
-        if (gCDTrackCount == 0)
+        aPlay = FDCDPlayer::getPlayer();
+        if (aPlay == NULL || aPlay->totalTrackNumber() == 0)
         {
             CDAudio_Error (CDERR_NO_FILES_FOUND);
 			
@@ -654,6 +493,7 @@ void	CD_f (void)
     // eject the CD:
     if ([[NSApp delegate] mediaFolder] == nil && Q_strcasecmp (myCommandOption, "eject") == 0)
     {
+		const char* gCDDevice = aPlay ? aPlay->devicePath() : NULL;
         // eject the CD:
         if (gCDDevice[0] != 0x00)
         {
@@ -684,7 +524,7 @@ void	CD_f (void)
     // output CD info:
     if (Q_strcasecmp(myCommandOption, "info") == 0)
     {
-        if (gCDTrackCount == 0)
+        if (aPlay == NULL || aPlay->totalTrackNumber() == 0)
         {
             CDAudio_Error (CDERR_NO_FILES_FOUND);
         }
@@ -692,14 +532,14 @@ void	CD_f (void)
         {
             if (/*gCDController != NULL && GetMovieActive (gCDController) == */ /* DISABLES CODE */ (YES))
             {
-                Com_Printf ("Playing track %d of %d (\"%s\").\n", gCurCDTrack, gCDTrackCount, gCDDevice);
+                Com_Printf ("Playing track %d of %d (\"%s\").\n", aPlay->currentTrackNumber(), aPlay->totalTrackNumber(), aPlay->devicePath());
             }
             else
             {
-                Com_Printf ("Not playing. Tracks: %d (\"%s\").\n", gCDTrackCount, gCDDevice);
+                Com_Printf ("Not playing. Tracks: %d (\"%s\").\n", aPlay->totalTrackNumber(), aPlay->devicePath());
             }
 			
-            Com_Printf ("Volume is: %.2f.\n", FDCDPlayer::volumeValue());
+            Com_Printf ("Volume is: %.2f.\n", FDCDPlayer::getVolume());
         }
         
 		return;

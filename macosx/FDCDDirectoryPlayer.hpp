@@ -20,9 +20,20 @@ class FDCDDirectoryPlayer: public FDCDPlayer {
     UInt16				gCurCDTrack;
     NSMutableArray<AVAudioPlayer*> *gCDTrackList;
     __unsafe_unretained AVAudioPlayer *gCDController;
-    char					gCDDevice[PATH_MAX];
-    BOOL					gCDLoop;
-    BOOL					gCDNextTrack;
+    NSString            *CDDevice;
+    BOOL				gCDLoop;
+    BOOL				gCDNextTrack;
+    
+    void setCDDevice(NSString *str)
+    {
+        if ([CDDevice isEqualToString:str]) {
+            return;
+        }
+        [str retain];
+        [CDDevice release];
+        CDDevice = str;
+    }
+    
 public:
     FDCDDirectoryPlayer();
     virtual ~FDCDDirectoryPlayer();
@@ -33,6 +44,12 @@ public:
     virtual void resume();
     virtual void update();
     virtual bool loadPath(const char *directory);
+
+#pragma mark getters
+    virtual int currentTrackNumber();
+    virtual int totalTrackNumber();
+    virtual const char *devicePath();
+    virtual bool isPlaying();
 };
 
 #endif /* FDCDDirectoryPlayer_hpp */

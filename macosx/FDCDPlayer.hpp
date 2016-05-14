@@ -37,23 +37,37 @@ public:
         return cd_volume->value;
     }
     
+    static void closeCD() {
+        delete player;
+        player = NULL;
+    }
+    
+    virtual ~FDCDPlayer() {}
+    
 protected:
     static cvar_t *cd_volume;
 
+#pragma mark friends
     friend int ::CDAudio_Init (void);
+    friend bool	::CDAudio_GetTrackList (void);
     
 private:
     static FDCDPlayer *player;
 };
 
 class FDCDCDPlayer: public FDCDPlayer {
+    struct SDL2_CD *theCD;
 public:
+    FDCDCDPlayer();
+    
     virtual void play(int theTrack, bool theLoop);
     virtual void stop();
     virtual void pause();
     virtual void resume();
     virtual void update();
     virtual bool loadPath(const char *directory);
+    
+    virtual ~FDCDCDPlayer();
 };
 
 

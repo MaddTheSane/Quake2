@@ -36,8 +36,8 @@ extern "C" {
 
 typedef void (*CDPlayerCompletionProc)(SDL2_CD *cdrom) ;
 
-void     Lock();
-void     Unlock();
+//void     Lock();
+//void     Unlock();
 int      LoadFile (const FSRef *ref, int startFrame, int endFrame); /* pass -1 to do nothing */
 int      ReleaseFile ();
 int      PlayFile();

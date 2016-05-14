@@ -234,6 +234,10 @@ void	CDAudio_SafePath (const char *thePath)
 
 bool	CDAudio_GetTrackList (void)
 {
+    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    if (aPlay) {
+        //aPlay->pause();
+    }
     // release previously allocated memory:
     CDAudio_Shutdown ();
     
@@ -322,99 +326,41 @@ bool	CDAudio_GetTrackList (void)
 
 void	CDAudio_Play (int theTrack, qboolean theLoop)
 {
-#if !defined( __LP64__ )
-    gCDNextTrack = NO;
-    
-    if (gCDTrackList != NULL && gCDTrackCount != 0)
-    {
-        NSMovie	*	myMovie;
-        
-        // check for mismatching CD track number:
-        if (theTrack > gCDTrackCount || theTrack <= 0)
-        {
-            theTrack = 1;
-        }
-        gCurCDTrack = 0;
-        
-        if (gCDController != NULL && IsMovieDone (gCDController) == NO)
-        {
-            StopMovie(gCDController);
-            gCDController = NULL;
-        }
-        
-        myMovie = [gCDTrackList objectAtIndex: theTrack - 1];
-        
-        if (myMovie != NULL)
-        {
-            gCDController = [myMovie QTMovie];
-            
-            if (gCDController != NULL)
-            {
-                gCurCDTrack	= theTrack;
-                gCDLoop		= theLoop;
-				
-                GoToBeginningOfMovie (gCDController);
-                SetMovieActive (gCDController, YES);
-                StartMovie (gCDController);
-				
-				if (GetMoviesError () != noErr)
-				{
-                    CDAudio_Error (CDERR_QUICKTIME_ERROR);
-				}
-            }
-            else
-            {
-                CDAudio_Error (CDERR_MEDIA_TRACK);
-            }
-        }
-        else
-        {
-            CDAudio_Error (CDERR_MEDIA_TRACK_CONTROLLER);
-        }
+    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    if (aPlay) {
+        aPlay->play(theTrack, theLoop);
     }
-#else
-    
-#endif // !__LP64__
+
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 void	CDAudio_Stop (void)
 {
-#if !defined( __LP64__ )
-    
-    // just stop the audio IO:
-    if (gCDController != NULL && IsMovieDone (gCDController) == NO)
-    {
-        StopMovie (gCDController);
-        GoToBeginningOfMovie (gCDController);
-        SetMovieActive (gCDController, NO);
+    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    if (aPlay) {
+        aPlay->stop();
     }
-#else
-    
-#endif // !__LP64__
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 void	CDAudio_Pause (void)
 {
-#if !defined( __LP64__ )
-    
-    if (gCDController != NULL && GetMovieActive (gCDController) == YES && IsMovieDone (gCDController) == NO)
-    {
-        StopMovie (gCDController);
-        SetMovieActive (gCDController, NO);
+    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    if (aPlay) {
+        aPlay->pause();
     }
-#else
-    
-#endif // !__LP64__
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 void	CDAudio_Resume (void)
 {
+    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    if (aPlay) {
+        aPlay->resume();
+    }
 #if !defined( __LP64__ )
     
     if (gCDController != NULL && GetMovieActive (gCDController) == NO && IsMovieDone (gCDController) == NO)
@@ -430,6 +376,11 @@ void	CDAudio_Resume (void)
 
 void	CDAudio_Update (void)
 {
+    FDCDPlayer *aPlay = FDCDPlayer::GetPlayer();
+    if (aPlay) {
+        aPlay->update();
+    }
+
 #if !defined( __LP64__ )
     
     // update volume settings:
@@ -552,6 +503,7 @@ int	CDAudio_Init (void)
 
 void	CDAudio_Shutdown (void)
 {
+    FDCDPlayer::closeCD();
 #if !defined( __LP64__ )
     
     // shutdown the audio IO:

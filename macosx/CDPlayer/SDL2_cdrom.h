@@ -115,6 +115,8 @@ typedef struct SDL2_CD {
 #define MSF_TO_FRAMES(M, S, F)	((M)*60*CD_FPS+(S)*CD_FPS+(F))
 /*@}*/
 
+//The following is commented out because it's not available in this gutted form.
+#if 0
 /* CD-audio API functions: */
 
 /**
@@ -211,7 +213,7 @@ extern DECLSPEC int SDL2CDCALL SDL2_CDEject(SDL2_CD *cdrom);
 
 /** Closes the handle for the CD-ROM drive */
 extern DECLSPEC void SDL2CDCALL SDL2_CDClose(SDL2_CD *cdrom);
-
+#endif
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

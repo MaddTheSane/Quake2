@@ -16,6 +16,7 @@ FDCDDirectoryPlayer::FDCDDirectoryPlayer()
 
 FDCDDirectoryPlayer::~FDCDDirectoryPlayer()
 {
+    [gCDController stop];
     [gCDTrackList release];
 }
 
@@ -80,8 +81,48 @@ void FDCDDirectoryPlayer::update()
     
 }
 
+#import "Quake2.h"
+
 bool FDCDDirectoryPlayer::loadPath(const char *directory)
 {
-    return false;
+    NSFileManager *	myFileManager = [NSFileManager defaultManager];
+    NSArray *theExtensions = @[ @"mp3", @"mp4", @"m4a"];
+    NSString *theMountPath = [myFileManager stringWithFileSystemRepresentation:directory length:strlen(directory)];
+    
+    if (myFileManager != NULL)
+    {
+        NSDirectoryEnumerator *	myDirEnum = [myFileManager enumeratorAtPath: theMountPath];
+        
+        if (myDirEnum != NULL)
+        {
+            NSString *	myFilePath;
+            
+            // get all audio tracks:
+            while ((myFilePath = [myDirEnum nextObject]) && [[NSApp delegate] abortMediaScan] == NO) {
+                for (NSString *ext in theExtensions) {
+                    if ([[myFilePath pathExtension] isEqualToString: ext]) {
+                        NSString *	myFullPath	= [theMountPath stringByAppendingPathComponent: myFilePath];
+                        NSURL *		myMoviePath	= [NSURL fileURLWithPath: myFullPath];
+                        AVAudioPlayer *myMovie	= [[AVAudioPlayer alloc] initWithContentsOfURL: myMoviePath error:NULL];
+                        
+                        if (myMovie != nil) {
+                            // add only movies with audiotacks and use only the audio track:
+                            if ((1)/*CDAudio_StripVideoTracks (myQTMovie) > 0*/) {
+                                //myMovie
+                                [gCDTrackList addObject: myMovie];
+                            } else {
+                                CDAudio_Error (CDERR_AUDIO_DATA);
+                            }
+                        } else {
+                            CDAudio_Error (CDERR_MOVIE_DATA);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    gCDTrackCount = [gCDTrackList count];
+    return gCDTrackCount != 0;
 }
 

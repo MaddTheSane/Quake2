@@ -43,7 +43,7 @@ void CL_Frame (int msec)
 {
 }
 
-void Con_Print (char *text)
+void Con_Print (const char *text)
 {
 }
 

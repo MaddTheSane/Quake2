@@ -177,8 +177,6 @@ void	GLimp_SetMiniWindowBuffer (void)
 {
     if (gGLMiniWindowBuffer == NULL || [gGLMiniWindowBuffer pixelsWide] != vid.width || [gGLMiniWindowBuffer pixelsHigh] != vid.height)
     {
-        [gGLMiniWindowBuffer release];
-		
         gGLMiniWindowBuffer = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes: NULL
                                                                       pixelsWide: vid.width
                                                                       pixelsHigh: vid.height
@@ -407,13 +405,11 @@ void	GLimp_Shutdown (void)
 {
     if (gGLMiniWindow != NULL)
     {
-        [gGLMiniWindow release];
         gGLMiniWindow = NULL;
     }
 
 	if (gGLMiniWindowBuffer != NULL)
 	{
-		[gGLMiniWindowBuffer release];
 		gGLMiniWindowBuffer = NULL;
 	}
 
@@ -458,7 +454,6 @@ void	GLimp_DestroyContext (void)
         [gGLContext makeCurrentContext];
         [NSOpenGLContext clearCurrentContext];
         [gGLContext clearDrawable];
-        [gGLContext release];
         gGLContext = NULL;
     }
 
@@ -472,7 +467,6 @@ void	GLimp_DestroyContext (void)
     // close the content view:
     if (gGLView != NULL)
     {
-        [gGLView release];
         gGLView = NULL;
     }
 }
@@ -898,9 +892,6 @@ Boolean	GLimp_InitGraphics (int *theWidth, int *theHeight, float theRefreshRate,
     {
         ri.Sys_Error (ERR_FATAL, "Unable to create an OpenGL context. Please try other displaymode(s).");
     }
-
-    // get rid of the pixel format:
-    [myPixelFormat release];
 
     if (theFullscreen)
     {

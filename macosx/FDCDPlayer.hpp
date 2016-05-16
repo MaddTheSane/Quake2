@@ -66,6 +66,7 @@ class FDCDCDPlayer: public FDCDPlayer {
     int nextTrackFrame;
     int nextTrackFramesRemaining;
     char gCDDevice[PATH_MAX];
+    bool looping;
 
 public:
     FDCDCDPlayer();

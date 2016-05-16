@@ -13,6 +13,7 @@
 cvar_t *FDCDPlayer::cd_volume = NULL;
 FDCDPlayer *FDCDPlayer::player = NULL;
 
+using namespace SDL2CDPlayerInternal;
 
 static OSErr FSGetVRefNum(const FSRef *ref,
                           FSVolumeRefNum &vRefNum)
@@ -44,7 +45,12 @@ FDCDCDPlayer::FDCDCDPlayer() : tracks(NULL), currentTrack(0), nextTrackFrame(0),
 
 void FDCDCDPlayer::play(int theTrack, bool theLoop)
 {
-    
+    looping = theLoop;
+    if (theTrack > (theCD->numtracks + 1)) {
+        return;
+    }
+    LoadFile(&tracks[theTrack], -1, -1);
+    PlayFile();
 }
 
 void FDCDCDPlayer::stop()
@@ -54,12 +60,12 @@ void FDCDCDPlayer::stop()
 
 void FDCDCDPlayer::pause()
 {
-    
+    PauseFile();
 }
 
 void FDCDCDPlayer::resume()
 {
-    
+    PlayFile();
 }
 
 void FDCDCDPlayer::update()
@@ -136,6 +142,8 @@ FDCDCDPlayer::~FDCDCDPlayer()
     if (tracks) {
         delete [] tracks;
     }
+    
+    ReleaseFile();
 }
 
 void FDCDCDPlayer::safePath(const char *thePath)

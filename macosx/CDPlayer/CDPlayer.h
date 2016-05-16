@@ -30,14 +30,12 @@
 #include <AudioUnit/AudioUnit.h>
 #include "SDL2_cdrom.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef void (*CDPlayerCompletionProc)(SDL2_CD *cdrom) ;
 
-//void     Lock();
-//void     Unlock();
+namespace SDL2CDPlayerInternal {
+
+void     Lock();
+void     Unlock();
 int      LoadFile (const FSRef *ref, int startFrame, int endFrame); /* pass -1 to do nothing */
 int      ReleaseFile ();
 int      PlayFile();
@@ -48,8 +46,6 @@ int      ListTrackFiles(FSVolumeRefNum theVolume, FSRef *trackFiles, int numTrac
 int      DetectAudioCDVolumes(FSVolumeRefNum *volumes, int numVolumes);
 int      GetCurrentFrame();
 
-#ifdef __cplusplus
-};
-#endif
+}
 
 #endif /* __CD_Player__H__ */

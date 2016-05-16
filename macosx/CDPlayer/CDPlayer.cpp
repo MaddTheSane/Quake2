@@ -53,6 +53,8 @@
     Globals
   //////////////////////////////////////////////////////////////////////////*/
 
+namespace SDL2CDPlayerInternal {
+
 #pragma mark -- Globals --
 
 static int						playBackWasInit = 0;
@@ -630,6 +632,7 @@ static int RunCallBackThread (void *param)
 #endif
     
     return 0;
+}
 }
 
 /*}; // extern "C" */

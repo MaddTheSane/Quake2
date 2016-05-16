@@ -117,8 +117,8 @@ typedef struct		{
 #pragma mark Variables
 
 qboolean					gGLTruformAvailable = NO;
-long						gGLMaxARBMultiSampleBuffers;
-long						gGLCurARBMultiSamples;
+GLuint						gGLMaxARBMultiSampleBuffers;
+GLuint						gGLCurARBMultiSamples;
 
 static CFDictionaryRef		gGLOriginalMode;
 static CGGammaValue			gGLOriginalGamma[9];

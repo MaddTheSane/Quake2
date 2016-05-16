@@ -53,7 +53,7 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-@interface FDHIDManager () <NSFileManagerDelegate>
+@interface FDHIDManager ()
 
 - (id) initSharedHIDManager;
 - (void) applicationWillResignActive: (NSNotification*) notification;
@@ -325,7 +325,7 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
             FD_ASSERT ([factory isSubclassOfClass: [FDHIDDevice class]]);
             FD_ASSERT ([factory respondsToSelector: @selector (deviceWithDevice:)]);
             
-            id device = [factory deviceWithDevice: pDevice];
+            FDHIDDevice *device = [factory deviceWithDevice: pDevice];
             
             if (device != nil)
             {

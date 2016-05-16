@@ -15,8 +15,6 @@
 #import "NSToolbarPrivate.h"
 
 #import "sys_osx.h"
-//only included for kToolbarInfoIcon
-#include <CoreServices/CoreServices.h>
 
 #pragma mark -
 
@@ -45,12 +43,12 @@
                  toolTip: @"About Quake II." image: aboutImg
                 selector: @selector (showAboutView:)];
     [self addToolbarItem: mToolbarItems identifier: SYS_AUDIO_TOOLBARITEM label: @"Sound" paletteLabel: @"Sound"
-                 toolTip: @"Change sound settings." imageNamed: @"Sound.icns" selector: @selector (showSoundView:)];
+                 toolTip: @"Change sound settings." imageNamed: @"Sound" selector: @selector (showSoundView:)];
     [self addToolbarItem: mToolbarItems identifier: SYS_PARAM_TOOLBARITEM label: @"CLI" paletteLabel: @"CLI"
-                 toolTip: @"Set command-line parameters." imageNamed: @"Arguments.icns"
+                 toolTip: @"Set command-line parameters." imageNamed: @"Arguments"
                 selector: @selector (showCLIView:)];
     [self addToolbarItem: mToolbarItems identifier: SYS_START_TOOLBARITEM label: @"Play" paletteLabel: @"Play"
-                 toolTip: @"Start the game." imageNamed: @"Start.icns"
+                 toolTip: @"Start the game." imageNamed: @"Start"
                 selector: @selector (startQuake2:)];
     
     [myToolbar setDelegate: self];    

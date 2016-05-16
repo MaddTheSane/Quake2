@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5556CDFD1CE95EB700C027F3 /* Controller.xib */; };
+		5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5556CE001CE961DB00C027F3 /* Icons.xcassets */; };
 		555E12D41CE675E4001C2DED /* AudioFilePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */; };
 		555E12D51CE675E4001C2DED /* AudioFileReaderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12CF1CE675E4001C2DED /* AudioFileReaderThread.cpp */; };
 		555E12D71CE675E4001C2DED /* SDLOSXCAGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12D21CE675E4001C2DED /* SDLOSXCAGuard.cpp */; };
@@ -17,13 +18,6 @@
 		555E12E11CE68E30001C2DED /* FDCDDirectoryPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 555E12DF1CE68E30001C2DED /* FDCDDirectoryPlayer.mm */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
 		D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF1152965F500F14280 /* Quake II.scriptSuite */; };
-		D2075FFC1529666300F14280 /* Arguments.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF41529666300F14280 /* Arguments.icns */; };
-		D2075FFD1529666300F14280 /* AudioCD.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF51529666300F14280 /* AudioCD.icns */; };
-		D2075FFE1529666300F14280 /* Displays.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF61529666300F14280 /* Displays.icns */; };
-		D2075FFF1529666300F14280 /* PlugIn.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF71529666300F14280 /* PlugIn.icns */; };
-		D20760001529666300F14280 /* Quake II.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF81529666300F14280 /* Quake II.icns */; };
-		D20760011529666300F14280 /* Sound.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF91529666300F14280 /* Sound.icns */; };
-		D20760021529666300F14280 /* Start.icns in Resources */ = {isa = PBXBuildFile; fileRef = D2075FFA1529666300F14280 /* Start.icns */; };
 		D20760471529699E00F14280 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20760451529699E00F14280 /* AudioToolbox.framework */; };
 		D20760481529699E00F14280 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20760461529699E00F14280 /* AudioUnit.framework */; };
 		D207604A152969C500F14280 /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2076049152969C500F14280 /* ForceFeedback.framework */; };
@@ -291,6 +285,7 @@
 
 /* Begin PBXFileReference section */
 		5556CDFE1CE95EB700C027F3 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Controller.xib; sourceTree = "<group>"; };
+		5556CE001CE961DB00C027F3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
 		555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFilePlayer.cpp; sourceTree = "<group>"; };
 		555E12CE1CE675E4001C2DED /* AudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer.h; sourceTree = "<group>"; };
@@ -309,13 +304,6 @@
 		D2075FED1529649700F14280 /* Swedish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Swedish; path = "Resources/Quake II/Swedish.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		D2075FEF152964A800F14280 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = "Resources/Quake II/German.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		D2075FF1152965F500F14280 /* Quake II.scriptSuite */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptSuite; path = "Quake II.scriptSuite"; sourceTree = "<group>"; };
-		D2075FF41529666300F14280 /* Arguments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Arguments.icns; sourceTree = "<group>"; };
-		D2075FF51529666300F14280 /* AudioCD.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AudioCD.icns; sourceTree = "<group>"; };
-		D2075FF61529666300F14280 /* Displays.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Displays.icns; sourceTree = "<group>"; };
-		D2075FF71529666300F14280 /* PlugIn.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PlugIn.icns; sourceTree = "<group>"; };
-		D2075FF81529666300F14280 /* Quake II.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Quake II.icns"; sourceTree = "<group>"; };
-		D2075FF91529666300F14280 /* Sound.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Sound.icns; sourceTree = "<group>"; };
-		D2075FFA1529666300F14280 /* Start.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Start.icns; sourceTree = "<group>"; };
 		D20760451529699E00F14280 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = ../../../../../../../System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<group>"; };
 		D20760461529699E00F14280 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = ../../../../../../../System/Library/Frameworks/AudioUnit.framework; sourceTree = "<group>"; };
 		D2076049152969C500F14280 /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = ../../../../../../../System/Library/Frameworks/ForceFeedback.framework; sourceTree = "<group>"; };
@@ -1158,20 +1146,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D2C837161529476D00867DFC /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				D2075FF41529666300F14280 /* Arguments.icns */,
-				D2075FF51529666300F14280 /* AudioCD.icns */,
-				D2075FF61529666300F14280 /* Displays.icns */,
-				D2075FF71529666300F14280 /* PlugIn.icns */,
-				D2075FF81529666300F14280 /* Quake II.icns */,
-				D2075FF91529666300F14280 /* Sound.icns */,
-				D2075FFA1529666300F14280 /* Start.icns */,
-			);
-			name = Icons;
-			sourceTree = "<group>";
-		};
 		D2C837441529522500867DFC /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -1364,7 +1338,7 @@
 		D2DF6E631529631E00B80579 /* Quake II */ = {
 			isa = PBXGroup;
 			children = (
-				D2C837161529476D00867DFC /* Icons */,
+				5556CE001CE961DB00C027F3 /* Icons.xcassets */,
 				D2DF6E641529635E00B80579 /* Credits.rtf */,
 				D207604E15296AF400F14280 /* InfoPlist.strings */,
 				D2075FF1152965F500F14280 /* Quake II.scriptSuite */,
@@ -1524,15 +1498,9 @@
 				5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */,
 				D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */,
 				D2DF6E6E1529635E00B80579 /* Quake II.scriptTerminology in Resources */,
+				5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */,
 				D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */,
 				D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */,
-				D2075FFC1529666300F14280 /* Arguments.icns in Resources */,
-				D2075FFD1529666300F14280 /* AudioCD.icns in Resources */,
-				D2075FFE1529666300F14280 /* Displays.icns in Resources */,
-				D2075FFF1529666300F14280 /* PlugIn.icns in Resources */,
-				D20760001529666300F14280 /* Quake II.icns in Resources */,
-				D20760011529666300F14280 /* Sound.icns in Resources */,
-				D20760021529666300F14280 /* Start.icns in Resources */,
 				D207605015296AF400F14280 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1955,6 +1923,7 @@
 		D2C835B81529122600867DFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Quake II";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
@@ -1974,6 +1943,7 @@
 		D2C835B91529122600867DFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Quake II";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;

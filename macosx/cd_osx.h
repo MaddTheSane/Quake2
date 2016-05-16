@@ -14,10 +14,6 @@
 
 #pragma mark TypeDefs
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef CF_ENUM(int, cderror_t)
 {
     CDERR_ALLOC_TRACK = 1,
@@ -38,11 +34,7 @@ typedef CF_ENUM(int, cderror_t)
 
 #pragma mark Function Prototypes
 
-bool			CDAudio_GetTrackList (void);
-void			CDAudio_Enable (bool theState);
-
-#ifdef __cplusplus
-}
-#endif
+BOOL			CDAudio_GetTrackList (void);
+void			CDAudio_Enable (BOOL theState);
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------

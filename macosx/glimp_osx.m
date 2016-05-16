@@ -165,8 +165,8 @@ static void						GLimp_CheckForARBMultiSample (void);
 
 qboolean GLimp_Screenshot (SInt8 *theFilename, void *theBitmap, UInt32 theWidth, UInt32 theHeight, UInt32 theRowbytes)
 {
-    NSString *	myFilename		= [NSString stringWithCString: (const char*) theFilename];
-    NSSize		myBitmapSize	= NSMakeSize ((float) theWidth, (float) theHeight);
+    NSString *	myFilename		= [[NSFileManager defaultManager] stringWithFileSystemRepresentation: (const char*)theFilename length: strlen ((const char*)theFilename)];
+    NSSize		myBitmapSize	= NSMakeSize ((CGFloat) theWidth, (CGFloat) theHeight);
     
     return ([FDScreenshot writeToPNG: myFilename fromRGB24: theBitmap withSize: myBitmapSize rowbytes: theRowbytes]);
 }
@@ -688,7 +688,7 @@ void	GLimp_CheckForARBMultiSample (void)
 
     CGLRendererInfoObj			myRendererInfo;
     CGLError				myError;
-    UInt64				myDisplayMask;
+    CGOpenGLDisplayMask				myDisplayMask;
     GLint				myCount,
                                         myIndex,
                                         mySampleBuffers,

@@ -34,7 +34,7 @@
 	mRequestedCommands	= [[NSMutableArray alloc] initWithCapacity: 0];
 	mDistantPast		= [[NSDate distantPast] retain];
 	mDenyDrag			= NO;
-	NSImage	* aboutImg	= [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kToolbarInfoIcon)];
+    NSImage	* aboutImg	= [[NSWorkspace sharedWorkspace] iconForFileType: NSFileTypeForHFSTypeCode(kToolbarInfoIcon)];
 
 	// set the URL at the FDLinkView:
 	[linkView setURL: [NSURL URLWithString: SYS_FRUITZ_OF_DOJO_URL]];

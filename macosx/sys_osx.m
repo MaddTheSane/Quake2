@@ -125,7 +125,7 @@ void	Sys_Error (const char *theError, ...)
 
 #else
 
-    NSLog (@"An error has occured: %@\n", @(myString));
+    NSLog (@"An error has occured: %s\n", myString);
 
     CL_Shutdown ();
     Qcommon_Shutdown ();
@@ -134,8 +134,8 @@ void	Sys_Error (const char *theError, ...)
     IN_SetKeyboardRepeatEnabled (YES);
     IN_SetF12EjectEnabled (YES);
     
-    NSRunCriticalAlertPanel (@"An error has occured:", @"%@",
-                             NULL, NULL, NULL, @(myString));
+    NSRunCriticalAlertPanel (@"An error has occured:", @"%s",
+                             NULL, NULL, NULL, myString);
     
     exit (1);
 
@@ -488,7 +488,9 @@ void 	Sys_CheckForCDDirectory (void)
     // is the cd mounted?
     for (i = 0; gSysCDPath[i] != NULL; i++)
     {
-        myCurrentPath = [[fm stringWithFileSystemRepresentation:gSysCDPath[i] length:strlen(gSysCDPath[i])] stringByAppendingString: @"/baseq2/pak0.pak"];
+        myCurrentPath = [[[NSFileManager defaultManager]
+                          stringWithFileSystemRepresentation: gSysCDPath[i]
+                          length: strlen(gSysCDPath[i])] stringByAppendingPathComponent: @"/baseq2/pak0.pak"];
         
 		if ([fm fileExistsAtPath: myCurrentPath])
         {

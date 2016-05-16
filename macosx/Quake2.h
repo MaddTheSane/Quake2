@@ -29,7 +29,7 @@
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-@interface Quake2 : NSObject <NSApplicationDelegate, NSToolbarDelegate>
+@interface Quake2 : NSObject <NSApplicationDelegate>
 {
     IBOutlet NSWindow *				mediascanWindow;
     
@@ -112,8 +112,8 @@
 - (void) enableAppleScriptRun: (BOOL) theState;
 - (void) requestCommand: (NSString *) theCommand;
 
-- (NSString *) modFolder;
-- (NSString *) mediaFolder;
+@property (readonly, copy) NSString *modFolder;
+@property (readonly, copy) NSString *mediaFolder;
 - (BOOL) abortMediaScan;
 - (BOOL) wasDragged;
 

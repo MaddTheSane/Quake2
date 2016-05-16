@@ -114,7 +114,7 @@ static	void		SWimp_DisableQuartzInterpolation (id theView);
 
 qboolean SWimp_Screenshot (SInt8 *theFilename, void *theBitmap, UInt32 theWidth, UInt32 theHeight, UInt32 theRowbytes)
 {
-	NSString *	myFilename		= [[NSFileManager defaultManager] stringWithFileSystemRepresentation:(const char*) theFilename length:strlen((const char*) theFilename)];
+    NSString *	myFilename		= [[NSFileManager defaultManager] stringWithFileSystemRepresentation:(const char*) theFilename length:strlen((const char*) theFilename)];
     NSSize		myBitmapSize	= NSMakeSize ((CGFloat) theWidth, (CGFloat) theHeight);
     
     return ([FDScreenshot writeToPNG: myFilename fromRGB24: theBitmap withSize: myBitmapSize rowbytes: theRowbytes]);

@@ -18,7 +18,7 @@
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-@interface Quake2 (Toolbar)
+@interface Quake2 (Toolbar) <NSToolbarDelegate>
 
 - (void) awakeFromNib;
 - (BOOL) validateToolbarItem: (NSToolbarItem *) theItem;

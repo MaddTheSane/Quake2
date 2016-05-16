@@ -247,18 +247,17 @@
 		D2DF6E5215295E3000B80579 /* ref_soft.q2plug in CopyFiles */ = {isa = PBXBuildFile; fileRef = D2DF6E08152958A400B80579 /* ref_soft.q2plug */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D2DF6E641529635E00B80579 /* Credits.rtf */; };
 		D2DF6E6E1529635E00B80579 /* Quake II.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = D2DF6E681529635E00B80579 /* Quake II.scriptTerminology */; };
-		D2DF6E6F1529635E00B80579 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2DF6E6A1529635E00B80579 /* ServicesMenu.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5580B6141CE7A822001EF9BB /* PBXContainerItemProxy */ = {
+		5580B6181CE7ADB7001EF9BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2C835901529122500867DFC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D2DF6DCA1529551C00B80579;
 			remoteInfo = "GL Renderer Module";
 		};
-		5580B6161CE7A822001EF9BB /* PBXContainerItemProxy */ = {
+		5580B61A1CE7ADB7001EF9BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2C835901529122500867DFC /* Project object */;
 			proxyType = 1;
@@ -707,7 +706,6 @@
 			);
 			path = FDFramework;
 			sourceTree = "<group>";
-			usesTabs = 0;
 		};
 		D2AD4EFD17EFFDE300DA8777 /* Source */ = {
 			isa = PBXGroup;
@@ -796,6 +794,7 @@
 			);
 			name = Sourcecode;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		D2C835C61529160E00867DFC /* Application */ = {
 			isa = PBXGroup;
@@ -1379,8 +1378,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				5580B6151CE7A822001EF9BB /* PBXTargetDependency */,
-				5580B6171CE7A822001EF9BB /* PBXTargetDependency */,
+				5580B6191CE7ADB7001EF9BB /* PBXTargetDependency */,
+				5580B61B1CE7ADB7001EF9BB /* PBXTargetDependency */,
 			);
 			name = "Quake II";
 			productName = "Quake II";
@@ -1514,7 +1513,6 @@
 				D2DF6E4E15295BB800B80579 /* Controller.nib in Resources */,
 				D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */,
 				D2DF6E6E1529635E00B80579 /* Quake II.scriptTerminology in Resources */,
-				D2DF6E6F1529635E00B80579 /* ServicesMenu.strings in Resources */,
 				D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */,
 				D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */,
 				D2075FFC1529666300F14280 /* Arguments.icns in Resources */,
@@ -1814,15 +1812,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5580B6151CE7A822001EF9BB /* PBXTargetDependency */ = {
+		5580B6191CE7ADB7001EF9BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2DF6DCA1529551C00B80579 /* GL Renderer Module */;
-			targetProxy = 5580B6141CE7A822001EF9BB /* PBXContainerItemProxy */;
+			targetProxy = 5580B6181CE7ADB7001EF9BB /* PBXContainerItemProxy */;
 		};
-		5580B6171CE7A822001EF9BB /* PBXTargetDependency */ = {
+		5580B61B1CE7ADB7001EF9BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2DF6E07152958A400B80579 /* SW Renderer Module */;
-			targetProxy = 5580B6161CE7A822001EF9BB /* PBXContainerItemProxy */;
+			targetProxy = 5580B61A1CE7ADB7001EF9BB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1868,14 +1866,6 @@
 			);
 			name = "Quake II.scriptTerminology";
 			sourceTree = "<group>";
-		};
-		D2DF6E6A1529635E00B80579 /* ServicesMenu.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-			);
-			name = ServicesMenu.strings;
-			path = "/Users/awe/Documents/Development/q2source/quake2-3.21/macosx";
-			sourceTree = "<absolute>";
 		};
 /* End PBXVariantGroup section */
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5556CDFD1CE95EB700C027F3 /* Controller.xib */; };
 		555E12D41CE675E4001C2DED /* AudioFilePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */; };
 		555E12D51CE675E4001C2DED /* AudioFileReaderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12CF1CE675E4001C2DED /* AudioFileReaderThread.cpp */; };
 		555E12D71CE675E4001C2DED /* SDLOSXCAGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555E12D21CE675E4001C2DED /* SDLOSXCAGuard.cpp */; };
@@ -242,7 +243,6 @@
 		D2DF6E4015295A7400B80579 /* q_shared.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C836601529201500867DFC /* q_shared.c */; };
 		D2DF6E4115295A8600B80579 /* glob.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C8365B15291FD500867DFC /* glob.c */; };
 		D2DF6E4815295BA700B80579 /* GrowBox.tiff in Resources */ = {isa = PBXBuildFile; fileRef = D2DF6E4615295BA700B80579 /* GrowBox.tiff */; };
-		D2DF6E4E15295BB800B80579 /* Controller.nib in Resources */ = {isa = PBXBuildFile; fileRef = D2DF6E4A15295BB800B80579 /* Controller.nib */; };
 		D2DF6E5115295E2D00B80579 /* ref_gl.q2plug in CopyFiles */ = {isa = PBXBuildFile; fileRef = D2DF6DCB1529551C00B80579 /* ref_gl.q2plug */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D2DF6E5215295E3000B80579 /* ref_soft.q2plug in CopyFiles */ = {isa = PBXBuildFile; fileRef = D2DF6E08152958A400B80579 /* ref_soft.q2plug */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D2DF6E641529635E00B80579 /* Credits.rtf */; };
@@ -290,6 +290,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5556CDFE1CE95EB700C027F3 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Controller.xib; sourceTree = "<group>"; };
 		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
 		555E12CD1CE675E4001C2DED /* AudioFilePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFilePlayer.cpp; sourceTree = "<group>"; };
 		555E12CE1CE675E4001C2DED /* AudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer.h; sourceTree = "<group>"; };
@@ -597,7 +598,6 @@
 		D2DF6E291529595000B80579 /* r_surf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = r_surf.c; path = ../ref_soft/r_surf.c; sourceTree = "<group>"; };
 		D2DF6E3B1529597700B80579 /* swimp_osx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swimp_osx.m; sourceTree = "<group>"; };
 		D2DF6E4615295BA700B80579 /* GrowBox.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GrowBox.tiff; sourceTree = "<group>"; };
-		D2DF6E4B15295BB800B80579 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Controller.nib; sourceTree = "<group>"; };
 		D2DF6E651529635E00B80579 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = "Resources/Quake II/English.lproj/Credits.rtf"; sourceTree = "<group>"; };
 		D2DF6E691529635E00B80579 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptTerminology; name = English; path = "Resources/Quake II/English.lproj/Quake II.scriptTerminology"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1142,7 +1142,7 @@
 		D2C83714152944D000867DFC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D2DF6E4A15295BB800B80579 /* Controller.nib */,
+				5556CDFD1CE95EB700C027F3 /* Controller.xib */,
 				D2DF6E4615295BA700B80579 /* GrowBox.tiff */,
 				D2DF6E631529631E00B80579 /* Quake II */,
 			);
@@ -1510,7 +1510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2DF6E4815295BA700B80579 /* GrowBox.tiff in Resources */,
-				D2DF6E4E15295BB800B80579 /* Controller.nib in Resources */,
+				5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */,
 				D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */,
 				D2DF6E6E1529635E00B80579 /* Quake II.scriptTerminology in Resources */,
 				D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */,
@@ -1825,6 +1825,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5556CDFD1CE95EB700C027F3 /* Controller.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5556CDFE1CE95EB700C027F3 /* English */,
+			);
+			name = Controller.xib;
+			sourceTree = "<group>";
+		};
 		D2075FE91529646A00F14280 /* ServicesMenu.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1841,14 +1849,6 @@
 				D207604F15296AF400F14280 /* English */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D2DF6E4A15295BB800B80579 /* Controller.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2DF6E4B15295BB800B80579 /* English */,
-			);
-			name = Controller.nib;
 			sourceTree = "<group>";
 		};
 		D2DF6E641529635E00B80579 /* Credits.rtf */ = {

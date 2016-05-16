@@ -30,7 +30,7 @@
 #include <AudioUnit/AudioUnit.h>
 #include "SDL2_cdrom.h"
 
-typedef void (*CDPlayerCompletionProc)(SDL2_CD *cdrom) ;
+typedef void (*CDPlayerCompletionProc)(void* inRefCon, SDL2_CD *cdrom);
 
 namespace SDL2CDPlayerInternal {
 
@@ -40,7 +40,7 @@ int      LoadFile (const FSRef *ref, int startFrame, int endFrame); /* pass -1 t
 int      ReleaseFile ();
 int      PlayFile();
 int      PauseFile();
-void     SetCompletionProc(CDPlayerCompletionProc proc, SDL2_CD *cdrom);
+void     SetCompletionProc(CDPlayerCompletionProc proc, SDL2_CD *cdrom, void *inRefCon);
 int      ReadTOCData(FSVolumeRefNum theVolume, SDL2_CD *theCD);
 int      ListTrackFiles(FSVolumeRefNum theVolume, FSRef *trackFiles, int numTracks);
 int      DetectAudioCDVolumes(FSVolumeRefNum *volumes, int numVolumes);

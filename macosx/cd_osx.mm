@@ -19,10 +19,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CoreAudio/AudioHardware.h>
-#import <AVFoundation/AVFoundation.h>
 #import <sys/mount.h>
 #import <pthread.h>
-#include "CDPlayer.h"
 #include "FDCDPlayer.hpp"
 #include "FDCDDirectoryPlayer.hpp"
 

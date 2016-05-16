@@ -64,6 +64,7 @@ static CDPlayerCompletionProc	completionProc = NULL;
 static pthread_mutex_t			apiMutex = PTHREAD_MUTEX_INITIALIZER;
 static sem_t					*callbackSem;
 static SDL2_CD*					theCDROM;
+static void* 					theRefCon;
 
 /*///////////////////////////////////////////////////////////////////////////
     Prototypes
@@ -505,12 +506,13 @@ bail:
     return result;
 }
 
-void SetCompletionProc(CDPlayerCompletionProc proc, SDL2_CD *cdrom)
+void SetCompletionProc(CDPlayerCompletionProc proc, SDL2_CD *cdrom, void *inRefCon)
 {
     assert(thePlayer != NULL);
 
     theCDROM = cdrom;
     completionProc = proc;
+	theRefCon = inRefCon;
     thePlayer->SetNotifier (FilePlayNotificationHandler, cdrom);
 }
 
@@ -619,7 +621,7 @@ static int RunCallBackThread (void *param)
 #if DEBUG_CDROM
             printf ("callback!\n");
 #endif
-            (*completionProc)(theCDROM);
+            (*completionProc)(theRefCon, theCDROM);
         } else {
 #if DEBUG_CDROM
             printf ("callback?\n");

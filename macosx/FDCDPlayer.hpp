@@ -62,7 +62,6 @@ private:
 class FDCDCDPlayer: public FDCDPlayer {
     struct SDL2_CD *theCD;
     struct FSRef *tracks;
-    int currentTrack;
     int nextTrackFrame;
     int nextTrackFramesRemaining;
     char gCDDevice[PATH_MAX];
@@ -88,9 +87,9 @@ public:
 
 private:
     
-    struct FSRef* GetFileForOffset(int start, int length,  int &outStartFrame, int &outStopFrame);
+    struct FSRef* GetFileForOffset(int start, int length, int &outStartFrame, int &outStopFrame);
     void safePath (const char *thePath);
-
+    static void callBack(void*,SDL2_CD*);
 };
 
 

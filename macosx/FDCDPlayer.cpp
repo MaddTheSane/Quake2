@@ -21,9 +21,6 @@ static OSErr FSGetVRefNum(const FSRef *ref,
     OSErr			result;
     FSCatalogInfo	catalogInfo;
     
-    /* check parameters */
-    //require_action(NULL != vRefNum, BadParameter, result = paramErr);
-    
     /* get the volume refNum from the FSRef */
     result = FSGetCatalogInfo(ref, kFSCatInfoVolume, &catalogInfo, NULL, NULL, NULL);
     require_noerr(result, FSGetCatalogInfo);
@@ -32,45 +29,63 @@ static OSErr FSGetVRefNum(const FSRef *ref,
     vRefNum = catalogInfo.volume;
     
 FSGetCatalogInfo:
-//BadParameter:
     
     return ( result );
 }
 
-FDCDCDPlayer::FDCDCDPlayer() : tracks(NULL), currentTrack(0), nextTrackFrame(0), nextTrackFramesRemaining(0)
+FDCDCDPlayer::FDCDCDPlayer() : tracks(NULL), nextTrackFrame(0), nextTrackFramesRemaining(0)
 {
     theCD = new SDL2_CD();
+    memset(theCD, 0, sizeof(SDL2_CD));
+    theCD->status = CD_TRAYEMPTY;
     memset(gCDDevice, 0, sizeof(gCDDevice));
+    SetCompletionProc(callBack, theCD, this);
 }
 
 void FDCDCDPlayer::play(int theTrack, bool theLoop)
 {
-    looping = theLoop;
-    if (theTrack > (theCD->numtracks + 1)) {
-        return;
+    if (theTrack > (theCD->numtracks)) {
+        theTrack = 0;
     }
-    LoadFile(&tracks[theTrack], -1, -1);
-    PlayFile();
+    SDL2CDPlayerInternal::Lock();
+    int startFrame = 0, stopFrame = 0;
+    FSRef * aFile = GetFileForOffset(theTrack, theCD->track[theTrack].length, startFrame, stopFrame);
+    looping = theLoop;
+    if (LoadFile(aFile, startFrame, stopFrame) < 0) {
+        PlayFile();
+        theCD->status = CD_PLAYING;
+    } else {
+        
+    }
+    SDL2CDPlayerInternal::Unlock();
 }
 
 void FDCDCDPlayer::stop()
 {
-    
+    theCD->status = CD_STOPPED;
 }
 
 void FDCDCDPlayer::pause()
 {
+    SDL2CDPlayerInternal::Lock();
+    theCD->status = CD_PAUSED;
     PauseFile();
+    SDL2CDPlayerInternal::Unlock();
 }
 
 void FDCDCDPlayer::resume()
 {
+    SDL2CDPlayerInternal::Lock();
     PlayFile();
+    theCD->status = CD_PLAYING;
+    SDL2CDPlayerInternal::Unlock();
 }
 
 void FDCDCDPlayer::update()
 {
-    
+    SDL2CDPlayerInternal::Lock();
+
+    SDL2CDPlayerInternal::Unlock();
 }
 
 bool FDCDCDPlayer::loadPath(const char *directory)
@@ -96,7 +111,8 @@ bool FDCDCDPlayer::loadPath(const char *directory)
         goto failure;
     }
 
-    //FSRef;
+    theCD->status = CD_STOPPED;
+    return true;
     
     
 failure:
@@ -117,7 +133,7 @@ FSRef* FDCDCDPlayer::GetFileForOffset(int start, int length,  int &outStartFrame
     if (i == theCD->numtracks)
         return NULL;
     
-    currentTrack = i;
+    theCD->cur_track = i;
     
     outStartFrame = start - theCD->track[i].offset;
     
@@ -138,6 +154,8 @@ FSRef* FDCDCDPlayer::GetFileForOffset(int start, int length,  int &outStartFrame
 
 FDCDCDPlayer::~FDCDCDPlayer()
 {
+    SetCompletionProc(NULL, NULL, NULL);
+
     delete theCD;
     if (tracks) {
         delete [] tracks;
@@ -173,7 +191,7 @@ void FDCDCDPlayer::safePath(const char *thePath)
 
 int FDCDCDPlayer::currentTrackNumber()
 {
-    return currentTrack;
+    return theCD->cur_track;
 }
 
 int FDCDCDPlayer::totalTrackNumber()
@@ -188,5 +206,46 @@ const char *FDCDCDPlayer::devicePath()
 
 bool FDCDCDPlayer::isPlaying()
 {
-    return false;
+    return theCD->status == CD_PLAYING;
 }
+
+void FDCDCDPlayer::callBack(void* inRefCon, SDL2_CD* cdrom)
+{
+    FDCDCDPlayer *ourSelf = (FDCDCDPlayer *)inRefCon;
+    Lock ();
+    
+    if (ourSelf->nextTrackFrame > 0 && ourSelf->nextTrackFramesRemaining > 0) {
+        
+        /* Load the next file to play */
+        int startFrame, stopFrame;
+        FSRef *file;
+        
+        PauseFile ();
+        ReleaseFile ();
+        
+        file = ourSelf->GetFileForOffset (ourSelf->nextTrackFrame,
+                                 ourSelf->nextTrackFramesRemaining, startFrame, stopFrame);
+        
+        if (file == NULL) {
+            ourSelf->theCD->status = CD_STOPPED;
+            Unlock ();
+            return;
+        }
+        
+        LoadFile (file, startFrame, stopFrame);
+        
+        SetCompletionProc (callBack, cdrom, ourSelf);
+        
+        PlayFile ();
+    }
+    else {
+        
+        /* Release the current file */
+        PauseFile ();
+        ReleaseFile ();
+        ourSelf->theCD->status = CD_STOPPED;
+    }
+    
+    Unlock ();
+}
+

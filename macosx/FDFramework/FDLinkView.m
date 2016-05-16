@@ -73,30 +73,15 @@
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-- (void) dealloc
-{
-    [mDisplayString release];
-    [mURL release];
-    [mFontAttributesRed release];
-    [mFontAttributesBlue release];
-
-    [super dealloc];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-
 - (void) setURL: (NSURL*) url displayString: (NSString*) displayString
 {
-    [mDisplayString release];
-    [mURL release];
-    
     if (displayString == nil)
     {
         displayString = [url absoluteString];
     }
 
-    mDisplayString  = [displayString retain];
-    mURL            = [url retain];
+    mDisplayString  = displayString;
+    mURL            = url;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------

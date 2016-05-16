@@ -28,8 +28,7 @@
     CFRelease (shiftUp);
     
     while (1)
-    {
-        NSAutoreleasePool*  pool  = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
         NSEvent*            event = [NSApp nextEventMatchingMask: NSFlagsChangedMask
                                                        untilDate: [NSDate distantPast]
                                                           inMode: NSDefaultRunLoopMode
@@ -39,13 +38,11 @@
         
         if ((event == nil) || (modifierWasPressed == YES))
         {
-            [pool release];
             break;
         }
         else
         {
             [NSApp sendEvent: event];
-            [pool release];
         }
     }
 
@@ -90,7 +87,6 @@
     if (self != nil)
     {
         [self doesNotRecognizeSelector: _cmd];
-        [self release];
     }
     
     return nil;

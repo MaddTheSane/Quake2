@@ -23,7 +23,7 @@
 @property (readonly, copy) NSString *deviceType;
 
 @property (readonly) BOOL hasActuator;
-@property (readonly, retain) FDHIDActuator *actuator;
+@property (readonly, strong) FDHIDActuator *actuator;
 
 @end
 

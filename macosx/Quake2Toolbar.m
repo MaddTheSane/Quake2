@@ -26,11 +26,11 @@
 
 - (void) awakeFromNib
 {
-    NSToolbar *	myToolbar = [[[NSToolbar alloc] initWithIdentifier: @"Quake Toolbar"] autorelease];
+    NSToolbar *	myToolbar = [[NSToolbar alloc] initWithIdentifier: @"Quake Toolbar"];
 
     // required for event handling:
 	mRequestedCommands	= [[NSMutableArray alloc] initWithCapacity: 0];
-	mDistantPast		= [[NSDate distantPast] retain];
+	mDistantPast		= [NSDate distantPast];
 	mDenyDrag			= NO;
     NSImage	* aboutImg	= [[NSWorkspace sharedWorkspace] iconForFileType: NSFileTypeForHFSTypeCode(kToolbarInfoIcon)];
 
@@ -38,7 +38,7 @@
 	[linkView setURL: [NSURL URLWithString: SYS_FRUITZ_OF_DOJO_URL]];
 
     // initialize the toolbar:
-    mToolbarItems = [[NSMutableDictionary dictionary] retain];
+    mToolbarItems = [[NSMutableDictionary alloc] init];
     [self addToolbarItem: mToolbarItems identifier: SYS_ABOUT_TOOLBARITEM label: @"About" paletteLabel: @"About"
                  toolTip: @"About Quake II." image: aboutImg
                 selector: @selector (showAboutView:)];
@@ -72,7 +72,7 @@
                                                   willBeInsertedIntoToolbar: (BOOL) theFlag
 {
     NSToolbarItem *myItem = [mToolbarItems objectForKey: theIdentifier];
-    NSToolbarItem *myNewItem = [[[NSToolbarItem alloc] initWithItemIdentifier: theIdentifier] autorelease];
+    NSToolbarItem *myNewItem = [[NSToolbarItem alloc] initWithItemIdentifier: theIdentifier];
     
     [myNewItem setLabel: [myItem label]];
     [myNewItem setPaletteLabel: [myItem paletteLabel]];
@@ -116,7 +116,7 @@
 				  label: (NSString *) theLabel paletteLabel: (NSString *) thePaletteLabel
 				toolTip: (NSString *) theToolTip image: (NSImage*) theItemContent selector: (SEL) theAction
 {
-	NSToolbarItem *	myItem = [[[NSToolbarItem alloc] initWithItemIdentifier: theIdentifier] autorelease];
+	NSToolbarItem *	myItem = [[NSToolbarItem alloc] initWithItemIdentifier: theIdentifier];
 	
 	[myItem setLabel: theLabel];
 	[myItem setPaletteLabel: thePaletteLabel];
@@ -142,7 +142,7 @@
     
     if (mEmptyView == NULL)
     {
-        mEmptyView = [[startupWindow contentView] retain];
+        mEmptyView = [startupWindow contentView];
     }
 
     myCurFrame = [NSWindow contentRectForFrameRect:[startupWindow frame] styleMask:[startupWindow styleMask]];

@@ -651,8 +651,6 @@ void	Sys_CheckForIDDirectory (void)
 				}
 			}
 			
-			[myOpenPanel release];
-			
 			if (myResult == NSCancelButton)
 			{
 				[NSApp terminate: nil];
@@ -880,12 +878,12 @@ int	main (int theArgCount, const char **theArgValues)
 
 #else
 
-    NSAutoreleasePool *	myPool		= [[NSAutoreleasePool alloc] init];
-    NSUserDefaults *	myDefaults	= [NSUserDefaults standardUserDefaults];
+    @autoreleasepool {
+        NSUserDefaults *	myDefaults	= [NSUserDefaults standardUserDefaults];
 
-    // required for the animated document window (needs to be done early!):
-    [myDefaults registerDefaults: [NSDictionary dictionaryWithObject: @"YES" forKey: @"AppleDockIconEnabled"]];
-    [myPool release];
+        // required for the animated document window (needs to be done early!):
+        [myDefaults registerDefaults: [NSDictionary dictionaryWithObject: @YES forKey: @"AppleDockIconEnabled"]];
+    }
 	
     // the Finder passes "-psn_x_xxxxxxx". remove it.
     if (theArgCount == 2 && theArgValues[1] != NULL && strstr (theArgValues[1], "-psn_") == theArgValues[1])

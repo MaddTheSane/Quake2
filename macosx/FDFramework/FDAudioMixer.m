@@ -125,8 +125,7 @@ static FDAudioMixer*    sFDAudioMixerShared     = nil;
         
         if (err != noErr)
         {
-            [self release];
-            self = nil;
+            return nil;
         }
     }
     
@@ -145,15 +144,11 @@ static FDAudioMixer*    sFDAudioMixerShared     = nil;
         DisposeAUGraph (mAudioGraph);    
     }
 
-    [mObservers release];
-    [mBusNumbers release];
     
     if (self == sFDAudioMixerShared)
     {
         sFDAudioMixerShared = nil;
     }
-    
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
@@ -236,16 +231,13 @@ static FDAudioMixer*    sFDAudioMixerShared     = nil;
     
     while (1)
     {
-        NSNumber* busNumber = [[NSNumber alloc] initWithInt: i];
+        NSNumber* busNumber = @(i);
         
         if ([mBusNumbers containsObject: busNumber] == NO)
         {
             [mBusNumbers addObject: busNumber];
-            [busNumber release];
             break;
         }
-        
-        [busNumber release];
         
         ++i;
     }

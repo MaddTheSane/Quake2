@@ -22,8 +22,8 @@
 
 - (NSString*) description;
 
-@property (readonly, retain) FDDisplayMode* displayMode;
-@property (readonly, retain) FDDisplayMode* originalMode;
+@property (readonly, strong) FDDisplayMode* displayMode;
+@property (readonly, strong) FDDisplayMode* originalMode;
 
 - (NSArray<FDDisplayMode*>*) displayModes;
 

@@ -40,11 +40,6 @@ static const DWORD  sFDHIDActuatorDuration = 2 * FF_SECONDS / 100;
 {
     self = [super init];
     
-    if (self != nil)
-    {
-        [self release];
-    }
-    
     return nil;
 }
 
@@ -188,8 +183,7 @@ static const DWORD  sFDHIDActuatorDuration = 2 * FF_SECONDS / 100;
         
         if (!success)
         {
-            [self release];
-            self = nil;
+            return nil;
         }
     }
     
@@ -214,8 +208,6 @@ static const DWORD  sFDHIDActuatorDuration = 2 * FF_SECONDS / 100;
     {
         IOObjectRelease (mIoService);
     }
-    
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------

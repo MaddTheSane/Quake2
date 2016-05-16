@@ -160,70 +160,66 @@ BOOL	CDAudio_GetTrackList (void)
 
 BOOL	CDAudio_ScanForMedia (NSString* mediaFolder, NSConditionLock* stopConditionLock)
 {
-    NSAutoreleasePool*  pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
     
-    [sCDAudioMountPath release];
-    [sCDAudioTrackList release];
-    
-    sCDAudioMountPath   = nil;
-    sCDAudioTrackList   = [[NSMutableArray alloc] init];
-    sCDAudioTrack       = 0;
-    
-    // Get the current MP3 listing or retrieve the TOC of the AudioCD:
-    if (mediaFolder != nil)
-    {        
-        CDAudio_AddTracks2List (mediaFolder, [NSArray arrayWithObjects: @"mp3", @"mp4", @"m4a", nil], stopConditionLock);
-    }
-    else
-    {
-        struct statfs*  mountList = 0;
-        // get number of mounted devices:
-        UInt32			mountCount = getmntinfo (&mountList, MNT_NOWAIT);
         
-        // zero devices? return.
-        if (mountCount <= 0)
+        sCDAudioMountPath   = nil;
+        sCDAudioTrackList   = [[NSMutableArray alloc] init];
+        sCDAudioTrack       = 0;
+        
+        // Get the current MP3 listing or retrieve the TOC of the AudioCD:
+        if (mediaFolder != nil)
+        {        
+            CDAudio_AddTracks2List (mediaFolder, [NSArray arrayWithObjects: @"mp3", @"mp4", @"m4a", nil], stopConditionLock);
+        }
+        else
         {
-            [sCDAudio release];
+            struct statfs*  mountList = 0;
+            // get number of mounted devices:
+            UInt32			mountCount = getmntinfo (&mountList, MNT_NOWAIT);
             
+            // zero devices? return.
+            if (mountCount <= 0)
+            {
+                
 			sCDAudio	= NULL;
-            sCDAudioTrack	= 0;
-            
+                sCDAudioTrack	= 0;
+                
 			CDAudio_Error (CDERR_NO_MEDIA_FOUND);
-            return (0);
-        }
+                return (0);
+            }
+            
+            while (mountCount--)
+            {
+                // is the device read only?
+                if ((mountList[mountCount].f_flags & MNT_RDONLY) != MNT_RDONLY) continue;
+                
+                // is the device local?
+                if ((mountList[mountCount].f_flags & MNT_LOCAL) != MNT_LOCAL) continue;
+                
+                // is the device "cdda"?
+                if (strcmp (mountList[mountCount].f_fstypename, "cddafs")) continue;
+                
+                // is the device a directory?
+                if (strrchr (mountList[mountCount].f_mntonname, '/') == NULL) continue;
+                
+                // we have found a Audio-CD!
+                Com_Printf ("Found Audio-CD at mount entry: \"%s\".\n", mountList[mountCount].f_mntonname);
+                
+                mediaFolder = [NSString stringWithCString: mountList[mountCount].f_mntonname encoding: NSASCIIStringEncoding];
         
-        while (mountCount--)
-        {
-            // is the device read only?
-            if ((mountList[mountCount].f_flags & MNT_RDONLY) != MNT_RDONLY) continue;
-            
-            // is the device local?
-            if ((mountList[mountCount].f_flags & MNT_LOCAL) != MNT_LOCAL) continue;
-            
-            // is the device "cdda"?
-            if (strcmp (mountList[mountCount].f_fstypename, "cddafs")) continue;
-            
-            // is the device a directory?
-            if (strrchr (mountList[mountCount].f_mntonname, '/') == NULL) continue;
-            
-            // we have found a Audio-CD!
-            Com_Printf ("Found Audio-CD at mount entry: \"%s\".\n", mountList[mountCount].f_mntonname);
-            
-            mediaFolder = [NSString stringWithCString: mountList[mountCount].f_mntonname encoding: NSASCIIStringEncoding];
-    
-            Con_Print ("Scanning for audio tracks. Be patient!\n");
-            CDAudio_AddTracks2List (mediaFolder, [NSArray arrayWithObjects: @"aiff", @"cdda", nil], stopConditionLock);
-            
-            break;
+                Con_Print ("Scanning for audio tracks. Be patient!\n");
+                CDAudio_AddTracks2List (mediaFolder, [NSArray arrayWithObjects: @"aiff", @"cdda", nil], stopConditionLock);
+                
+                break;
+            }
         }
-    }
     
     // release the pool:
-    [pool release];
+    }
     
     if ([sCDAudioTrackList count] == 0)
     {
-        [sCDAudioTrackList release];
         sCDAudioTrackList = nil;
         
         Con_Print ("CDAudio: No audio tracks found!\n");
@@ -378,10 +374,6 @@ int	CDAudio_Init (void)
 
 void	CDAudio_Shutdown (void)
 {
-    [sCDAudio release];
-    [sCDAudioMountPath release];
-    [sCDAudioTrackList release];
-    
     sCDAudio            = nil;
     sCDAudioMountPath   = nil;
     sCDAudioTrackList   = nil;
@@ -423,7 +415,6 @@ void	CD_f (void)
     // turn CD playback off:
     if (Q_strcasecmp (arg, "off") == 0)
     {
-        [sCDAudio release];
         sCDAudio = nil;
         
 		return;

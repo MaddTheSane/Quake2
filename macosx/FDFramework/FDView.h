@@ -15,7 +15,7 @@
 
 - (instancetype) initWithFrame: (NSRect) frameRect;
 
-@property (nonatomic, retain) NSCursor *cursor;
+@property (nonatomic, strong) NSCursor *cursor;
 @property BOOL vsync;
 
 - (NSOpenGLContext*) openGLContext;

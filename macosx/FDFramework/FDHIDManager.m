@@ -96,7 +96,7 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
     {
         if ([[FDPreferences sharedPrefs] boolForKey: FD_HID_LCC_SUPPRESS_WARNING] == NO)
         {
-            NSAlert*    alert   = [[[NSAlert alloc] init] autorelease];
+            NSAlert*    alert   = [[NSAlert alloc] init];
             NSString*   appName = [[NSRunningApplication currentApplication] localizedName];
             NSString*   message = [NSString stringWithFormat: @"An installation of the Logitech Control Center software "
                                    @"has been detected. This software is not compatible with %@.",
@@ -130,7 +130,6 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
     if (self != nil)
     {
         [self doesNotRecognizeSelector: _cmd];
-        [self release];
     }
     
     return nil;
@@ -175,8 +174,7 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
         
         if (!success)
         {
-            [self release];
-            self = nil;
+            return nil;
         }
     }
     
@@ -188,7 +186,6 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-    [mDevices release];
     
     if (mpIOHIDManager)
     {
@@ -204,8 +201,6 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
     }
     
     sFDHIDManagerInstance = nil;
-    
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
@@ -254,9 +249,9 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
         }
      }
     
-    IOHIDManagerSetDeviceMatchingMultiple (mpIOHIDManager, (CFMutableArrayRef) matchingArray);
-    IOHIDManagerRegisterDeviceMatchingCallback (mpIOHIDManager, FDHIDManager_DeviceMatchingCallback, self);
-    IOHIDManagerRegisterDeviceRemovalCallback (mpIOHIDManager, FDHIDManager_DeviceRemovalCallback, self);
+    IOHIDManagerSetDeviceMatchingMultiple (mpIOHIDManager, (__bridge CFMutableArrayRef) matchingArray);
+    IOHIDManagerRegisterDeviceMatchingCallback (mpIOHIDManager, FDHIDManager_DeviceMatchingCallback, (__bridge void *)(self));
+    IOHIDManagerRegisterDeviceRemovalCallback (mpIOHIDManager, FDHIDManager_DeviceRemovalCallback, (__bridge void *)(self));
     IOHIDManagerScheduleWithRunLoop (mpIOHIDManager, CFRunLoopGetCurrent (), kCFRunLoopDefaultMode);
 }
 
@@ -332,7 +327,7 @@ static void             FDHIDManager_DeviceRemovalCallback (void*, IOReturn, voi
                 [device setDelegate: self];
                 [mDevices addObject: device];
                 
-                IOHIDDeviceRegisterInputValueCallback (pDevice, &FDHIDManager_InputHandler, device);
+                IOHIDDeviceRegisterInputValueCallback (pDevice, &FDHIDManager_InputHandler, (__bridge void *)(device));
                 
                 break;
             }
@@ -368,7 +363,7 @@ void FDHIDManager_InputHandler (void* pContext, IOReturn result, void* pSender, 
     
     if ([NSApp isActive] == YES)
     {
-        FDHIDDevice* device = (FDHIDDevice*) pContext;
+        FDHIDDevice* device = (__bridge FDHIDDevice*) pContext;
         
         [device handleInput: pValue];
     }
@@ -382,7 +377,7 @@ void FDHIDManager_DeviceMatchingCallback (void* pContext, IOReturn result, void*
     FD_ASSERT (pContext == sFDHIDManagerInstance);
     FD_ASSERT (pDevice != nil);
 
-    [((FDHIDManager*) pContext) registerDevice: pDevice];
+    [((__bridge FDHIDManager*) pContext) registerDevice: pDevice];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
@@ -393,7 +388,7 @@ void FDHIDManager_DeviceRemovalCallback (void* pContext, IOReturn result, void* 
     FD_ASSERT (pContext == sFDHIDManagerInstance);
     FD_ASSERT (pDevice != nil);
     
-    [((FDHIDManager*) pContext) unregisterDevice: pDevice];
+    [((__bridge FDHIDManager*) pContext) unregisterDevice: pDevice];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------

@@ -850,8 +850,8 @@ Boolean	GLimp_InitGraphics (int *theWidth, int *theHeight, float theRefreshRate,
         // got we an exact mode match? if not report the new resolution again:
         if (myExactMatch == NO)
         {
-            *theWidth	= [[(NSDictionary *) myDisplayMode objectForKey: (NSString *) kCGDisplayWidth] intValue];
-            *theHeight	= [[(NSDictionary *) myDisplayMode objectForKey: (NSString *) kCGDisplayHeight] intValue];
+            *theWidth	= [[(__bridge NSDictionary *) myDisplayMode objectForKey: (NSString *) kCGDisplayWidth] intValue];
+            *theHeight	= [[(__bridge NSDictionary *) myDisplayMode objectForKey: (NSString *) kCGDisplayHeight] intValue];
 			
             ri.Con_Printf (PRINT_ALL, "can\'t switch to requested mode. using %d x %d.\n", *theWidth, *theHeight);
         }
@@ -862,7 +862,7 @@ Boolean	GLimp_InitGraphics (int *theWidth, int *theHeight, float theRefreshRate,
             ri.Sys_Error (ERR_FATAL, "Can\'t switch to the selected mode!\n");
         }
 
-        myDisplayDepth = [[(NSDictionary *) myDisplayMode objectForKey: (id) kCGDisplayBitsPerPixel] intValue];
+        myDisplayDepth = [[(__bridge NSDictionary *) myDisplayMode objectForKey: (id) kCGDisplayBitsPerPixel] intValue];
     }
     else
     {
@@ -871,7 +871,7 @@ Boolean	GLimp_InitGraphics (int *theWidth, int *theHeight, float theRefreshRate,
             CGDisplaySwitchToMode (kCGDirectMainDisplay, gGLOriginalMode);
         }
     
-        myDisplayDepth = [[(NSDictionary *)  gGLOriginalMode objectForKey: (id) kCGDisplayBitsPerPixel] intValue];
+        myDisplayDepth = [[(__bridge NSDictionary *)  gGLOriginalMode objectForKey: (id) kCGDisplayBitsPerPixel] intValue];
     }
     
     // check if we have access to sample buffers:

@@ -65,7 +65,7 @@ typedef struct
     NSString*               mProductName;
     FDHIDActuator*          mActuator;
     const FDHIDDeviceDesc*  mpDeviceDesc;
-    FDHIDManager*           mDelegate;
+    FDHIDManager*           __weak mDelegate;
 }
 
 + (NSArray<NSDictionary<NSString*,NSNumber*>*>*) matchingDictionaries: (const FDHIDUsageToDevice*) usageMap withCount: (NSUInteger) numUsages;
@@ -75,7 +75,7 @@ typedef struct
 
 - (instancetype) initWithDevice: (IOHIDDeviceRef) pDevice deviceDescriptors: (const FDHIDDeviceDesc*) deviceDescriptors;
 
-@property (assign) FDHIDManager* delegate;
+@property (weak) FDHIDManager* delegate;
 - (void) pushEvent: (const FDHIDEvent*) pEvent;
 
 @property (readonly, assign) IOHIDDeviceRef iohidDeviceRef;

@@ -58,26 +58,10 @@ static NSString*        sFDDebugDefaultName = @"";
     return isAttached;
 }
 
-- (void) dealloc
-{
-    [mName release];
-    [mLogPrefix release];
-    
-    if (self == sFDDebugInstance)
-    {
-        sFDDebugInstance = nil;
-    }
-    
-    [super dealloc];
-}
-
 //----------------------------------------------------------------------------------------------------------------------------
 
 - (void) setName: (NSString*) name
 {
-    [mName release];
-    [mLogPrefix release];
-    
     mName = [[NSString alloc] initWithString: name];
     
     if ([name length])
@@ -117,8 +101,6 @@ static NSString*        sFDDebugDefaultName = @"";
     {
         NSLog (@"%@%@", mLogPrefix, msg);
     }
-    
-    [msg release];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
@@ -149,8 +131,6 @@ static NSString*        sFDDebugDefaultName = @"";
         NSLog (@"%@An error has occured: %@\n", mLogPrefix, msg);
         NSRunCriticalAlertPanel (@"An error has occured:", @"%@", nil, nil, nil, msg);
     }
-    
-    [msg release];
     
     exit (EXIT_FAILURE);
 }
@@ -227,7 +207,7 @@ static NSString*        sFDDebugDefaultName = @"";
     {
         if (mpAssertHandler)
         {
-            const char* pFile   = [file cStringUsingEncoding: NSUTF8StringEncoding];
+            const char* pFile   = [file fileSystemRepresentation];
             const char* pMsg    = [msg cStringUsingEncoding: NSUTF8StringEncoding];
             
             resume = mpAssertHandler (pFile, (unsigned int) line, pMsg);
@@ -239,12 +219,8 @@ static NSString*        sFDDebugDefaultName = @"";
             NSLog (@"%@%@ (%d): Assertion failed: %@", mLogPrefix, file, (unsigned int) line, msg);
             
             resume = (NSRunCriticalAlertPanel (@"Assertion failed:", @"%@", @"Resume", @"Crash", nil, dlg) == NSAlertDefaultReturn);
-            
-            [dlg release];
         }
     }
-    
-    [msg release];
     
     return resume;
 }

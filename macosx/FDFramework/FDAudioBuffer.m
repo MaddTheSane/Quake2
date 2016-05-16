@@ -47,7 +47,6 @@ static OSStatus FDAudioBuffer_AudioUnitCallback (void*, AudioUnitRenderActionFla
     if (self != nil)
     {
         [self doesNotRecognizeSelector: _cmd];
-        [self release];
     }
     
     return nil;
@@ -73,7 +72,7 @@ static OSStatus FDAudioBuffer_AudioUnitCallback (void*, AudioUnitRenderActionFla
         
         if (mixer != nil)
         {
-            mMixer      = [mixer retain];
+            mMixer      = mixer;
             mBusNumber  = [mixer allocateBus];
             audioGraph  = [mixer audioGraph];
             
@@ -106,7 +105,7 @@ static OSStatus FDAudioBuffer_AudioUnitCallback (void*, AudioUnitRenderActionFla
             AURenderCallbackStruct  inCallback = { 0 };
             
             inCallback.inputProc            = FDAudioBuffer_AudioUnitCallback;
-            inCallback.inputProcRefCon      = self;
+            inCallback.inputProcRefCon      = (__bridge void * _Nullable)(self);
         
             err = AudioUnitSetProperty (converterUnit, kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Input, 0,
                                         &inCallback, sizeof (inCallback));
@@ -156,7 +155,6 @@ static OSStatus FDAudioBuffer_AudioUnitCallback (void*, AudioUnitRenderActionFla
         
         if (err != noErr)
         {
-            [self release];
             self = nil;
         }
     }
@@ -190,10 +188,8 @@ static OSStatus FDAudioBuffer_AudioUnitCallback (void*, AudioUnitRenderActionFla
         }
         
         [mMixer deallocateBus: mBusNumber];
-        [mMixer release];
     }
     
-    [super dealloc];
 }
 
 
@@ -233,7 +229,7 @@ static OSStatus FDAudioBuffer_AudioUnitCallback (void* pContext, AudioUnitRender
                                                  const AudioTimeStamp* pTime, UInt32 bus, UInt32 numFrames,
                                                  AudioBufferList* pIoData)
 {
-    FDAudioBuffer* pSound           = (FDAudioBuffer*) pContext;
+    FDAudioBuffer* pSound           = (__bridge FDAudioBuffer*) pContext;
     AudioBuffer*    pAudioBuffer    = &pIoData->mBuffers[0];
     NSUInteger      bytesToWrite    = pAudioBuffer->mDataByteSize;
     

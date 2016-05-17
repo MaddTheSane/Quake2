@@ -1994,7 +1994,6 @@
 				INFOPLIST_FILE = FDFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.FDFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2028,7 +2027,6 @@
 				INFOPLIST_FILE = FDFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.FDFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2323,6 +2321,7 @@
 				55A8AB081CEAA0EE0083E2C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2C835931529122500867DFC /* Build configuration list for PBXProject "Quake II" */ = {
 			isa = XCConfigurationList;

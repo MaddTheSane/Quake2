@@ -510,7 +510,7 @@ void SV_FatPVS (vec3_t org)
 			continue;		// already have the cluster we want
 		src = CM_ClusterPVS(leafs[i]);
 		for (j=0 ; j<longs ; j++)
-			((long *)fatpvs)[j] |= ((long *)src)[j];
+			((int *)fatpvs)[j] |= ((int *)src)[j];
 	}
 }
 

@@ -1989,6 +1989,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = FDFramework/Info.plist;
@@ -2022,6 +2023,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = FDFramework/Info.plist;
@@ -2057,6 +2059,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
+					C_ONLY,
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2090,6 +2093,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					C_ONLY,
+					"$(inherited)",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2114,7 +2121,7 @@
 					VID_DO_NOT_UNLOAD_MODULES,
 					CAPTURE_ALL_DISPLAYS,
 					CMD_FIX_LINE_BREAKS,
-					C_ONLY,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/Quake II/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -2136,7 +2143,7 @@
 					VID_DO_NOT_UNLOAD_MODULES,
 					CAPTURE_ALL_DISPLAYS,
 					CMD_FIX_LINE_BREAKS,
-					C_ONLY,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/Quake II/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -2151,7 +2158,7 @@
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEDICATED_ONLY,
-					C_ONLY,
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2162,7 +2169,7 @@
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEDICATED_ONLY,
-					C_ONLY,
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2176,7 +2183,7 @@
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CLASSIC_VER_COMPATIBILITY,
-					C_ONLY,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/Game Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -2194,7 +2201,7 @@
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CLASSIC_VER_COMPATIBILITY,
-					C_ONLY,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/Game Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -2211,10 +2218,8 @@
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CLASSIC_VER_COMPATIBILITY,
-					C_ONLY,
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "Resources/CTF Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				ONLY_ACTIVE_ARCH = NO;
@@ -2231,9 +2236,8 @@
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CLASSIC_VER_COMPATIBILITY,
-					C_ONLY,
+					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "Resources/CTF Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = GameMac;
@@ -2250,7 +2254,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CAPTURE_ALL_DISPLAYS,
 					ENABLE_MULTI_TEXTURE_EXT,
-					C_ONLY,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/GL Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -2268,7 +2272,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CAPTURE_ALL_DISPLAYS,
 					ENABLE_MULTI_TEXTURE_EXT,
-					C_ONLY,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/GL Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -2285,7 +2289,7 @@
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CAPTURE_ALL_DISPLAYS,
-					C_ONLY,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/SW Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -2302,7 +2306,7 @@
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CAPTURE_ALL_DISPLAYS,
-					C_ONLY,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/SW Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";

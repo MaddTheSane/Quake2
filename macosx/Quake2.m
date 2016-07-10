@@ -13,7 +13,7 @@
 
 #import "Quake2.h"
 #import "sys_osx.h"
-#import "FDModifierCheck.h"
+#import <FruitzOfDojo/FDModifierCheck.h>
 #import "cd_osx.h"
 #import "in_osx.h"
 #import "vid_osx.h"

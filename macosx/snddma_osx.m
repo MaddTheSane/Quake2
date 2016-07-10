@@ -14,7 +14,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------------
 
-#import "FDFramework/FDFramework.h"
+#import <FruitzOfDojo/FruitzOfDojo.h>
 
 #include "client.h"
 #include "snd_loc.h"

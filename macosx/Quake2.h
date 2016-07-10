@@ -12,7 +12,7 @@
 #pragma mark Includes
 
 #import <Cocoa/Cocoa.h>
-#import "FDLinkView.h"
+#import <FruitzOfDojo/FDLinkView.h>
 
 #pragma mark -
 

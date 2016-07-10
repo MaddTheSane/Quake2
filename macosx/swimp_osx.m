@@ -20,7 +20,7 @@
 #pragma mark Includes
 
 #import <AppKit/AppKit.h>
-#import "FDScreenshot.h"
+#import <FruitzOfDojo/FDScreenshot.h>
 #include "r_local.h"
 
 #pragma mark -

@@ -34,7 +34,7 @@
 #import <AppKit/AppKit.h>
 #import <IOKit/graphics/IOGraphicsTypes.h>
 #include <OpenGL/OpenGL.h>
-#import "FDFramework/FDScreenshot.h"
+#import <FruitzOfDojo/FDScreenshot.h>
 
 #include "gl_local.h"
 

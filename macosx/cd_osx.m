@@ -28,7 +28,7 @@
 #import "sys_osx.h"
 #import "Quake2.h"
 
-#import "FDFramework/FDFramework.h"
+#import <FruitzOfDojo/FruitzOfDojo.h>
 
 #pragma mark -
 

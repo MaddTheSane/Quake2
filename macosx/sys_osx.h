@@ -72,6 +72,7 @@
 #define	SYS_VALIDATION_FILE1			@"GameMac.q2plug/Contents/MacOS/GameMac"
 #define	SYS_VALIDATION_FILE2			@"GamePPC.q2plug/Contents/MacOS/GamePPC"
 #define	SYS_VALIDATION_FILE3			@"GamePPC.bundle/Contents/MacOS/GamePPC"
+#define SYS_VALIDATION_FILE4            @"GameMac.q2plug"
 #define SYS_CD_PATH						"/Volumes/QUAKE2/Quake2InstallData"
 #define SYS_FRUITZ_OF_DOJO_URL			@"http://www.fruitz-of-dojo.de/"
 #define	SYS_SET_COMMAND					"+set"

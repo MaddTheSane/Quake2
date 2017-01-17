@@ -318,6 +318,11 @@
 		5556CDFE1CE95EB700C027F3 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Controller.xib; sourceTree = "<group>"; };
 		5556CE001CE961DB00C027F3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		555B01471E2E96A8007D3B5D /* game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
+		555B01491E2EA105007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		555B014B1E2EA105007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		555B014D1E2EA105007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		555B014F1E2EA105007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		555B01501E2EA12D007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
 		555E12DD1CE68DCA001C2DED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D2075FEA1529646A00F14280 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
@@ -641,6 +646,38 @@
 				555B01431E2E8EB3007D3B5D /* FDAudio.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		555B01481E2EA105007D3B5D /* CTF Module */ = {
+			isa = PBXGroup;
+			children = (
+				555B01491E2EA105007D3B5D /* Info.plist */,
+			);
+			path = "CTF Module";
+			sourceTree = "<group>";
+		};
+		555B014A1E2EA105007D3B5D /* Game Module */ = {
+			isa = PBXGroup;
+			children = (
+				555B014B1E2EA105007D3B5D /* Info.plist */,
+			);
+			path = "Game Module";
+			sourceTree = "<group>";
+		};
+		555B014C1E2EA105007D3B5D /* GL Renderer Module */ = {
+			isa = PBXGroup;
+			children = (
+				555B014D1E2EA105007D3B5D /* Info.plist */,
+			);
+			path = "GL Renderer Module";
+			sourceTree = "<group>";
+		};
+		555B014E1E2EA105007D3B5D /* SW Renderer Module */ = {
+			isa = PBXGroup;
+			children = (
+				555B014F1E2EA105007D3B5D /* Info.plist */,
+			);
+			path = "SW Renderer Module";
 			sourceTree = "<group>";
 		};
 		D2C8358E1529122500867DFC = {
@@ -1057,6 +1094,10 @@
 		D2C83714152944D000867DFC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				555B01481E2EA105007D3B5D /* CTF Module */,
+				555B014A1E2EA105007D3B5D /* Game Module */,
+				555B014C1E2EA105007D3B5D /* GL Renderer Module */,
+				555B014E1E2EA105007D3B5D /* SW Renderer Module */,
 				5556CDFD1CE95EB700C027F3 /* Controller.xib */,
 				D2DF6E4615295BA700B80579 /* GrowBox.tiff */,
 				D2DF6E631529631E00B80579 /* Quake II */,
@@ -1256,6 +1297,7 @@
 		D2DF6E631529631E00B80579 /* Quake II */ = {
 			isa = PBXGroup;
 			children = (
+				555B01501E2EA12D007D3B5D /* Info.plist */,
 				5556CE001CE961DB00C027F3 /* Icons.xcassets */,
 				D2DF6E641529635E00B80579 /* Credits.rtf */,
 				D207604E15296AF400F14280 /* InfoPlist.strings */,
@@ -2020,6 +2062,7 @@
 				INFOPLIST_FILE = "Resources/GL Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = ref_gl;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = q2plug;
 			};
 			name = Debug;
@@ -2039,6 +2082,7 @@
 				INFOPLIST_FILE = "Resources/GL Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = ref_gl;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = q2plug;
 			};
 			name = Release;
@@ -2057,6 +2101,7 @@
 				INFOPLIST_FILE = "Resources/SW Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = ref_soft;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = q2plug;
 			};
 			name = Debug;
@@ -2075,6 +2120,7 @@
 				INFOPLIST_FILE = "Resources/SW Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = ref_soft;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = q2plug;
 			};
 			name = Release;

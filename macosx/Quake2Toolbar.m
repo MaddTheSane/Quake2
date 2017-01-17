@@ -38,7 +38,7 @@
 	[linkView setURL: [NSURL URLWithString: SYS_FRUITZ_OF_DOJO_URL]];
 
     // initialize the toolbar:
-    mToolbarItems = [NSMutableDictionary dictionary];
+    mToolbarItems = [[NSMutableDictionary alloc] init];
     [self addToolbarItem: mToolbarItems identifier: SYS_ABOUT_TOOLBARITEM label: @"About" paletteLabel: @"About"
                  toolTip: @"About Quake II." image: aboutImg
                 selector: @selector (showAboutView:)];

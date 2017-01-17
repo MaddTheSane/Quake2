@@ -552,7 +552,24 @@ void	Sys_CheckForIDDirectory (void)
 					 myBaseDir[myPathLength - 1] == '2')
 				{
 					// check if the game plug-in exists:
-					myValidatePath	= [myBasePath stringByAppendingPathComponent: SYS_VALIDATION_FILE1];
+                    myValidatePath  = [myBasePath stringByAppendingPathComponent: SYS_VALIDATION_FILE4];
+                    {
+                        NSBundle *helperbundle = [NSBundle bundleWithPath:myValidatePath];
+                        //Just in case it was built under one name but is present as another
+                        NSString *path0 = [helperbundle executablePath];
+                        if (path0)
+                        {
+                            myValidatePath = path0;
+                        }
+                        else
+                        {
+                            myValidatePath = nil;
+                        }
+                    }
+                    if (!myValidatePath)
+                    {
+                        myValidatePath	= [myBasePath stringByAppendingPathComponent: SYS_VALIDATION_FILE1];
+                    }
 					myFileExists	= [[NSFileManager defaultManager] fileExistsAtPath: myValidatePath];
 		
 #ifdef __ppc__

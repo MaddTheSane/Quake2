@@ -321,7 +321,7 @@ char *ED_NewString (char *string)
 	char	*newb, *new_p;
 	int		i,l;
 	
-	l = strlen(string) + 1;
+	l = (int)strlen(string) + 1;
 
 	newb = gi.TagMalloc (l, TAG_LEVEL);
 
@@ -608,7 +608,8 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 
 	gi.dprintf ("%i entities inhibited\n", inhibit);
 
-#ifdef DEBUG
+//#ifdef DEBUG
+#if 0
 	i = 1;
 	ent = EDICT_NUM(i);
 	while (i < globals.num_edicts) {

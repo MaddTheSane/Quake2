@@ -317,6 +317,7 @@
 		553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FruitzOfDojo.xcodeproj; path = FDFramework/FruitzOfDojo.xcodeproj; sourceTree = "<group>"; };
 		5556CDFE1CE95EB700C027F3 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Controller.xib; sourceTree = "<group>"; };
 		5556CE001CE961DB00C027F3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		555B01471E2E96A8007D3B5D /* game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
 		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
 		555E12DD1CE68DCA001C2DED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D2075FEA1529646A00F14280 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
@@ -415,7 +416,7 @@
 		D2C836611529201500867DFC /* q_shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = q_shared.h; sourceTree = "<group>"; };
 		D2C8366F1529437000867DFC /* Dedicated Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dedicated Server"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C8368E152943FB00867DFC /* GameMac.q2plug */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameMac.q2plug; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2C8369A1529441800867DFC /* g_ai.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = g_ai.c; sourceTree = "<group>"; };
+		D2C8369A1529441800867DFC /* g_ai.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = g_ai.c; sourceTree = "<group>"; usesTabs = 1; };
 		D2C8369B1529441800867DFC /* g_chase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = g_chase.c; sourceTree = "<group>"; };
 		D2C8369C1529441800867DFC /* g_cmds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = g_cmds.c; sourceTree = "<group>"; };
 		D2C8369D1529441800867DFC /* g_combat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = g_combat.c; sourceTree = "<group>"; };
@@ -447,7 +448,7 @@
 		D2C836C91529442C00867DFC /* m_boss32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_boss32.h; sourceTree = "<group>"; };
 		D2C836CA1529442C00867DFC /* m_brain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = m_brain.c; sourceTree = "<group>"; };
 		D2C836CB1529442C00867DFC /* m_brain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_brain.h; sourceTree = "<group>"; };
-		D2C836CC1529442C00867DFC /* m_chick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = m_chick.c; sourceTree = "<group>"; };
+		D2C836CC1529442C00867DFC /* m_chick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = m_chick.c; sourceTree = "<group>"; usesTabs = 1; };
 		D2C836CD1529442C00867DFC /* m_chick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_chick.h; sourceTree = "<group>"; };
 		D2C836CE1529442C00867DFC /* m_flash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = m_flash.c; sourceTree = "<group>"; };
 		D2C836CF1529442C00867DFC /* m_flipper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = m_flipper.c; sourceTree = "<group>"; };
@@ -919,6 +920,7 @@
 			);
 			name = "Game Modules";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		D2C83664152942FF00867DFC /* Capture The Flag */ = {
 			isa = PBXGroup;
@@ -1016,6 +1018,7 @@
 		D2C836691529433800867DFC /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				555B01471E2E96A8007D3B5D /* game.h */,
 				D2C836A01529441800867DFC /* g_local.h */,
 			);
 			name = Headers;
@@ -1946,7 +1949,6 @@
 				);
 				INFOPLIST_FILE = "Resources/Game Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
 			};
@@ -1981,7 +1983,6 @@
 				);
 				INFOPLIST_FILE = "Resources/CTF Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
 			};

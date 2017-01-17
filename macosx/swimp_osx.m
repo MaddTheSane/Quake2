@@ -433,7 +433,6 @@ void	SWimp_Shutdown (void)
     // release the miniwindow:
     if (gVidMiniWindow != NULL)
     {
-        [gVidMiniWindow release];
         gVidMiniWindow = NULL;
     }
 
@@ -465,14 +464,12 @@ void	SWimp_CloseWindow (void)
     // remove the old view:
     if (gVidView != NULL)
     {
-        [gVidView release];
         gVidView = NULL;
     }
     
     // free the window buffer:
     if (gVidWindowBuffer != NULL)
     {
-        [gVidWindowBuffer release];
         gVidWindowBuffer = NULL;
     }
 }
@@ -549,8 +546,8 @@ rserr_t	SWimp_SetMode (int *theWidth, int *theHeight, int theMode, qboolean theF
         // got we an exact mode match? if not report the new resolution again:
         if (myExactMatch == NO)
         {
-            gVidWidth = [[(NSDictionary *) myDisplayMode objectForKey: (NSString *) kCGDisplayWidth] intValue];
-            myVidHeight = [[(NSDictionary *) myDisplayMode objectForKey:(NSString *) kCGDisplayHeight] intValue];
+            gVidWidth = [[(__bridge NSDictionary *) myDisplayMode objectForKey: (NSString *) kCGDisplayWidth] intValue];
+            myVidHeight = [[(__bridge NSDictionary *) myDisplayMode objectForKey:(NSString *) kCGDisplayHeight] intValue];
 
             if (myVideoIsZoomed == YES)
             {

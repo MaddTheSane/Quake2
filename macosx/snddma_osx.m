@@ -118,7 +118,6 @@ void	SNDDMA_Shutdown (void)
 {
     [[FDAudioMixer sharedAudioMixer] stop];
     
-    [sSndAudioBuffer release];
     sSndAudioBuffer = nil;
 }
 

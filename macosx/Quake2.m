@@ -56,16 +56,6 @@
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- (void) dealloc
-{
-	[mRequestedCommands release];
-	[mModFolder release];
-    [mDistantPast release];
-    [super dealloc];
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 - (BOOL) application: (NSApplication *) theSender openFile: (NSString *) theFilePath
 {
     // allow only dragging one time as command line parameter:
@@ -154,7 +144,7 @@
         strcpy (gSysArgValues[3], myMod);
         
         // get the path of the mod [compare it with the id1 path later]:
-		mModFolder = [[theFilePath stringByDeletingLastPathComponent] retain];
+		mModFolder = [theFilePath stringByDeletingLastPathComponent];
 
         return (YES);
     }
@@ -372,7 +362,7 @@
         NSString	*myParameters;
 
         // someone passed command line parameters:
-        myParameters = [[[NSString alloc] init] autorelease];
+        myParameters = [[NSString alloc] init];
 
         if (myParameters != NULL)
         {

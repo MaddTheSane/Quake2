@@ -380,8 +380,6 @@ qboolean VID_LoadRefresh (char *theName)
     }
     
     chdir (myBundlePath);
-	
-    [myAppBundle release];
     
     // prepare the bundle name:
     snprintf (myFileName, MAXPATHLEN, "%s.q2plug/Contents/MacOS/%s", theName, theName);
@@ -769,8 +767,6 @@ void	VID_GetDisplayModes (void)
 
         VID_AddModeToList (myWidth, myHeight, myRate);
     }
-    
-	[mySortedModes release];
     
     if (gVIDModeCount == 0)
     {

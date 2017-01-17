@@ -256,6 +256,13 @@
 			remoteGlobalIDString = 556478231CECEE1000ECD01B;
 			remoteInfo = FruitzOfDojo;
 		};
+		555B01421E2E8EB3007D3B5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5531D5061E282D6000BDBF21;
+			remoteInfo = FDAudio;
+		};
 		5580B6181CE7ADB7001EF9BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2C835901529122500867DFC /* Project object */;
@@ -630,6 +637,7 @@
 			children = (
 				553C30501D3300C900EDD74F /* FruitzOfDojo.framework */,
 				553C30521D3300C900EDD74F /* FruitzOfDojoSwift.framework */,
+				555B01431E2E8EB3007D3B5D /* FDAudio.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1373,7 +1381,7 @@
 		D2C835901529122500867DFC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 			};
 			buildConfigurationList = D2C835931529122500867DFC /* Build configuration list for PBXProject "Quake II" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1419,6 +1427,13 @@
 			fileType = wrapper.framework;
 			path = FruitzOfDojoSwift.framework;
 			remoteRef = 553C30511D3300C900EDD74F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		555B01431E2E8EB3007D3B5D /* FDAudio.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FDAudio.framework;
+			remoteRef = 555B01421E2E8EB3007D3B5D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1776,12 +1791,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -1815,12 +1833,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;

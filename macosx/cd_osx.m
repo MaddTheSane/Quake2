@@ -53,7 +53,7 @@ BOOL	CDAudio_ScanForMedia (NSString* mediaFolder, NSConditionLock* stopCondition
 
 void	CDAudio_Error (cderror_t theErrorNumber)
 {
-    if ([[NSApp delegate] mediaFolder] == NULL)
+    if ([(Quake2*)[NSApp delegate] mediaFolder] == NULL)
     {
         Com_Printf ("Audio-CD driver: ");
     }
@@ -92,7 +92,7 @@ void	CDAudio_Error (cderror_t theErrorNumber)
             Com_Printf ("Can\'t eject Audio-CD!\n");
             break;
         case CDERR_NO_FILES_FOUND:
-            if ([[NSApp delegate] mediaFolder] == NULL)
+            if ([(Quake2*)[NSApp delegate] mediaFolder] == NULL)
             {
                 Com_Printf ("No audio tracks found.\n");
             }
@@ -153,7 +153,7 @@ void	CDAudio_AddTracks2List (NSString* mountPath, NSArray* extensions, NSConditi
 
 BOOL	CDAudio_GetTrackList (void)
 {
-    return CDAudio_ScanForMedia([[NSApp delegate] mediaFolder], nil);
+    return CDAudio_ScanForMedia([(Quake2*)[NSApp delegate] mediaFolder], nil);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -449,7 +449,7 @@ void	CD_f (void)
                 numTracks = [sCDAudioTrackList count];
             }
             
-            if ([[NSApp delegate] mediaFolder] == nil)
+            if ([(Quake2*)[NSApp delegate] mediaFolder] == nil)
             {
                 Con_Print ("CD");
             }
@@ -466,7 +466,7 @@ void	CD_f (void)
     // the following commands require a valid track array, so build it, if not present:
     if (sCDAudioTrackList == nil)
     {
-        if (!CDAudio_ScanForMedia ([[NSApp delegate] mediaFolder], nil))
+        if (!CDAudio_ScanForMedia ([(Quake2*)[NSApp delegate] mediaFolder], nil))
         {
             return;
         }
@@ -515,7 +515,7 @@ void	CD_f (void)
     // eject the CD:
     if (Q_strcasecmp (arg, "eject") == 0)
     {
-        if (([[NSApp delegate] mediaFolder] == nil) && (sCDAudioMountPath != nil))
+        if (([(Quake2*)[NSApp delegate] mediaFolder] == nil) && (sCDAudioMountPath != nil))
         {
             NSURL*      url = [NSURL fileURLWithPath: sCDAudioMountPath];
             NSError*    err = nil;

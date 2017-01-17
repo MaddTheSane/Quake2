@@ -661,7 +661,7 @@ void	Sys_CheckForIDDirectory (void)
     }
     
     // just check if the mod is located at the same folder as the id1 folder:
-	if ([[NSApp delegate] wasDragged] == YES && [[[NSApp delegate] modFolder] isEqualToString: [myBasePath stringByDeletingLastPathComponent]] == NO)
+	if ([(Quake2*)[NSApp delegate] wasDragged] == YES && [[(Quake2*)[NSApp delegate] modFolder] isEqualToString: [myBasePath stringByDeletingLastPathComponent]] == NO)
     {
         NSRunInformationalAlertPanel (@"An error has occured:", @"The mission pack has to be located within "
                                       @"the same folder as the \"baseq2\" folder.", @"", NULL, NULL, NULL);

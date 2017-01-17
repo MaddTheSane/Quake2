@@ -773,6 +773,7 @@ NSOpenGLPixelFormat *	GLimp_CreateGLPixelFormat (int theDepth, Boolean theFullsc
     // are we running fullscreen or windowed?
     if (theFullscreen)
     {
+        // TODO: fix deprecation
         myAttributeList[i++] = NSOpenGLPFAFullScreen;
     }
     else
@@ -998,6 +999,7 @@ Boolean	GLimp_InitGraphics (int *theWidth, int *theHeight, float theRefreshRate,
     if (theFullscreen)
     {
         // attach the OpenGL context to fullscreen:
+        // TODO: fix deprecation
         iErr = CGLSetFullScreenOnDisplay ([gGLContext CGLContextObj], CGDisplayIDToOpenGLDisplayMask (kCGDirectMainDisplay));
         if (iErr != CGDisplayNoErr)
         {

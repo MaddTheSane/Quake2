@@ -3,9 +3,9 @@
 // "cd_osx.m" - MacOS X audio CD driver.
 //
 // Written by:	Axel 'awe' Wefers			[mailto:awe@fruitz-of-dojo.de].
-//				©2001-2012 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
+//				Â©2001-2012 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
 //
-// Quake IIª is copyrighted by id software	[http://www.idsoftware.com].
+// Quake IIâ„¢ is copyrighted by id software	[http://www.idsoftware.com].
 //
 // Version History:
 // v1.2.0: Rewritten. Uses now AudioGraph/AudioUnit for playback.

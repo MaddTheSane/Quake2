@@ -3,30 +3,30 @@
 // "sys_osx.c" - MacOS X system functions.
 //
 // Written by:	awe                         [mailto:awe@fruitz-of-dojo.de].
-//              ©2001-2006 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
+//              Â©2001-2006 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
 //
-// Quake IIª is copyrighted by id software	[http://www.idsoftware.com].
+// Quake IIâ„¢ is copyrighted by id software	[http://www.idsoftware.com].
 //
 // Version History:
-// v1.0.8: ¥ Mission packs can now be dragged onto the application icon even if Quake II is already running.
-//	       ¥ Added startup dialog for command-line parameters.
-//	       ¥ Added support for AppleScript.
-//	       ¥ Added multi-threaded media-scan window.
-// v1.0.6: ¥ Removed underscore from symbol name parameter at call to "dlsym ()" [because of new "dlopen.c"].
-//	       ¥ Fixed disabled mouse after CMD-TABing.
-//	       ¥ Added command "sys_hide" for mapping CMD_TAB to other keys.
-// v1.0.5: ¥ Improved keyboard handling.
-//         ¥ If application is installed inside the same folder as the baseq2 folder, the baseq2 folder will be
+// v1.0.8: â€¢ Mission packs can now be dragged onto the application icon even if Quake II is already running.
+//	       â€¢ Added startup dialog for command-line parameters.
+//	       â€¢ Added support for AppleScript.
+//	       â€¢ Added multi-threaded media-scan window.
+// v1.0.6: â€¢ Removed underscore from symbol name parameter at call to "dlsym ()" [because of new "dlopen.c"].
+//	       â€¢ Fixed disabled mouse after CMD-TABing.
+//	       â€¢ Added command "sys_hide" for mapping CMD_TAB to other keys.
+// v1.0.5: â€¢ Improved keyboard handling.
+//         â€¢ If application is installed inside the same folder as the baseq2 folder, the baseq2 folder will be
 //           selected automagically.
-// v1.0.4: ¥ Fixed invisible cursor on "baseq2" folder selection dialog.
-// v1.0.3: ¥ Fixed a keyboard handling issue, introduced with the keypad support.
-// v1.0.2: ¥ Fixed "Keyboard repeat" issue after application quit.
-//         ¥ Mousewheel support should finally work.
-//         ¥ Added support for up to 5 mousebuttons [K_JOY1 & K_JOY2 are used for binding button 4 and 5].
-//	       ¥ Paste works now via CMD-V instead of CTRL-V [beside of SHIFT-INSERT] and the "Edit" menu.
-//         ¥ Added "Connect To Server" service.
-//	       ¥ Added support for CMD-TAB, CMD-H, CMD-M and CMD-Q [CMD-M only in windowed mode].
-// v1.0.0: ¥ Initial release.
+// v1.0.4: â€¢ Fixed invisible cursor on "baseq2" folder selection dialog.
+// v1.0.3: â€¢ Fixed a keyboard handling issue, introduced with the keypad support.
+// v1.0.2: â€¢ Fixed "Keyboard repeat" issue after application quit.
+//         â€¢ Mousewheel support should finally work.
+//         â€¢ Added support for up to 5 mousebuttons [K_JOY1 & K_JOY2 are used for binding button 4 and 5].
+//	       â€¢ Paste works now via CMD-V instead of CTRL-V [beside of SHIFT-INSERT] and the "Edit" menu.
+//         â€¢ Added "Connect To Server" service.
+//	       â€¢ Added support for CMD-TAB, CMD-H, CMD-M and CMD-Q [CMD-M only in windowed mode].
+// v1.0.0: â€¢ Initial release.
 //
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 

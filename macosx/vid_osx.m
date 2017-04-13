@@ -4,21 +4,21 @@
 //               and OpenGL rendering versions of the Quake refresh engine.
 //
 // Written by:	awe				            [mailto:awe@fruitz-of-dojo.de].
-//		        ©2001-2006 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
+//		        Â©2001-2006 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
 //
-// Quake IIª is copyrighted by id software	[http://www.idsoftware.com].
+// Quake IIâ„¢ is copyrighted by id software	[http://www.idsoftware.com].
 //
 // Version History:
-// v1.1.0: ¥ Added sorting of Video mode list.
-// v1.0.8: ¥ Fixed an issue with CMD-TABing in fullscreen mode with ATI Radeon class gfx boards.
-// v1.0.6: ¥ Added support for "vid_minrefresh" and "vid_maxrefresh".
-//	       ¥ The variable for FSAA has changed to "gl_arb_multisample".
-//         ¥ Removed underscore from symbolname parameter at call to "dlsym ()" [because of new "dlopen.c"].
-// v1.0.5: ¥ Added support for new variables [gl_anisotropic, gl_fsaa and gl_truform].
-// v1.0.3: ¥ Renderer specific vars are now archived here additionally, so that they don't get lost...
-// v1.0.2: ¥ Added CMD-TABing in fullscreen mode.
-// v1.0.1: ¥ Resolution list is now created dynamically.
-// v1.0.0: ¥ Initial release.
+// v1.1.0: â€¢ Added sorting of Video mode list.
+// v1.0.8: â€¢ Fixed an issue with CMD-TABing in fullscreen mode with ATI Radeon class gfx boards.
+// v1.0.6: â€¢ Added support for "vid_minrefresh" and "vid_maxrefresh".
+//	       â€¢ The variable for FSAA has changed to "gl_arb_multisample".
+//         â€¢ Removed underscore from symbolname parameter at call to "dlsym ()" [because of new "dlopen.c"].
+// v1.0.5: â€¢ Added support for new variables [gl_anisotropic, gl_fsaa and gl_truform].
+// v1.0.3: â€¢ Renderer specific vars are now archived here additionally, so that they don't get lost...
+// v1.0.2: â€¢ Added CMD-TABing in fullscreen mode.
+// v1.0.1: â€¢ Resolution list is now created dynamically.
+// v1.0.0: â€¢ Initial release.
 //
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 

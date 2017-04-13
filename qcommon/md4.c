@@ -3,6 +3,14 @@
 #include <string.h>
 #include <stdint.h>
 
+#ifdef __MACH__
+#include <CommonCrypto/CommonDigest.h>
+#define MD4_CTX CC_MD4_CTX
+#define MD4Init CC_MD4_Init
+#define MD4Update CC_MD4_Update
+#define MD4Final CC_MD4_Final
+#else
+
 /* POINTER defines a generic pointer type */
 typedef unsigned char *POINTER;
 
@@ -256,6 +264,8 @@ unsigned int i, j;
 for (i = 0, j = 0; j < len; i++, j += 4)
  	output[i] = ((UINT4)input[j]) | (((UINT4)input[j+1]) << 8) | (((UINT4)input[j+2]) << 16) | (((UINT4)input[j+3]) << 24);
 }
+
+#endif
 
 //===================================================================
 

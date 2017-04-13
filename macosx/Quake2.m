@@ -25,6 +25,9 @@
 @implementation Quake2
 @synthesize modFolder = mModFolder;
 @synthesize mediaFolder = mMP3Folder;
+@synthesize hostInitialized = mHostInitialized;
+@synthesize abortMediaScan = mMediaScanCanceled;
+@synthesize allowAppleScriptRun = mAllowAppleScriptRun;
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -305,34 +308,6 @@
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- (BOOL) hostInitialized
-{
-    return (mHostInitialized);
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-- (void) setHostInitialized: (BOOL) theState
-{
-    mHostInitialized = theState;
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-- (BOOL) allowAppleScriptRun
-{
-    return (mAllowAppleScriptRun);
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-- (void) enableAppleScriptRun: (BOOL) theState
-{
-    mAllowAppleScriptRun = theState;
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 - (void) requestCommand: (NSString *) theCommand
 {
     [mRequestedCommands addObject: theCommand];
@@ -343,13 +318,6 @@
 - (BOOL) wasDragged
 {
     return (mModFolder != NULL ? YES : NO);
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-- (BOOL) abortMediaScan
-{
-    return (mMediaScanCanceled);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -402,7 +370,7 @@
         // get the default command line parameters:
         myParametersEnabled = [theDefaults boolForKey: SYS_DEFAULT_USE_PARAMETERS];
         [parameterTextField setStringValue: [theDefaults stringForKey: SYS_DEFAULT_PARAMETERS]];
-        [parameterCheckBox setState: myParametersEnabled];
+        [parameterCheckBox setState: myParametersEnabled ? NSOnState : NSOffState];
         [parameterCheckBox setEnabled: YES];
         [self toggleParameterTextField: NULL];        
     }
@@ -448,7 +416,7 @@
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- (void) saveCheckBox: (NSButton *) theButton initial: (NSString *) theInitial
+- (void) saveCheckBox: (NSButton *) theButton initial: (id) theInitial
               default: (NSString *) theDefault userDefaults: (NSUserDefaults *) theUserDefaults
 {
     // has our checkbox the initial value? if, delete from defaults::
@@ -461,11 +429,11 @@
         // write to defaults:
         if ([theButton state] == YES)
         {
-            [theUserDefaults setObject: @"YES" forKey: theDefault];
+            [theUserDefaults setBool: YES forKey: theDefault];
         }
         else
         {
-            [theUserDefaults setObject: @"NO" forKey: theDefault];
+            [theUserDefaults setBool: NO forKey: theDefault];
         }
     }
 }
@@ -563,9 +531,12 @@
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- (BOOL) isEqualTo: (NSString *) theString
+- (BOOL) isEqualTo: (id) theString
 {
-	return [theString isEqualToString: @"YES"];
+    if ([theString isKindOfClass:[NSNumber class]]) {
+        return [(NSNumber*)theString boolValue];
+    }
+	return [(NSString*)theString isEqualToString: @"YES"];
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -27,6 +27,8 @@
 
 #pragma mark -
 
+NS_ASSUME_NONNULL_BEGIN
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 @interface Quake2 : NSObject <NSApplicationDelegate>
@@ -84,38 +86,39 @@
 - (NSApplicationTerminateReply) applicationShouldTerminate: (NSApplication *) theSender;
 
 - (void) setupDialog: (NSTimer *) theTimer;
-- (void) saveCheckBox: (NSButton *) theButton initial: (NSString *) theInitial
+- (void) saveCheckBox: (NSButton *) theButton initial: (id) theInitial
               default: (NSString *) theDefault userDefaults: (NSUserDefaults *) theUserDefaults;
 - (void) saveString: (NSString *) theString initial: (NSString *) theInitial
             default: (NSString *) theDefault userDefaults: (NSUserDefaults *) theUserDefaults;
 - (void) stringToParameters: (NSString *) theString;
-- (BOOL) isEqualTo: (NSString *) theString;
+- (BOOL) isEqualTo: (nullable NSString *) theString;
 - (void) installFrameTimer;
 - (void) renderFrame: (NSTimer *) theTimer;
 - (void) scanMediaThread: (id) theSender;
 - (void) fireFrameTimer: (NSNotification *) theNotification;
 
-- (IBAction) pasteString: (id) theSender;
-- (IBAction) startQuake2: (id) theSender;
-- (IBAction) visitFOD: (id) theSender;
-- (IBAction) toggleParameterTextField: (id) theSender;
-- (IBAction) toggleMP3Playback: (id) theSender;
-- (IBAction) selectMP3Folder: (id) theSender;
-- (IBAction) stopMediaScan: (id) theSender;
+- (IBAction) pasteString: (nullable id) theSender;
+- (IBAction) startQuake2: (nullable id) theSender;
+- (IBAction) visitFOD: (nullable id) theSender;
+- (IBAction) toggleParameterTextField: (nullable id) theSender;
+- (IBAction) toggleMP3Playback: (nullable id) theSender;
+- (IBAction) selectMP3Folder: (nullable id) theSender;
+- (IBAction) stopMediaScan: (nullable id) theSender;
 
-- (void) connectToServer: (NSPasteboard *) thePasteboard userData:(NSString *) theData error:(NSString **)theError;
+- (void) connectToServer: (NSPasteboard *) thePasteboard userData:(NSString *) theData error:(NSString *_Nullable*_Nullable)theError;
 
 @property BOOL hostInitialized;
 
-- (BOOL) allowAppleScriptRun;
-- (void) enableAppleScriptRun: (BOOL) theState;
+@property (getter=allowAppleScriptRun, setter=enableAppleScriptRun:) BOOL allowAppleScriptRun;
 - (void) requestCommand: (NSString *) theCommand;
 
-@property (readonly, copy) NSString *modFolder;
-@property (readonly, copy) NSString *mediaFolder;
-- (BOOL) abortMediaScan;
-- (BOOL) wasDragged;
+@property (readonly, copy, nullable) NSString *modFolder;
+@property (readonly, copy, nullable) NSString *mediaFolder;
+@property (readonly) BOOL abortMediaScan;
+@property (readonly) BOOL wasDragged;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------

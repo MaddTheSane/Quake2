@@ -59,13 +59,13 @@
 #define	SYS_MOUSE_BUTTONS				5							// number of supported mouse buttons [max. 32].
 #define	SYS_DEFAULT_BASE_PATH			@"Quake II baseq2 Path"
 #define	SYS_DEFAULT_USE_MP3				@"Quake II Use MP3"
-#define	SYS_INITIAL_USE_MP3				@"NO"
+#define	SYS_INITIAL_USE_MP3				@NO
 #define	SYS_DEFAULT_MP3_PATH			@"Quake II MP3 Path"
 #define	SYS_INITIAL_MP3_PATH			@""
 #define	SYS_DEFAULT_OPTION_KEY			@"Quake II Dialog Requires Option Key"
-#define	SYS_INITIAL_OPTION_KEY			@"NO"
+#define	SYS_INITIAL_OPTION_KEY			@NO
 #define SYS_DEFAULT_USE_PARAMETERS		@"Quake II Use Command-Line Parameters"
-#define SYS_INITIAL_USE_PARAMETERS		@"NO"
+#define SYS_INITIAL_USE_PARAMETERS		@NO
 #define SYS_DEFAULT_PARAMETERS			@"Quake II Command-Line Parameters"
 #define SYS_INITIAL_PARAMETERS			@""
 #define SYS_BASEQ2_PATH					@"baseq2"

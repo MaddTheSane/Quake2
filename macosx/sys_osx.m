@@ -36,6 +36,8 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/select.h>
+#include <sys/_select.h>
 #include <sys/param.h>
 #include <dirent.h>
 #include <unistd.h>

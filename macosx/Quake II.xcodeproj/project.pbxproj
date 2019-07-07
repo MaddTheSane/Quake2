@@ -314,8 +314,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		55094FFB22D17AEC00FEDA33 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		55094FFC22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Controller.xib; sourceTree = "<group>"; };
+		55094FFD22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		55094FFE22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55094FFF22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptTerminology; name = en; path = "en.lproj/Quake II.scriptTerminology"; sourceTree = "<group>"; };
+		5509500022D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		5509500122D17AF600FEDA33 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
 		553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FruitzOfDojo.xcodeproj; path = FDFramework/FruitzOfDojo.xcodeproj; sourceTree = "<group>"; };
-		5556CDFE1CE95EB700C027F3 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Controller.xib; sourceTree = "<group>"; };
 		5556CE001CE961DB00C027F3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		555B01471E2E96A8007D3B5D /* game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
 		555B01491E2EA105007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -325,14 +331,10 @@
 		555B01501E2EA12D007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
 		555E12DD1CE68DCA001C2DED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		D2075FEA1529646A00F14280 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
-		D2075FED1529649700F14280 /* Swedish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Swedish; path = Swedish.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
-		D2075FEF152964A800F14280 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
 		D2075FF1152965F500F14280 /* Quake II.scriptSuite */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptSuite; path = "Quake II.scriptSuite"; sourceTree = "<group>"; };
 		D20760451529699E00F14280 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D20760461529699E00F14280 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		D2076049152969C500F14280 /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
-		D207604F15296AF400F14280 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2AD4EBF17EFFA4B00DA8777 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		D2C36113152A049F00E73AC1 /* snddma_osx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = snddma_osx.m; sourceTree = "<group>"; };
 		D2C835991529122500867DFC /* Quake II.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quake II.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -571,8 +573,6 @@
 		D2DF6E291529595000B80579 /* r_surf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = r_surf.c; sourceTree = "<group>"; };
 		D2DF6E3B1529597700B80579 /* swimp_osx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swimp_osx.m; sourceTree = "<group>"; };
 		D2DF6E4615295BA700B80579 /* GrowBox.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GrowBox.tiff; sourceTree = SOURCE_ROOT; };
-		D2DF6E651529635E00B80579 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
-		D2DF6E691529635E00B80579 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptTerminology; name = English; path = "English.lproj/Quake II.scriptTerminology"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1426,17 +1426,16 @@
 		D2C835901529122500867DFC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 			};
 			buildConfigurationList = D2C835931529122500867DFC /* Build configuration list for PBXProject "Quake II" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				English,
-				German,
-				Swedish,
+				sv,
+				de,
 			);
 			mainGroup = D2C8358E1529122500867DFC;
 			productRefGroup = D2C8359A1529122500867DFC /* Products */;
@@ -1789,7 +1788,7 @@
 		5556CDFD1CE95EB700C027F3 /* Controller.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5556CDFE1CE95EB700C027F3 /* English */,
+				55094FFC22D17AF000FEDA33 /* en */,
 			);
 			name = Controller.xib;
 			path = ..;
@@ -1798,9 +1797,9 @@
 		D2075FE91529646A00F14280 /* ServicesMenu.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D2075FEA1529646A00F14280 /* English */,
-				D2075FED1529649700F14280 /* Swedish */,
-				D2075FEF152964A800F14280 /* German */,
+				55094FFB22D17AEC00FEDA33 /* sv */,
+				5509500022D17AF000FEDA33 /* en */,
+				5509500122D17AF600FEDA33 /* de */,
 			);
 			name = ServicesMenu.strings;
 			sourceTree = "<group>";
@@ -1808,7 +1807,7 @@
 		D207604E15296AF400F14280 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D207604F15296AF400F14280 /* English */,
+				55094FFE22D17AF000FEDA33 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1816,7 +1815,7 @@
 		D2DF6E641529635E00B80579 /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D2DF6E651529635E00B80579 /* English */,
+				55094FFD22D17AF000FEDA33 /* en */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -1824,7 +1823,7 @@
 		D2DF6E681529635E00B80579 /* Quake II.scriptTerminology */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D2DF6E691529635E00B80579 /* English */,
+				55094FFF22D17AF000FEDA33 /* en */,
 			);
 			name = "Quake II.scriptTerminology";
 			sourceTree = "<group>";
@@ -1843,11 +1842,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1893,11 +1894,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1975,6 +1978,7 @@
 		D2C836771529437000867DFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEDICATED_ONLY,
 					"$(inherited)",
@@ -1986,6 +1990,7 @@
 		D2C836781529437000867DFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEDICATED_ONLY,
 					"$(inherited)",
@@ -1997,6 +2002,7 @@
 		D2C83698152943FB00867DFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
@@ -2006,6 +2012,7 @@
 				);
 				INFOPLIST_FILE = "Resources/Game Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.game";
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
 			};
@@ -2014,6 +2021,7 @@
 		D2C83699152943FB00867DFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
@@ -2023,6 +2031,7 @@
 				);
 				INFOPLIST_FILE = "Resources/Game Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.game";
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
 			};
@@ -2031,6 +2040,7 @@
 		D2C837421529517500867DFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
@@ -2040,6 +2050,7 @@
 				);
 				INFOPLIST_FILE = "Resources/CTF Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.ctf";
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
 			};
@@ -2048,6 +2059,7 @@
 		D2C837431529517500867DFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
@@ -2057,6 +2069,7 @@
 				);
 				INFOPLIST_FILE = "Resources/CTF Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.ctf";
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
 			};
@@ -2076,6 +2089,7 @@
 				);
 				INFOPLIST_FILE = "Resources/GL Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.rendergl";
 				PRODUCT_NAME = ref_gl;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = q2plug;
@@ -2096,6 +2110,7 @@
 				);
 				INFOPLIST_FILE = "Resources/GL Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.rendergl";
 				PRODUCT_NAME = ref_gl;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = q2plug;
@@ -2115,6 +2130,11 @@
 				);
 				INFOPLIST_FILE = "Resources/SW Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.rendersw";
 				PRODUCT_NAME = ref_soft;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = q2plug;
@@ -2134,6 +2154,11 @@
 				);
 				INFOPLIST_FILE = "Resources/SW Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.rendersw";
 				PRODUCT_NAME = ref_soft;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = q2plug;

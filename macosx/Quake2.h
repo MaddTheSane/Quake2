@@ -85,7 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) applicationDidFinishLaunching: (NSNotification *) theNote;
 - (NSApplicationTerminateReply) applicationShouldTerminate: (NSApplication *) theSender;
 
-- (void) setupDialog: (NSTimer *) theTimer;
+- (void) setupDialog: (nullable NSTimer *) theTimer;
 - (void) saveCheckBox: (NSButton *) theButton initial: (id) theInitial
               default: (NSString *) theDefault userDefaults: (NSUserDefaults *) theUserDefaults;
 - (void) saveString: (NSString *) theString initial: (NSString *) theInitial

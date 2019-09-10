@@ -61,60 +61,107 @@ void strlwr (char *theString)
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void *	Hunk_Begin (int theMaxSize)
+void *    Hunk_Begin (int maxsize)
 {
-    maxhunksize	= theMaxSize + sizeof (int);
-    curhunksize	= 0;
-    membase		= malloc (maxhunksize);
-	
-    if (membase == NULL)
+    /* reserve a huge chunk of memory, but don't commit any yet */
+    /* plus 32 bytes for cacheline */
+    maxhunksize = maxsize + sizeof(size_t) + 32;
+    curhunksize = 0;
+    
+    membase = mmap(0, maxhunksize, PROT_READ | PROT_WRITE,
+                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    
+    if ((membase == NULL) || (membase == (byte *)-1))
     {
-        Sys_Error ("unable to virtual allocate %d bytes", theMaxSize);
+        Sys_Error("unable to virtual allocate %d bytes", maxsize);
     }
     
-    *((int *) membase) = curhunksize;
-
-    return (membase + sizeof(int));
+    *((size_t *)membase) = curhunksize;
+    
+    return membase + sizeof(size_t);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void *	Hunk_Alloc (int theSize)
+void *    Hunk_Alloc (int size)
 {
-    unsigned char	*myMemory;
-
-    theSize = (theSize + 31) & ~31;
-	
-    if (curhunksize + theSize > maxhunksize)
+    byte *buf;
+    
+    /* round to cacheline */
+    size = (size + 31) & ~31;
+    
+    if (curhunksize + size > maxhunksize)
     {
-        Sys_Error ("Hunk_Alloc overflow");
+        Sys_Error("Hunk_Alloc overflow");
     }
     
-	myMemory	= membase + sizeof(int) + curhunksize;
-    curhunksize	+= theSize;
-    
-    return (myMemory);
+    buf = membase + sizeof(size_t) + curhunksize;
+    curhunksize += size;
+    return buf;
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void	Hunk_Free (void *theBuffer)
+void    Hunk_Free (void *base)
 {
-    unsigned char *	myMemory;
-
-    if (theBuffer != NULL)
+    if (base)
     {
-        myMemory = ((unsigned char *) theBuffer) - sizeof (int);
-        free (myMemory);
+        byte *m;
+        
+        m = ((byte *)base) - sizeof(size_t);
+        
+        if (munmap(m, *((size_t *)m)))
+        {
+            Sys_Error("Hunk_Free: munmap failed (%d)", errno);
+        }
     }
 }
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-int	Hunk_End (void)
+int    Hunk_End (void)
 {
-    return (curhunksize);
+    byte *n = NULL;
+    
+#if defined(__linux__)
+    n = (byte *)mremap(membase, maxhunksize, curhunksize + sizeof(size_t), 0);
+#elif defined(__NetBSD__)
+    n = (byte *)mremap(membase, maxhunksize, NULL, curhunksize + sizeof(size_t), 0);
+#else
+#ifndef round_page
+    size_t page_size = sysconf(_SC_PAGESIZE);
+#define round_page(x) ((((size_t)(x)) + page_size-1) & ~(page_size-1))
+#endif
+    
+    size_t old_size = round_page(maxhunksize);
+    size_t new_size = round_page(curhunksize + sizeof(size_t));
+    
+    if (new_size > old_size)
+    {
+        /* Can never happen. If it happens something's very wrong. */
+        n = 0;
+    }
+    else if (new_size < old_size)
+    {
+        /* Hunk is to big, we need to shrink it. */
+        n = munmap(membase + new_size, old_size - new_size) + membase;
+    }
+    else
+    {
+        /* No change necessary. */
+        n = membase;
+    }
+#endif
+    
+    if (n != membase)
+    {
+        Sys_Error("Hunk_End: Could not remap virtual block (%d)", errno);
+    }
+    
+    *((size_t *)membase) = curhunksize + sizeof(size_t);
+    
+    return curhunksize;
 }
+
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 

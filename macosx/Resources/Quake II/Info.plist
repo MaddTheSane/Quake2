@@ -85,6 +85,8 @@
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSAppleScriptEnabled</key>
 	<true/>
+	<key>NSHighResolutionCapable</key>
+	<false/>
 	<key>NSMainNibFile</key>
 	<string>Controller</string>
 	<key>NSPrincipalClass</key>
@@ -107,7 +109,7 @@
 			</array>
 		</dict>
 	</array>
-    <key>NSHighResolutionCapable</key>
-    <false/>
+	<key>OSAScriptingDefinition</key>
+	<string>Quake 2.sdef</string>
 </dict>
 </plist>

@@ -14,6 +14,7 @@
 		5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5556CDFD1CE95EB700C027F3 /* Controller.xib */; };
 		5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5556CE001CE961DB00C027F3 /* Icons.xcassets */; };
 		555E12DE1CE68DCA001C2DED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555E12DD1CE68DCA001C2DED /* AVFoundation.framework */; };
+		55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 55871EAC235D1B5300528BDF /* Quake II.sdef */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
 		D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF1152965F500F14280 /* Quake II.scriptSuite */; };
 		D20760471529699E00F14280 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20760451529699E00F14280 /* AudioToolbox.framework */; };
@@ -331,6 +332,7 @@
 		555B01501E2EA12D007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
 		555E12DD1CE68DCA001C2DED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		55871EAC235D1B5300528BDF /* Quake II.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Quake II.sdef"; sourceTree = "<group>"; };
 		D2075FF1152965F500F14280 /* Quake II.scriptSuite */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptSuite; path = "Quake II.scriptSuite"; sourceTree = "<group>"; };
 		D20760451529699E00F14280 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D20760461529699E00F14280 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -1301,6 +1303,7 @@
 				5556CE001CE961DB00C027F3 /* Icons.xcassets */,
 				D2DF6E641529635E00B80579 /* Credits.rtf */,
 				D207604E15296AF400F14280 /* InfoPlist.strings */,
+				55871EAC235D1B5300528BDF /* Quake II.sdef */,
 				D2075FF1152965F500F14280 /* Quake II.scriptSuite */,
 				D2DF6E681529635E00B80579 /* Quake II.scriptTerminology */,
 				D2075FE91529646A00F14280 /* ServicesMenu.strings */,
@@ -1426,7 +1429,7 @@
 		D2C835901529122500867DFC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1110;
 			};
 			buildConfigurationList = D2C835931529122500867DFC /* Build configuration list for PBXProject "Quake II" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1491,6 +1494,7 @@
 				5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */,
 				D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */,
 				D2DF6E6E1529635E00B80579 /* Quake II.scriptTerminology in Resources */,
+				55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */,
 				5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */,
 				D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */,
 				D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */,
@@ -1979,6 +1983,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEDICATED_ONLY,
 					"$(inherited)",
@@ -1991,6 +1996,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEDICATED_ONLY,
 					"$(inherited)",

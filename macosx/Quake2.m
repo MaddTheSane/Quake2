@@ -757,7 +757,7 @@
             myFolderArray = [myMP3Panel URLs];
             if ([myFolderArray count] > 0)
             {
-                [mp3TextField setStringValue: [myFolderArray objectAtIndex: 0].path];
+                [self->mp3TextField setStringValue: [myFolderArray objectAtIndex: 0].path];
             }
         }
     }];

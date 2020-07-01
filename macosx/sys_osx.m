@@ -702,9 +702,9 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
     static UInt8		i;
     static UInt16		myKeyPad;
     static NSUInteger 	myKeyboardBufferSize;
-	static UInt32	 	myFilteredFlags;
-	static UInt32	 	myFlags;
-	static UInt32	 	myLastFlags = 0;
+	static NSEventModifierFlags	 	myFilteredFlags;
+	static NSEventModifierFlags	 	myFlags;
+	static NSEventModifierFlags	 	myLastFlags = 0;
 	static NSUInteger	 	myFilteredMouseButtons;
 	static NSInteger	 	myMouseButtons;
 	static NSInteger	 	myLastMouseButtons = 0;
@@ -819,23 +819,23 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
             myFlags = [myEvent modifierFlags];
             myFilteredFlags = myFlags ^ myLastFlags;
             
-            if (myFilteredFlags & NSAlphaShiftKeyMask)
-                Key_Event (K_CAPSLOCK, (myFlags & NSAlphaShiftKeyMask) ? 1 : 0, gSysMsgTime);
+            if (myFilteredFlags & NSEventModifierFlagCapsLock)
+                Key_Event (K_CAPSLOCK, (myFlags & NSEventModifierFlagCapsLock) ? 1 : 0, gSysMsgTime);
                 
-            if (myFilteredFlags & NSShiftKeyMask)
-                Key_Event (K_SHIFT, (myFlags & NSShiftKeyMask) ? 1 : 0, gSysMsgTime);
+            if (myFilteredFlags & NSEventModifierFlagShift)
+                Key_Event (K_SHIFT, (myFlags & NSEventModifierFlagShift) ? 1 : 0, gSysMsgTime);
                 
-            if (myFilteredFlags & NSControlKeyMask)
-                Key_Event (K_CTRL, (myFlags & NSControlKeyMask) ? 1 : 0, gSysMsgTime);
+            if (myFilteredFlags & NSEventModifierFlagControl)
+                Key_Event (K_CTRL, (myFlags & NSEventModifierFlagControl) ? 1 : 0, gSysMsgTime);
                 
-            if (myFilteredFlags & NSAlternateKeyMask)
-                Key_Event (K_ALT, (myFlags & NSAlternateKeyMask) ? 1 : 0, gSysMsgTime);
+            if (myFilteredFlags & NSEventModifierFlagOption)
+                Key_Event (K_ALT, (myFlags & NSEventModifierFlagOption) ? 1 : 0, gSysMsgTime);
                 
-            if (myFilteredFlags & NSCommandKeyMask)
-                Key_Event (K_COMMAND, (myFlags & NSCommandKeyMask) ? 1 : 0, gSysMsgTime);
+            if (myFilteredFlags & NSEventModifierFlagCommand)
+                Key_Event (K_COMMAND, (myFlags & NSEventModifierFlagCommand) ? 1 : 0, gSysMsgTime);
                 
-            if (myFilteredFlags & NSNumericPadKeyMask)
-                Key_Event (K_NUMLOCK, (myFlags & NSNumericPadKeyMask) ? 1 : 0, gSysMsgTime);
+            if (myFilteredFlags & NSEventModifierFlagNumericPad)
+                Key_Event (K_NUMLOCK, (myFlags & NSEventModifierFlagNumericPad) ? 1 : 0, gSysMsgTime);
                 
             myLastFlags = myFlags;
             

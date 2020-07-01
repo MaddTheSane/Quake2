@@ -548,8 +548,9 @@ int Menu_TallySlots( menuframework_s *menu )
 			int nitems = 0;
 			const char **n = ( ( menulist_s * ) menu->items[i] )->itemnames;
 
-			while (*n)
-				nitems++, n++;
+            while (*n) {
+                nitems++; n++;
+            }
 
 			total += nitems;
 		}

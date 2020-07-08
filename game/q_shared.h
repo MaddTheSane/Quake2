@@ -1212,9 +1212,10 @@ typedef struct
 
 // ==================
 // PGM 
-#define VIDREF_GL		1
-#define VIDREF_SOFT		2
-#define VIDREF_OTHER	3
+#define VIDREF_VK		1
+#define VIDREF_GL		2
+#define VIDREF_SOFT		3
+#define VIDREF_OTHER	4
 
 extern int vidref_val;
 // PGM

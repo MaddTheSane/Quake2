@@ -119,6 +119,7 @@ cvar_t *				vid_ypos			= NULL;		// Y coordinate of window position.
 cvar_t *				vid_fullscreen		= NULL;		// Video fullscreen.
 cvar_t *				vid_minrefresh		= NULL;		// Video min. refresh rate.
 cvar_t *				vid_maxrefresh		= NULL;		// Video max. refresh rate [-1 = infinite].
+cvar_t    *vid_hudscale=NULL;
 
 static vidmode_t *		gVIDModes			= NULL;
 static vidgamma_t *		gVIDOriginalGamma	= NULL;
@@ -204,6 +205,17 @@ void VID_NewWindow (int theWidth, int theHeight)
 {
     viddef.width	= theWidth;
     viddef.height	= theHeight;
+    char hudscale[4];
+    memset(hudscale, 0, sizeof(hudscale));
+
+    int wscale = viddef.width / 800;
+    int hscale = viddef.height / 480;
+
+    if (wscale > hscale) wscale = hscale;
+    if (wscale < 1) wscale = 1;
+
+    snprintf(hudscale, 4, "%2d", wscale);
+    vid_hudscale = Cvar_Set("hudscale", hudscale);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------

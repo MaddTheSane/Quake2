@@ -574,6 +574,7 @@ extern cvar_t   *r_lightlevel;  //FIXME HACK
 
 extern cvar_t	*vid_fullscreen;
 extern	cvar_t	*vid_gamma;
+extern cvar_t   *vid_hudscale;
 
 
 extern  clipplane_t     view_clipplanes[4];

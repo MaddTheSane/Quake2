@@ -337,7 +337,6 @@
 		D20760451529699E00F14280 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D20760461529699E00F14280 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		D2076049152969C500F14280 /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
-		D2AD4EBF17EFFA4B00DA8777 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		D2C36113152A049F00E73AC1 /* snddma_osx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = snddma_osx.m; sourceTree = "<group>"; };
 		D2C835991529122500867DFC /* Quake II.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quake II.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C8359D1529122500867DFC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -709,7 +708,6 @@
 			isa = PBXGroup;
 			children = (
 				555E12DD1CE68DCA001C2DED /* AVFoundation.framework */,
-				D2AD4EBF17EFFA4B00DA8777 /* QuickTime.framework */,
 				D2C8364E1529189B00867DFC /* ApplicationServices.framework */,
 				D20760451529699E00F14280 /* AudioToolbox.framework */,
 				D20760461529699E00F14280 /* AudioUnit.framework */,

@@ -300,6 +300,7 @@ void SV_InitGame (void)
 	{
 		// cause any connected clients to reconnect
 		SV_Shutdown ("Server restarted\n", true);
+		SV_ShutdownGameProgs();
 	}
 	else
 	{
@@ -434,13 +435,18 @@ void SV_Map (qboolean attractloop, char *levelstring, qboolean loadgame)
 		spawnpoint[0] = 0;
 
 	// skip the end-of-unit flag if necessary
-    l = strlen(level);
 	if (level[0] == '*')
     {
-        memmove(level, level + 1, l);
-        --l;
+#ifdef __APPLE__
+        // stop XCode complaining about source and destination buffer overlap
+        char tmp[MAX_QPATH] = {0};
+        strcpy(tmp, level+1);
+        strcpy (level, tmp);
+#else
+		strcpy (level, level+1);
+#endif
     }
-
+	l = (int)strlen(level);
 	if (l > 4 && !strcmp (level+l-4, ".cin") )
 	{
 		SCR_BeginLoadingPlaque ();			// for local system

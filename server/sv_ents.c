@@ -124,11 +124,7 @@ Writes a delta update of an entity_state_t list to the message.
 */
 void SV_EmitPacketEntities (client_frame_t *from, client_frame_t *to, sizebuf_t *msg)
 {
-#if defined (__APPLE__) || defined (MACOSX)
 	entity_state_t	*oldent = NULL, *newent = NULL;
-#else
-	entity_state_t	*oldent, *newent;
-#endif /* __APPLE__ ||ÊMACOSX */
 	int		oldindex, newindex;
 	int		oldnum, newnum;
 	int		from_num_entities;
@@ -510,7 +506,7 @@ void SV_FatPVS (vec3_t org)
 			continue;		// already have the cluster we want
 		src = CM_ClusterPVS(leafs[i]);
 		for (j=0 ; j<longs ; j++)
-			((int *)fatpvs)[j] |= ((int *)src)[j];
+			((long *)fatpvs)[j] |= ((long *)src)[j];
 	}
 }
 

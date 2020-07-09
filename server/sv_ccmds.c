@@ -192,7 +192,7 @@ CopyFile
 void CopyFile (char *src, char *dst)
 {
 	FILE	*f1, *f2;
-	int		l;
+	size_t	l;
 	byte	buffer[65536];
 
 	Com_DPrintf ("CopyFile (%s, %s)\n", src, dst);
@@ -209,7 +209,7 @@ void CopyFile (char *src, char *dst)
 
 	while (1)
 	{
-		l = (int)fread (buffer, 1, sizeof(buffer), f1);
+		l = fread (buffer, 1, sizeof(buffer), f1);
 		if (!l)
 			break;
 		fwrite (buffer, 1, l, f2);
@@ -993,6 +993,7 @@ void SV_KillServer_f (void)
 	if (!svs.initialized)
 		return;
 	SV_Shutdown ("Server was killed.\n", false);
+	SV_ShutdownGameProgs();
 	NET_Config ( false );	// close network sockets
 }
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -58,7 +58,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Quake II 1.2; Copyright 2002-2012 Fruitz Of Dojo</string>
+	<string>Quake II $(MARKETING_VERSION); Copyright 2002-2012 Fruitz Of Dojo</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>Quake II Help</string>
 	<key>CFBundleHelpBookName</key>
@@ -74,11 +74,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>Qua2</string>
 	<key>CFBundleVersion</key>
-	<string>1.2.0</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.action-games</string>
 	<key>LSMinimumSystemVersion</key>

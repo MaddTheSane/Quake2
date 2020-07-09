@@ -1968,6 +1968,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1978,6 +1979,7 @@
 				);
 				INFOPLIST_FILE = "Resources/Quake II/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1991,6 +1993,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2001,6 +2004,7 @@
 				);
 				INFOPLIST_FILE = "Resources/Quake II/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -2039,6 +2043,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/baseq2";
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2047,6 +2052,7 @@
 				);
 				INFOPLIST_FILE = "Resources/Game Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.game";
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
@@ -2059,6 +2065,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/baseq2";
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2067,6 +2074,7 @@
 				);
 				INFOPLIST_FILE = "Resources/Game Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.game";
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
@@ -2079,6 +2087,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ctf";
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2087,6 +2096,7 @@
 				);
 				INFOPLIST_FILE = "Resources/CTF Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.ctf";
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
@@ -2099,6 +2109,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ctf";
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2107,6 +2118,7 @@
 				);
 				INFOPLIST_FILE = "Resources/CTF Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.ctf";
 				PRODUCT_NAME = GameMac;
 				WRAPPER_EXTENSION = q2plug;
@@ -2118,6 +2130,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2127,6 +2140,7 @@
 				);
 				INFOPLIST_FILE = "Resources/GL Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.rendergl";
 				PRODUCT_NAME = ref_gl;
 				SKIP_INSTALL = YES;
@@ -2139,6 +2153,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2148,6 +2163,7 @@
 				);
 				INFOPLIST_FILE = "Resources/GL Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2.rendergl";
 				PRODUCT_NAME = ref_gl;
 				SKIP_INSTALL = YES;
@@ -2160,6 +2176,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2168,6 +2185,7 @@
 				);
 				INFOPLIST_FILE = "Resources/SW Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
@@ -2184,6 +2202,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2192,6 +2211,7 @@
 				);
 				INFOPLIST_FILE = "Resources/SW Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,

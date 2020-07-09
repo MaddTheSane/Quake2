@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Quake II 1.2; Software Renderer Plugin; Copyright 2001-2012 Fruitz Of Dojo</string>
+	<string>Quake II $(MARKETING_VERSION); Software Renderer Plugin; Copyright 2001-2012 Fruitz Of Dojo</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,10 +17,10 @@
 	<key>CFBundlePackageType</key>
 	<string>q2pl</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>Qua2</string>
 	<key>CFBundleVersion</key>
-	<string>1.2.0</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 </dict>
 </plist>

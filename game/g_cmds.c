@@ -875,10 +875,7 @@ void Cmd_PlayerList_f(edict_t *ent)
 	char st[80];
 	char text[1400];
 	edict_t *e2;
-#if defined (__APPLE__) || defined (MACOSX)
-        int textlen;
-#endif /* __APPLE__ || MACOSX */
-        
+
 	// connect time, ping, score, name
 	*text = 0;
 	for (i = 0, e2 = g_edicts + 1; i < maxclients->value; i++, e2++) {
@@ -893,14 +890,7 @@ void Cmd_PlayerList_f(edict_t *ent)
 			e2->client->pers.netname,
 			e2->client->resp.spectator ? " (spectator)" : "");
 		if (strlen(text) + strlen(st) > sizeof(text) - 50) {
-#if defined (__APPLE__) || defined (MACOSX)
-                        textlen = strlen(text);
-                        
-                        if (1400-textlen > 0)
-                            snprintf(text+textlen, 1400-textlen, "And more...\n");
-#else
 			sprintf(text+strlen(text), "And more...\n");
-#endif /* __APPLE__ || MACOSX */
 			gi.cprintf(ent, PRINT_HIGH, "%s", text);
 			return;
 		}

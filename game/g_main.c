@@ -72,6 +72,8 @@ cvar_t	*flood_waitdelay;
 
 cvar_t	*sv_maplist;
 
+cvar_t  *aimfix;
+
 void SpawnEntities (char *mapname, char *entities, char *spawnpoint);
 void ClientThink (edict_t *ent, usercmd_t *cmd);
 qboolean ClientConnect (edict_t *ent, char *userinfo);
@@ -146,11 +148,7 @@ void Sys_Error (const char *error, ...)
 	char		text[1024];
 
 	va_start (argptr, error);
-#if defined (__APPLE__) || defined (MACOSX)
 	vsnprintf (text, 1024, error, argptr);
-#else
-	vsprintf (text, error, argptr);
-#endif /* __APPLE__ || MACOSX */
 	va_end (argptr);
 
 	gi.error (ERR_FATAL, "%s", text);
@@ -162,11 +160,7 @@ void Com_Printf (const char *msg, ...)
 	char		text[1024];
 
 	va_start (argptr, msg);
-#if defined (__APPLE__) || defined (MACOSX)
 	vsnprintf (text, 1024, msg, argptr);
-#else
-	vsprintf (text, msg, argptr);
-#endif /* __APPLE__ || MACOSX */
 	va_end (argptr);
 
 	gi.dprintf ("%s", text);

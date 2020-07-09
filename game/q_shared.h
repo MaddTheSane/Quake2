@@ -1,5 +1,6 @@
 /*
 Copyright (C) 1997-2001 Id Software, Inc.
+Copyright (C) 2018-2019 Krzysztof Kondrak
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -25,11 +26,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #ifdef _WIN32
 // unknown pragmas are SUPPOSED to be ignored, but....
-#pragma warning(disable : 4244)     	// MIPS
-#pragma warning(disable : 4136)     	// X86
-#pragma warning(disable : 4051)     	// ALPHA
+#pragma warning(disable : 4244)     // MIPS
+#pragma warning(disable : 4136)     // X86
+#pragma warning(disable : 4051)     // ALPHA
 
-#pragma warning(disable : 4018)    	// signed/unsigned mismatch
+#pragma warning(disable : 4018)     // signed/unsigned mismatch
 #pragma warning(disable : 4305)		// truncation from const double to float
 
 #endif
@@ -54,73 +55,62 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define idaxp	0
 #endif
 
-#if defined (__APPLE__) || defined (MACOSX)
+#ifdef true
 #undef true
+#endif
+#ifdef false
 #undef false
-#endif /* __APPLE__ ||ÊMACOSX */
-
-#ifdef __cplusplus
-#define true qtrue
-#define false qfalse
 #endif
 
 typedef unsigned char 		byte;
 typedef enum {false, true}	qboolean;
 
-#ifdef __cplusplus
-#undef true
-#undef false
-#endif
 
 #ifndef NULL
-#define NULL 			((void *)0)
+#define NULL ((void *)0)
 #endif
 
 
 // angle indexes
-#define	PITCH			0		// up / down
-#define	YAW			1		// left / right
-#define	ROLL			2		// fall over
+#define	PITCH				0		// up / down
+#define	YAW					1		// left / right
+#define	ROLL				2		// fall over
 
-#define	MAX_STRING_CHARS	1024		// max length of a string passed to Cmd_TokenizeString
+#define	MAX_STRING_CHARS	1024	// max length of a string passed to Cmd_TokenizeString
 #define	MAX_STRING_TOKENS	80		// max tokens resulting from Cmd_TokenizeString
 #define	MAX_TOKEN_CHARS		128		// max length of an individual token
 
-#define	MAX_QPATH		64		// max length of a quake game pathname
-#define	MAX_OSPATH		128		// max length of a filesystem pathname
+#define	MAX_QPATH			64		// max length of a quake game pathname
+#define	MAX_OSPATH			256		// max length of a filesystem pathname
 
 //
 // per-level limits
 //
-#define	MAX_CLIENTS		256		// absolute limit
-#define	MAX_EDICTS		1024		// must change protocol to increase more
+#define	MAX_CLIENTS			256		// absolute limit
+#define	MAX_EDICTS			1024	// must change protocol to increase more
 #define	MAX_LIGHTSTYLES		256
-#define	MAX_MODELS		256		// these are sent over the net as bytes
-#define	MAX_SOUNDS		256		// so they cannot be blindly increased
-#define	MAX_IMAGES		256
-#define	MAX_ITEMS		256
-#define MAX_GENERAL		(MAX_CLIENTS*2)	// general config strings
+#define	MAX_MODELS			256		// these are sent over the net as bytes
+#define	MAX_SOUNDS			256		// so they cannot be blindly increased
+#define	MAX_IMAGES			256
+#define	MAX_ITEMS			256
+#define MAX_GENERAL			(MAX_CLIENTS*2)	// general config strings
 
 
 // game print flags
-#define	PRINT_LOW		0		// pickup messages
+#define	PRINT_LOW			0		// pickup messages
 #define	PRINT_MEDIUM		1		// death messages
-#define	PRINT_HIGH		2		// critical messages
-#define	PRINT_CHAT		3		// chat messages
+#define	PRINT_HIGH			2		// critical messages
+#define	PRINT_CHAT			3		// chat messages
 
 
-#if defined (__APPLE__) || defined (MACOSX)
-# ifdef ERR_FATAL
-# undef ERR_FATAL
-# endif
-#endif /* __APPLE__ || MACOSX */
-#define	ERR_FATAL		0		// exit the entire game with a popup window
-#define	ERR_DROP		1		// print to console and disconnect from game
+
+#define	ERR_FATAL			0		// exit the entire game with a popup window
+#define	ERR_DROP			1		// print to console and disconnect from game
 #define	ERR_DISCONNECT		2		// don't kill server
 
-#define	PRINT_ALL		0
+#define	PRINT_ALL			0
 #define PRINT_DEVELOPER		1		// only print when "developer 1"
-#define PRINT_ALERT		2		
+#define PRINT_ALERT			2		
 
 
 // destination class for gi.multicast()
@@ -166,10 +156,10 @@ extern vec3_t vec3_origin;
 // microsoft's fabs seems to be ungodly slow...
 //float Q_fabs (float f);
 //#define	fabs(f) Q_fabs(f)
-#if !defined C_ONLY && !defined __linux__ && !defined __sgi && !defined (__APPLE__) && !defined (MACOSX)
+#if !defined C_ONLY && !defined __linux__ && !defined __sgi && !defined _M_X64 && !defined __APPLE__
 extern long Q_ftol( float f );
 #else
-#define Q_ftol( f ) ( int ) (f)
+#define Q_ftol( f ) ( long ) (f)
 #endif
 
 #define DotProduct(x,y)			(x[0]*y[0]+x[1]*y[1]+x[2]*y[2])
@@ -311,8 +301,8 @@ void	Sys_FindClose (void);
 
 
 // this is only here so the functions in q_shared.c and q_shwin.c can link
-void Sys_Error (const char *error, ...);
-void Com_Printf (const char *msg, ...);
+void Sys_Error (const char *error, ...) __printflike(1, 2);
+void Com_Printf (const char *msg, ...) __printflike(1, 2);
 
 
 /*

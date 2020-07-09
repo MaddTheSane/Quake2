@@ -764,9 +764,9 @@ MISC
 
 void		Com_BeginRedirect (int target, char *buffer, int buffersize, void (*flush));
 void		Com_EndRedirect (void);
-void 		Com_Printf (const char *fmt, ...);
-void 		Com_DPrintf (char *fmt, ...);
-void 		Com_Error (int code, char *fmt, ...);
+void 		Com_Printf (const char *fmt, ...) __printflike(1, 2);
+void 		Com_DPrintf (char *fmt, ...) __printflike(1, 2);
+void 		Com_Error (int code, char *fmt, ...) __printflike(2, 3);
 void 		Com_Quit (void);
 
 int			Com_ServerState (void);		// this should have just been a cvar...

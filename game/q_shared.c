@@ -1053,11 +1053,7 @@ char	*va(const char *format, ...)
 	static char		string[1024];
 	
 	va_start (argptr, format);
-#if defined (__APPLE__) || defined (MACOSX)
-	vsnprintf (string, 1024, format,argptr);
-#else
-	vsprintf (string, format,argptr);
-#endif /* __APPLE__ || MACOSX */
+	vsnprintf (string, 1024, format, argptr);
 	va_end (argptr);
 
 	return string;	
@@ -1226,28 +1222,16 @@ int Q_strcasecmp (const char *s1, const char *s2)
 
 void Com_sprintf (char *dest, int size, char *fmt, ...)
 {
-	va_list		argptr;
-
-#if defined (__APPLE__) || defined (MACOSX)
-
-        // we're a bit more clever under MacOS X:
-	va_start (argptr,fmt);
-	vsnprintf (dest,size,fmt,argptr);
-	va_end (argptr);
-
-#else
-
 	int		len;
+	va_list		argptr;
 	char	bigbuffer[0x10000];
 
 	va_start (argptr,fmt);
-	len = vsprintf (bigbuffer,fmt,argptr);
+	len = vsnprintf (bigbuffer,0x10000,fmt,argptr);
 	va_end (argptr);
 	if (len >= size)
 		Com_Printf ("Com_sprintf: overflow of %i in %i\n", len, size);
 	strncpy (dest, bigbuffer, size-1);
-        
-#endif /* __APPLE__ || MACOSX */
 }
 
 /*

@@ -72,68 +72,6 @@ void makron_taunt (edict_t *self)
 
 mframe_t makron_frames_stand []=
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },		// 10
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },		// 20
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },		// 30
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },		// 40
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },		// 50
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL },
-	{ ai_stand, 0, NULL }		// 60
-#else
 	ai_stand, 0, NULL,
 	ai_stand, 0, NULL,
 	ai_stand, 0, NULL,
@@ -194,7 +132,6 @@ mframe_t makron_frames_stand []=
 	ai_stand, 0, NULL,
 	ai_stand, 0, NULL,
 	ai_stand, 0, NULL		// 60
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t	makron_move_stand = {FRAME_stand201, FRAME_stand260, makron_frames_stand, NULL};
 	
@@ -205,18 +142,6 @@ void makron_stand (edict_t *self)
 
 mframe_t makron_frames_run [] =
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_run, 3,	makron_step_left },
-	{ ai_run, 12,	NULL },
-	{ ai_run, 8,	NULL },
-	{ ai_run, 8,	NULL },
-	{ ai_run, 8,	makron_step_right },
-	{ ai_run, 6,	NULL },
-	{ ai_run, 12,	NULL },
-	{ ai_run, 9,	NULL },
-	{ ai_run, 6,	NULL },
-	{ ai_run, 12,	NULL }
-#else
 	ai_run, 3,	makron_step_left,
 	ai_run, 12,	NULL,
 	ai_run, 8,	NULL,
@@ -227,7 +152,6 @@ mframe_t makron_frames_run [] =
 	ai_run, 9,	NULL,
 	ai_run, 6,	NULL,
 	ai_run, 12,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t	makron_move_run = {FRAME_walk204, FRAME_walk213, makron_frames_run, NULL};
 
@@ -264,18 +188,6 @@ void makron_prerailgun (edict_t *self)
 
 mframe_t makron_frames_walk [] =
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_walk, 3,	makron_step_left },
-	{ ai_walk, 12,	NULL },
-	{ ai_walk, 8,	NULL },
-	{ ai_walk, 8,	NULL },
-	{ ai_walk, 8,	makron_step_right },
-	{ ai_walk, 6,	NULL },
-	{ ai_walk, 12,	NULL },
-	{ ai_walk, 9,	NULL },
-	{ ai_walk, 6,	NULL },
-	{ ai_walk, 12,	NULL }
-#else
 	ai_walk, 3,	makron_step_left,
 	ai_walk, 12,	NULL,
 	ai_walk, 8,	NULL,
@@ -286,7 +198,6 @@ mframe_t makron_frames_walk [] =
 	ai_walk, 9,	NULL,
 	ai_walk, 6,	NULL,
 	ai_walk, 12,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t	makron_move_walk = {FRAME_walk204, FRAME_walk213, makron_frames_run, NULL};
 
@@ -305,35 +216,6 @@ void makron_run (edict_t *self)
 
 mframe_t makron_frames_pain6 [] =
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },		// 10
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	makron_popup },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },		// 20
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	makron_taunt },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }
-#else
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
@@ -361,141 +243,29 @@ mframe_t makron_frames_pain6 [] =
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_pain6 = {FRAME_pain601, FRAME_pain627, makron_frames_pain6, makron_run};
 
 mframe_t makron_frames_pain5 [] =
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }
-#else
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_pain5 = {FRAME_pain501, FRAME_pain504, makron_frames_pain5, makron_run};
 
 mframe_t makron_frames_pain4 [] =
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }
-#else
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_pain4 = {FRAME_pain401, FRAME_pain404, makron_frames_pain4, makron_run};
 
 mframe_t makron_frames_death2 [] =
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_move,	-15,	NULL },
-	{ ai_move,	3,	NULL },
-	{ ai_move,	-12,	NULL },
-	{ ai_move,	0,	makron_step_left },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },			// 10
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	11,	NULL },
-	{ ai_move,	12,	NULL },
-	{ ai_move,	11,	makron_step_right },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },			// 20
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },			
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },			// 30
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	5,	NULL },
-	{ ai_move,	7,	NULL },
-	{ ai_move,	6,	makron_step_left },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	-1,	NULL },
-	{ ai_move,	2,	NULL },			// 40
-	{ ai_move,	0,	NULL },			
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },			
-	{ ai_move,	0,	NULL },			// 50
-	{ ai_move,	0,	NULL },			
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	-6,	NULL },
-	{ ai_move,	-4,	NULL },
-	{ ai_move,	-6,	makron_step_right },
-	{ ai_move,	-4,	NULL },
-	{ ai_move,	-4,	makron_step_left },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },			// 60
-	{ ai_move,	0,	NULL },			
-	{ ai_move,	0,	NULL },
-	{ ai_move,	-2,	NULL },
-	{ ai_move,	-5,	NULL },
-	{ ai_move,	-3,	makron_step_right },
-	{ ai_move,	-8,	NULL },
-	{ ai_move,	-3,	makron_step_left },
-	{ ai_move,	-7,	NULL },
-	{ ai_move,	-4,	NULL },
-	{ ai_move,	-4,	makron_step_right },			// 70
-	{ ai_move,	-6,	NULL },			
-	{ ai_move,	-7,	NULL },
-	{ ai_move,	0,	makron_step_left },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },			// 80
-	{ ai_move,	0,	NULL },			
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	-2,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	2,	NULL },
-	{ ai_move,	0,	NULL },			// 90
-	{ ai_move,	27,	makron_hit },			
-	{ ai_move,	26,	NULL },
-	{ ai_move,	0,	makron_brainsplorch },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }			// 95
-#else
 	ai_move,	-15,	NULL,
 	ai_move,	3,	NULL,
 	ai_move,	-12,	NULL,
@@ -591,34 +361,11 @@ mframe_t makron_frames_death2 [] =
 	ai_move,	0,	makron_brainsplorch,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL			// 95
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_death2 = {FRAME_death201, FRAME_death295, makron_frames_death2, makron_dead};
 
 mframe_t makron_frames_death3 [] =
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }
-#else
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
@@ -639,27 +386,11 @@ mframe_t makron_frames_death3 [] =
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_death3 = {FRAME_death301, FRAME_death320, makron_frames_death3, NULL};
 
 mframe_t makron_frames_sight [] =
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }
-#else
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
@@ -673,7 +404,6 @@ mframe_t makron_frames_sight [] =
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_sight= {FRAME_active01, FRAME_active13, makron_frames_sight, makron_run};
 
@@ -698,16 +428,6 @@ void makronBFG (edict_t *self)
 
 mframe_t makron_frames_attack3 []=
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	makronBFG },		// FIXME: BFG Attack here
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }
-#else
 	ai_charge,	0,	NULL,
 	ai_charge,	0,	NULL,
 	ai_charge,	0,	NULL,
@@ -716,40 +436,11 @@ mframe_t makron_frames_attack3 []=
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_attack3 = {FRAME_attak301, FRAME_attak308, makron_frames_attack3, makron_run};
 
 mframe_t makron_frames_attack4[]=
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	MakronHyperblaster },		// fire
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }
-#else
 	ai_charge,	0,	NULL,
 	ai_charge,	0,	NULL,
 	ai_charge,	0,	NULL,
@@ -776,30 +467,11 @@ mframe_t makron_frames_attack4[]=
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_attack4 = {FRAME_attak401, FRAME_attak426, makron_frames_attack4, makron_run};
 
 mframe_t makron_frames_attack5[]=
 {
-#if defined (__APPLE__) || defined (MACOSX)
-	{ ai_charge,	0,	makron_prerailgun },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	NULL },
-	{ ai_charge,	0,	MakronSaveloc },
-	{ ai_move,	0,	MakronRailgun },	// Fire railgun
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL },
-	{ ai_move,	0,	NULL }
-#else
 	ai_charge,	0,	makron_prerailgun,
 	ai_charge,	0,	NULL,
 	ai_charge,	0,	NULL,
@@ -816,7 +488,6 @@ mframe_t makron_frames_attack5[]=
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL,
 	ai_move,	0,	NULL
-#endif /* __APPLE__ || MACOSX */
 };
 mmove_t makron_move_attack5 = {FRAME_attak501, FRAME_attak516, makron_frames_attack5, makron_run};
 

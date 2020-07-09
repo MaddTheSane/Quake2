@@ -497,13 +497,11 @@ edict_t *SelectCTFSpawnPoint (edict_t *ent)
 	float	range, range1, range2;
 	char	*cname;
 
-	if (ent->client->resp.ctf_state) {
-		if ( (int)(dmflags->value) & DF_SPAWN_FARTHEST) {
+	if (ent->client->resp.ctf_state)
+		if ( (int)(dmflags->value) & DF_SPAWN_FARTHEST)
 			return SelectFarthestDeathmatchSpawnPoint ();
-		} else {
+		else
 			return SelectRandomDeathmatchSpawnPoint ();
-		}
-	}
 
 	ent->client->resp.ctf_state++;
 
@@ -575,11 +573,7 @@ void CTFFragBonuses(edict_t *targ, edict_t *inflictor, edict_t *attacker)
 	edict_t *ent;
 	gitem_t *flag_item, *enemy_flag_item;
 	int otherteam;
-#if defined (__APPLE__) || defined (MACOSX)
 	edict_t *flag, *carrier = NULL;
-#else
-	edict_t *flag, *carrier;
-#endif /* __APPLE__ ||ÊMACOSX */
 	char *c;
 	vec3_t v1, v2;
 
@@ -929,13 +923,12 @@ void CTFDeadDropFlag(edict_t *self)
 	}
 }
 
-qboolean CTFDrop_Flag(edict_t *ent, gitem_t *item)
+void CTFDrop_Flag(edict_t *ent, gitem_t *item)
 {
 	if (rand() & 1) 
 		gi.cprintf(ent, PRINT_HIGH, "Only lusers drop flags.\n");
 	else
 		gi.cprintf(ent, PRINT_HIGH, "Winners don't drop flags.\n");
-	return false;
 }
 
 static void CTFFlagThink(edict_t *ent)
@@ -1679,9 +1672,6 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 	edict_t		*cl_ent;
 	int team;
 	int maxsize = 1000;
-#if defined (__APPLE__) || defined (MACOSX)
-        int		entrylen, stringlen;
-#endif /* __APPLE__ ||ÊMACOSX */
 
 	// sort the clients by team and score
 	total[0] = total[1] = 0;
@@ -1722,12 +1712,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 	len = 0;
 
 	// team one
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(string, 1400,
-#else
-	sprintf(string,
-#endif /* __APPLE__ ||ÊMACOSX */
-                "if 24 xv 8 yv 8 pic 24 endif "
+	sprintf(string, "if 24 xv 8 yv 8 pic 24 endif "
 		"xv 40 yv 28 string \"%4d/%-3d\" "
 		"xv 98 yv 12 num 2 18 "
 		"if 25 xv 168 yv 8 pic 25 endif "
@@ -1735,8 +1720,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 		"xv 256 yv 12 num 2 20 ",
 		totalscore[0], total[0],
 		totalscore[1], total[1]);
-
-	len = strlen(string);
+	len = (int)strlen(string);
 
 	for (i=0 ; i<16 ; i++)
 	{
@@ -1745,11 +1729,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 
 #if 0 //ndef NEW_SCORE
 		// set up y
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(entry, 1024, "yv %d ", 42 + i * 8);
-#else
 		sprintf(entry, "yv %d ", 42 + i * 8);
-#endif /* __APPLE__ ||ÊMACOSX */
 		if (maxsize - len > strlen(entry)) {
 			strcat(string, entry);
 			len = strlen(string);
@@ -1764,13 +1744,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 			cl_ent = g_edicts + 1 + sorted[0][i];
 
 #if 0 //ndef NEW_SCORE
-#if defined (__APPLE__) || defined (MACOSX)
-                        entrylen = strlen (entry);
-                        if (1024-entrylen > 0)
-                            snprintf(entry+entrylen,1024 - entrylen,
-#else
 			sprintf(entry+strlen(entry),
-#endif /* __APPLE__ || MACOSX */
 			"xv 0 %s \"%3d %3d %-12.12s\" ",
 			(cl_ent == ent) ? "string2" : "string",
 			cl->resp.score, 
@@ -1780,13 +1754,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 			if (cl_ent->client->pers.inventory[ITEM_INDEX(flag2_item)])
 				strcat(entry, "xv 56 picn sbfctf2 ");
 #else
-#if defined (__APPLE__) || defined (MACOSX)
-                        entrylen = strlen(entry);
-                        if (1024-entrylen > 0)
-                            snprintf(entry+entrylen,1024-entrylen,
-#else
 			sprintf(entry+strlen(entry),
-#endif /* __APPLE__ || MACOSX */
 				"ctf 0 %d %d %d %d ",
 				42 + i * 8,
 				sorted[0][i],
@@ -1794,22 +1762,13 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 				cl->ping > 999 ? 999 : cl->ping);
 
 			if (cl_ent->client->pers.inventory[ITEM_INDEX(flag2_item)])
-#if defined (__APPLE__) || defined (MACOSX)
-                        {
-                                entrylen = strlen (entry);
-                                if (1024-entrylen > 0)
-                                    snprintf(entry + entrylen, 1024-entrylen,"xv 56 yv %d picn sbfctf2 ",
-                                             42 + i * 8);
-                        }
-#else
 				sprintf(entry + strlen(entry), "xv 56 yv %d picn sbfctf2 ",
 					42 + i * 8);
-#endif /* __APPLE__ || MACOSX */
 #endif
 
 			if (maxsize - len > strlen(entry)) {
 				strcat(string, entry);
-				len = strlen(string);
+				len = (int)strlen(string);
 				last[0] = i;
 			}
 		}
@@ -1820,13 +1779,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 			cl_ent = g_edicts + 1 + sorted[1][i];
 
 #if 0 //ndef NEW_SCORE
-#if defined (__APPLE__) || defined (MACOSX)
-                        entrylen = strlen(entry);
-                        if (1024 - entrylen > 0)
-                            sprintf(entry+entrylen, 1024 - entrylen, 
-#else
 			sprintf(entry+strlen(entry),
-#endif /* __APPLE__ ||ÊMACOSX */
 			"xv 160 %s \"%3d %3d %-12.12s\" ",
 			(cl_ent == ent) ? "string2" : "string",
 			cl->resp.score, 
@@ -1837,13 +1790,8 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 				strcat(entry, "xv 216 picn sbfctf1 ");
 
 #else
-#if defined (__APPLE__) || defined (MACOSX)
-                        entrylen = strlen(entry);
-                        if (1024 - entrylen > 0)
-                            snprintf(entry+entrylen, 1024 - entrylen, 
-#else
+
 			sprintf(entry+strlen(entry),
-#endif /* __APPLE__ ||ÊMACOSX */
 				"ctf 160 %d %d %d %d ",
 				42 + i * 8,
 				sorted[1][i],
@@ -1851,21 +1799,12 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 				cl->ping > 999 ? 999 : cl->ping);
 
 			if (cl_ent->client->pers.inventory[ITEM_INDEX(flag1_item)])
-#if defined (__APPLE__) || defined (MACOSX)
-                        {
-                                entrylen = strlen(entry);
-                                if (1024 - entrylen > 0)
-                                    snprintf(entry + entrylen, 1024 - entrylen, "xv 216 yv %d picn sbfctf1 ",
-                                             42 + i * 8);
-                        }
-#else
 				sprintf(entry + strlen(entry), "xv 216 yv %d picn sbfctf1 ",
 					42 + i * 8);
-#endif /* __APPLE__ || MACOSX */
 #endif
 			if (maxsize - len > strlen(entry)) {
 				strcat(string, entry);
-				len = strlen(string);
+				len = (int)strlen(string);
 				last[1] = i;
 			}
 		}
@@ -1890,23 +1829,13 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 
 			if (!k) {
 				k = 1;
-#if defined (__APPLE__) || defined (MACOSX)
-				snprintf(entry, 1024, "xv 0 yv %d string2 \"Spectators\" ", j);
-#else
 				sprintf(entry, "xv 0 yv %d string2 \"Spectators\" ", j);
-#endif /* __APPLE__ ||ÊMACOSX */
 				strcat(string, entry);
-				len = strlen(string);
+				len = (int)strlen(string);
 				j += 8;
 			}
 
-#if defined (__APPLE__) || defined (MACOSX)
-                        entrylen = strlen(entry);
-                        if (1024 - entrylen > 0)
-                            snprintf(entry+entrylen, 1024 - entrylen,
-#else
 			sprintf(entry+strlen(entry),
-#endif /* __APPLE__ ||ÊMACOSX */
 				"ctf %d %d %d %d %d ",
 				(n & 1) ? 160 : 0, // x
 				j, // y
@@ -1915,7 +1844,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 				cl->ping > 999 ? 999 : cl->ping);
 			if (maxsize - len > strlen(entry)) {
 				strcat(string, entry);
-				len = strlen(string);
+				len = (int)strlen(string);
 			}
 			
 			if (n & 1)
@@ -1925,31 +1854,11 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 	}
 
 	if (total[0] - last[0] > 1) // couldn't fit everyone
-#if defined (__APPLE__) || defined (MACOSX)
-        {
-            stringlen = strlen(string);
-            
-            if (1400 - stringlen > 0)
-                snprintf(string + stringlen, 1400 - stringlen, "xv 8 yv %d string \"..and %d more\" ",
-			42 + (last[0]+1)*8, total[0] - last[0] - 1);
-        }
-#else
 		sprintf(string + strlen(string), "xv 8 yv %d string \"..and %d more\" ",
 			42 + (last[0]+1)*8, total[0] - last[0] - 1);
-#endif /* __APPLE__ || MACOSX */
 	if (total[1] - last[1] > 1) // couldn't fit everyone
-#if defined (__APPLE__) || defined (MACOSX)
-        {
-            stringlen = strlen(string);
-            
-            if (1400 - stringlen > 0)
-                snprintf(string + stringlen, 1400 - stringlen, "xv 168 yv %d string \"..and %d more\" ",
-			42 + (last[1]+1)*8, total[1] - last[1] - 1);
-        }
-#else
 		sprintf(string + strlen(string), "xv 168 yv %d string \"..and %d more\" ",
 			42 + (last[1]+1)*8, total[1] - last[1] - 1);
-#endif /* __APPLE__ || MACOSX */
 
 	gi.WriteByte (svc_layout);
 	gi.WriteString (string);
@@ -2825,9 +2734,6 @@ void CTFStartMatch(void)
 {
 	int i;
 	edict_t *ent;
-#if !defined (__APPLE__) && !defined (MACOSX)
-	int ghost = 0;
-#endif /* !__APPLE__ && !MACOSX */
 
 	ctfgame.match = MATCH_GAME;
 	ctfgame.matchtime = level.time + matchtime->value * 60;
@@ -2931,11 +2837,8 @@ void CTFWinElection(void)
 		strncpy(level.forcemap, ctfgame.elevel, sizeof(level.forcemap) - 1);
 		EndDMLevel();
 		break;
-
-#if defined (__APPLE__) || defined (MACOSX)
-        default:
-                break;
-#endif /* __APPLE__ || MACOSX */
+	default:
+		break;
 	}
 	ctfgame.election = ELECT_NONE;
 }
@@ -3273,12 +3176,8 @@ void CTFRequestMatch(edict_t *ent, pmenuhnd_t *p)
 
 	PMenu_Close(ent);
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 1024,
-#else
-	sprintf(text,
-#endif /* __APPLE__ || MACOSX */
-                "%s has requested to switch to competition mode.", ent->client->pers.netname);
+	sprintf(text, "%s has requested to switch to competition mode.",
+		ent->client->pers.netname);
 	CTFBeginElection(ent, ELECT_MATCH, text);
 }
 
@@ -3317,18 +3216,10 @@ int CTFUpdateJoinMenu(edict_t *ent)
 	}
 
 	if (ctf_forcejoin->string && *ctf_forcejoin->string) {
-#if defined (__APPLE__) || defined (MACOSX)
-		if (strcasecmp(ctf_forcejoin->string, "red") == 0) {
-#else
-		if (stricmp(ctf_forcejoin->string, "red") == 0) {
-#endif /* __APPLE__ || MACOSX */
+		if (Q_stricmp(ctf_forcejoin->string, "red") == 0) {
 			joinmenu[jmenu_blue].text = NULL;
 			joinmenu[jmenu_blue].SelectFunc = NULL;
-#if defined (__APPLE__) || defined (MACOSX)
-		} else if (strcasecmp(ctf_forcejoin->string, "blue") == 0) {
-#else
-		} else if (stricmp(ctf_forcejoin->string, "blue") == 0) {
-#endif /* __APPLE__ || MACOSX */
+		} else if (Q_stricmp(ctf_forcejoin->string, "blue") == 0) {
 			joinmenu[jmenu_red].text = NULL;
 			joinmenu[jmenu_red].SelectFunc = NULL;
 		}
@@ -3351,13 +3242,8 @@ int CTFUpdateJoinMenu(edict_t *ent)
 			num2++;
 	}
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(team1players, 32, "  (%d players)", num1);
-	snprintf(team2players, 32, "  (%d players)", num2);
-#else
 	sprintf(team1players, "  (%d players)", num1);
 	sprintf(team2players, "  (%d players)", num2);
-#endif /* __APPLE__ ||ÊMACOSX */
 
 	switch (ctfgame.match) {
 	case MATCH_NONE :
@@ -3375,11 +3261,8 @@ int CTFUpdateJoinMenu(edict_t *ent)
 	case MATCH_GAME :
 		joinmenu[jmenu_match].text = "*MATCH IN PROGRESS";
 		break;
-
-#if defined (__APPLE__) || defined (MACOSX)
-        default:
-                break;
-#endif /* __APPLE__ || MACOSX */
+	default:
+		break;
 	}
 
 	if (joinmenu[jmenu_red].text)
@@ -3520,10 +3403,8 @@ qboolean CTFCheckRules(void)
 				CTFEndMatch();
 				gi.positioned_sound (world->s.origin, world, CHAN_AUTO | CHAN_RELIABLE, gi.soundindex("misc/bigtele.wav"), 1, ATTN_NONE, 0);
 				return false;
-#if defined (__APPLE__) || defined (MACOSX)
-                        default:
-                                break;
-#endif /* __APPLE__ || MACOSX */
+			default:
+				return false;
 			}
 		}
 
@@ -3544,29 +3425,18 @@ qboolean CTFCheckRules(void)
 			}
 
 			if (competition->value < 3)
-#if defined (__APPLE__) || defined (MACOSX)
-                                snprintf(text, 64,
-#else
-				sprintf(text,
-#endif /* __APPLE__ ||ÊMACOSX */
-                                        "%02d:%02d SETUP: %d not ready", t / 60, t % 60, j);
+				sprintf(text, "%02d:%02d SETUP: %d not ready",
+					t / 60, t % 60, j);
 			else
-#if defined (__APPLE__) || defined (MACOSX)
-                                snprintf(text, 64, "SETUP: %d not ready", j);
-#else
 				sprintf(text, "SETUP: %d not ready", j);
-#endif /* __APPLE__ ||ÊMACOSX */
+
 			gi.configstring (CONFIG_CTF_MATCH, text);
 			break;
 
 
 		case MATCH_PREGAME :
-#if defined (__APPLE__) || defined (MACOSX)
-			snprintf(text, 64,
-#else
-			sprintf(text,
-#endif /* __APPLE__ ||ÊMACOSX */
-                                "%02d:%02d UNTIL START", t / 60, t % 60);
+			sprintf(text, "%02d:%02d UNTIL START",
+				t / 60, t % 60);
 			gi.configstring (CONFIG_CTF_MATCH, text);
 
 			if (t <= 10 && !ctfgame.countdown) {
@@ -3576,22 +3446,16 @@ qboolean CTFCheckRules(void)
 			break;
 
 		case MATCH_GAME:
-#if defined (__APPLE__) || defined (MACOSX)
-			snprintf(text, 64, 
-#else
-			sprintf(text,
-#endif /* __APPLE__ || MACOSX */
-                                "%02d:%02d MATCH", t / 60, t % 60);
+			sprintf(text, "%02d:%02d MATCH",
+				t / 60, t % 60);
 			gi.configstring (CONFIG_CTF_MATCH, text);
 			if (t <= 10 && !ctfgame.countdown) {
 				ctfgame.countdown = true;
 				gi.positioned_sound (world->s.origin, world, CHAN_AUTO | CHAN_RELIABLE, gi.soundindex("world/10_0.wav"), 1, ATTN_NONE, 0);
 			}
 			break;
-#if defined (__APPLE__) || defined (MACOSX)
-                default:
-                        break;
-#endif /* __APPLE__ || MACOSX */
+		default:
+			break;
 		}
 		return false;
 
@@ -3775,11 +3639,7 @@ void CTFAdmin_SettingsApply(edict_t *ent, pmenuhnd_t *p)
 			// in the middle of a match, change it on the fly
 			ctfgame.matchtime = (ctfgame.matchtime - matchtime->value*60) + settings->matchlen*60;
 		} 
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, "%d", settings->matchlen);
-#else
 		sprintf(st, "%d", settings->matchlen);
-#endif /* __APPLE__ || MACOSX */
 		gi.cvar_set("matchtime", st);
 	}
 
@@ -3790,11 +3650,7 @@ void CTFAdmin_SettingsApply(edict_t *ent, pmenuhnd_t *p)
 			// in the middle of a match, change it on the fly
 			ctfgame.matchtime = (ctfgame.matchtime - matchsetuptime->value*60) + settings->matchsetuplen*60;
 		} 
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, "%d", settings->matchsetuplen);
-#else
 		sprintf(st, "%d", settings->matchsetuplen);
-#endif /* __APPLE__ || MACOSX */
 		gi.cvar_set("matchsetuptime", st);
 	}
 
@@ -3805,11 +3661,7 @@ void CTFAdmin_SettingsApply(edict_t *ent, pmenuhnd_t *p)
 			// in the middle of a match, change it on the fly
 			ctfgame.matchtime = (ctfgame.matchtime - matchstarttime->value) + settings->matchstartlen;
 		} 
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, "%d", settings->matchstartlen);
-#else
 		sprintf(st, "%d", settings->matchstartlen);
-#endif /* __APPLE__ || MACOSX */
 		gi.cvar_set("matchstarttime", st);
 	}
 
@@ -3821,11 +3673,7 @@ void CTFAdmin_SettingsApply(edict_t *ent, pmenuhnd_t *p)
 			i |= DF_WEAPONS_STAY;
 		else
 			i &= ~DF_WEAPONS_STAY;
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, "%d", i);
-#else
 		sprintf(st, "%d", i);
-#endif /* __APPLE__ ||ÊMACOSX */
 		gi.cvar_set("dmflags", st);
 	}
 
@@ -3837,11 +3685,7 @@ void CTFAdmin_SettingsApply(edict_t *ent, pmenuhnd_t *p)
 			i |= DF_INSTANT_ITEMS;
 		else
 			i &= ~DF_INSTANT_ITEMS;
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, "%d", i);
-#else
 		sprintf(st, "%d", i);
-#endif /* __APPLE__ ||ÊMACOSX */
 		gi.cvar_set("dmflags", st);
 	}
 
@@ -3853,33 +3697,21 @@ void CTFAdmin_SettingsApply(edict_t *ent, pmenuhnd_t *p)
 			i |= DF_QUAD_DROP;
 		else
 			i &= ~DF_QUAD_DROP;
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, "%d", i);
-#else
 		sprintf(st, "%d", i);
-#endif /* __APPLE__ ||ÊMACOSX */
 		gi.cvar_set("dmflags", st);
 	}
 
 	if (settings->instantweap != !!((int)instantweap->value)) {
 		gi.bprintf(PRINT_HIGH, "%s turned %s instant weapons.\n",
 			ent->client->pers.netname, settings->instantweap ? "on" : "off");
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, "%d", (int)settings->instantweap);
-#else
 		sprintf(st, "%d", (int)settings->instantweap);
-#endif /* __APPLE__ ||ÊMACOSX */
 		gi.cvar_set("instantweap", st);
 	}
 
 	if (settings->matchlock != !!((int)matchlock->value)) {
 		gi.bprintf(PRINT_HIGH, "%s turned %s match lock.\n",
 			ent->client->pers.netname, settings->matchlock ? "on" : "off");
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, "%d", (int)settings->matchlock);
-#else
 		sprintf(st, "%d", (int)settings->matchlock);
-#endif /* __APPLE__ ||ÊMACOSX */
 		gi.cvar_set("matchlock", st);
 	}
 
@@ -3889,10 +3721,6 @@ void CTFAdmin_SettingsApply(edict_t *ent, pmenuhnd_t *p)
 
 void CTFAdmin_SettingsCancel(edict_t *ent, pmenuhnd_t *p)
 {
-#if !defined (__APPLE__) && !defined (MACOSX)
-	admin_settings_t *settings = p->arg;
-#endif /* !__APPLE__ && !MACOSX */
-
 	PMenu_Close(ent);
 	CTFOpenAdminMenu(ent);
 }
@@ -3976,67 +3804,35 @@ void CTFAdmin_UpdateSettings(edict_t *ent, pmenuhnd_t *setmenu)
 	char text[64];
 	admin_settings_t *settings = setmenu->arg;
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 64, "Match Len:       %2d mins", settings->matchlen);
-#else
 	sprintf(text, "Match Len:       %2d mins", settings->matchlen);
-#endif /* __APPLE__ ||ÊMACOSX */
 	PMenu_UpdateEntry(setmenu->entries + i, text, PMENU_ALIGN_LEFT, CTFAdmin_ChangeMatchLen);
 	i++;
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 64, "Match Setup Len: %2d mins", settings->matchsetuplen);
-#else
 	sprintf(text, "Match Setup Len: %2d mins", settings->matchsetuplen);
-#endif /* __APPLE__ ||ÊMACOSX */
 	PMenu_UpdateEntry(setmenu->entries + i, text, PMENU_ALIGN_LEFT, CTFAdmin_ChangeMatchSetupLen);
 	i++;
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 64, "Match Start Len: %2d secs", settings->matchstartlen);
-#else
 	sprintf(text, "Match Start Len: %2d secs", settings->matchstartlen);
-#endif /* __APPLE__ ||ÊMACOSX */
 	PMenu_UpdateEntry(setmenu->entries + i, text, PMENU_ALIGN_LEFT, CTFAdmin_ChangeMatchStartLen);
 	i++;
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 64, "Weapons Stay:    %s", settings->weaponsstay ? "Yes" : "No");
-#else
 	sprintf(text, "Weapons Stay:    %s", settings->weaponsstay ? "Yes" : "No");
-#endif /* __APPLE__ ||ÊMACOSX */
 	PMenu_UpdateEntry(setmenu->entries + i, text, PMENU_ALIGN_LEFT, CTFAdmin_ChangeWeapStay);
 	i++;
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 64, "Instant Items:   %s", settings->instantitems ? "Yes" : "No");
-#else
 	sprintf(text, "Instant Items:   %s", settings->instantitems ? "Yes" : "No");
-#endif /* __APPLE__ ||ÊMACOSX */
 	PMenu_UpdateEntry(setmenu->entries + i, text, PMENU_ALIGN_LEFT, CTFAdmin_ChangeInstantItems);
 	i++;
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 64, "Quad Drop:       %s", settings->quaddrop ? "Yes" : "No");
-#else
 	sprintf(text, "Quad Drop:       %s", settings->quaddrop ? "Yes" : "No");
-#endif /* __APPLE__ ||ÊMACOSX */
 	PMenu_UpdateEntry(setmenu->entries + i, text, PMENU_ALIGN_LEFT, CTFAdmin_ChangeQuadDrop);
 	i++;
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 64, "Instant Weapons: %s", settings->instantweap ? "Yes" : "No");
-#else
 	sprintf(text, "Instant Weapons: %s", settings->instantweap ? "Yes" : "No");
-#endif /* __APPLE__ ||ÊMACOSX */
 	PMenu_UpdateEntry(setmenu->entries + i, text, PMENU_ALIGN_LEFT, CTFAdmin_ChangeInstantWeap);
 	i++;
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 64, "Match Lock:      %s", settings->matchlock ? "Yes" : "No");
-#else
 	sprintf(text, "Match Lock:      %s", settings->matchlock ? "Yes" : "No");
-#endif /* __APPLE__ ||ÊMACOSX */
 	PMenu_UpdateEntry(setmenu->entries + i, text, PMENU_ALIGN_LEFT, CTFAdmin_ChangeMatchLock);
 	i++;
 
@@ -4181,12 +3977,8 @@ void CTFAdmin(edict_t *ent)
 	}
 
 	if (!ent->client->resp.admin) {
-#if defined (__APPLE__) || defined (MACOSX)
-                snprintf(text, 1024, 
-#else
-		sprintf(text, 
-#endif /* __APPLE__ ||ÊMACOSX */
-			"%s has requested admin rights.", ent->client->pers.netname);
+		sprintf(text, "%s has requested admin rights.",
+			ent->client->pers.netname);
 		CTFBeginElection(ent, ELECT_ADMIN, text);
 		return;
 	}
@@ -4206,9 +3998,7 @@ void CTFStats(edict_t *ent)
 	char st[80];
 	char text[1024];
 	edict_t *e2;
-#if defined (__APPLE__) || defined (MACOSX)
-        int textlen;
-#endif /* __APPLE__ ||ÊMACOSX */
+
 	*text = 0;
 	if (ctfgame.match == MATCH_SETUP) {
 		for (i = 1; i <= maxclients->value; i++) {
@@ -4216,11 +4006,7 @@ void CTFStats(edict_t *ent)
 			if (!e2->inuse)
 				continue;
 			if (!e2->client->resp.ready && e2->client->resp.ctf_team != CTF_NOTEAM) {
-#if defined (__APPLE__) || defined (MACOSX)
-                                snprintf(st, 80, "%s is not ready.\n", e2->client->pers.netname);
-#else
 				sprintf(st, "%s is not ready.\n", e2->client->pers.netname);
-#endif /* __APPLE__ || MACOSX */
 				if (strlen(text) + strlen(st) < sizeof(text) - 50)
 					strcat(text, st);
 			}
@@ -4248,12 +4034,7 @@ void CTFStats(edict_t *ent)
 			e = 50;
 		else
 			e = g->kills * 100 / (g->kills + g->deaths);
-#if defined (__APPLE__) || defined (MACOSX)
-		snprintf(st, 80, 
-#else
-		sprintf(st,
-#endif /* __APPLE__ ||ÊMACOSX */
-                        "%3d|%-16.16s|%5d|%5d|%5d|%5d|%5d|%4d%%|\n",
+		sprintf(st, "%3d|%-16.16s|%5d|%5d|%5d|%5d|%5d|%4d%%|\n",
 			g->number, 
 			g->netname, 
 			g->score, 
@@ -4263,13 +4044,7 @@ void CTFStats(edict_t *ent)
 			g->carrierdef, 
 			e);
 		if (strlen(text) + strlen(st) > sizeof(text) - 50) {
-#if defined (__APPLE__) || defined (MACOSX)
-                        textlen = strlen(text);
-                        if (1400 - textlen > 0)
-                            snprintf(text+textlen, 1400 - textlen, "And more...\n");
-#else
 			sprintf(text+strlen(text), "And more...\n");
-#endif /* __APPLE__ || MACOSX */
 			gi.cprintf(ent, PRINT_HIGH, "%s", text);
 			return;
 		}
@@ -4284,9 +4059,6 @@ void CTFPlayerList(edict_t *ent)
 	char st[80];
 	char text[1400];
 	edict_t *e2;
-#if defined (__APPLE__) || defined (MACOSX)
-        int	textlen;
-#endif /* __APPLE__ || MACOSX */
 
 #if 0
 	*text = 0;
@@ -4296,11 +4068,7 @@ void CTFPlayerList(edict_t *ent)
 			if (!e2->inuse)
 				continue;
 			if (!e2->client->resp.ready && e2->client->resp.ctf_team != CTF_NOTEAM) {
-#if defined (__APPLE__) || defined (MACOSX)
-				snprintf(st, 80, "%s is not ready.\n", e2->client->pers.netname);
-#else
 				sprintf(st, "%s is not ready.\n", e2->client->pers.netname);
-#endif /* __APPLE__ ||ÊMACOSX */
 				if (strlen(text) + strlen(st) < sizeof(text) - 50)
 					strcat(text, st);
 			}
@@ -4328,14 +4096,7 @@ void CTFPlayerList(edict_t *ent)
 			e2->client->resp.admin ? " (admin)" : "");
 
 		if (strlen(text) + strlen(st) > sizeof(text) - 50) {
-#if defined (__APPLE__) || defined (MACOSX)
-                        textlen = strlen(text);
-                        
-                        if (1400 - textlen > 0)
-                            snprintf(text+textlen, 1400 - textlen, "And more...\n");
-#else
 			sprintf(text+strlen(text), "And more...\n");
-#endif /* __APPLE__ ||ÊMACOSX */
 			gi.cprintf(ent, PRINT_HIGH, "%s", text);
 			return;
 		}
@@ -4384,14 +4145,8 @@ void CTFWarp(edict_t *ent)
 		return;
 	}
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 1024, "%s has requested warping to level %s.", 
-			ent->client->pers.netname, gi.argv(1));
-#else
 	sprintf(text, "%s has requested warping to level %s.", 
 			ent->client->pers.netname, gi.argv(1));
-#endif /* __APPLE__ ||ÊMACOSX */
-
 	if (CTFBeginElection(ent, ELECT_MAP, text))
 		strncpy(ctfgame.elevel, gi.argv(1), sizeof(ctfgame.elevel) - 1);
 }
@@ -4429,11 +4184,7 @@ void CTFBoot(edict_t *ent)
 		return;
 	}
 
-#if defined (__APPLE__) || defined (MACOSX)
-	snprintf(text, 80, "kick %d\n", i - 1);
-#else
 	sprintf(text, "kick %d\n", i - 1);
-#endif /* __APPLE__ ||ÊMACOSX */
 	gi.AddCommandString(text);
 }
 

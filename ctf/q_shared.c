@@ -1053,11 +1053,7 @@ char	*va(char *format, ...)
 	static char		string[1024];
 	
 	va_start (argptr, format);
-#if defined (__APPLE__) || defined (MACOSX)
 	vsnprintf (string, 1024, format,argptr);
-#else
-	vsprintf (string, format,argptr);
-#endif /* __APPLE__ ||ÊMACOSX */
 	va_end (argptr);
 
 	return string;	
@@ -1225,29 +1221,18 @@ int Q_strcasecmp (char *s1, char *s2)
 
 
 
-void Com_sprintf (char *dest, int size, char *fmt, ...)
+void Com_sprintf (char *dest, int size, const char *fmt, ...)
 {
-	va_list		argptr;
-        
-#if defined (__APPLE__) || defined (MACOSX)
-
-	va_start (argptr,fmt);
-	vsnprintf (dest,size,fmt,argptr);
-	va_end (argptr);
-
-#else
-
 	int		len;
-	char		bigbuffer[0x10000];
+	va_list		argptr;
+	char	bigbuffer[0x10000];
 
 	va_start (argptr,fmt);
-	len = vsprintf (bigbuffer,fmt,argptr);
+	len = vsnprintf (bigbuffer,0x10000,fmt,argptr);
 	va_end (argptr);
 	if (len >= size)
 		Com_Printf ("Com_sprintf: overflow of %i in %i\n", len, size);
 	strncpy (dest, bigbuffer, size-1);
-
-#endif /* __APPLE__ ||ÊMACOSX */
 }
 
 /*
@@ -1266,7 +1251,7 @@ Searches the string for the given
 key and returns the associated value, or an empty string.
 ===============
 */
-char *Info_ValueForKey (char *s, char *key)
+char *Info_ValueForKey (char *s, const char *key)
 {
 	char	pkey[512];
 	static	char value[2][512];	// use two buffers so compares
@@ -1308,7 +1293,7 @@ char *Info_ValueForKey (char *s, char *key)
 	}
 }
 
-void Info_RemoveKey (char *s, char *key)
+void Info_RemoveKey (char *s, const char *key)
 {
 	char	*start;
 	char	pkey[512];
@@ -1375,7 +1360,7 @@ qboolean Info_Validate (char *s)
 	return true;
 }
 
-void Info_SetValueForKey (char *s, char *key, char *value)
+void Info_SetValueForKey (char *s, const char *key, const char *value)
 {
 	char	newi[MAX_INFO_STRING], *v;
 	int		c;

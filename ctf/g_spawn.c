@@ -341,7 +341,7 @@ char *ED_NewString (char *string)
 	char	*newb, *new_p;
 	int		i,l;
 	
-	l = strlen(string) + 1;
+	l = (int)strlen(string) + 1;
 
 	newb = gi.TagMalloc (l, TAG_LEVEL);
 
@@ -416,10 +416,8 @@ void ED_ParseField (char *key, char *value, edict_t *ent)
 				break;
 			case F_IGNORE:
 				break;
-#if defined (__APPLE__) || defined (MACOSX)
-                        default:
-                                break;
-#endif /* __APPLE__ ||ÊMACOSX */
+			default:
+				break;
 			}
 			return;
 		}
@@ -591,11 +589,7 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 		entities = ED_ParseEdict (entities, ent);
 		
 		// yet another map hack
-#if defined (__APPLE__) || defined (MACOSX)
-		if (!strcasecmp(level.mapname, "command") && !strcasecmp(ent->classname, "trigger_once") && !strcasecmp(ent->model, "*27"))
-#else
-		if (!stricmp(level.mapname, "command") && !stricmp(ent->classname, "trigger_once") && !stricmp(ent->model, "*27"))
-#endif /* __APPLE__ ||ÊMACOSX */
+		if (!Q_stricmp(level.mapname, "command") && !Q_stricmp(ent->classname, "trigger_once") && !Q_stricmp(ent->model, "*27"))
 			ent->spawnflags &= ~SPAWNFLAG_NOT_HARD;
 
 		// remove things (except the world) from different skill levels or deathmatch

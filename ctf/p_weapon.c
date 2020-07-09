@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "m_player.h"
 
 
-qboolean		is_quad;
+qboolean	is_quad;
 static byte		is_silenced;
 
 
@@ -550,13 +550,8 @@ void Weapon_Generic (edict_t *ent, int FRAME_ACTIVATE_LAST, int FRAME_FIRE_LAST,
 		fire_frames, fire);
 
 	// run the weapon frame again if hasted
-#if defined (__APPLE__) || defined (MACOSX)
-	if (strcasecmp(ent->client->pers.weapon->pickup_name, "Grapple") == 0 &&
+	if (Q_stricmp(ent->client->pers.weapon->pickup_name, "Grapple") == 0 &&
 		ent->client->weaponstate == WEAPON_FIRING)
-#else
-	if (stricmp(ent->client->pers.weapon->pickup_name, "Grapple") == 0 &&
-		ent->client->weaponstate == WEAPON_FIRING)
-#endif /* __APPLE__ || MACOSX */
 		return;
 
 	if ((CTFApplyHaste(ent) ||

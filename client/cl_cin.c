@@ -185,6 +185,7 @@ void SCR_StopCinematic (void)
 		cin.restart_sound = false;
 		CL_Snd_Restart_f ();
 	}
+
 }
 
 /*
@@ -425,7 +426,7 @@ SCR_ReadNextFrame
 */
 byte *SCR_ReadNextFrame (void)
 {
-	size_t  r;
+	size_t	r;
 	int		command;
 	byte	samples[22050/14*4];
 	byte	compressed[0x20000];
@@ -581,6 +582,7 @@ void SCR_PlayCinematic (char *arg)
 
 	// make sure CD isn't playing music
 	CDAudio_Stop();
+	Miniaudio_Stop();
 
 	cl.cinematicframe = 0;
 	dot = strstr (arg, ".");

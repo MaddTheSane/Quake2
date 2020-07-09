@@ -1,5 +1,6 @@
 /*
 Copyright (C) 1997-2001 Id Software, Inc.
+Copyright (C) 2018-2019 Krzysztof Kondrak
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -18,12 +19,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 #include "client.h"
-
-#if defined (__APPLE__) || defined (MACOSX)
-
 #include <ctype.h>
-
-#endif /* __APPLE__ || MACOSX */
 
 /*
 
@@ -31,9 +27,8 @@ key up events are sent even if in console mode
 
 */
 
-
 #define		MAXCMDLINE	256
-char	key_lines[32][MAXCMDLINE];
+char	key_lines[128][MAXCMDLINE];
 int		key_linepos;
 int		shift_down=false;
 int	anykeydown;
@@ -103,7 +98,7 @@ keyname_t keynames[] =
         {"CAPSLOCK", K_CAPSLOCK},
         {"NUMLOCK", K_NUMLOCK},
         {"COMMAND", K_COMMAND},
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ ||Â MACOSX */
 
 	{"MOUSE1", K_MOUSE1},
 	{"MOUSE2", K_MOUSE2},
@@ -402,13 +397,13 @@ void Key_Console (int key)
 		return;
 	}
 
-	if (key == K_PGUP || key == K_KP_PGUP )
+	if (key == K_PGUP || key == K_MWHEELUP || key == K_KP_PGUP )
 	{
 		con.display -= 2;
 		return;
 	}
 
-	if (key == K_PGDN || key == K_KP_PGDN ) 
+	if (key == K_PGDN || key == K_MWHEELDOWN || key == K_KP_PGDN )
 	{
 		con.display += 2;
 		if (con.display > con.current)
@@ -523,6 +518,16 @@ int Key_StringToKeynum (char *str)
                     return (kn->keynum);
             }
         }
+	
+	if (!Q_strcasecmp (str, "CMD"))
+	{
+		for (kn=keynames ; kn->name ; kn++)
+		{
+			if (!Q_strcasecmp ("COMMAND", kn->name))
+				return (kn->keynum);
+		}
+	}
+
 
 #endif /* APPLE || MACOSX */
 
@@ -599,7 +604,7 @@ void Key_SetBinding (int keynum, char *binding)
             
             IN_SetF12EjectEnabled (keybindings[keynum][0] == 0x00);
         }
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ ||Â MACOSX */
 }
 
 /*
@@ -724,7 +729,7 @@ void Key_Init (void)
 {
 	int		i;
 
-	for (i=0 ; i<32 ; i++)
+	for (i=0 ; i<128 ; i++)
 	{
 		key_lines[i][0] = ']';
 		key_lines[i][1] = 0;
@@ -760,6 +765,8 @@ void Key_Init (void)
         consolekeys[K_KP_MULT] = true;
         consolekeys[K_KP_EQUAL] = true;
 #endif /* __APPLE__ || MACOSX */
+	consolekeys[K_MWHEELUP] = true;
+	consolekeys[K_MWHEELDOWN] = true;
 	consolekeys[K_SHIFT] = true;
 	consolekeys[K_INS] = true;
 	consolekeys[K_KP_INS] = true;
@@ -832,6 +839,16 @@ void Key_Event (int key, qboolean down, unsigned time)
 		return;
 	}
 
+	keydown[key] = down;
+	// ALT+ENTER fullscreen toggle
+	if (down && keydown[K_ALT] && key == K_ENTER)
+	{
+		extern cvar_t *vid_fullscreen;
+		Cvar_Set("vid_fullscreen", vid_fullscreen->value ? "0" : "1");
+		vid_fullscreen->modified = true;
+		return;
+	}
+
 	// update auto-repeat status
 	if (down)
 	{
@@ -855,7 +872,7 @@ void Key_Event (int key, qboolean down, unsigned time)
 			&& key_repeats[key] > 1)
 			return;	// ignore most autorepeats
 			
-		if (key >= 200 && !keybindings[key])
+		if (key >= 200 && key != K_MWHEELUP && key != K_MWHEELDOWN && !keybindings[key])
 			Com_Printf ("%s is unbound, hit F4 to set.\n", Key_KeynumToString (key) );
 	}
 	else

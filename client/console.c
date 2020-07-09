@@ -1,5 +1,6 @@
 /*
 Copyright (C) 1997-2001 Id Software, Inc.
+Copyright (C) 2018-2019 Krzysztof Kondrak
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -24,10 +25,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 console_t	con;
 
 cvar_t		*con_notifytime;
+extern cvar_t	*vid_hudscale;
 
 
 #define		MAXCMDLINE	256
-extern	char	key_lines[32][MAXCMDLINE];
+extern	char	key_lines[128][MAXCMDLINE];
 extern	int		edit_line;
 extern	int		key_linepos;
 		
@@ -36,12 +38,12 @@ extern	int		key_linepos;
 void Con_DrawString (int x, int y, char *s)
 #else
 void DrawString (int x, int y, char *s)
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ ||Â MACOSX */
 {
 	while (*s)
 	{
 		re.DrawChar (x, y, *s);
-		x+=8;
+		x+=8*vid_hudscale->value;
 		s++;
 	}
 }
@@ -51,7 +53,7 @@ void DrawAltString (int x, int y, char *s)
 	while (*s)
 	{
 		re.DrawChar (x, y, *s ^ 0x80);
-		x+=8;
+		x+=8*vid_hudscale->value;
 		s++;
 	}
 }
@@ -487,7 +489,7 @@ void Con_DrawInput (void)
 	y = con.vislines-16;
 
 	for (i=0 ; i<con.linewidth ; i++)
-		re.DrawChar ( (i+1)<<3, con.vislines - 22, text[i]);
+		re.DrawChar ( ((i+1)<<3)*vid_hudscale->value, con.vislines - 22*vid_hudscale->value, text[i]);
 
 // remove cursor
 	key_lines[edit_line][key_linepos] = 0;
@@ -524,7 +526,7 @@ void Con_DrawNotify (void)
 		text = con.text + (i % con.totallines)*con.linewidth;
 		
 		for (x = 0 ; x < con.linewidth ; x++)
-			re.DrawChar ( (x+1)<<3, v, text[x]);
+			re.DrawChar ( ((x+1)<<3)*vid_hudscale->value, v*vid_hudscale->value, text[x]);
 
 		v += 8;
 	}
@@ -535,19 +537,19 @@ void Con_DrawNotify (void)
 		if (chat_team)
 		{
 #if defined (__APPLE__) || defined (MACOSX)
-			Con_DrawString (8, v, "say_team:");
+			Con_DrawString (8, v*vid_hudscale->value, "say_team:");
 #else
-			DrawString (8, v, "say_team:");
-#endif /* __APPLE__ || MACOSX */                        
+			DrawString (8, v*vid_hudscale->value, "say_team:");
+#endif /* __APPLE__ || MACOSX */
 			skip = 11;
 		}
 		else
 		{
 #if defined (__APPLE__) || defined (MACOSX)
-			Con_DrawString (8, v, "say:");
+			Con_DrawString (8, v*vid_hudscale->value, "say:");
 #else
-			DrawString (8, v, "say:");
-#endif /* __APPLE__ || MACOSX */ 
+			DrawString (8, v*vid_hudscale->value, "say:");
+#endif /* __APPLE__ || MACOSX */
 			skip = 5;
 		}
 
@@ -557,17 +559,17 @@ void Con_DrawNotify (void)
 		x = 0;
 		while(s[x])
 		{
-			re.DrawChar ( (x+skip)<<3, v, s[x]);
+			re.DrawChar ( ((x+skip)<<3)*vid_hudscale->value, v*vid_hudscale->value, s[x]);
 			x++;
 		}
-		re.DrawChar ( (x+skip)<<3, v, 10+((cls.realtime>>8)&1));
+		re.DrawChar ( ((x+skip)<<3)*vid_hudscale->value, v*vid_hudscale->value, 10+((cls.realtime>>8)&1));
 		v += 8;
 	}
 	
 	if (v)
 	{
 		SCR_AddDirtyPoint (0,0);
-		SCR_AddDirtyPoint (viddef.width-1, v);
+		SCR_AddDirtyPoint (viddef.width-1, v*vid_hudscale->value);
 	}
 }
 
@@ -599,33 +601,27 @@ void Con_DrawConsole (float frac)
 		lines = viddef.height;
 
 // draw the background
-	re.DrawStretchPic (0, -viddef.height+lines, viddef.width, viddef.height, "conback");
+	re.DrawStretchPic (0, lines-viddef.height, viddef.width, viddef.height, "conback");
 	SCR_AddDirtyPoint (0,0);
 	SCR_AddDirtyPoint (viddef.width-1,lines-1);
 
 	Com_sprintf (version, sizeof(version), "v%4.2f", VERSION);
+
 	for (x=0 ; x<5 ; x++)
-		re.DrawChar (viddef.width-44+x*8, lines-12, 128 + version[x] );
+		re.DrawChar (viddef.width-44*vid_hudscale->value+x*8*vid_hudscale->value, lines-12*vid_hudscale->value, 128 + version[x] );
 
 // draw the text
 	con.vislines = lines;
-	
-#if 0
-	rows = (lines-8)>>3;		// rows of text to draw
 
-	y = lines - 24;
-#else
 	rows = (lines-22)>>3;		// rows of text to draw
-
-	y = lines - 30;
-#endif
+	y = (lines - 30 * vid_hudscale->value)/vid_hudscale->value;
 
 // draw from the bottom up
 	if (con.display != con.current)
 	{
 	// draw arrows to show the buffer is backscrolled
 		for (x=0 ; x<con.linewidth ; x+=4)
-			re.DrawChar ( (x+1)<<3, y, '^');
+			re.DrawChar ( ((x+1)<<3)*vid_hudscale->value, y*vid_hudscale->value, '^');
 	
 		y -= 8;
 		rows--;
@@ -642,7 +638,7 @@ void Con_DrawConsole (float frac)
 		text = con.text + (row % con.totallines)*con.linewidth;
 
 		for (x=0 ; x<con.linewidth ; x++)
-			re.DrawChar ( (x+1)<<3, y, text[x]);
+			re.DrawChar ( ((x+1)<<3)*vid_hudscale->value, y*vid_hudscale->value, text[x]);
 	}
 
 //ZOID
@@ -655,7 +651,7 @@ void Con_DrawConsole (float frac)
 			text = cls.downloadname;
 
 		x = con.linewidth - ((con.linewidth * 7) / 40);
-		y = x - ((int)strlen(text)) - 8;
+		y = (x - (int)strlen(text) - 8) / vid_hudscale->value;
 		i = con.linewidth/3;
 		if (strlen(text) > i) {
 			y = x - i - 11;
@@ -689,9 +685,9 @@ void Con_DrawConsole (float frac)
 #endif /* __APPLE__ || MACOSX */
 
 		// draw it
-		y = con.vislines-12;
+		y = con.vislines-12*vid_hudscale->value;
 		for (i = 0; i < strlen(dlbar); i++)
-			re.DrawChar ( (i+1)<<3, y, dlbar[i]);
+			re.DrawChar ( ((i+1)<<3)*vid_hudscale->value, y, dlbar[i]);
 	}
 //ZOID
 

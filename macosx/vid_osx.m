@@ -119,7 +119,8 @@ cvar_t *				vid_ypos			= NULL;		// Y coordinate of window position.
 cvar_t *				vid_fullscreen		= NULL;		// Video fullscreen.
 cvar_t *				vid_minrefresh		= NULL;		// Video min. refresh rate.
 cvar_t *				vid_maxrefresh		= NULL;		// Video max. refresh rate [-1 = infinite].
-cvar_t    *vid_hudscale=NULL;
+cvar_t *				vid_hudscale		= NULL;
+cvar_t *				viewsize			= NULL;
 
 static vidmode_t *		gVIDModes			= NULL;
 static vidgamma_t *		gVIDOriginalGamma	= NULL;
@@ -263,6 +264,7 @@ void	VID_Init (void)
     vid_gamma 	    = Cvar_Get ("vid_gamma",		"1",    CVAR_ARCHIVE);
     vid_minrefresh  = Cvar_Get ("vid_minrefresh",	"0",    CVAR_ARCHIVE);
     vid_maxrefresh  = Cvar_Get ("vid_maxrefresh",	"-1",	CVAR_ARCHIVE);
+	viewsize        = Cvar_Get ("viewsize",         "100",  CVAR_ARCHIVE);
 
     // required so that they are remembered, even if the approriate renderer is not used:
     Cvar_Get ("sw_allow_modex",  	          "1",							CVAR_ARCHIVE);

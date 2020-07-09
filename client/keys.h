@@ -1,5 +1,6 @@
 /*
 Copyright (C) 1997-2001 Id Software, Inc.
+Copyright (C) 2018-2019 Krzysztof Kondrak
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -68,13 +69,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #endif /* __APPLE__ || MACOSX */
 
 #define K_KP_HOME		160
-#define K_KP_UPARROW		161
+#define K_KP_UPARROW	161
 #define K_KP_PGUP		162
-#define	K_KP_LEFTARROW		163
+#define	K_KP_LEFTARROW	163
 #define K_KP_5			164
-#define K_KP_RIGHTARROW		165
+#define K_KP_RIGHTARROW	165
 #define K_KP_END		166
-#define K_KP_DOWNARROW		167
+#define K_KP_DOWNARROW	167
 #define K_KP_PGDN		168
 #define	K_KP_ENTER		169
 #define K_KP_INS   		170
@@ -88,7 +89,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define K_KP_MULT		175
 #define K_KP_EQUAL		176
 
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ ||Â MACOSX */
 
 #define K_PAUSE			255
 
@@ -101,7 +102,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	K_MOUSE2		201
 #define	K_MOUSE3		202
 
-#endif /* !__APPLE__ &&Ê!MACOSX */
+#endif /* !__APPLE__ &&Â !MACOSX */
 
 //
 // joystick buttons
@@ -148,7 +149,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	K_AUX31			237
 #define	K_AUX32			238
 
-#define K_MWHEELDOWN		239
+#define K_MWHEELDOWN	239
 #define K_MWHEELUP		240
 
 #if defined (__APPLE__) || defined (MACOSX)
@@ -159,7 +160,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	K_MOUSE4		244
 #define	K_MOUSE5		245
 
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ ||Â MACOSX */
 
 
 extern char		*keybindings[256];

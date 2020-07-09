@@ -96,7 +96,7 @@ void CL_SetLightstyle (int i)
 
 	s = cl.configstrings[i+CS_LIGHTS];
 
-	j = (int) strlen (s);
+	j = (int)strlen (s);
 	if (j >= MAX_QPATH)
 		Com_Error (ERR_DROP, "svc_lightstyle length=%i", j);
 
@@ -1832,8 +1832,12 @@ void CL_FlyParticles (vec3_t origin, int count)
 
 	if (!avelocities[0][0])
 	{
-		for (i=0 ; i<NUMVERTEXNORMALS*3 ; i++)
-			avelocities[0][i] = (rand()&255) * 0.01;
+		for (i=0 ; i<NUMVERTEXNORMALS; i++)
+		{
+			avelocities[i][0] = (rand()&255) * 0.01;
+			avelocities[i][1] = (rand()&255) * 0.01;
+			avelocities[i][2] = (rand()&255) * 0.01;
+		}
 	}
 
 
@@ -1931,8 +1935,12 @@ void CL_BfgParticles (entity_t *ent)
 	
 	if (!avelocities[0][0])
 	{
-		for (i=0 ; i<NUMVERTEXNORMALS*3 ; i++)
-			avelocities[0][i] = (rand()&255) * 0.01;
+		for (i=0 ; i<NUMVERTEXNORMALS ; i++)
+		{
+			avelocities[i][0] = (rand()&255) * 0.01;
+			avelocities[i][1] = (rand()&255) * 0.01;
+			avelocities[i][2] = (rand()&255) * 0.01;
+		}
 	}
 
 
@@ -2183,11 +2191,7 @@ void CL_AddParticles (void)
 {
 	cparticle_t		*p, *next;
 	float			alpha;
-#if defined (__APPLE__) || defined (MACOSX)
-	float			time = 0.0f, time2;
-#else
-	float			time, time2;
-#endif /* __APPLE__ || MACOSX */
+	float			time = 0, time2;
 	vec3_t			org;
 	int				color;
 	cparticle_t		*active, *tail;

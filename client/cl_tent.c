@@ -1353,11 +1353,7 @@ void CL_AddPlayerBeams (void)
 	float		yaw, pitch;
 	float		forward;
 	float		len, steps;
-#if defined (__APPLE__) || defined (MACOSX)
-	int		framenum = 0;
-#else
-	int		framenum;
-#endif /* __APPLE__ || MACOSX */
+	int			framenum = 0;
 	float		model_length;
 	
 	float		hand_multiplier;
@@ -1673,10 +1669,8 @@ void CL_AddExplosions (void)
 			ent->skinnum = 0;
 			ent->flags |= RF_TRANSLUCENT;
 			break;
-#if defined (__APPLE__) || defined (MACOSX)
-                default:
-                        break;
-#endif /* __APPLE__ || MACOSX */
+		default:
+			break;
 		}
 
 		if (ex->type == ex_free)

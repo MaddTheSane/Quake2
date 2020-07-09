@@ -389,11 +389,7 @@ void CL_ParsePacketEntities (frame_t *oldframe, frame_t *newframe)
 {
 	int			newnum;
 	int			bits;
-#if defined (__APPLE__) || defined (MACOSX)
-	entity_state_t		*oldstate = NULL;
-#else
-	entity_state_t		*oldstate;
-#endif /* __APPLE__ || MACOSX */
+	entity_state_t	*oldstate = NULL;
 	int			oldindex, oldnum;
 
 	newframe->parse_entities = cl.parse_entities;
@@ -1345,10 +1341,6 @@ void CL_AddViewWeapon (player_state_t *ps, player_state_t *ops)
 
 	// allow the gun to be completely removed
 	if (!cl_gun->value)
-		return;
-
-	// don't draw gun if in wide angle view
-	if (ps->fov > 90)
 		return;
 
 	memset (&gun, 0, sizeof(gun));

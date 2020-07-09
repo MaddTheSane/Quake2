@@ -100,6 +100,8 @@ extern	cvar_t *allow_download_models;
 extern	cvar_t *allow_download_sounds;
 extern	cvar_t *allow_download_maps;
 
+extern void SV_ShutdownGameProgs(void);
+
 //======================================================================
 
 
@@ -504,6 +506,7 @@ void CL_Connect_f (void)
 	if (Com_ServerState ())
 	{	// if running a local server, kill it and reissue
 		SV_Shutdown (va("Server quit\n", msg), false);
+		SV_ShutdownGameProgs();
 	}
 	else
 	{
@@ -1546,6 +1549,7 @@ void CL_InitLocal (void)
 	Cmd_AddCommand ("invdrop", NULL);
 	Cmd_AddCommand ("weapnext", NULL);
 	Cmd_AddCommand ("weapprev", NULL);
+	Cmd_AddCommand ("weaplast", NULL);
 }
 
 
@@ -1742,6 +1746,7 @@ void CL_Frame (int msec)
 	S_Update (cl.refdef.vieworg, cl.v_forward, cl.v_right, cl.v_up);
 	
 	CDAudio_Update();
+	Miniaudio_Update();
 
 	// advance local effects for next frame
 	CL_RunDLights ();
@@ -1808,6 +1813,7 @@ void CL_Init (void)
 	cls.disable_screen = true;	// don't draw yet
 
 	CDAudio_Init ();
+	Miniaudio_Init ();
 	CL_InitLocal ();
 	IN_Init ();
 
@@ -1842,10 +1848,9 @@ void CL_Shutdown(void)
 	CL_WriteConfiguration (); 
 
 	CDAudio_Shutdown ();
+	Miniaudio_Shutdown();
 	S_Shutdown();
-
 	IN_Shutdown ();
-
 	VID_Shutdown();
 }
 

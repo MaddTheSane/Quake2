@@ -306,7 +306,7 @@ qboolean Cbuf_AddLateCommands (void)
 	argc = COM_Argc();
 	for (i=1 ; i<argc ; i++)
 	{
-		s += strlen (COM_Argv(i)) + 1;
+		s += (int)strlen (COM_Argv(i)) + 1;
 	}
 	if (!s)
 		return false;
@@ -678,7 +678,7 @@ void Cmd_TokenizeString (char *text, qboolean macroExpand)
 			strcpy (cmd_args, text);
 
 			// strip off any trailing whitespace
-			l = ((int)strlen(cmd_args)) - 1;
+			l = (int)strlen(cmd_args) - 1;
 			for ( ; l >= 0 ; l--)
 				if (cmd_args[l] <= ' ')
 					cmd_args[l] = 0;

@@ -1207,7 +1207,7 @@ int R_Init( void *hinstance, void *hWnd )
 	if ( !QGL_Init( gl_driver->string ) )
 	{
 		QGL_Shutdown();
-        ri.Con_Printf (PRINT_ALL, "ref_gl::R_Init() - could not load \"%s\"\n", gl_driver->string );
+		ri.Con_Printf (PRINT_ALL, "ref_gl::R_Init() - could not load \"%s\"\n", gl_driver->string );
 		return -1;
 	}
 
@@ -1225,7 +1225,7 @@ int R_Init( void *hinstance, void *hWnd )
 	if ( !R_SetMode () )
 	{
 		QGL_Shutdown();
-        ri.Con_Printf (PRINT_ALL, "ref_gl::R_Init() - could not R_SetMode()\n" );
+		ri.Con_Printf (PRINT_ALL, "ref_gl::R_Init() - could not R_SetMode()\n" );
 		return -1;
 	}
 
@@ -1280,7 +1280,7 @@ int R_Init( void *hinstance, void *hWnd )
 			ri.Cvar_Set( "gl_monolightmap", "A" );
 			ri.Con_Printf( PRINT_ALL, "...using gl_monolightmap 'a'\n" );
 		}
-		else if ( gl_config.renderer & GL_RENDERER_POWERVR ) 
+		else if ( gl_config.renderer & GL_RENDERER_POWERVR )
 		{
 			ri.Cvar_Set( "gl_monolightmap", "0" );
 		}
@@ -1292,7 +1292,7 @@ int R_Init( void *hinstance, void *hWnd )
 
 	// power vr can't have anything stay in the framebuffer, so
 	// the screen needs to redraw the tiled background every frame
-	if ( gl_config.renderer & GL_RENDERER_POWERVR ) 
+	if ( gl_config.renderer & GL_RENDERER_POWERVR )
 	{
 		ri.Cvar_Set( "scr_drawall", "1" );
 	}
@@ -1332,11 +1332,11 @@ int R_Init( void *hinstance, void *hWnd )
 	** grab extensions
 	*/
 #if defined (__APPLE__) || defined (MACOSX)
-        if (GL_ExtensionSupported ("GL_EXT_compiled_vertex_array") == true ||
-            GL_ExtensionSupported ("GL_SGI_compiled_vertex_array") == true)
+	if (GL_ExtensionSupported ("GL_EXT_compiled_vertex_array") == true ||
+		GL_ExtensionSupported ("GL_SGI_compiled_vertex_array") == true)
 #else
-	if ( strstr( gl_config.extensions_string, "GL_EXT_compiled_vertex_array" ) || 
-		 strstr( gl_config.extensions_string, "GL_SGI_compiled_vertex_array" ) )
+	if ( strstr( gl_config.extensions_string, "GL_EXT_compiled_vertex_array" ) ||
+		strstr( gl_config.extensions_string, "GL_SGI_compiled_vertex_array" ) )
 #endif /* __APPLE__ || MACOSX */
 	{
 		ri.Con_Printf( PRINT_ALL, "...enabling GL_EXT_compiled_vertex_array\n" );
@@ -1351,69 +1351,69 @@ int R_Init( void *hinstance, void *hWnd )
 #if defined (__APPLE__) || defined (MACOSX)
 
 #if GL_ARB_multisample 
-        if (GL_ExtensionSupported ("GL_ARB_multisample") == true)
-        {
-            GLint		myValue;
-            extern long		gGLCurARBMultiSamples;
-            
-            qglGetIntegerv (GL_SAMPLES_ARB, &myValue);
-//            gGLCurARBMultiSamples = myValue;
-//            ri.Cvar_SetValue ("gl_arb_multisample", (float) myValue);
-            qglGetIntegerv (GL_SAMPLE_BUFFERS_ARB, &myValue);
-            if (myValue > 0 && gGLCurARBMultiSamples > 1)
-            {
-                qglEnable (GL_MULTISAMPLE_ARB);
-            }
-            ri.Con_Printf (PRINT_ALL, "...enabling GL_ARB_multisample\n");
-        }
-        else
-        {
-            extern long		gGLMaxARBMultiSampleBuffers;
-            extern long		gGLCurARBMultiSamples;
-        
-            gGLMaxARBMultiSampleBuffers = 0;
-            gGLCurARBMultiSamples = 0;
-
-            ri.Con_Printf (PRINT_ALL, "...GL_ARB_multisample not found\n");
-        }
+	if (GL_ExtensionSupported ("GL_ARB_multisample") == true)
+	{
+		GLint		myValue;
+		extern long		gGLCurARBMultiSamples;
+		
+		qglGetIntegerv (GL_SAMPLES_ARB, &myValue);
+		//            gGLCurARBMultiSamples = myValue;
+		//            ri.Cvar_SetValue ("gl_arb_multisample", (float) myValue);
+		qglGetIntegerv (GL_SAMPLE_BUFFERS_ARB, &myValue);
+		if (myValue > 0 && gGLCurARBMultiSamples > 1)
+		{
+			qglEnable (GL_MULTISAMPLE_ARB);
+		}
+		ri.Con_Printf (PRINT_ALL, "...enabling GL_ARB_multisample\n");
+	}
+	else
+	{
+		extern long		gGLMaxARBMultiSampleBuffers;
+		extern long		gGLCurARBMultiSamples;
+		
+		gGLMaxARBMultiSampleBuffers = 0;
+		gGLCurARBMultiSamples = 0;
+		
+		ri.Con_Printf (PRINT_ALL, "...GL_ARB_multisample not found\n");
+	}
 #endif /* GL_ARB_multisample */
 
 #if GL_EXT_texture_filter_anisotropic
-        if (GL_ExtensionSupported ("GL_EXT_texture_filter_anisotropic" ) == true)
-        {
-            qglEnableAnisotropicTexture (true);
-            ri.Con_Printf (PRINT_ALL, "...enabling GL_EXT_texture_filter_anisotropic\n");
-        }
-        else
-        {
-            qglEnableAnisotropicTexture (false);
-            ri.Con_Printf (PRINT_ALL, "...GL_EXT_texture_filter_anisotropic not found\n");
-        }
+	if (GL_ExtensionSupported ("GL_EXT_texture_filter_anisotropic" ) == true)
+	{
+		qglEnableAnisotropicTexture (true);
+		ri.Con_Printf (PRINT_ALL, "...enabling GL_EXT_texture_filter_anisotropic\n");
+	}
+	else
+	{
+		qglEnableAnisotropicTexture (false);
+		ri.Con_Printf (PRINT_ALL, "...GL_EXT_texture_filter_anisotropic not found\n");
+	}
 #endif /* GL_EXT_texture_filter_anisotropic */
-        {
-            extern qboolean	gGLTruformAvailable;
-            
-            gGLTruformAvailable = false;
-            if (GL_ExtensionSupported ("GL_ATIX_pn_triangles") == true)
-            {
-                qglPNTrianglesiATIX  = qwglGetProcAddress ("qglPNTrianglesiATIX");
-                qglPNTrianglesfATIX  = qwglGetProcAddress ("qglPNTrianglesfATIX");
-                
-                if (qglPNTrianglesiATIX != NULL && qglPNTrianglesfATIX != NULL)
-                {
-                    ri.Con_Printf (PRINT_ALL, "...enabling GL_ATIX_pn_triangles\n");
-                    gGLTruformAvailable = true;
-                }
-            }
-            
-            if (gGLTruformAvailable == false)
-            {
-                qglPNTrianglesiATIX = NULL;
-                qglPNTrianglesfATIX = NULL;
-                
-                ri.Con_Printf (PRINT_ALL, "...GL_ATIX_pn_triangles not found\n");
-            }
-        }
+	{
+		extern qboolean	gGLTruformAvailable;
+		
+		gGLTruformAvailable = false;
+		if (GL_ExtensionSupported ("GL_ATIX_pn_triangles") == true)
+		{
+			qglPNTrianglesiATIX  = qwglGetProcAddress ("qglPNTrianglesiATIX");
+			qglPNTrianglesfATIX  = qwglGetProcAddress ("qglPNTrianglesfATIX");
+			
+			if (qglPNTrianglesiATIX != NULL && qglPNTrianglesfATIX != NULL)
+			{
+				ri.Con_Printf (PRINT_ALL, "...enabling GL_ATIX_pn_triangles\n");
+				gGLTruformAvailable = true;
+			}
+		}
+		
+		if (gGLTruformAvailable == false)
+		{
+			qglPNTrianglesiATIX = NULL;
+			qglPNTrianglesfATIX = NULL;
+			
+			ri.Con_Printf (PRINT_ALL, "...GL_ATIX_pn_triangles not found\n");
+		}
+	}
 #endif /* __APPLE__ || MACOSX */
 
 #ifdef _WIN32
@@ -1468,10 +1468,10 @@ int R_Init( void *hinstance, void *hWnd )
 
 	if ( !qglColorTableEXT &&
 #if defined (__APPLE__) || defined (MACOSX)
-                GL_ExtensionSupported ("GL_EXT_paletted_texture") == true &&
-                GL_ExtensionSupported ("GL_EXT_shared_texture_palette") == true )
+		GL_ExtensionSupported ("GL_EXT_paletted_texture") == true &&
+		GL_ExtensionSupported ("GL_EXT_shared_texture_palette") == true )
 #else
-		strstr( gl_config.extensions_string, "GL_EXT_paletted_texture" ) && 
+		strstr( gl_config.extensions_string, "GL_EXT_paletted_texture" ) &&
 		strstr( gl_config.extensions_string, "GL_EXT_shared_texture_palette" ) )
 #endif /* __APPLE__ ||ÊMACOSX */
 	{
@@ -1494,10 +1494,10 @@ int R_Init( void *hinstance, void *hWnd )
 #if defined (__APPLE__) || defined (MACOSX)
 	if (GL_ExtensionSupported ("GL_ARB_multitexture") == true)
 	{
-                GLint	myMaxTextureUnits;
-    
-                glGetIntegerv (GL_MAX_TEXTURE_UNITS_ARB, &myMaxTextureUnits);
-                ri.Con_Printf( PRINT_ALL, "...found %d texture units\n", myMaxTextureUnits);
+		GLint	myMaxTextureUnits;
+
+		glGetIntegerv (GL_MAX_TEXTURE_UNITS_ARB, &myMaxTextureUnits);
+		ri.Con_Printf( PRINT_ALL, "...found %d texture units\n", myMaxTextureUnits);
 		if (myMaxTextureUnits > 1 && gl_arb_multitexture != NULL && gl_arb_multitexture->value)
 #else
 	if ( strstr( gl_config.extensions_string, "GL_ARB_multitexture" ) )
@@ -1578,8 +1578,24 @@ int R_Init( void *hinstance, void *hWnd )
 		ri.Con_Printf (PRINT_ALL, "glGetError() = 0x%x\n", err);
 
 #if defined (__APPLE__) || defined (MACOSX)
-        return (0);
+	return (0);
 #endif /* __APPLE__ ||ÊMACOSX */
+}
+	//Because there's something's wrong with R_Init's syntax messing up Xcode auto-indent
+	//TODO: find where and why it's messing up!
+#if 0
+}
+#endif
+
+
+/*
+=============
+R_EndWorldRenderpass
+=============
+*/
+void R_EndWorldRenderpass ( void )
+{
+    // old OpenGL renderer has only one pass
 }
 
 /*
@@ -1896,6 +1912,7 @@ refexport_t GetRefAPI (refimport_t rimp )
 	re.CinematicSetPalette = R_SetPalette;
 	re.BeginFrame = R_BeginFrame;
 	re.EndFrame = GLimp_EndFrame;
+    re.EndWorldRenderpass = R_EndWorldRenderpass;
 
 	re.AppActivate = GLimp_AppActivate;
 
@@ -1904,6 +1921,7 @@ refexport_t GetRefAPI (refimport_t rimp )
 	return re;
 }
 
+    
 
 #ifndef REF_HARD_LINKED
 // this is only here so the functions in q_shared.c and q_shwin.c can link

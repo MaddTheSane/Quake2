@@ -30,25 +30,48 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #ifdef WIN32
 
 #ifdef NDEBUG
-#define BUILDSTRING "Win32 RELEASE"
+#define BUILDSTRING "Win32"
 #else
 #define BUILDSTRING "Win32 DEBUG"
 #endif
 
 #ifdef _M_IX86
 #define	CPUSTRING	"x86"
+#elif defined _M_X64
+#define CPUSTRING	"x64"
 #elif defined _M_ALPHA
 #define	CPUSTRING	"AXP"
 #endif
 
 #elif defined __linux__
 
+#ifdef NDEBUG
 #define BUILDSTRING "Linux"
+#else
+#define BUILDSTRING "Linux DEBUG"
+#endif
 
 #ifdef __i386__
 #define CPUSTRING "i386"
+#elif defined __LP64__
+#define CPUSTRING	"x64"
 #elif defined __alpha__
 #define CPUSTRING "axp"
+#else
+#define CPUSTRING "Unknown"
+#endif
+
+#elif defined __APPLE__
+
+#ifdef NDEBUG
+#define BUILDSTRING "MacOS"
+#else
+#define BUILDSTRING "MacOS DEBUG"
+#endif
+#ifdef __x86_64__
+#define CPUSTRING "x64"
+#elif defined __arm64__
+#define CPUSTRING "arm64"
 #else
 #define CPUSTRING "Unknown"
 #endif
@@ -722,12 +745,13 @@ MISC
 ==============================================================
 */
 
+
 #if defined (__APPLE__) || defined (MACOSX)
 # ifdef ERR_FATAL
 # undef ERR_FATAL
 # endif
 #endif /* __APPLE__ || MACOSX */
-#define	ERR_FATAL		0		// exit the entire game with a popup window
+#define	ERR_FATAL	0		// exit the entire game with a popup window
 #define	ERR_DROP	1		// print to console and disconnect from game
 #define	ERR_QUIT	2		// not an error, just a normal exit
 

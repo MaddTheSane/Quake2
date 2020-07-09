@@ -1344,6 +1344,16 @@ void Draw_GetPalette (void)
 	free (pal);
 }
 
+/*
+=============
+R_EndWorldRenderpass
+=============
+*/
+static void R_EndWorldRenderpass ( void )
+{
+	// old Software renderer has only one pass
+}
+
 struct image_s *R_RegisterSkin (char *name);
 
 /*
@@ -1385,6 +1395,7 @@ refexport_t GetRefAPI (refimport_t rimp)
 	re.CinematicSetPalette = R_CinematicSetPalette;
 	re.BeginFrame = R_BeginFrame;
 	re.EndFrame = SWimp_EndFrame;
+	re.EndWorldRenderpass = R_EndWorldRenderpass;
 
 	re.AppActivate = SWimp_AppActivate;
 

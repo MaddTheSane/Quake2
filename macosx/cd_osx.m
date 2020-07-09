@@ -40,7 +40,7 @@ cvar_t *					cd_volume;
 
 static FDAudioFile*     sCDAudio            = nil;
 static NSString*        sCDAudioMountPath   = nil;
-static NSMutableArray*	sCDAudioTrackList   = nil;
+static NSMutableArray<NSString*>*	sCDAudioTrackList   = nil;
 static NSUInteger       sCDAudioTrack       = 0;
 
 //----------------------------------------------------------------------------------------------------------------------------
@@ -232,7 +232,7 @@ BOOL	CDAudio_ScanForMedia (NSString* mediaFolder, NSConditionLock* stopCondition
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-void	CDAudio_Play (int track, qboolean loop)
+qboolean	CDAudio_Play (int track, qboolean loop)
 {
     if (sCDAudio != nil)
     {
@@ -250,9 +250,12 @@ void	CDAudio_Play (int track, qboolean loop)
             else
             {
                 Con_Print ("CDAudio: Failed to start playback!\n");
+                return false;
             }
         }
+        return true;
     }
+    return false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------

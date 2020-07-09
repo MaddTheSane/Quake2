@@ -1,5 +1,6 @@
 /*
 Copyright (C) 1997-2001 Id Software, Inc.
+Copyright (C) 2018-2019 Krzysztof Kondrak
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -33,6 +34,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
   */
 
 #include "client.h"
+#include <inttypes.h>
 
 float		scr_con_current;	// aproaches scr_conlines at scr_conspeed
 float		scr_conlines;		// 0.0 to 1.0 lines of console to display
@@ -58,6 +60,9 @@ cvar_t		*scr_graphheight;
 cvar_t		*scr_graphscale;
 cvar_t		*scr_graphshift;
 cvar_t		*scr_drawall;
+
+extern cvar_t	*vid_hudscale;
+extern cvar_t	*vid_ref;
 
 typedef struct
 {
@@ -273,17 +278,17 @@ void SCR_DrawCenterString (void)
 		for (l=0 ; l<40 ; l++)
 			if (start[l] == '\n' || !start[l])
 				break;
-		x = (viddef.width - l*8)/2;
+		x = (viddef.width - l*8*vid_hudscale->value)/2;
 		SCR_AddDirtyPoint (x, y);
-		for (j=0 ; j<l ; j++, x+=8)
+		for (j=0 ; j<l ; j++, x+=8*vid_hudscale->value)
 		{
-			re.DrawChar (x, y, start[j]);	
+			re.DrawChar (x, y, start[j]);
 			if (!remaining--)
 				return;
 		}
-		SCR_AddDirtyPoint (x, y+8);
+		SCR_AddDirtyPoint (x, y+8*vid_hudscale->value);
 			
-		y += 8;
+		y += 8*vid_hudscale->value;
 
 		while (*start && *start != '\n')
 			start++;
@@ -325,11 +330,8 @@ static void SCR_CalcVrect (void)
 
 	size = scr_viewsize->value;
 
-	scr_vrect.width = viddef.width*size/100;
-	scr_vrect.width &= ~7;
-
+	scr_vrect.width  = viddef.width*size/100;
 	scr_vrect.height = viddef.height*size/100;
-	scr_vrect.height &= ~1;
 
 	scr_vrect.x = (viddef.width - scr_vrect.width)/2;
 	scr_vrect.y = (viddef.height - scr_vrect.height)/2;
@@ -464,7 +466,7 @@ void SCR_DrawPause (void)
 		return;
 
 	re.DrawGetPicSize (&w, &h, "pause");
-	re.DrawPic ((viddef.width-w)/2, viddef.height/2 + 8, "pause");
+	re.DrawPic ((viddef.width-w)/2, viddef.height/2 + 8*vid_hudscale->value, "pause");
 }
 
 /*
@@ -562,6 +564,7 @@ void SCR_BeginLoadingPlaque (void)
 	S_StopAllSounds ();
 	cl.sound_prepped = false;		// don't play ambients
 	CDAudio_Stop ();
+	Miniaudio_Stop ();
 	if (cls.disable_screen)
 		return;
 	if (developer->value)
@@ -612,11 +615,11 @@ int entitycmpfnc( const entity_t *a, const entity_t *b )
 	*/
 	if ( a->model == b->model )
 	{
-		return ( ( int ) a->skin - ( int ) b->skin );
+		return (int)( ( intptr_t ) a->skin - ( intptr_t ) b->skin );
 	}
 	else
 	{
-		return ( ( int ) a->model - ( int ) b->model );
+		return (int)( (intptr_t) a->model - (intptr_t) b->model );
 	}
 }
 
@@ -690,13 +693,6 @@ Clear any parts of the tiled background that were drawn on last frame
 */
 void SCR_TileClear (void)
 {
-	int		i;
-	int		top, bottom, left, right;
-	dirty_t	clear;
-
-	if (scr_drawall->value)
-		SCR_DirtyScreen ();	// for power vr or broken page flippers...
-
 	if (scr_con_current == 1.0)
 		return;		// full screen console
 	if (scr_viewsize->value == 100)
@@ -704,71 +700,23 @@ void SCR_TileClear (void)
 	if (cl.cinematictime > 0)
 		return;		// full screen cinematic
 
-	// erase rect will be the union of the past three frames
-	// so tripple buffering works properly
-	clear = scr_dirty;
-	for (i=0 ; i<2 ; i++)
-	{
-		if (scr_old_dirty[i].x1 < clear.x1)
-			clear.x1 = scr_old_dirty[i].x1;
-		if (scr_old_dirty[i].x2 > clear.x2)
-			clear.x2 = scr_old_dirty[i].x2;
-		if (scr_old_dirty[i].y1 < clear.y1)
-			clear.y1 = scr_old_dirty[i].y1;
-		if (scr_old_dirty[i].y2 > clear.y2)
-			clear.y2 = scr_old_dirty[i].y2;
-	}
-
-	scr_old_dirty[1] = scr_old_dirty[0];
-	scr_old_dirty[0] = scr_dirty;
-
-	scr_dirty.x1 = 9999;
-	scr_dirty.x2 = -9999;
-	scr_dirty.y1 = 9999;
-	scr_dirty.y2 = -9999;
-
-	// don't bother with anything convered by the console)
-	top = scr_con_current*viddef.height;
-	if (top >= clear.y1)
-		clear.y1 = top;
-
-	if (clear.y2 <= clear.y1)
-		return;		// nothing disturbed
-
-	top = scr_vrect.y;
-	bottom = top + scr_vrect.height-1;
-	left = scr_vrect.x;
-	right = left + scr_vrect.width-1;
-
-	if (clear.y1 < top)
+	if (scr_vrect.y > 0)
 	{	// clear above view screen
-		i = clear.y2 < top-1 ? clear.y2 : top-1;
-		re.DrawTileClear (clear.x1 , clear.y1,
-			clear.x2 - clear.x1 + 1, i - clear.y1+1, "backtile");
-		clear.y1 = top;
-	}
-	if (clear.y2 > bottom)
-	{	// clear below view screen
-		i = clear.y1 > bottom+1 ? clear.y1 : bottom+1;
-		re.DrawTileClear (clear.x1, i,
-			clear.x2-clear.x1+1, clear.y2-i+1, "backtile");
-		clear.y2 = bottom;
-	}
-	if (clear.x1 < left)
-	{	// clear left of view screen
-		i = clear.x2 < left-1 ? clear.x2 : left-1;
-		re.DrawTileClear (clear.x1, clear.y1,
-			i-clear.x1+1, clear.y2 - clear.y1 + 1, "backtile");
-		clear.x1 = left;
-	}
-	if (clear.x2 > right)
-	{	// clear left of view screen
-		i = clear.x1 > right+1 ? clear.x1 : right+1;
-		re.DrawTileClear (i, clear.y1,
-			clear.x2-i+1, clear.y2 - clear.y1 + 1, "backtile");
-		clear.x2 = right;
+		re.DrawTileClear (scr_vrect.x , 0,
+			scr_vrect.width, scr_vrect.y, "backtile");
+
+		// clear below view screen
+		re.DrawTileClear(scr_vrect.x, scr_vrect.y + scr_vrect.height,
+			scr_vrect.width, viddef.height - scr_vrect.height - scr_vrect.y, "backtile");
 	}
 
+	if (scr_vrect.x > 0)
+	{	// clear left of view screen
+		re.DrawTileClear (0, 0, scr_vrect.x, viddef.height, "backtile");
+
+		// clear right of view screen
+		re.DrawTileClear(scr_vrect.x + scr_vrect.width, 0, scr_vrect.width, viddef.height, "backtile");
+	}
 }
 
 
@@ -786,7 +734,7 @@ char		*sb_nums[2][11] =
 
 #define	ICON_WIDTH	24
 #define	ICON_HEIGHT	24
-#define	CHAR_WIDTH	16
+#define	CHAR_WIDTH	16 * vid_hudscale->value
 #define	ICON_SPACE	8
 
 
@@ -822,8 +770,8 @@ void SizeHUDString (char *string, int *w, int *h)
 		string++;
 	}
 
-	*w = width * 8;
-	*h = lines * 8;
+	*w = width * 8 * vid_hudscale->value;
+	*h = lines * 8 * vid_hudscale->value;
 }
 
 void DrawHUDString (char *string, int x, int y, int centerwidth, int xor)
@@ -844,19 +792,19 @@ void DrawHUDString (char *string, int x, int y, int centerwidth, int xor)
 		line[width] = 0;
 
 		if (centerwidth)
-			x = margin + (centerwidth - width*8)/2;
+			x = margin + ((centerwidth - width*8)*vid_hudscale->value)/2;
 		else
 			x = margin;
 		for (i=0 ; i<width ; i++)
 		{
 			re.DrawChar (x, y, line[i]^xor);
-			x += 8;
+			x += 8 * vid_hudscale->value;
 		}
 		if (*string)
 		{
 			string++;	// skip the \n
 			x = margin;
-			y += 8;
+			y += 8 * vid_hudscale->value;
 		}
 	}
 }
@@ -963,38 +911,38 @@ void SCR_ExecuteLayoutString (char *s)
 		if (!strcmp(token, "xl"))
 		{
 			token = COM_Parse (&s);
-			x = atoi(token);
+			x = atoi(token) * vid_hudscale->value;
 			continue;
 		}
 		if (!strcmp(token, "xr"))
 		{
 			token = COM_Parse (&s);
-			x = viddef.width + atoi(token);
+			x = viddef.width + atoi(token) * vid_hudscale->value;
 			continue;
 		}
 		if (!strcmp(token, "xv"))
 		{
 			token = COM_Parse (&s);
-			x = viddef.width/2 - 160 + atoi(token);
+			x = viddef.width/2 - 160 * vid_hudscale->value + atoi(token) * vid_hudscale->value;
 			continue;
 		}
 
 		if (!strcmp(token, "yt"))
 		{
 			token = COM_Parse (&s);
-			y = atoi(token);
+			y = atoi(token) * vid_hudscale->value;
 			continue;
 		}
 		if (!strcmp(token, "yb"))
 		{
 			token = COM_Parse (&s);
-			y = viddef.height + atoi(token);
+			y = viddef.height + atoi(token) * vid_hudscale->value;
 			continue;
 		}
 		if (!strcmp(token, "yv"))
 		{
 			token = COM_Parse (&s);
-			y = viddef.height/2 - 120 + atoi(token);
+			y = viddef.height/2 - 120 * vid_hudscale->value + atoi(token) * vid_hudscale->value;
 			continue;
 		}
 
@@ -1018,11 +966,11 @@ void SCR_ExecuteLayoutString (char *s)
 			int		score, ping, time;
 
 			token = COM_Parse (&s);
-			x = viddef.width/2 - 160 + atoi(token);
+			x = viddef.width/2 - 160 * vid_hudscale->value + atoi(token)*vid_hudscale->value;
 			token = COM_Parse (&s);
-			y = viddef.height/2 - 120 + atoi(token);
+			y = viddef.height/2 - 120 * vid_hudscale->value + atoi(token)*vid_hudscale->value;
 			SCR_AddDirtyPoint (x, y);
-			SCR_AddDirtyPoint (x+159, y+31);
+			SCR_AddDirtyPoint (x+159 * vid_hudscale->value, y+31 * vid_hudscale->value);
 
 			token = COM_Parse (&s);
 			value = atoi(token);
@@ -1039,19 +987,19 @@ void SCR_ExecuteLayoutString (char *s)
 			token = COM_Parse (&s);
 			time = atoi(token);
 
-			DrawAltString (x+32, y, ci->name);
+			DrawAltString (x+32 * vid_hudscale->value, y, ci->name);
 #if defined (__APPLE__) || defined (MACOSX)
-			Con_DrawString (x+32, y+8,  "Score: ");
+			Con_DrawString (x+32 * vid_hudscale->value, y+8 * vid_hudscale->value,  "Score: ");
 #else
-			DrawString (x+32, y+8,  "Score: ");
+			DrawString (x+32 * vid_hudscale->value, y+8 * vid_hudscale->value,  "Score: ");
 #endif /* __APPLE__ || MACOSX */
-			DrawAltString (x+32+7*8, y+8,  va("%i", score));
+			DrawAltString (x+32 * vid_hudscale->value +7*8 * vid_hudscale->value, y+8 * vid_hudscale->value,  va("%i", score));
 #if defined (__APPLE__) || defined (MACOSX)
-			Con_DrawString (x+32, y+16, va("Ping:  %i", ping));
-			Con_DrawString (x+32, y+24, va("Time:  %i", time));
+			Con_DrawString (x+32 * vid_hudscale->value, y+16 * vid_hudscale->value, va("Ping:  %i", ping));
+			Con_DrawString (x+32 * vid_hudscale->value, y+24 * vid_hudscale->value, va("Time:  %i", time));
 #else
-			DrawString (x+32, y+16, va("Ping:  %i", ping));
-			DrawString (x+32, y+24, va("Time:  %i", time));
+			DrawString (x+32 * vid_hudscale->value, y+16 * vid_hudscale->value, va("Ping:  %i", ping));
+			DrawString (x+32 * vid_hudscale->value, y+24 * vid_hudscale->value, va("Time:  %i", time));
 #endif /* __APPLE__ || MACOSX */
 
 			if (!ci->icon)
@@ -1066,11 +1014,11 @@ void SCR_ExecuteLayoutString (char *s)
 			char	block[80];
 
 			token = COM_Parse (&s);
-			x = viddef.width/2 - 160 + atoi(token);
+			x = viddef.width/2 - 160 * vid_hudscale->value + atoi(token)*vid_hudscale->value;
 			token = COM_Parse (&s);
-			y = viddef.height/2 - 120 + atoi(token);
+			y = viddef.height/2 - 120 * vid_hudscale->value + atoi(token)*vid_hudscale->value;
 			SCR_AddDirtyPoint (x, y);
-			SCR_AddDirtyPoint (x+159, y+31);
+			SCR_AddDirtyPoint (x+159 * vid_hudscale->value, y+31 * vid_hudscale->value);
 
 			token = COM_Parse (&s);
 			value = atoi(token);
@@ -1099,7 +1047,7 @@ void SCR_ExecuteLayoutString (char *s)
 				Con_DrawString (x, y, block);
 #else
 				DrawString (x, y, block);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ ||Â MACOSX */
 			continue;
 		}
 
@@ -1335,11 +1283,19 @@ void SCR_UpdateScreen (void)
 	for ( i = 0; i < numframes; i++ )
 	{
 		re.BeginFrame( separation[i] );
+		// end frame and force video restart if swapchain is out of date
+		if (vid_ref->modified)
+		{
+			re.EndWorldRenderpass();
+			re.EndFrame();
+			return;
+		}
 
 		if (scr_draw_loading == 2)
 		{	//  loading plaque over black screen
 			int		w, h;
 
+			re.EndWorldRenderpass();
 			re.CinematicSetPalette(NULL);
 			scr_draw_loading = false;
 			re.DrawGetPicSize (&w, &h, "loading");
@@ -1358,6 +1314,7 @@ void SCR_UpdateScreen (void)
 					re.CinematicSetPalette(NULL);
 					cl.cinematicpalette_active = false;
 				}
+				re.EndWorldRenderpass();
 				M_Draw ();
 //				re.EndFrame();
 //				return;
@@ -1369,12 +1326,14 @@ void SCR_UpdateScreen (void)
 					re.CinematicSetPalette(NULL);
 					cl.cinematicpalette_active = false;
 				}
+				re.EndWorldRenderpass();
 				SCR_DrawConsole ();
 //				re.EndFrame();
 //				return;
 			}
 			else
 			{
+				re.EndWorldRenderpass();
 				SCR_DrawCinematic();
 //				re.EndFrame();
 //				return;
@@ -1393,10 +1352,10 @@ void SCR_UpdateScreen (void)
 			// do 3D refresh drawing, and then update the screen
 			SCR_CalcVrect ();
 
+			V_RenderView ( separation[i] );
+
 			// clear any dirty part of the background
 			SCR_TileClear ();
-
-			V_RenderView ( separation[i] );
 
 			SCR_DrawStats ();
 			if (cl.frame.playerstate.stats[STAT_LAYOUTS] & 1)

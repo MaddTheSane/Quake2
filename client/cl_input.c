@@ -1,5 +1,6 @@
 /*
 Copyright (C) 1997-2001 Id Software, Inc.
+Copyright (C) 2018-2019 Krzysztof Kondrak
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -464,6 +465,8 @@ void CL_SendCmd (void)
 	usercmd_t	*cmd, *oldcmd;
 	usercmd_t	nullcmd;
 	int			checksumIndex;
+
+	memset( &buf, 0, sizeof(buf) );
 
 	// build a command even if not connected
 

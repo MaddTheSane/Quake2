@@ -17,7 +17,6 @@
 		55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 55871EAC235D1B5300528BDF /* Quake II.sdef */; };
 		55BA642524B6912200A53F4C /* snd_miniaudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 55BA642424B6912200A53F4C /* snd_miniaudio.c */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
-		D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = D2075FF1152965F500F14280 /* Quake II.scriptSuite */; };
 		D20760471529699E00F14280 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20760451529699E00F14280 /* AudioToolbox.framework */; };
 		D20760481529699E00F14280 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20760461529699E00F14280 /* AudioUnit.framework */; };
 		D207604A152969C500F14280 /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2076049152969C500F14280 /* ForceFeedback.framework */; };
@@ -219,7 +218,6 @@
 		D2DF6E5115295E2D00B80579 /* ref_gl.q2plug in CopyFiles */ = {isa = PBXBuildFile; fileRef = D2DF6DCB1529551C00B80579 /* ref_gl.q2plug */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D2DF6E5215295E3000B80579 /* ref_soft.q2plug in CopyFiles */ = {isa = PBXBuildFile; fileRef = D2DF6E08152958A400B80579 /* ref_soft.q2plug */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D2DF6E641529635E00B80579 /* Credits.rtf */; };
-		D2DF6E6E1529635E00B80579 /* Quake II.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = D2DF6E681529635E00B80579 /* Quake II.scriptTerminology */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1518,11 +1516,9 @@
 				D2DF6E4815295BA700B80579 /* GrowBox.tiff in Resources */,
 				5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */,
 				D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */,
-				D2DF6E6E1529635E00B80579 /* Quake II.scriptTerminology in Resources */,
 				55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */,
 				5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */,
 				D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */,
-				D2075FF2152965F500F14280 /* Quake II.scriptSuite in Resources */,
 				D207605015296AF400F14280 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

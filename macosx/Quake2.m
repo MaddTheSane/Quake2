@@ -119,8 +119,8 @@
     if (theFilePath != NULL)
     {
     
-        char 		*myMod  = (char *) [[theFilePath lastPathComponent] fileSystemRepresentation];
-        char 		*myPath = (char *) [theFilePath fileSystemRepresentation];
+        const char 	*myMod  = [[theFilePath lastPathComponent] fileSystemRepresentation];
+        const char 	*myPath = [theFilePath fileSystemRepresentation];
         char		**myNewArgValues;
         BOOL		myDirectory;
         

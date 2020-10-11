@@ -14,6 +14,24 @@
 		5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5556CE001CE961DB00C027F3 /* Icons.xcassets */; };
 		555E12DE1CE68DCA001C2DED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555E12DD1CE68DCA001C2DED /* AVFoundation.framework */; };
 		55759CB02533618A00153823 /* FruitzOfDojo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551F726E2532F742007534B9 /* FruitzOfDojo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55759D372533C99D00153823 /* vk_mesh.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D052533C99C00153823 /* vk_mesh.c */; };
+		55759D392533C99D00153823 /* vk_model.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D072533C99C00153823 /* vk_model.c */; };
+		55759D3A2533C99D00153823 /* vk_pipeline.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D082533C99C00153823 /* vk_pipeline.c */; };
+		55759D3B2533C99D00153823 /* vk_device.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D092533C99C00153823 /* vk_device.c */; };
+		55759D3C2533C99D00153823 /* vk_image.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D0A2533C99C00153823 /* vk_image.c */; };
+		55759D3D2533C99D00153823 /* vk_shaders.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D0B2533C99C00153823 /* vk_shaders.c */; };
+		55759D3E2533C99D00153823 /* vk_rsurf.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D0D2533C99C00153823 /* vk_rsurf.c */; };
+		55759D3F2533C99D00153823 /* vk_validation.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D0E2533C99C00153823 /* vk_validation.c */; };
+		55759D402533C99D00153823 /* vk_rmain.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D0F2533C99C00153823 /* vk_rmain.c */; };
+		55759D412533C99D00153823 /* vk_mem_alloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55759D102533C99C00153823 /* vk_mem_alloc.cpp */; };
+		55759D422533C99D00153823 /* vk_cmd.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D112533C99D00153823 /* vk_cmd.c */; };
+		55759D432533C99D00153823 /* vk_common.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D132533C99D00153823 /* vk_common.c */; };
+		55759D442533C99D00153823 /* vk_buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D142533C99D00153823 /* vk_buffer.c */; };
+		55759D452533C99D00153823 /* vk_draw.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D152533C99D00153823 /* vk_draw.c */; };
+		55759D462533C99D00153823 /* vk_swapchain.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D162533C99D00153823 /* vk_swapchain.c */; };
+		55759D472533C99D00153823 /* vk_rmisc.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D192533C99D00153823 /* vk_rmisc.c */; };
+		55759D482533C99D00153823 /* vk_warp.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D1A2533C99D00153823 /* vk_warp.c */; };
+		55759D602533C99D00153823 /* vk_light.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D332533C99D00153823 /* vk_light.c */; };
 		55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 55871EAC235D1B5300528BDF /* Quake II.sdef */; };
 		55BA642524B6912200A53F4C /* snd_miniaudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 55BA642424B6912200A53F4C /* snd_miniaudio.c */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
@@ -289,6 +307,56 @@
 		555B01501E2EA12D007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555E12CB1CE672FE001C2DED /* vid_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vid_osx.h; sourceTree = "<group>"; };
 		555E12DD1CE68DCA001C2DED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		55759CE92533C65700153823 /* ref_vk.q2plug */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ref_vk.q2plug; sourceTree = BUILT_PRODUCTS_DIR; };
+		55759CEB2533C65700153823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55759D032533C99C00153823 /* anorms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = anorms.h; sourceTree = "<group>"; };
+		55759D042533C99C00153823 /* anormtab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = anormtab.h; sourceTree = "<group>"; };
+		55759D052533C99C00153823 /* vk_mesh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_mesh.c; sourceTree = "<group>"; };
+		55759D072533C99C00153823 /* vk_model.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_model.c; sourceTree = "<group>"; };
+		55759D082533C99C00153823 /* vk_pipeline.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_pipeline.c; sourceTree = "<group>"; };
+		55759D092533C99C00153823 /* vk_device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_device.c; sourceTree = "<group>"; };
+		55759D0A2533C99C00153823 /* vk_image.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_image.c; sourceTree = "<group>"; };
+		55759D0B2533C99C00153823 /* vk_shaders.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_shaders.c; sourceTree = "<group>"; };
+		55759D0C2533C99C00153823 /* vk_shaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vk_shaders.h; sourceTree = "<group>"; };
+		55759D0D2533C99C00153823 /* vk_rsurf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_rsurf.c; sourceTree = "<group>"; };
+		55759D0E2533C99C00153823 /* vk_validation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_validation.c; sourceTree = "<group>"; };
+		55759D0F2533C99C00153823 /* vk_rmain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_rmain.c; sourceTree = "<group>"; };
+		55759D102533C99C00153823 /* vk_mem_alloc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vk_mem_alloc.cpp; sourceTree = "<group>"; };
+		55759D112533C99D00153823 /* vk_cmd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_cmd.c; sourceTree = "<group>"; };
+		55759D122533C99D00153823 /* vk_mem_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vk_mem_alloc.h; sourceTree = "<group>"; };
+		55759D132533C99D00153823 /* vk_common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_common.c; sourceTree = "<group>"; };
+		55759D142533C99D00153823 /* vk_buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_buffer.c; sourceTree = "<group>"; };
+		55759D152533C99D00153823 /* vk_draw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_draw.c; sourceTree = "<group>"; };
+		55759D162533C99D00153823 /* vk_swapchain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_swapchain.c; sourceTree = "<group>"; };
+		55759D172533C99D00153823 /* vk_local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vk_local.h; sourceTree = "<group>"; };
+		55759D182533C99D00153823 /* qvk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qvk.h; sourceTree = "<group>"; };
+		55759D192533C99D00153823 /* vk_rmisc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_rmisc.c; sourceTree = "<group>"; };
+		55759D1A2533C99D00153823 /* vk_warp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_warp.c; sourceTree = "<group>"; };
+		55759D1C2533C99D00153823 /* basic_color_quad_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = basic_color_quad_frag.c; sourceTree = "<group>"; };
+		55759D1D2533C99D00153823 /* particle_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = particle_vert.c; sourceTree = "<group>"; };
+		55759D1E2533C99D00153823 /* model_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = model_frag.c; sourceTree = "<group>"; };
+		55759D1F2533C99D00153823 /* shadows_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shadows_vert.c; sourceTree = "<group>"; };
+		55759D202533C99D00153823 /* model_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = model_vert.c; sourceTree = "<group>"; };
+		55759D212533C99D00153823 /* basic_color_quad_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = basic_color_quad_vert.c; sourceTree = "<group>"; };
+		55759D222533C99D00153823 /* basic_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = basic_frag.c; sourceTree = "<group>"; };
+		55759D232533C99D00153823 /* polygon_warp_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polygon_warp_vert.c; sourceTree = "<group>"; };
+		55759D242533C99D00153823 /* polygon_lmap_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polygon_lmap_vert.c; sourceTree = "<group>"; };
+		55759D252533C99D00153823 /* polygon_lmap_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polygon_lmap_frag.c; sourceTree = "<group>"; };
+		55759D262533C99D00153823 /* polygon_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polygon_vert.c; sourceTree = "<group>"; };
+		55759D272533C99D00153823 /* basic_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = basic_vert.c; sourceTree = "<group>"; };
+		55759D282533C99D00153823 /* world_warp_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = world_warp_frag.c; sourceTree = "<group>"; };
+		55759D292533C99D00153823 /* point_particle_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = point_particle_frag.c; sourceTree = "<group>"; };
+		55759D2A2533C99D00153823 /* d_light_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = d_light_vert.c; sourceTree = "<group>"; };
+		55759D2B2533C99D00153823 /* nullmodel_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nullmodel_vert.c; sourceTree = "<group>"; };
+		55759D2C2533C99D00153823 /* sprite_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sprite_vert.c; sourceTree = "<group>"; };
+		55759D2D2533C99D00153823 /* point_particle_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = point_particle_vert.c; sourceTree = "<group>"; };
+		55759D2E2533C99D00153823 /* beam_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = beam_vert.c; sourceTree = "<group>"; };
+		55759D2F2533C99D00153823 /* world_warp_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = world_warp_vert.c; sourceTree = "<group>"; };
+		55759D302533C99D00153823 /* skybox_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = skybox_vert.c; sourceTree = "<group>"; };
+		55759D312533C99D00153823 /* postprocess_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = postprocess_frag.c; sourceTree = "<group>"; };
+		55759D322533C99D00153823 /* postprocess_vert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = postprocess_vert.c; sourceTree = "<group>"; };
+		55759D332533C99D00153823 /* vk_light.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vk_light.c; sourceTree = "<group>"; };
+		55759D352533C99D00153823 /* vk_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vk_model.h; sourceTree = "<group>"; };
 		55871EAC235D1B5300528BDF /* Quake II.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Quake II.sdef"; sourceTree = "<group>"; };
 		55BA642224B6910300A53F4C /* miniaudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = miniaudio.h; sourceTree = "<group>"; };
 		55BA642324B6910300A53F4C /* snd_miniaudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = snd_miniaudio.h; sourceTree = "<group>"; };
@@ -541,6 +609,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55759CE62533C65700153823 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2C835961529122500867DFC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -635,6 +710,78 @@
 			path = "SW Renderer Module";
 			sourceTree = "<group>";
 		};
+		55759CF52533C68D00153823 /* Vulkan Renderer Module */ = {
+			isa = PBXGroup;
+			children = (
+				55759CEB2533C65700153823 /* Info.plist */,
+			);
+			path = "Vulkan Renderer Module";
+			sourceTree = "<group>";
+		};
+		55759D022533C82100153823 /* Vulkan */ = {
+			isa = PBXGroup;
+			children = (
+				55759D032533C99C00153823 /* anorms.h */,
+				55759D042533C99C00153823 /* anormtab.h */,
+				55759D182533C99D00153823 /* qvk.h */,
+				55759D1B2533C99D00153823 /* spirv */,
+				55759D142533C99D00153823 /* vk_buffer.c */,
+				55759D112533C99D00153823 /* vk_cmd.c */,
+				55759D132533C99D00153823 /* vk_common.c */,
+				55759D092533C99C00153823 /* vk_device.c */,
+				55759D152533C99D00153823 /* vk_draw.c */,
+				55759D0A2533C99C00153823 /* vk_image.c */,
+				55759D332533C99D00153823 /* vk_light.c */,
+				55759D172533C99D00153823 /* vk_local.h */,
+				55759D102533C99C00153823 /* vk_mem_alloc.cpp */,
+				55759D122533C99D00153823 /* vk_mem_alloc.h */,
+				55759D052533C99C00153823 /* vk_mesh.c */,
+				55759D072533C99C00153823 /* vk_model.c */,
+				55759D352533C99D00153823 /* vk_model.h */,
+				55759D082533C99C00153823 /* vk_pipeline.c */,
+				55759D0F2533C99C00153823 /* vk_rmain.c */,
+				55759D192533C99D00153823 /* vk_rmisc.c */,
+				55759D0D2533C99C00153823 /* vk_rsurf.c */,
+				55759D0B2533C99C00153823 /* vk_shaders.c */,
+				55759D0C2533C99C00153823 /* vk_shaders.h */,
+				55759D162533C99D00153823 /* vk_swapchain.c */,
+				55759D0E2533C99C00153823 /* vk_validation.c */,
+				55759D1A2533C99D00153823 /* vk_warp.c */,
+			);
+			name = Vulkan;
+			path = ref_vk;
+			sourceTree = "<group>";
+		};
+		55759D1B2533C99D00153823 /* spirv */ = {
+			isa = PBXGroup;
+			children = (
+				55759D1C2533C99D00153823 /* basic_color_quad_frag.c */,
+				55759D1D2533C99D00153823 /* particle_vert.c */,
+				55759D1E2533C99D00153823 /* model_frag.c */,
+				55759D1F2533C99D00153823 /* shadows_vert.c */,
+				55759D202533C99D00153823 /* model_vert.c */,
+				55759D212533C99D00153823 /* basic_color_quad_vert.c */,
+				55759D222533C99D00153823 /* basic_frag.c */,
+				55759D232533C99D00153823 /* polygon_warp_vert.c */,
+				55759D242533C99D00153823 /* polygon_lmap_vert.c */,
+				55759D252533C99D00153823 /* polygon_lmap_frag.c */,
+				55759D262533C99D00153823 /* polygon_vert.c */,
+				55759D272533C99D00153823 /* basic_vert.c */,
+				55759D282533C99D00153823 /* world_warp_frag.c */,
+				55759D292533C99D00153823 /* point_particle_frag.c */,
+				55759D2A2533C99D00153823 /* d_light_vert.c */,
+				55759D2B2533C99D00153823 /* nullmodel_vert.c */,
+				55759D2C2533C99D00153823 /* sprite_vert.c */,
+				55759D2D2533C99D00153823 /* point_particle_vert.c */,
+				55759D2E2533C99D00153823 /* beam_vert.c */,
+				55759D2F2533C99D00153823 /* world_warp_vert.c */,
+				55759D302533C99D00153823 /* skybox_vert.c */,
+				55759D312533C99D00153823 /* postprocess_frag.c */,
+				55759D322533C99D00153823 /* postprocess_vert.c */,
+			);
+			path = spirv;
+			sourceTree = "<group>";
+		};
 		55BA642624B6912F00A53F4C /* miniaudio */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +812,7 @@
 				D2C837371529517500867DFC /* GameMac.q2plug */,
 				D2DF6DCB1529551C00B80579 /* ref_gl.q2plug */,
 				D2DF6E08152958A400B80579 /* ref_soft.q2plug */,
+				55759CE92533C65700153823 /* ref_vk.q2plug */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1069,6 +1217,7 @@
 				555B014A1E2EA105007D3B5D /* Game Module */,
 				555B014C1E2EA105007D3B5D /* GL Renderer Module */,
 				555B014E1E2EA105007D3B5D /* SW Renderer Module */,
+				55759CF52533C68D00153823 /* Vulkan Renderer Module */,
 				5556CDFD1CE95EB700C027F3 /* Controller.xib */,
 				D2DF6E4615295BA700B80579 /* GrowBox.tiff */,
 				D2DF6E631529631E00B80579 /* Quake II */,
@@ -1171,6 +1320,7 @@
 		D2DF6DC11529549C00B80579 /* Renderer Modules */ = {
 			isa = PBXGroup;
 			children = (
+				55759D022533C82100153823 /* Vulkan */,
 				D2DF6DC2152954B000B80579 /* OpenGL */,
 				D2DF6DC3152954B500B80579 /* Software */,
 			);
@@ -1285,6 +1435,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		55759CE82533C65700153823 /* Vulkan Renderer Module */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55759CEC2533C65700153823 /* Build configuration list for PBXNativeTarget "Vulkan Renderer Module" */;
+			buildPhases = (
+				55759CE52533C65700153823 /* Sources */,
+				55759CE62533C65700153823 /* Frameworks */,
+				55759CE72533C65700153823 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Vulkan Renderer Module";
+			productName = "Vulkan Renderer Module";
+			productReference = 55759CE92533C65700153823 /* ref_vk.q2plug */;
+			productType = "com.apple.product-type.bundle";
+		};
 		D2C835981529122500867DFC /* Quake II */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2C835B71529122600867DFC /* Build configuration list for PBXNativeTarget "Quake II" */;
@@ -1398,6 +1565,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					55759CE82533C65700153823 = {
+						CreatedOnToolsVersion = 12.0.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = D2C835931529122500867DFC /* Build configuration list for PBXProject "Quake II" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1419,11 +1592,19 @@
 				D2C8368D152943FB00867DFC /* Game Module */,
 				D2DF6DCA1529551C00B80579 /* GL Renderer Module */,
 				D2DF6E07152958A400B80579 /* SW Renderer Module */,
+				55759CE82533C65700153823 /* Vulkan Renderer Module */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55759CE72533C65700153823 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2C835971529122500867DFC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1469,6 +1650,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55759CE52533C65700153823 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55759D3B2533C99D00153823 /* vk_device.c in Sources */,
+				55759D3C2533C99D00153823 /* vk_image.c in Sources */,
+				55759D412533C99D00153823 /* vk_mem_alloc.cpp in Sources */,
+				55759D392533C99D00153823 /* vk_model.c in Sources */,
+				55759D462533C99D00153823 /* vk_swapchain.c in Sources */,
+				55759D3F2533C99D00153823 /* vk_validation.c in Sources */,
+				55759D602533C99D00153823 /* vk_light.c in Sources */,
+				55759D402533C99D00153823 /* vk_rmain.c in Sources */,
+				55759D422533C99D00153823 /* vk_cmd.c in Sources */,
+				55759D482533C99D00153823 /* vk_warp.c in Sources */,
+				55759D3D2533C99D00153823 /* vk_shaders.c in Sources */,
+				55759D472533C99D00153823 /* vk_rmisc.c in Sources */,
+				55759D372533C99D00153823 /* vk_mesh.c in Sources */,
+				55759D432533C99D00153823 /* vk_common.c in Sources */,
+				55759D3E2533C99D00153823 /* vk_rsurf.c in Sources */,
+				55759D442533C99D00153823 /* vk_buffer.c in Sources */,
+				55759D452533C99D00153823 /* vk_draw.c in Sources */,
+				55759D3A2533C99D00153823 /* vk_pipeline.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2C835951529122500867DFC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1757,6 +1963,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55759CED2533C65700153823 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"VKQUAKE2_VERSION=\\\"$(MARKETING_VERSION)\\\"",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = "\"$(VULKAN_SDK)\"/include";
+				INFOPLIST_FILE = "Resources/Vulkan Renderer Module/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Vulkan-Renderer-Module";
+				PRODUCT_NAME = ref_vk;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = q2plug;
+			};
+			name = Debug;
+		};
+		55759CEE2533C65700153823 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"VKQUAKE2_VERSION=\\\"$(MARKETING_VERSION)\\\"",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = "\"$(VULKAN_SDK)\"/include";
+				INFOPLIST_FILE = "Resources/Vulkan Renderer Module/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Vulkan-Renderer-Module";
+				PRODUCT_NAME = ref_vk;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = q2plug;
+			};
+			name = Release;
+		};
 		D2C835B51529122600867DFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2108,6 +2384,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55759CEC2533C65700153823 /* Build configuration list for PBXNativeTarget "Vulkan Renderer Module" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55759CED2533C65700153823 /* Debug */,
+				55759CEE2533C65700153823 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D2C835931529122500867DFC /* Build configuration list for PBXProject "Quake II" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

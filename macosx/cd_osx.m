@@ -40,7 +40,7 @@ cvar_t *					cd_volume;
 
 static FDAudioFile*     sCDAudio            = nil;
 static NSString*        sCDAudioMountPath   = nil;
-static NSMutableArray<NSString*>*	sCDAudioTrackList   = nil;
+static NSMutableArray<NSURL*>*	sCDAudioTrackList   = nil;
 static NSUInteger       sCDAudioTrack       = 0;
 
 //----------------------------------------------------------------------------------------------------------------------------
@@ -451,7 +451,7 @@ void	CD_f (void)
             {
                 Con_Print ("Audio files");
             }
-            Com_Printf (" found. %d tracks.\n", numTracks);
+            Com_Printf (" found. %lu tracks.\n", (unsigned long)numTracks);
         }
         
 	return;
@@ -543,11 +543,11 @@ void	CD_f (void)
             
             if ([sCDAudio isPlaying] == YES)
             {
-                Com_Printf ("Playing track %d of %d (\"%s\").\n", sCDAudioTrack, numTracks, mountPath);
+                Com_Printf ("Playing track %lu of %lu (\"%s\").\n", (unsigned long)sCDAudioTrack, (unsigned long)numTracks, mountPath);
             }
             else
             {
-                Com_Printf ("Not playing. Tracks: %d (\"%s\").\n", numTracks, mountPath);
+                Com_Printf ("Not playing. Tracks: %lu (\"%s\").\n", (unsigned long)numTracks, mountPath);
             }
 			
             Com_Printf ("CD volume is: %.2f.\n", cd_volume->value);

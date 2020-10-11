@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		553C30531D3300D900EDD74F /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553C30501D3300C900EDD74F /* FruitzOfDojo.framework */; };
-		553C30541D3300D900EDD74F /* FruitzOfDojo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553C30501D3300C900EDD74F /* FruitzOfDojo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		553C305B1D33013400EDD74F /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553C30501D3300C900EDD74F /* FruitzOfDojo.framework */; };
-		553C305C1D33013800EDD74F /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553C30501D3300C900EDD74F /* FruitzOfDojo.framework */; };
+		551F726F2532F742007534B9 /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551F726E2532F742007534B9 /* FruitzOfDojo.framework */; };
+		551F72702532F748007534B9 /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551F726E2532F742007534B9 /* FruitzOfDojo.framework */; };
+		551F72712532F74C007534B9 /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551F726E2532F742007534B9 /* FruitzOfDojo.framework */; };
 		5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5556CDFD1CE95EB700C027F3 /* Controller.xib */; };
 		5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5556CE001CE961DB00C027F3 /* Icons.xcassets */; };
 		555E12DE1CE68DCA001C2DED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555E12DD1CE68DCA001C2DED /* AVFoundation.framework */; };
@@ -221,48 +220,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		553C304F1D3300C900EDD74F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 556478241CECEE1000ECD01B;
-			remoteInfo = FruitzOfDojo;
-		};
-		553C30511D3300C900EDD74F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 55F926101CED18F900145952;
-			remoteInfo = FruitzOfDojoSwift;
-		};
-		553C30551D3300D900EDD74F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 556478231CECEE1000ECD01B;
-			remoteInfo = FruitzOfDojo;
-		};
-		553C30571D33012A00EDD74F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 556478231CECEE1000ECD01B;
-			remoteInfo = FruitzOfDojo;
-		};
-		553C30591D33012E00EDD74F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 556478231CECEE1000ECD01B;
-			remoteInfo = FruitzOfDojo;
-		};
-		555B01421E2E8EB3007D3B5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5531D5061E282D6000BDBF21;
-			remoteInfo = FDAudio;
-		};
 		5580B6181CE7ADB7001EF9BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2C835901529122500867DFC /* Project object */;
@@ -286,7 +243,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				553C30541D3300D900EDD74F /* FruitzOfDojo.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,7 +277,7 @@
 		55094FFF22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptTerminology; name = en; path = "en.lproj/Quake II.scriptTerminology"; sourceTree = "<group>"; };
 		5509500022D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
 		5509500122D17AF600FEDA33 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
-		553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FruitzOfDojo.xcodeproj; path = FDFramework/FruitzOfDojo.xcodeproj; sourceTree = "<group>"; };
+		551F726E2532F742007534B9 /* FruitzOfDojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FruitzOfDojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5556CE001CE961DB00C027F3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		555B01471E2E96A8007D3B5D /* game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
 		555B01491E2EA105007D3B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -587,6 +543,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551F726F2532F742007534B9 /* FruitzOfDojo.framework in Frameworks */,
 				555E12DE1CE68DCA001C2DED /* AVFoundation.framework in Frameworks */,
 				D2C8364F1529189B00867DFC /* ApplicationServices.framework in Frameworks */,
 				D20760471529699E00F14280 /* AudioToolbox.framework in Frameworks */,
@@ -596,7 +553,6 @@
 				D207604A152969C500F14280 /* ForceFeedback.framework in Frameworks */,
 				D2C83653152918C600867DFC /* IOKit.framework in Frameworks */,
 				D207604D15296A1000F14280 /* OpenGL.framework in Frameworks */,
-				553C30531D3300D900EDD74F /* FruitzOfDojo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +581,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553C305C1D33013800EDD74F /* FruitzOfDojo.framework in Frameworks */,
+				551F72702532F748007534B9 /* FruitzOfDojo.framework in Frameworks */,
 				D2DF6DFC1529576A00B80579 /* Cocoa.framework in Frameworks */,
 				D2DF6DF81529568800B80579 /* ApplicationServices.framework in Frameworks */,
 				D2DF6DF71529568500B80579 /* OpenGL.framework in Frameworks */,
@@ -636,7 +592,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553C305B1D33013400EDD74F /* FruitzOfDojo.framework in Frameworks */,
+				551F72712532F74C007534B9 /* FruitzOfDojo.framework in Frameworks */,
 				D2DF6E09152958A400B80579 /* Cocoa.framework in Frameworks */,
 				D2DF6E3D15295A3D00B80579 /* ApplicationServices.framework in Frameworks */,
 			);
@@ -645,16 +601,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		553C304B1D3300C800EDD74F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				553C30501D3300C900EDD74F /* FruitzOfDojo.framework */,
-				553C30521D3300C900EDD74F /* FruitzOfDojoSwift.framework */,
-				555B01431E2E8EB3007D3B5D /* FDAudio.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		555B01481E2EA105007D3B5D /* CTF Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +670,7 @@
 		D2C8359C1529122500867DFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				551F726E2532F742007534B9 /* FruitzOfDojo.framework */,
 				555E12DD1CE68DCA001C2DED /* AVFoundation.framework */,
 				D2C8364E1529189B00867DFC /* ApplicationServices.framework */,
 				D20760451529699E00F14280 /* AudioToolbox.framework */,
@@ -777,7 +724,6 @@
 		D2C835C71529161800867DFC /* MacOS X */ = {
 			isa = PBXGroup;
 			children = (
-				553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */,
 				D2C835CD1529167100867DFC /* Headers */,
 				D2C835CF152916DE00867DFC /* cd_osx.m */,
 				D2C835D5152916DE00867DFC /* in_osx.m */,
@@ -1352,7 +1298,6 @@
 			dependencies = (
 				5580B6191CE7ADB7001EF9BB /* PBXTargetDependency */,
 				5580B61B1CE7ADB7001EF9BB /* PBXTargetDependency */,
-				553C30561D3300D900EDD74F /* PBXTargetDependency */,
 			);
 			name = "Quake II";
 			productName = "Quake II";
@@ -1421,7 +1366,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				553C30581D33012A00EDD74F /* PBXTargetDependency */,
 			);
 			name = "GL Renderer Module";
 			productName = "GL Renderer Module";
@@ -1439,7 +1383,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				553C305A1D33012E00EDD74F /* PBXTargetDependency */,
 			);
 			name = "SW Renderer Module";
 			productName = "SW Renderer Module";
@@ -1466,12 +1409,6 @@
 			mainGroup = D2C8358E1529122500867DFC;
 			productRefGroup = D2C8359A1529122500867DFC /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 553C304B1D3300C800EDD74F /* Products */;
-					ProjectRef = 553C304A1D3300C800EDD74F /* FruitzOfDojo.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D2C835981529122500867DFC /* Quake II */,
@@ -1483,30 +1420,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		553C30501D3300C900EDD74F /* FruitzOfDojo.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FruitzOfDojo.framework;
-			remoteRef = 553C304F1D3300C900EDD74F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		553C30521D3300C900EDD74F /* FruitzOfDojoSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FruitzOfDojoSwift.framework;
-			remoteRef = 553C30511D3300C900EDD74F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		555B01431E2E8EB3007D3B5D /* FDAudio.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FDAudio.framework;
-			remoteRef = 555B01421E2E8EB3007D3B5D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D2C835971529122500867DFC /* Resources */ = {
@@ -1783,21 +1696,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		553C30561D3300D900EDD74F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FruitzOfDojo;
-			targetProxy = 553C30551D3300D900EDD74F /* PBXContainerItemProxy */;
-		};
-		553C30581D33012A00EDD74F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FruitzOfDojo;
-			targetProxy = 553C30571D33012A00EDD74F /* PBXContainerItemProxy */;
-		};
-		553C305A1D33012E00EDD74F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FruitzOfDojo;
-			targetProxy = 553C30591D33012E00EDD74F /* PBXContainerItemProxy */;
-		};
 		5580B6191CE7ADB7001EF9BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2DF6DCA1529551C00B80579 /* GL Renderer Module */;

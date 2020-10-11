@@ -8,10 +8,10 @@
       location = "group:../../Quake2-Action/macosx/ActionQuake2.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/cwbetts/makestuff/FoD/Quake2-Rogue/macosx/RogueQuake2.xcodeproj">
+      location = "group:../../Quake2-Rogue/macosx/RogueQuake2.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/cwbetts/makestuff/FoD/Quake2-Xatrix/macosx/XatrixQuake2.xcodeproj">
+      location = "group:../../Quake2-Xatrix/macosx/XatrixQuake2.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../../FDFramework/FruitzOfDojo.xcodeproj">

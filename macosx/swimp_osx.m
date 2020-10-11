@@ -98,9 +98,9 @@ static NSRect				gVidMiniWindowRect;
 
 #pragma mark Function Prototypes
 
-inline	UInt16		SWimp_GetRowBytes (void);
-inline	UInt64 *	SWimp_GetDisplayBaseAddress (void);
-inline	void		SWimp_DrawBufferToRect (NSRect theRect);
+static inline	UInt16		SWimp_GetRowBytes (void);
+static inline	UInt64 *	SWimp_GetDisplayBaseAddress (void);
+static inline	void		SWimp_DrawBufferToRect (NSRect theRect);
 
 static	void		SWimp_BlitWindow (void);
 static	void		SWimp_BlitFullscreen1x1 (void);

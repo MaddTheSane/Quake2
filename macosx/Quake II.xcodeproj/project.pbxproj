@@ -13,6 +13,7 @@
 		5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5556CDFD1CE95EB700C027F3 /* Controller.xib */; };
 		5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5556CE001CE961DB00C027F3 /* Icons.xcassets */; };
 		555E12DE1CE68DCA001C2DED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555E12DD1CE68DCA001C2DED /* AVFoundation.framework */; };
+		55759CB02533618A00153823 /* FruitzOfDojo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551F726E2532F742007534B9 /* FruitzOfDojo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 55871EAC235D1B5300528BDF /* Quake II.sdef */; };
 		55BA642524B6912200A53F4C /* snd_miniaudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 55BA642424B6912200A53F4C /* snd_miniaudio.c */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
@@ -243,6 +244,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				55759CB02533618A00153823 /* FruitzOfDojo.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;

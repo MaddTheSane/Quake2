@@ -40,6 +40,9 @@
 		55759E3E2533CFF900153823 /* glob.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C8365B15291FD500867DFC /* glob.c */; };
 		55759E4C2533D05500153823 /* libvulkan.1.2.148.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */; };
 		55759E592533D0CC00153823 /* libvulkan.1.2.148.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		55759E8A2533D6B600153823 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E892533D6B600153823 /* Metal.framework */; };
+		55759E8C2533D6BF00153823 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E8B2533D6BF00153823 /* QuartzCore.framework */; };
+		55759E922533D6E200153823 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C8359D1529122500867DFC /* Cocoa.framework */; };
 		55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 55871EAC235D1B5300528BDF /* Quake II.sdef */; };
 		55BA642524B6912200A53F4C /* snd_miniaudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 55BA642424B6912200A53F4C /* snd_miniaudio.c */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
@@ -382,6 +385,8 @@
 		55759E0D2533CCC600153823 /* vkwin_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vkwin_macos.h; sourceTree = "<group>"; };
 		55759E162533CE1600153823 /* libMoltenVK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMoltenVK.a; path = ../MoltenVK/macOS/static/libMoltenVK.a; sourceTree = VULKAN_SDK; };
 		55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.2.148.dylib; path = lib/libvulkan.1.2.148.dylib; sourceTree = VULKAN_SDK; };
+		55759E892533D6B600153823 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		55759E8B2533D6BF00153823 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55871EAC235D1B5300528BDF /* Quake II.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Quake II.sdef"; sourceTree = "<group>"; };
 		55BA642224B6910300A53F4C /* miniaudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = miniaudio.h; sourceTree = "<group>"; };
 		55BA642324B6910300A53F4C /* snd_miniaudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = snd_miniaudio.h; sourceTree = "<group>"; };
@@ -638,8 +643,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55759E4C2533D05500153823 /* libvulkan.1.2.148.dylib in Frameworks */,
+				55759E922533D6E200153823 /* Cocoa.framework in Frameworks */,
+				55759E8C2533D6BF00153823 /* QuartzCore.framework in Frameworks */,
+				55759E8A2533D6B600153823 /* Metal.framework in Frameworks */,
 				55759E172533CE1600153823 /* libMoltenVK.a in Frameworks */,
+				55759E4C2533D05500153823 /* libvulkan.1.2.148.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,6 +867,8 @@
 		D2C8359C1529122500867DFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55759E8B2533D6BF00153823 /* QuartzCore.framework */,
+				55759E892533D6B600153823 /* Metal.framework */,
 				55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */,
 				55759E162533CE1600153823 /* libMoltenVK.a */,
 				551F726E2532F742007534B9 /* FruitzOfDojo.framework */,

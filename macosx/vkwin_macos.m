@@ -360,7 +360,7 @@ void CocoaCreateWindow(int x, int y, int *w, int *h, qboolean fullscreen)
 		[app setActivationPolicy:NSApplicationActivationPolicyRegular];
 
 		NSRect windowFrame;
-		NSUInteger windowStyle = 0;
+		NSWindowStyleMask windowStyle = 0;
 		CGFloat s = [[NSScreen mainScreen] backingScaleFactor];
 
 		if(fullscreen)

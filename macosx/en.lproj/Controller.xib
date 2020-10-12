@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Quake2Application">
@@ -198,27 +198,29 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="139" y="154"/>
         </menu>
         <window title="Quake II" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="273" userLabel="Window">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="79" y="428" width="432" height="232"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="832"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="274">
                 <rect key="frame" x="0.0" y="0.0" width="432" height="232"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
+            <point key="canvasLocation" x="-362" y="141"/>
         </window>
         <window title="Quake II" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="311" userLabel="Window1">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="192" y="351" width="329" height="79"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="832"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="312">
                 <rect key="frame" x="0.0" y="0.0" width="329" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="313">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="313">
                         <rect key="frame" x="17" y="45" width="295" height="14"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="365">
@@ -227,11 +229,11 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <progressIndicator verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="bar" id="314">
+                    <progressIndicator verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="314">
                         <rect key="frame" x="19" y="21" width="223" height="12"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </progressIndicator>
-                    <button verticalHuggingPriority="750" id="321">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="321">
                         <rect key="frame" x="244" y="13" width="70" height="28"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="366">
@@ -246,12 +248,13 @@
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="139" y="21"/>
         </window>
         <customView id="318" userLabel="View">
             <rect key="frame" x="0.0" y="0.0" width="311" height="42"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="319">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="319">
                     <rect key="frame" x="-3" y="0.0" width="317" height="42"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="367">
@@ -262,19 +265,20 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="139" y="243"/>
         </customView>
         <customView id="323" userLabel="View1">
             <rect key="frame" x="0.0" y="0.0" width="432" height="158"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <box boxType="oldStyle" borderType="none" titlePosition="noTitle" id="324">
+                <box fixedFrame="YES" boxType="oldStyle" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="324">
                     <rect key="frame" x="0.0" y="20" width="432" height="118"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <view key="contentView" id="34b-os-FV7">
+                    <view key="contentView" ambiguous="YES" id="34b-os-FV7">
                         <rect key="frame" x="0.0" y="0.0" width="432" height="118"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button toolTip="Enable this checkbox if you want to use MP3 files instead of AudioCDs." id="327">
+                            <button toolTip="Enable this checkbox if you want to use MP3 files instead of AudioCDs." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="327">
                                 <rect key="frame" x="12" y="84" width="404" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                 <buttonCell key="cell" type="check" title="Use MP3 or MP4 files instead of AudioCDs, located at folder:" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="368">
@@ -285,7 +289,7 @@
                                     <action selector="toggleMP3Playback:" target="195" id="332"/>
                                 </connections>
                             </button>
-                            <textField toolTip="This is the folder which will be scanned for MP3 files." verticalHuggingPriority="750" id="328">
+                            <textField toolTip="This is the folder which will be scanned for MP3 files." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="328">
                                 <rect key="frame" x="11" y="56" width="402" height="22"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="369">
@@ -294,7 +298,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button toolTip="Select the folder that contains the MP3 files." verticalHuggingPriority="750" id="326">
+                            <button toolTip="Select the folder that contains the MP3 files." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="326">
                                 <rect key="frame" x="156" y="8" width="121" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                 <buttonCell key="cell" type="push" title="Select Folder" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="370">
@@ -307,24 +311,23 @@
                             </button>
                         </subviews>
                     </view>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
             </subviews>
+            <point key="canvasLocation" x="139" y="-188"/>
         </customView>
         <customView id="335" userLabel="View2">
             <rect key="frame" x="0.0" y="0.0" width="432" height="116"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <box boxType="oldStyle" borderType="none" titlePosition="noTitle" id="336">
+                <box fixedFrame="YES" boxType="oldStyle" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="336">
                     <rect key="frame" x="0.0" y="20" width="432" height="76"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <view key="contentView" id="UGQ-3K-1IR">
+                    <view key="contentView" ambiguous="YES" id="UGQ-3K-1IR">
                         <rect key="frame" x="0.0" y="0.0" width="432" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button toolTip="Use this parameters if none are provided via drag'n'drop or a real command line." id="338">
+                            <button toolTip="Use this parameters if none are provided via drag'n'drop or a real command line." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="338">
                                 <rect key="frame" x="14" y="44" width="284" height="18"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <buttonCell key="cell" type="check" title="Use as default command line parameters:" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="371">
@@ -335,42 +338,41 @@
                                     <action selector="toggleParameterTextField:" target="195" id="341"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" id="339">
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="339">
                                 <rect key="frame" x="16" y="16" width="400" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="372">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                     </view>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
             </subviews>
+            <point key="canvasLocation" x="139" y="-390"/>
         </customView>
         <customView id="346" userLabel="View3">
             <rect key="frame" x="0.0" y="0.0" width="433" height="217"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <box boxType="oldStyle" borderType="none" titlePosition="noTitle" id="347">
+                <box fixedFrame="YES" boxType="oldStyle" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="347">
                     <rect key="frame" x="0.0" y="20" width="432" height="177"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <view key="contentView" id="ySX-gM-ULs">
+                    <view key="contentView" ambiguous="YES" id="ySX-gM-ULs">
                         <rect key="frame" x="0.0" y="0.0" width="432" height="177"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <box boxType="secondary" borderType="bezel" titlePosition="noTitle" id="350">
+                            <box fixedFrame="YES" boxType="secondary" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="350">
                                 <rect key="frame" x="16" y="46" width="400" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" id="D6B-2M-Nir">
+                                <view key="contentView" ambiguous="YES" id="D6B-2M-Nir">
                                     <rect key="frame" x="3" y="3" width="394" height="109"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" id="352">
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="352">
                                             <rect key="frame" x="114" y="77" width="271" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Quake II for MacOS X" id="373">
@@ -379,7 +381,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" id="358">
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="358">
                                             <rect key="frame" x="111" y="16" width="54" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Visit:" id="374">
@@ -388,23 +390,20 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="354">
+                                        <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="354">
                                             <rect key="frame" x="114" y="64" width="271" height="5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
-                                        <customView id="357" customClass="FDLinkView">
+                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="357" customClass="FDLinkView">
                                             <rect key="frame" x="170" y="16" width="197" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </customView>
-                                        <imageView id="353">
+                                        <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="353">
                                             <rect key="frame" x="14" y="16" width="81" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="Quake II" id="375"/>
                                         </imageView>
-                                        <textField verticalHuggingPriority="750" id="356">
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="356">
                                             <rect key="frame" x="111" y="41" width="277" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Ported by: Axel 'awe' Wefers" id="376">
@@ -415,11 +414,9 @@
                                         </textField>
                                     </subviews>
                                 </view>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <button id="349">
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="349">
                                 <rect key="frame" x="38" y="14" width="356" height="18"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <buttonCell key="cell" type="check" title="Display this dialog only when holding the Option key" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="377">
@@ -429,11 +426,10 @@
                             </button>
                         </subviews>
                     </view>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
             </subviews>
+            <point key="canvasLocation" x="-361" y="-170"/>
         </customView>
     </objects>
     <resources>

@@ -2,5 +2,5 @@
 
 CFBundleName = "Quake II";
 CFBundleShortVersionString = "1.2";
-CFBundleGetInfoString = "Quake II version 1.2, Copyright 2002-2012 Fruitz Of Dojo.";
-NSHumanReadableCopyright = "Copyright 2002-2012 Fruitz Of Dojo.";
+CFBundleGetInfoString = "Quake II version 1.3, Copyright 2002-2012 Fruitz Of Dojo, 2019-2020 C.W. \"Madd the Sane\" Betts.";
+NSHumanReadableCopyright = "Copyright 2002-2012 Fruitz Of Dojo, 2019-2020 C.W. \"Madd the Sane\" Betts.";

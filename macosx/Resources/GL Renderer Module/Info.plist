@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Quake II $(MARKETING_VERSION); OpenGL Renderer Plugin; Copyright 2001-2012 Fruitz Of Dojo</string>
+	<string>Quake II $(MARKETING_VERSION); OpenGL Renderer Plugin; Copyright 2001-2012 Fruitz Of Dojo, 2019-2020 C.W. "Madd the Sane" Betts</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

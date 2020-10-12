@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,15 +34,15 @@
 		55759D602533C99D00153823 /* vk_light.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D332533C99D00153823 /* vk_light.c */; };
 		55759E0E2533CCC600153823 /* vk_imp.m in Sources */ = {isa = PBXBuildFile; fileRef = 55759E0A2533CCC600153823 /* vk_imp.m */; };
 		55759E0F2533CCC600153823 /* vkwin_macos.m in Sources */ = {isa = PBXBuildFile; fileRef = 55759E0B2533CCC600153823 /* vkwin_macos.m */; };
-		55759E172533CE1600153823 /* libMoltenVK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E162533CE1600153823 /* libMoltenVK.a */; };
 		55759E302533CFC300153823 /* q_shared.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C836601529201500867DFC /* q_shared.c */; };
 		55759E372533CFE100153823 /* q_shosx.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C8365D15291FD500867DFC /* q_shosx.c */; };
 		55759E3E2533CFF900153823 /* glob.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C8365B15291FD500867DFC /* glob.c */; };
-		55759E4C2533D05500153823 /* libvulkan.1.2.148.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */; };
-		55759E592533D0CC00153823 /* libvulkan.1.2.148.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		55759E4C2533D05500153823 /* libvulkan.1.2.154.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.2.154.dylib */; };
+		55759E592533D0CC00153823 /* libvulkan.1.2.154.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.2.154.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55759E8A2533D6B600153823 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E892533D6B600153823 /* Metal.framework */; };
 		55759E8C2533D6BF00153823 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E8B2533D6BF00153823 /* QuartzCore.framework */; };
 		55759E922533D6E200153823 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C8359D1529122500867DFC /* Cocoa.framework */; };
+		55759EB825343F6400153823 /* MoltenVK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759EAC25343F1B00153823 /* MoltenVK.xcframework */; };
 		55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 55871EAC235D1B5300528BDF /* Quake II.sdef */; };
 		55BA642524B6912200A53F4C /* snd_miniaudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 55BA642424B6912200A53F4C /* snd_miniaudio.c */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
@@ -273,7 +273,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				55759E592533D0CC00153823 /* libvulkan.1.2.148.dylib in Embed Libraries */,
+				55759E592533D0CC00153823 /* libvulkan.1.2.154.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,10 +383,10 @@
 		55759E0B2533CCC600153823 /* vkwin_macos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vkwin_macos.m; sourceTree = "<group>"; };
 		55759E0C2533CCC600153823 /* vk_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vk_macos.h; sourceTree = "<group>"; };
 		55759E0D2533CCC600153823 /* vkwin_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vkwin_macos.h; sourceTree = "<group>"; };
-		55759E162533CE1600153823 /* libMoltenVK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMoltenVK.a; path = MoltenVK/macOS/static/libMoltenVK.a; sourceTree = VULKAN_SDK; };
-		55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.2.148.dylib; path = macOS/lib/libvulkan.1.2.148.dylib; sourceTree = VULKAN_SDK; };
+		55759E4B2533D05500153823 /* libvulkan.1.2.154.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.2.154.dylib; path = macOS/lib/libvulkan.1.2.154.dylib; sourceTree = VULKAN_SDK; };
 		55759E892533D6B600153823 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		55759E8B2533D6BF00153823 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		55759EAC25343F1B00153823 /* MoltenVK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MoltenVK.xcframework; path = MoltenVK/MoltenVK.xcframework; sourceTree = VULKAN_SDK; };
 		55871EAC235D1B5300528BDF /* Quake II.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Quake II.sdef"; sourceTree = "<group>"; };
 		55BA642224B6910300A53F4C /* miniaudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = miniaudio.h; sourceTree = "<group>"; };
 		55BA642324B6910300A53F4C /* snd_miniaudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = snd_miniaudio.h; sourceTree = "<group>"; };
@@ -646,8 +646,8 @@
 				55759E922533D6E200153823 /* Cocoa.framework in Frameworks */,
 				55759E8C2533D6BF00153823 /* QuartzCore.framework in Frameworks */,
 				55759E8A2533D6B600153823 /* Metal.framework in Frameworks */,
-				55759E172533CE1600153823 /* libMoltenVK.a in Frameworks */,
-				55759E4C2533D05500153823 /* libvulkan.1.2.148.dylib in Frameworks */,
+				55759EB825343F6400153823 /* MoltenVK.xcframework in Frameworks */,
+				55759E4C2533D05500153823 /* libvulkan.1.2.154.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,8 +869,8 @@
 			children = (
 				55759E8B2533D6BF00153823 /* QuartzCore.framework */,
 				55759E892533D6B600153823 /* Metal.framework */,
-				55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */,
-				55759E162533CE1600153823 /* libMoltenVK.a */,
+				55759E4B2533D05500153823 /* libvulkan.1.2.154.dylib */,
+				55759EAC25343F1B00153823 /* MoltenVK.xcframework */,
 				551F726E2532F742007534B9 /* FruitzOfDojo.framework */,
 				555E12DD1CE68DCA001C2DED /* AVFoundation.framework */,
 				D2C8364E1529189B00867DFC /* ApplicationServices.framework */,
@@ -1711,7 +1711,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/libvulkan.1.2.148.dylib",
+				"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/libvulkan.1.2.154.dylib",
 			);
 			outputFileListPaths = (
 			);
@@ -2068,10 +2068,7 @@
 				INFOPLIST_FILE = "Resources/Vulkan Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(VULKAN_SDK)\"/MoltenVK/macOS/static/",
-					"\"$(VULKAN_SDK)\"/macOS/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(VULKAN_SDK)\"/macOS/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2110,10 +2107,7 @@
 				INFOPLIST_FILE = "Resources/Vulkan Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(VULKAN_SDK)\"/MoltenVK/macOS/static/",
-					"\"$(VULKAN_SDK)\"/macOS/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(VULKAN_SDK)\"/macOS/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -2247,7 +2241,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/Quake II/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -2270,7 +2267,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Resources/Quake II/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fruitz-of-dojo.quake2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

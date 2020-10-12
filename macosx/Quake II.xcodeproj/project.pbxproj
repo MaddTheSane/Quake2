@@ -383,8 +383,8 @@
 		55759E0B2533CCC600153823 /* vkwin_macos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vkwin_macos.m; sourceTree = "<group>"; };
 		55759E0C2533CCC600153823 /* vk_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vk_macos.h; sourceTree = "<group>"; };
 		55759E0D2533CCC600153823 /* vkwin_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vkwin_macos.h; sourceTree = "<group>"; };
-		55759E162533CE1600153823 /* libMoltenVK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMoltenVK.a; path = ../MoltenVK/macOS/static/libMoltenVK.a; sourceTree = VULKAN_SDK; };
-		55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.2.148.dylib; path = lib/libvulkan.1.2.148.dylib; sourceTree = VULKAN_SDK; };
+		55759E162533CE1600153823 /* libMoltenVK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMoltenVK.a; path = MoltenVK/macOS/static/libMoltenVK.a; sourceTree = VULKAN_SDK; };
+		55759E4B2533D05500153823 /* libvulkan.1.2.148.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.2.148.dylib; path = macOS/lib/libvulkan.1.2.148.dylib; sourceTree = VULKAN_SDK; };
 		55759E892533D6B600153823 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		55759E8B2533D6BF00153823 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55871EAC235D1B5300528BDF /* Quake II.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Quake II.sdef"; sourceTree = "<group>"; };
@@ -2064,13 +2064,13 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				HEADER_SEARCH_PATHS = "\"$(VULKAN_SDK)\"/include";
+				HEADER_SEARCH_PATHS = "\"$(VULKAN_SDK)\"/macOS/include";
 				INFOPLIST_FILE = "Resources/Vulkan Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(VULKAN_SDK)\"/../MoltenVK/macOS/static/",
-					"\"$(VULKAN_SDK)\"/lib",
+					"\"$(VULKAN_SDK)\"/MoltenVK/macOS/static/",
+					"\"$(VULKAN_SDK)\"/macOS/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -2106,13 +2106,13 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				HEADER_SEARCH_PATHS = "\"$(VULKAN_SDK)\"/include";
+				HEADER_SEARCH_PATHS = "\"$(VULKAN_SDK)\"/macOS/include";
 				INFOPLIST_FILE = "Resources/Vulkan Renderer Module/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(VULKAN_SDK)\"/../MoltenVK/macOS/static/",
-					"\"$(VULKAN_SDK)\"/lib",
+					"\"$(VULKAN_SDK)\"/MoltenVK/macOS/static/",
+					"\"$(VULKAN_SDK)\"/macOS/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;

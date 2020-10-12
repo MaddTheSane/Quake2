@@ -1148,7 +1148,7 @@ void	GLimp_AppActivate (qboolean active)
 	NSRect	myWindowRect	= [theSender frame];
     NSSize	myMinSize		= [theSender minSize];
 	NSSize	myBorderSize;
-    float	myAspect;
+    CGFloat	myAspect;
 
     // calculate window borders (e.g. titlebar):
     myBorderSize.width	= NSWidth (myWindowRect)  - NSWidth (myContentRect);

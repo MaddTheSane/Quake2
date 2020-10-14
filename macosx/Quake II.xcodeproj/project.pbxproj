@@ -10,6 +10,7 @@
 		551F726F2532F742007534B9 /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551F726E2532F742007534B9 /* FruitzOfDojo.framework */; };
 		551F72702532F748007534B9 /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551F726E2532F742007534B9 /* FruitzOfDojo.framework */; };
 		551F72712532F74C007534B9 /* FruitzOfDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551F726E2532F742007534B9 /* FruitzOfDojo.framework */; };
+		5529FDD52534FA760003D200 /* ref_vk.q2plug in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55759CE92533C65700153823 /* ref_vk.q2plug */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5556CDFF1CE95EB700C027F3 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5556CDFD1CE95EB700C027F3 /* Controller.xib */; };
 		5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5556CE001CE961DB00C027F3 /* Icons.xcassets */; };
 		555E12DE1CE68DCA001C2DED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555E12DD1CE68DCA001C2DED /* AVFoundation.framework */; };
@@ -250,6 +251,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5529FDD62534FA810003D200 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2C835901529122500867DFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55759CE82533C65700153823;
+			remoteInfo = "Vulkan Renderer Module";
+		};
 		5580B6181CE7ADB7001EF9BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2C835901529122500867DFC /* Project object */;
@@ -304,6 +312,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				5529FDD52534FA760003D200 /* ref_vk.q2plug in CopyFiles */,
 				D2DF6E5115295E2D00B80579 /* ref_gl.q2plug in CopyFiles */,
 				D2DF6E5215295E3000B80579 /* ref_soft.q2plug in CopyFiles */,
 			);
@@ -1518,6 +1527,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5529FDD72534FA810003D200 /* PBXTargetDependency */,
 				5580B6191CE7ADB7001EF9BB /* PBXTargetDependency */,
 				5580B61B1CE7ADB7001EF9BB /* PBXTargetDependency */,
 			);
@@ -1984,6 +1994,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5529FDD72534FA810003D200 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55759CE82533C65700153823 /* Vulkan Renderer Module */;
+			targetProxy = 5529FDD62534FA810003D200 /* PBXContainerItemProxy */;
+		};
 		5580B6191CE7ADB7001EF9BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2DF6DCA1529551C00B80579 /* GL Renderer Module */;

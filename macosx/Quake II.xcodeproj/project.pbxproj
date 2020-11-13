@@ -324,7 +324,7 @@
 		55094FFB22D17AEC00FEDA33 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
 		55094FFC22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Controller.xib; sourceTree = "<group>"; };
 		55094FFD22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		55094FFE22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55094FFE22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55094FFF22D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptTerminology; name = en; path = "en.lproj/Quake II.scriptTerminology"; sourceTree = "<group>"; };
 		5509500022D17AF000FEDA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
 		5509500122D17AF600FEDA33 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ServicesMenu.strings; sourceTree = "<group>"; };

@@ -38,8 +38,8 @@
 		55759E302533CFC300153823 /* q_shared.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C836601529201500867DFC /* q_shared.c */; };
 		55759E372533CFE100153823 /* q_shosx.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C8365D15291FD500867DFC /* q_shosx.c */; };
 		55759E3E2533CFF900153823 /* glob.c in Sources */ = {isa = PBXBuildFile; fileRef = D2C8365B15291FD500867DFC /* glob.c */; };
-		55759E4C2533D05500153823 /* libvulkan.1.2.154.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.2.154.dylib */; };
-		55759E592533D0CC00153823 /* libvulkan.1.2.154.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.2.154.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		55759E4C2533D05500153823 /* libvulkan.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.dylib */; };
+		55759E592533D0CC00153823 /* libvulkan.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 55759E4B2533D05500153823 /* libvulkan.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55759E8A2533D6B600153823 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E892533D6B600153823 /* Metal.framework */; };
 		55759E8C2533D6BF00153823 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759E8B2533D6BF00153823 /* QuartzCore.framework */; };
 		55759E922533D6E200153823 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C8359D1529122500867DFC /* Cocoa.framework */; };
@@ -281,7 +281,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				55759E592533D0CC00153823 /* libvulkan.1.2.154.dylib in Embed Libraries */,
+				55759E592533D0CC00153823 /* libvulkan.1.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,7 +392,7 @@
 		55759E0B2533CCC600153823 /* vkwin_macos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vkwin_macos.m; sourceTree = "<group>"; };
 		55759E0C2533CCC600153823 /* vk_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vk_macos.h; sourceTree = "<group>"; };
 		55759E0D2533CCC600153823 /* vkwin_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vkwin_macos.h; sourceTree = "<group>"; };
-		55759E4B2533D05500153823 /* libvulkan.1.2.154.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.2.154.dylib; path = macOS/lib/libvulkan.1.2.154.dylib; sourceTree = VULKAN_SDK; };
+		55759E4B2533D05500153823 /* libvulkan.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.dylib; path = macOS/lib/libvulkan.1.dylib; sourceTree = VULKAN_SDK; };
 		55759E892533D6B600153823 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		55759E8B2533D6BF00153823 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55759EAC25343F1B00153823 /* MoltenVK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MoltenVK.xcframework; path = MoltenVK/MoltenVK.xcframework; sourceTree = VULKAN_SDK; };
@@ -656,7 +656,7 @@
 				55759E8C2533D6BF00153823 /* QuartzCore.framework in Frameworks */,
 				55759E8A2533D6B600153823 /* Metal.framework in Frameworks */,
 				55759EB825343F6400153823 /* MoltenVK.xcframework in Frameworks */,
-				55759E4C2533D05500153823 /* libvulkan.1.2.154.dylib in Frameworks */,
+				55759E4C2533D05500153823 /* libvulkan.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,7 +878,7 @@
 			children = (
 				55759E8B2533D6BF00153823 /* QuartzCore.framework */,
 				55759E892533D6B600153823 /* Metal.framework */,
-				55759E4B2533D05500153823 /* libvulkan.1.2.154.dylib */,
+				55759E4B2533D05500153823 /* libvulkan.1.dylib */,
 				55759EAC25343F1B00153823 /* MoltenVK.xcframework */,
 				551F726E2532F742007534B9 /* FruitzOfDojo.framework */,
 				555E12DD1CE68DCA001C2DED /* AVFoundation.framework */,
@@ -1503,7 +1503,6 @@
 				55759CE62533C65700153823 /* Frameworks */,
 				55759CE72533C65700153823 /* Resources */,
 				55759E5A2533D0CC00153823 /* Embed Libraries */,
-				55759E602533D10B00153823 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1711,28 +1710,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		55759E602533D10B00153823 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/libvulkan.1.2.154.dylib",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/libvulkan.1.dylib",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\nln -sf libvulkan.1.2.*.dylib libvulkan.1.dylib\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55759CE52533C65700153823 /* Sources */ = {
@@ -2064,10 +2041,8 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
@@ -2101,10 +2076,8 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
@@ -2141,6 +2114,8 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -2197,6 +2172,8 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -2244,7 +2221,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Quake II";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2270,7 +2246,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Quake II";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2295,7 +2270,7 @@
 		D2C836771529437000867DFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "-";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEDICATED_ONLY,
@@ -2308,7 +2283,7 @@
 		D2C836781529437000867DFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "-";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEDICATED_ONLY,
@@ -2321,7 +2296,7 @@
 		D2C83698152943FB00867DFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/baseq2";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2341,7 +2316,7 @@
 		D2C83699152943FB00867DFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/baseq2";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2361,7 +2336,7 @@
 		D2C837421529517500867DFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ctf";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2381,7 +2356,7 @@
 		D2C837431529517500867DFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ctf";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2401,7 +2376,6 @@
 		D2DF6DD61529551C00B80579 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
@@ -2422,7 +2396,6 @@
 		D2DF6DD71529551C00B80579 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
@@ -2443,7 +2416,6 @@
 		D2DF6E12152958A400B80579 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;
@@ -2467,7 +2439,6 @@
 		D2DF6E13152958A400B80579 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QPrefix.pch;

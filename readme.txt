@@ -5,6 +5,11 @@ native port that would not rely on any legacy APIs.
 Axel Wefers
 Fruitz Of Dojo
 
+To build with Vulkan support, the following needs to be defined in Xcode:
+VULKAN_SDK: The path to the MoltenVK folder. You can define this in
+Xcode's preferences under "Locations"/"Custom Paths".
+- Madd the Sane
+
 From the original readme:
 
 This is the complete source code for Quake 2, version 3.21, buildable with

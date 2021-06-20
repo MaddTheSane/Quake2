@@ -497,11 +497,13 @@ edict_t *SelectCTFSpawnPoint (edict_t *ent)
 	float	range, range1, range2;
 	char	*cname;
 
-	if (ent->client->resp.ctf_state)
-		if ( (int)(dmflags->value) & DF_SPAWN_FARTHEST)
+	if (ent->client->resp.ctf_state) {
+		if ( (int)(dmflags->value) & DF_SPAWN_FARTHEST) {
 			return SelectFarthestDeathmatchSpawnPoint ();
-		else
+		} else {
 			return SelectRandomDeathmatchSpawnPoint ();
+		}
+	}
 
 	ent->client->resp.ctf_state++;
 

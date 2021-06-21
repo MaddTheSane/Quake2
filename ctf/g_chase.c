@@ -120,7 +120,7 @@ void ChaseNext(edict_t *ent)
 	if (!ent->client->chase_target)
 		return;
 
-	i = ent->client->chase_target - g_edicts;
+	i = (int)(ent->client->chase_target - g_edicts);
 	do {
 		i++;
 		if (i > maxclients->value)
@@ -144,7 +144,7 @@ void ChasePrev(edict_t *ent)
 	if (!ent->client->chase_target)
 		return;
 
-	i = ent->client->chase_target - g_edicts;
+	i = (int)(ent->client->chase_target - g_edicts);
 	do {
 		i--;
 		if (i < 1)

@@ -370,7 +370,7 @@
         // get the default command line parameters:
         myParametersEnabled = [theDefaults boolForKey: SYS_DEFAULT_USE_PARAMETERS];
         [parameterTextField setStringValue: [theDefaults stringForKey: SYS_DEFAULT_PARAMETERS]];
-        [parameterCheckBox setState: myParametersEnabled ? NSOnState : NSOffState];
+		[parameterCheckBox setState: myParametersEnabled ? NSControlStateValueOn : NSControlStateValueOff];
         [parameterCheckBox setEnabled: YES];
         [self toggleParameterTextField: NULL];        
     }
@@ -800,11 +800,11 @@
 
     myPasteboardTypes = [thePasteboard types];
 
-    if ([myPasteboardTypes containsObject: NSStringPboardType])
+	if ([myPasteboardTypes containsObject: NSPasteboardTypeString])
     {
         NSString 	*myRequestedServer;
 
-        myRequestedServer = [thePasteboard stringForType: NSStringPboardType];
+		myRequestedServer = [thePasteboard stringForType: NSPasteboardTypeString];
         if (myRequestedServer != NULL)
         {
             Cbuf_ExecuteText (EXEC_APPEND, va("connect %s\n", [myRequestedServer cStringUsingEncoding:NSASCIIStringEncoding]));

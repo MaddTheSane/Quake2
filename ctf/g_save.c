@@ -264,21 +264,21 @@ void WriteField1 (FILE *f, field_t *field, byte *base)
 		if ( *(edict_t **)p == NULL)
 			index = -1;
 		else
-			index = *(edict_t **)p - g_edicts;
+			index = (int)(*(edict_t **)p - g_edicts);
 		*(int *)p = index;
 		break;
 	case F_CLIENT:
 		if ( *(gclient_t **)p == NULL)
 			index = -1;
 		else
-			index = *(gclient_t **)p - game.clients;
+			index = (int)(*(gclient_t **)p - game.clients);
 		*(int *)p = index;
 		break;
 	case F_ITEM:
 		if ( *(edict_t **)p == NULL)
 			index = -1;
 		else
-			index = *(gitem_t **)p - itemlist;
+			index = (int)(*(gitem_t **)p - itemlist);
 		*(int *)p = index;
 		break;
 

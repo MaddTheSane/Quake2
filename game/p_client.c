@@ -830,7 +830,7 @@ edict_t *SelectDeathmatchSpawnPoint (void)
 
 edict_t *SelectCoopSpawnPoint (edict_t *ent)
 {
-	int		index;
+	intptr_t		index;
 	edict_t	*spot = NULL;
 	char	*target;
 
@@ -957,7 +957,7 @@ void CopyToBodyQue (edict_t *ent)
 
 	gi.unlinkentity (body);
 	body->s = ent->s;
-	body->s.number = body - g_edicts;
+	body->s.number = (int)(body - g_edicts);
 
 	body->svflags = ent->svflags;
 	VectorCopy (ent->mins, body->mins);
@@ -1066,7 +1066,7 @@ void spectator_respawn (edict_t *ent)
 	if (!ent->client->pers.spectator)  {
 		// send effect
 		gi.WriteByte (svc_muzzleflash);
-		gi.WriteShort (ent-g_edicts);
+		gi.WriteShort ((int)(ent-g_edicts));
 		gi.WriteByte (MZ_LOGIN);
 		gi.multicast (ent->s.origin, MULTICAST_PVS);
 
@@ -1098,7 +1098,7 @@ void PutClientInServer (edict_t *ent)
 {
 	vec3_t	mins = {-16, -16, -24};
 	vec3_t	maxs = {16, 16, 32};
-	int		index;
+	intptr_t	index;
 	vec3_t	spawn_origin, spawn_angles;
 	gclient_t	*client;
 	int		i;
@@ -1212,7 +1212,7 @@ void PutClientInServer (edict_t *ent)
 	ent->s.modelindex2 = 255;		// custom gun model
 	// sknum is player num and weapon number
 	// weapon number will be added in changeweapon
-	ent->s.skinnum = ent - g_edicts - 1;
+	ent->s.skinnum = (int)(ent - g_edicts - 1);
 
 	ent->s.frame = 0;
 	VectorCopy (spawn_origin, ent->s.origin);
@@ -1282,7 +1282,7 @@ void ClientBeginDeathmatch (edict_t *ent)
 	{
 		// send effect
 		gi.WriteByte (svc_muzzleflash);
-		gi.WriteShort (ent-g_edicts);
+		gi.WriteShort ((int)(ent-g_edicts));
 		gi.WriteByte (MZ_LOGIN);
 		gi.multicast (ent->s.origin, MULTICAST_PVS);
 	}
@@ -1346,7 +1346,7 @@ void ClientBegin (edict_t *ent)
 		if (game.maxclients > 1)
 		{
 			gi.WriteByte (svc_muzzleflash);
-			gi.WriteShort (ent-g_edicts);
+			gi.WriteShort ((int)(ent-g_edicts));
 			gi.WriteByte (MZ_LOGIN);
 			gi.multicast (ent->s.origin, MULTICAST_PVS);
 
@@ -1394,7 +1394,7 @@ void ClientUserinfoChanged (edict_t *ent, char *userinfo)
 	// set skin
 	s = Info_ValueForKey (userinfo, "skin");
 
-	playernum = ent-g_edicts-1;
+	playernum = (int)(ent-g_edicts-1);
 
 	// combine name and skin into a configstring
 	gi.configstring (CS_PLAYERSKINS+playernum, va("%s\\%s", ent->client->pers.netname, s) );
@@ -1522,7 +1522,7 @@ void ClientDisconnect (edict_t *ent)
 
 	// send effect
 	gi.WriteByte (svc_muzzleflash);
-	gi.WriteShort (ent-g_edicts);
+	gi.WriteShort ((int)(ent-g_edicts));
 	gi.WriteByte (MZ_LOGOUT);
 	gi.multicast (ent->s.origin, MULTICAST_PVS);
 
@@ -1533,7 +1533,7 @@ void ClientDisconnect (edict_t *ent)
 	ent->classname = "disconnected";
 	ent->client->pers.connected = false;
 
-	playernum = ent-g_edicts-1;
+	playernum = (int)(ent-g_edicts-1);
 	gi.configstring (CS_PLAYERSKINS+playernum, "");
 }
 

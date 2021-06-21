@@ -416,7 +416,7 @@ float	PlayersRangeFromSpot (edict_t *spot);
 
 void CTFAssignSkin(edict_t *ent, char *s)
 {
-	int playernum = ent-g_edicts-1;
+	int playernum = (int)(ent-g_edicts-1);
 	char *p;
 	char t[64];
 

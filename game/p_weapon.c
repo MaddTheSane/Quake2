@@ -212,7 +212,7 @@ void ChangeWeapon (edict_t *ent)
 			i = ((ent->client->pers.weapon->weapmodel & 0xff) << 8);
 		else
 			i = 0;
-		ent->s.skinnum = (ent - g_edicts - 1) | i;
+		ent->s.skinnum = (int)((ent - g_edicts - 1) | i);
 	}
 
 	if (ent->client->pers.weapon && ent->client->pers.weapon->ammo)

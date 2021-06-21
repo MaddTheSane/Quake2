@@ -412,7 +412,7 @@ cblock_t Huff1Decompress (cblock_t in)
 
 	if (input - in.data != in.count && input - in.data != in.count+1)
 	{
-		Com_Printf ("Decompression overread by %i", (input - in.data) - in.count);
+		Com_Printf ("Decompression overread by %i", (int)((input - in.data) - in.count));
 	}
 	out.count = (int)(out_p - out.data);
 

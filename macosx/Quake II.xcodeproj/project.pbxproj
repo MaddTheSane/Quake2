@@ -46,6 +46,7 @@
 		55759EB825343F6400153823 /* MoltenVK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55759EAC25343F1B00153823 /* MoltenVK.xcframework */; };
 		55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 55871EAC235D1B5300528BDF /* Quake II.sdef */; };
 		55BA642524B6912200A53F4C /* snd_miniaudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 55BA642424B6912200A53F4C /* snd_miniaudio.c */; };
+		55EABE092680211B00DEDEC5 /* Quake II Help in Resources */ = {isa = PBXBuildFile; fileRef = 55EABE082680211B00DEDEC5 /* Quake II Help */; };
 		D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2075FE91529646A00F14280 /* ServicesMenu.strings */; };
 		D20760471529699E00F14280 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20760451529699E00F14280 /* AudioToolbox.framework */; };
 		D20760481529699E00F14280 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20760461529699E00F14280 /* AudioUnit.framework */; };
@@ -404,6 +405,7 @@
 		55BA642824B6912F00A53F4C /* stb_vorbis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stb_vorbis.c; sourceTree = "<group>"; };
 		55BA642924B6912F00A53F4C /* dr_wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dr_wav.h; sourceTree = "<group>"; };
 		55BA642A24B6912F00A53F4C /* dr_flac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dr_flac.h; sourceTree = "<group>"; };
+		55EABE082680211B00DEDEC5 /* Quake II Help */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = "Quake II Help"; path = "../Quake II Help"; sourceTree = "<group>"; };
 		D2075FF1152965F500F14280 /* Quake II.scriptSuite */ = {isa = PBXFileReference; lastKnownFileType = text.plist.scriptSuite; path = "Quake II.scriptSuite"; sourceTree = "<group>"; };
 		D20760451529699E00F14280 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D20760461529699E00F14280 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -1273,6 +1275,7 @@
 		D2C83714152944D000867DFC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55EABE082680211B00DEDEC5 /* Quake II Help */,
 				555B01481E2EA105007D3B5D /* CTF Module */,
 				555B014A1E2EA105007D3B5D /* Game Module */,
 				555B014C1E2EA105007D3B5D /* GL Renderer Module */,
@@ -1676,6 +1679,7 @@
 				D2DF6E6C1529635E00B80579 /* Credits.rtf in Resources */,
 				55871EAF235D1B5300528BDF /* Quake II.sdef in Resources */,
 				5556CE011CE961DB00C027F3 /* Icons.xcassets in Resources */,
+				55EABE092680211B00DEDEC5 /* Quake II Help in Resources */,
 				D2075FEB1529646A00F14280 /* ServicesMenu.strings in Resources */,
 				D207605015296AF400F14280 /* InfoPlist.strings in Resources */,
 			);

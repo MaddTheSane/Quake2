@@ -58,7 +58,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Quake II $(MARKETING_VERSION); Copyright 2002-2012 Fruitz Of Dojo, 2019-2020 C.W. "Madd the Sane" Betts</string>
+	<string>Quake II $(MARKETING_VERSION); Copyright 2002-2012 Fruitz Of Dojo, 2019-2020 C.W. &quot;Madd the Sane&quot; Betts</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>Quake II Help</string>
 	<key>CFBundleHelpBookName</key>

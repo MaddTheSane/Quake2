@@ -1371,7 +1371,7 @@ void CTFGrappleDrawCable(edict_t *self)
 	gi.WriteByte (svc_temp_entity);
 #if 1 //def USE_GRAPPLE_CABLE
 	gi.WriteByte (TE_GRAPPLE_CABLE);
-	gi.WriteShort (self->owner - g_edicts);
+	gi.WriteShort ((int)(self->owner - g_edicts));
 	gi.WritePosition (self->owner->s.origin);
 	gi.WritePosition (end);
 	gi.WritePosition (offset);

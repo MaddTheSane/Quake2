@@ -37,7 +37,7 @@ static uint32_t C, CC;
 static uint32_t D, DD;
 
 static void
-DoMD4()
+DoMD4(void)
 {
 	AA = A;
 	BB = B;

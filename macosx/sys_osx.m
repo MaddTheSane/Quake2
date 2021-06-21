@@ -658,7 +658,7 @@ void	Sys_CheckForIDDirectory (void)
 			myResult = [myOpenPanel runModal];
 			
 			// if the user selected "Cancel", quit the game:
-			if (myResult == NSOKButton)
+			if (myResult == NSModalResponseOK)
 			{	
 				// get the selected path:
 				myFolder = [myOpenPanel URLs];
@@ -670,7 +670,7 @@ void	Sys_CheckForIDDirectory (void)
 				}
 			}
 			
-			if (myResult == NSCancelButton)
+			if (myResult == NSModalResponseCancel)
 			{
 				[NSApp terminate: nil];
 			}
@@ -712,7 +712,7 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
     // we check here for events:
     switch (myType)
     {
-        case NSSystemDefined:
+		case NSEventTypeSystemDefined:
             SYS_CHECK_MOUSE_ENABLED ();
             
             if ([myEvent subtype] == 7)
@@ -738,7 +738,7 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
             break;
             
         // scroll wheel:
-        case NSScrollWheel:
+		case NSEventTypeScrollWheel:
             SYS_CHECK_MOUSE_ENABLED ();
             
             myMouseWheel = [myEvent deltaY];
@@ -756,10 +756,10 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
             break;
             
         // mouse movement:
-        case NSMouseMoved:
-        case NSLeftMouseDragged:
-        case NSRightMouseDragged:
-        case NSOtherMouseDragged:
+		case NSEventTypeMouseMoved:
+		case NSEventTypeLeftMouseDragged:
+		case NSEventTypeRightMouseDragged:
+		case NSEventTypeOtherMouseDragged:
             SYS_CHECK_MOUSE_ENABLED ();
 
             CGGetLastMouseDelta (&myMouseDeltaX, &myMouseDeltaY);
@@ -768,8 +768,8 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
             break;
 
         // key up and down:
-        case NSKeyDown:
-        case NSKeyUp:
+		case NSEventTypeKeyDown:
+		case NSEventTypeKeyUp:
             myKeyboardBuffer = [myEvent charactersIgnoringModifiers];
             myKeyboardBufferSize = [myKeyboardBuffer length];
 
@@ -784,7 +784,7 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
                     {
                         if (gInSpecialKey[myCharacter])
                         {
-                            Key_Event (gInSpecialKey[myCharacter], (myType == NSKeyDown), gSysMsgTime);
+							Key_Event (gInSpecialKey[myCharacter], (myType == NSEventTypeKeyDown), gSysMsgTime);
                             break;
                         }
                     }
@@ -793,13 +793,13 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
                 {
                     myFlags = [myEvent modifierFlags];
                     
-                    if (myFlags & NSNumericPadKeyMask)
+					if (myFlags & NSEventModifierFlagNumericPad)
                     {
                         myKeyPad = [myEvent keyCode];
             
                         if (myKeyPad < 0x5D && gInNumPadKey[myKeyPad] != 0x00)
                         {
-                            Key_Event (gInNumPadKey[myKeyPad], (myType == NSKeyDown), gSysMsgTime);
+							Key_Event (gInNumPadKey[myKeyPad], (myType == NSEventTypeKeyDown), gSysMsgTime);
                             break;
                         }                    
                     }
@@ -807,7 +807,7 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
                     {
                         if (myCharacter >= 'A' && myCharacter <= 'Z')
                             myCharacter += 'a' - 'A';
-                        Key_Event (myCharacter, (myType == NSKeyDown), gSysMsgTime);
+						Key_Event (myCharacter, (myType == NSEventTypeKeyDown), gSysMsgTime);
                     }
                 }
             }
@@ -815,7 +815,7 @@ void	Sys_DoEvents (NSEvent *myEvent, NSEventType myType)
             break;
         
         // special keys:
-        case NSFlagsChanged:
+		case NSEventTypeFlagsChanged:
             myFlags = [myEvent modifierFlags];
             myFilteredFlags = myFlags ^ myLastFlags;
             

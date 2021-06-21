@@ -749,7 +749,7 @@
     // show the sheet:
     [myMP3Panel beginSheetModalForWindow:startupWindow completionHandler:^(NSInteger theCode) {
         // do nothing on cancel:
-        if (theCode != NSCancelButton)
+		if (theCode != NSModalResponseCancel)
         {
             NSArray<NSURL*> *		myFolderArray;
             

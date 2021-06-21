@@ -800,7 +800,7 @@ void R_FloodFillSkin( byte *skin, int skinwidth, int skinheight )
 		return;
 	}
 
-	fifo[inpt].x = 0, fifo[inpt].y = 0;
+	fifo[inpt].x = 0; fifo[inpt].y = 0;
 	inpt = (inpt + 1) & FLOODFILL_FIFO_MASK;
 
 	while (outpt != inpt)

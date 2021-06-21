@@ -23,6 +23,7 @@
 #import <FruitzOfDojo/FDScreenshot.h>
 #include "r_local.h"
 
+// TODO: UPGRADE?
 #pragma mark -
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -203,7 +204,7 @@ void	SWimp_BlitWindow (void)
                 NSRect	myViewRect			= [gVidView bounds];
                 NSPoint	myGrowboxLocation	= NSMakePoint (NSMaxX (myViewRect) - myGrowboxSize.width, NSMinY (myViewRect));
                 
-                [gVidGrowboxImage drawAtPoint:myGrowboxLocation fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:0];
+                [gVidGrowboxImage drawAtPoint:myGrowboxLocation fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:0];
             }
             
             [gVidView unlockFocus];

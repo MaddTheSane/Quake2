@@ -1008,7 +1008,7 @@ Boolean	GLimp_InitGraphics (int *theWidth, int *theHeight, float theRefreshRate,
         
         // setup the window according to our settings:
         gGLWindow = [[NSWindow alloc] initWithContentRect: myContentRect
-                                                styleMask: NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask
+                                                styleMask: NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable
                                                   backing: NSBackingStoreBuffered
                                                     defer: NO];
 

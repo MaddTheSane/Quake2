@@ -238,8 +238,11 @@ int		LittleLong (int l);
 float	BigFloat (float l);
 float	LittleFloat (float l);
 
+#ifndef __printflike
+#define __printflike(...)
+#endif
 void	Swap_Init (void);
-char	*va(char *format, ...);
+char	*va(const char *format, ...) __printflike(1, 2);
 
 //=============================================
 

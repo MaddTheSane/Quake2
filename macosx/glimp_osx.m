@@ -3,28 +3,28 @@
 // "glimp_osx.c" - MacOS X OpenGL renderer.
 //
 // Written by:	awe                         [mailto:awe@fruitz-of-dojo.de].
-//		        ©2001-2006 Fruitz Of Dojo   [http://www.fruitz-of-dojo.de].
+//		        Â©2001-2006 Fruitz Of Dojo   [http://www.fruitz-of-dojo.de].
 //
-// Quake IIª is copyrighted by id software  [http://www.idsoftware.com].
+// Quake IIâ„¢ is copyrighted by id software  [http://www.idsoftware.com].
 //
 // Version History:
-// v1.1.0: ¥ Changed "minimized in Dock mode": now plays in the document miniwindow rather than inside the application icon.
-//	       ¥ Screenshots are now saved in PNG format.
-// v1.0.8: ¥ Added support for non-overbright gamma [variable "gl_overbright_gamma"].
-// v1.0.6: ¥ Added support for FSAA [variable "gl_ext_multisample"].
-// v1.0.5: ¥ Added support for anisotropic texture filtering [variable "gl_anisotropic"].
-//         ¥ Added support for Truform [variable "gl_truform"].
-//         ¥ Improved renderer performance thru smaller lightmaps [define USE_SMALL_LIGHTMAPS at compile time].
-//         ¥ "gl_mode" is now set to "0" instead of "3" by default. Fixes a problem with monitors which provide
+// v1.1.0: â€¢ Changed "minimized in Dock mode": now plays in the document miniwindow rather than inside the application icon.
+//	       â€¢ Screenshots are now saved in PNG format.
+// v1.0.8: â€¢ Added support for non-overbright gamma [variable "gl_overbright_gamma"].
+// v1.0.6: â€¢ Added support for FSAA [variable "gl_ext_multisample"].
+// v1.0.5: â€¢ Added support for anisotropic texture filtering [variable "gl_anisotropic"].
+//         â€¢ Added support for Truform [variable "gl_truform"].
+//         â€¢ Improved renderer performance thru smaller lightmaps [define USE_SMALL_LIGHTMAPS at compile time].
+//         â€¢ "gl_mode" is now set to "0" instead of "3" by default. Fixes a problem with monitors which provide
 //           only a single resolution.
-// v1.0.3: ¥ Screenshots are now saved as TIFF instead of TGA files [see "gl_rmisc.c"].
-//         ¥ Fixed an issue with wrong pixels at the right and left border of cinematics [see "gl_draw.c"].
-// v1.0.1: ¥ added "gl_force16bit" command.
-//         ¥ added "gl_swapinterval". 0 = no VBL wait, 1 = wait for VBL. Available via "Video Options" dialog, too.
-//         ¥ added rendering inside the Dock [if window is minimized].
+// v1.0.3: â€¢ Screenshots are now saved as TIFF instead of TGA files [see "gl_rmisc.c"].
+//         â€¢ Fixed an issue with wrong pixels at the right and left border of cinematics [see "gl_draw.c"].
+// v1.0.1: â€¢ added "gl_force16bit" command.
+//         â€¢ added "gl_swapinterval". 0 = no VBL wait, 1 = wait for VBL. Available via "Video Options" dialog, too.
+//         â€¢ added rendering inside the Dock [if window is minimized].
 //           changes in "gl_rmain.c", line 1043 and later:
-//         ¥ "gl_ext_palettedtexture" is now by default turned off.
-//         ¥ "gl_ext_multitexture" is now possible, however default value is "0", due to bad performance.
+//         â€¢ "gl_ext_palettedtexture" is now by default turned off.
+//         â€¢ "gl_ext_multitexture" is now possible, however default value is "0", due to bad performance.
 // v1.0.0: Initial release.
 //
 //------------------------------------------------------------------------------------------------------------------------------------------------------------

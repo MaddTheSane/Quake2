@@ -3,9 +3,9 @@
 // "q_shosx.c" - shared functions for the plug-ins.
 //
 // Written by:	awe				            [mailto:awe@fruitz-of-dojo.de].
-//		        ©2001-2006 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
+//		        Â©2001-2006 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
 //
-// Quake IIª is copyrighted by id software	[http://www.idsoftware.com].
+// Quake IIâ„¢ is copyrighted by id software	[http://www.idsoftware.com].
 //
 // Version History:
 // v1.0.0:   Initial release.

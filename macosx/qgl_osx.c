@@ -3,9 +3,9 @@
 // "qgl_osx.c" - This file implements the MacOS X system bindings of OpenGL to QGL function pointers.
 //
 // Written by:	awe				            [mailto:awe@fruitz-of-dojo.de].
-//		        ©2001-2006 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
+//		        Â©2001-2006 Fruitz Of Dojo 	[http://www.fruitz-of-dojo.de].
 //
-// Quake IIª is copyrighted by id software	[http://www.idsoftware.com].
+// Quake IIâ„¢ is copyrighted by id software	[http://www.idsoftware.com].
 //
 // Version History:
 // v1.0.6: OpenGL framework is now dynamically loaded.

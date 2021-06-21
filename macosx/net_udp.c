@@ -132,7 +132,7 @@ qboolean	NET_CompareBaseAdr (netadr_t a, netadr_t b)
 
 #if defined (__APPLE__) || defined (MACOSX)
         return (false);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ ||Â MACOSX */
 }
 
 char	*NET_AdrToString (netadr_t a)

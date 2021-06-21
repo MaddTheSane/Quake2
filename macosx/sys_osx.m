@@ -377,11 +377,11 @@ char *	Sys_GetClipboardData (void)
 
     myPasteboard = [NSPasteboard generalPasteboard];
     myPasteboardTypes = [myPasteboard types];
-    if ([myPasteboardTypes containsObject: NSStringPboardType])
+	if ([myPasteboardTypes containsObject: NSPasteboardTypeString])
     {
         NSString	*myClipboardString;
 
-        myClipboardString = [myPasteboard stringForType: NSStringPboardType];
+		myClipboardString = [myPasteboard stringForType: NSPasteboardTypeString];
         if (myClipboardString != NULL && [myClipboardString length] > 0)
         {
             return (strdup ([myClipboardString cStringUsingEncoding:NSASCIIStringEncoding]));

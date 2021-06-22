@@ -33,7 +33,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #  include <OpenGL/glext.h>
 #else
 #  include <GL/gl.h>
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 #ifdef __linux__
 //#include <GL/fxmesa.h>

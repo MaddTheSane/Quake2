@@ -1540,7 +1540,7 @@ void	GL_InitImages (void)
 		ri.FS_LoadFile( "pics/16to8.dat", (void **) &gl_state.d_16to8table );
 #else
 		ri.FS_LoadFile( "pics/16to8.dat", &gl_state.d_16to8table );
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 		if ( !gl_state.d_16to8table )
 			ri.Sys_Error( ERR_FATAL, "Couldn't load pics/16to8.pcx");
 	}

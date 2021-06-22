@@ -26,7 +26,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 extern void strlwr (char *theString);
 
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 void R_Clear (void);
 
@@ -1183,7 +1183,7 @@ qboolean	GL_ExtensionSupported (const char *theExtension)
 qboolean R_Init( void *hinstance, void *hWnd )
 #else
 int R_Init( void *hinstance, void *hWnd )
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 {	
 	char renderer_buffer[1000];
@@ -1473,7 +1473,7 @@ int R_Init( void *hinstance, void *hWnd )
 #else
 		strstr( gl_config.extensions_string, "GL_EXT_paletted_texture" ) &&
 		strstr( gl_config.extensions_string, "GL_EXT_shared_texture_palette" ) )
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 	{
 		if ( gl_ext_palettedtexture->value )
 		{
@@ -1579,7 +1579,7 @@ int R_Init( void *hinstance, void *hWnd )
 
 #if defined (__APPLE__) || defined (MACOSX)
 	return (0);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 }
 	//Because there's something's wrong with R_Init's syntax messing up Xcode auto-indent
 	//TODO: find where and why it's messing up!

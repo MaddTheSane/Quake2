@@ -676,7 +676,7 @@ void SpinControl_Draw( menulist_s *s )
         {
             return;
         }
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 	if ( !strchr( s->itemnames[s->curvalue], '\n' ) )
 	{
 		Menu_DrawString( RCOLUMN_OFFSET + s->generic.x + s->generic.parent->x, s->generic.y + s->generic.parent->y, s->itemnames[s->curvalue] );
@@ -696,7 +696,7 @@ void SpinControl_Draw( menulist_s *s )
 #else
 		strcpy( buffer, s->itemnames[s->curvalue] );
 		*strchr( buffer, '\n' ) = 0;
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 		Menu_DrawString( RCOLUMN_OFFSET + s->generic.x + s->generic.parent->x, s->generic.y + s->generic.parent->y, buffer );
 #if defined (__APPLE__) || defined (MACOSX)

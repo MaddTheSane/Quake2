@@ -519,7 +519,7 @@ int R_ClipPolyFace (int nump, clipplane_t *pclipplane)
         // <awe> required because of a compiler bug [gcc3], see below...
         unsigned char	cmp1, cmp2;
         
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 	clipdist = pclipplane->dist;
 	pclipnormal = pclipplane->normal;
 	

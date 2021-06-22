@@ -405,25 +405,25 @@ void Draw_StretchRaw (int x, int y, int w, int h, int cols, int rows, byte *data
 	qglTexCoord2f (0.002f, 0.002f);
 #else
 	qglTexCoord2f (0, 0);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 	qglVertex2f (x, y);
 #if defined (__APPLE__) || defined (MACOSX)
 	qglTexCoord2f (1 - 0.002f, 0.002f);
 #else
 	qglTexCoord2f (1, 0);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 	qglVertex2f (x+w, y);
 #if defined (__APPLE__) || defined (MACOSX)
 	qglTexCoord2f (1 - 0.002f, t - 0.002f);
 #else
 	qglTexCoord2f (1, t);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 	qglVertex2f (x+w, y+h);
 #if defined (__APPLE__) || defined (MACOSX)
 	qglTexCoord2f (0.002f, t - 0.002f);
 #else
 	qglTexCoord2f (0, t);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 	qglVertex2f (x, y+h);
 	qglEnd ();
 

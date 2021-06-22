@@ -98,7 +98,7 @@ keyname_t keynames[] =
         {"CAPSLOCK", K_CAPSLOCK},
         {"NUMLOCK", K_NUMLOCK},
         {"COMMAND", K_COMMAND},
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 	{"MOUSE1", K_MOUSE1},
 	{"MOUSE2", K_MOUSE2},
@@ -604,7 +604,7 @@ void Key_SetBinding (int keynum, char *binding)
             
             IN_SetF12EjectEnabled (keybindings[keynum][0] == 0x00);
         }
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 }
 
 /*

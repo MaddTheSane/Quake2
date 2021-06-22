@@ -38,7 +38,7 @@ extern	int		key_linepos;
 void Con_DrawString (int x, int y, char *s)
 #else
 void DrawString (int x, int y, char *s)
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 {
 	while (*s)
 	{

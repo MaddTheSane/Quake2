@@ -1416,7 +1416,7 @@ void Sys_Error (const char *error, ...)
 	vsnprintf (text, 1024, error, argptr);
 #else
 	vsprintf (text, error, argptr);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 	va_end (argptr);
 
 	ri.Sys_Error (ERR_FATAL, "%s", text);
@@ -1432,7 +1432,7 @@ void Com_Printf (const char *fmt, ...)
 	vsnprintf (text, 1024, fmt, argptr);
 #else
 	vsprintf (text, fmt, argptr);
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 	va_end (argptr);
 
 	ri.Con_Printf (PRINT_ALL, "%s", text);

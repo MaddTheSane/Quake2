@@ -712,7 +712,7 @@ void R_ScreenShot_f (void)
 		ri.Con_Printf (PRINT_ALL, "SCR_ScreenShot_f: Couldn't create a PNG file\n");
 #else
 		ri.Con_Printf (PRINT_ALL, "R_ScreenShot_f: Couldn't create a PCX");
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 		return;
 	}
 

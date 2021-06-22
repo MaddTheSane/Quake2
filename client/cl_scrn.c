@@ -1047,7 +1047,7 @@ void SCR_ExecuteLayoutString (char *s)
 				Con_DrawString (x, y, block);
 #else
 				DrawString (x, y, block);
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 			continue;
 		}
 

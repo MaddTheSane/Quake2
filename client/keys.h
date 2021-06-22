@@ -89,7 +89,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define K_KP_MULT		175
 #define K_KP_EQUAL		176
 
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 #define K_PAUSE			255
 
@@ -102,7 +102,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	K_MOUSE2		201
 #define	K_MOUSE3		202
 
-#endif /* !__APPLE__ && !MACOSX */
+#endif /* !__APPLE__ && !MACOSX */
 
 //
 // joystick buttons
@@ -160,7 +160,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	K_MOUSE4		244
 #define	K_MOUSE5		245
 
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 
 extern char		*keybindings[256];

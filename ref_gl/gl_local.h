@@ -106,7 +106,7 @@ typedef struct image_s
 	GLuint		texnum;						// gl texture binding
 #else
 	int		texnum;						// gl texture binding
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 	float	sl, tl, sh, th;				// 0,0 - 1,1 unless part of the scrap
 	qboolean	scrap;
@@ -290,7 +290,7 @@ void V_AddBlend (float r, float g, float b, float a, float *v_blend);
 qboolean R_Init( void *hinstance, void *hWnd );
 #else
 int R_Init( void *hinstance, void *hWnd );
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 void	R_Shutdown( void );
 

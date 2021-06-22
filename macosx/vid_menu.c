@@ -38,7 +38,7 @@ static cvar_t *gl_ext_palettedtexture;
 
 #if defined (__APPLE__) || defined (MACOSX)
 static cvar_t *gl_swap_interval;
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 static cvar_t *vk_msaa;
 static cvar_t *vk_aniso;
@@ -109,7 +109,7 @@ static menuaction_s		s_cancel_action[3];
 static menuaction_s		s_defaults_action[3];
 #if defined (__APPLE__) || defined (MACOSX)
 static menulist_s 		s_swap_interval_box;
-#endif /* __APPLE__ || MACOSX */
+#endif /* __APPLE__ || MACOSX */
 
 static void DriverCallback( void *unused )
 {

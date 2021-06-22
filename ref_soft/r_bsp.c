@@ -461,7 +461,7 @@ static void R_RecursiveWorldNode (mnode_t *node, int clipflags)
 
 void R_RecursiveWorldNode (mnode_t *node, int clipflags)
 
-#endif /* __APPLE__ ||ÊMACOSX */
+#endif /* __APPLE__ || MACOSX */
 {
 	int			i, c, side, *pindex;
 	vec3_t		acceptpt, rejectpt;

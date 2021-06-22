@@ -102,7 +102,7 @@ typedef struct		{
                         
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-@interface Quake2GLView : NSView <NSWindowDelegate>
+@interface Quake2GLView : NSOpenGLView <NSWindowDelegate>
 @end
 
 #pragma mark -
@@ -772,6 +772,7 @@ NSOpenGLPixelFormat *	GLimp_CreateGLPixelFormat (int theDepth, Boolean theFullsc
     }
     else
     {
+		// TODO: fix deprecation
         myAttributeList[i++] = NSOpenGLPFAWindow;
     }
 

@@ -24,7 +24,7 @@
 		55759D3E2533C99D00153823 /* vk_rsurf.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D0D2533C99C00153823 /* vk_rsurf.c */; };
 		55759D3F2533C99D00153823 /* vk_validation.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D0E2533C99C00153823 /* vk_validation.c */; };
 		55759D402533C99D00153823 /* vk_rmain.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D0F2533C99C00153823 /* vk_rmain.c */; };
-		55759D412533C99D00153823 /* vk_mem_alloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55759D102533C99C00153823 /* vk_mem_alloc.cpp */; };
+		55759D412533C99D00153823 /* vk_mem_alloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55759D102533C99C00153823 /* vk_mem_alloc.cpp */; settings = {COMPILER_FLAGS = "-Wno-nullability-completeness"; }; };
 		55759D422533C99D00153823 /* vk_cmd.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D112533C99D00153823 /* vk_cmd.c */; };
 		55759D432533C99D00153823 /* vk_common.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D132533C99D00153823 /* vk_common.c */; };
 		55759D442533C99D00153823 /* vk_buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 55759D142533C99D00153823 /* vk_buffer.c */; };

@@ -90,6 +90,20 @@
                ReferencedContainer = "container:../../Quake2-Xatrix/macosx/XatrixQuake2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8D5B49AC048680CD000E48DA"
+               BuildableName = "GameMac.q2plug"
+               BlueprintName = "GameMac"
+               ReferencedContainer = "container:../../Quake2-Zaero/macosx/ZaeroQuake2.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -113,6 +127,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
+         BundleIdentifier = "com.fruitz-of-dojo.quake2"
          FilePath = "/Applications/Games/Quake2/Quake II.app">
       </PathRunnable>
       <MacroExpansion>

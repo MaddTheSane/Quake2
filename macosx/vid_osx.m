@@ -257,7 +257,7 @@ void	VID_Init (void)
     
 #endif /* VID_DO_NOT_UNLOAD_MODULES */
 
-    vid_ref 	    = Cvar_Get ("vid_ref",			"soft", CVAR_ARCHIVE);
+    vid_ref 	    = Cvar_Get ("vid_ref",			"gl",   CVAR_ARCHIVE);
     vid_xpos 	    = Cvar_Get ("vid_xpos",			"0",    CVAR_ARCHIVE);
     vid_ypos 	    = Cvar_Get ("vid_ypos",			"0",	CVAR_ARCHIVE);
     vid_fullscreen  = Cvar_Get ("vid_fullscreen",	"0",    CVAR_ARCHIVE);
